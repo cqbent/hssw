@@ -73,6 +73,23 @@ $screen-lg-min: 1200px;
 // header styling
 header.site-header {
   background-color: $gray !important;
+  .inside-header {
+    position: relative;
+  }
+  .secondary-nav {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+    text-transform: uppercase;
+    font-size: .875rem;
+    ul {
+      display: flex;
+      list-style: none;
+      li {
+        padding: 0 10px;
+      }
+    }
+  }
 }
 
 // home page styling

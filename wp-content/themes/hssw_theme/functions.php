@@ -38,5 +38,16 @@ function home_featured_content() {
     }
 }
 
-
+add_action('generate_before_header_content', 'hssw_secondary_menu');
+function hssw_secondary_menu() {
+    wp_nav_menu(
+        array(
+            'theme_location' => 'secondary',
+            'container' => 'div',
+            'container_class' => 'secondary-nav',
+            'container_id' => 'secondary-menu',
+            'menu_class' => '',
+        )
+    );
+}
 
