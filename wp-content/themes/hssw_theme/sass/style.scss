@@ -1,0 +1,129 @@
+/*
+ Theme Name:   HSSW Theme
+ Theme URI:    https://generatepress.com
+ Description:  HSSW GeneratePress child theme
+ Author:       Charles Bent
+ Template:     generatepress
+ Version:      0.1
+*/
+
+// variables
+$black: #000000;
+$gray: #dcdcdc;
+$white: #ffffff;
+
+// screen sizes
+$screen-xs-min: 576px;
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+
+// clearfix
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+// features carousel on home page
+.features-carousel {
+  position: relative;
+  .item {
+    min-height: 400px;
+    background-color: $gray;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    a {
+      width: 100%;
+    }
+  }
+  .owl-nav {
+    button {
+      position: absolute;
+      top: calc(50% - 30px);
+      color: $white;
+      &.owl-prev {
+        left: 10px;
+      }
+      &.owl-next {
+        right: 10px;
+      }
+      span {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+// general layout styling
+.site-content {
+  .content-area {
+    &.no-sidebar {
+      width: 100%;
+    }
+    .inside-article {
+      @include clearfix;
+    }
+  }
+}
+
+// header styling
+header.site-header {
+  background-color: $gray !important;
+}
+
+// home page styling
+.featured-authors, .featured-blog-posts {
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  .wp-block-column {
+    margin: 0 0 40px 0;
+    padding: 0 20px;
+    @media (min-width: $screen-sm-min) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+}
+
+// people pages styling
+.people-grid {
+  flex-wrap: wrap;
+  .wp-block-column {
+    margin: 0 0 40px 0;
+    text-align: center;
+    padding: 0 20px;
+    img {
+      border-radius: 50%;
+    }
+    .name {
+      font-weight: 700;
+    }
+    @media (min-width: $screen-sm-min) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    @media (min-width: $screen-md-min) {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+  }
+}
+
+
+article.type-people {
+  .featured-image {
+    @media (min-width: $screen-sm-min) {
+      float: right;
+      max-width: 33%;
+      margin: 0 0 20px 20px;
+    }
+  }
+  .job-title {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+}

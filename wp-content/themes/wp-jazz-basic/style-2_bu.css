@@ -1,0 +1,70 @@
+/* -- This is the place to add your own style modifications without touching the original styles -- */
+
+#page {
+	clear: both;
+	margin: 0 auto;
+	padding: 10px;
+	background:#000;
+	}  
+
+	a, a:link, a:visited {
+	text-decoration:none;
+	color:#ffb966;
+	}
+
+/* set bottom margin to 0 to remove space below header */	
+#header {
+	width:100%;
+	margin: 0 auto 0px;
+	padding:0;
+	background-position: center center;
+	background:(images/head-bg.gif) top;
+	height:110px;
+	}
+	
+h2 {
+	font-size: 12pt;
+	color:#ffb966;
+	}
+	
+a:hover, a:active {
+	text-decoration:none;
+	color:#ffffff;
+	}
+	
+#sidebar li {
+	border-color:#ddd;
+	background:#eee;
+	}
+
+#sidebar li li, #sidebar .textwidget, #sidebar li .widgettitle, #sidebar li#tag-cloud ul.wp-tag-cloud {
+	border-top:1px solid #fff;
+	border-bottom:1px solid #ddd;
+	}
+
+#sidebar li .widgettitle {
+	background: #e5e5e5;
+	color: #000;
+	}
+
+/* ---------[ Features Adjustments ]--------- */
+
+#my-glider, #my-glider .scroller {
+	width:960px;
+	}
+
+#my-glider .scroller .section {
+	width:940px;
+	}
+
+img.feature-photo, img.home_feature_photo {
+        width:450px;
+	}
+	
+/* ---------[ Highlight Current Menu Item ]--------- */
+
+#topnav li.current-menu-item a,
+#nav li.current-menu-item a {
+	color:#fff;
+	background:#333;
+	}
