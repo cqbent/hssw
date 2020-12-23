@@ -51,3 +51,11 @@ function hssw_secondary_menu() {
     );
 }
 
+// fix event calendar breakpoint issue (?)
+add_filter( 'tribe_events_views_v2_view_breakpoints', 'customize_tribe_events_breakpoints', 10, 2 );
+
+function customize_tribe_events_breakpoints( $breakpoints, $view ) {
+    $breakpoints['extra_large'] = 1024;
+
+    return $breakpoints;
+}
