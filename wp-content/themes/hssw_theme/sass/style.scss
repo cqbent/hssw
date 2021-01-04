@@ -27,6 +27,11 @@ $screen-lg-min: 1200px;
   }
 }
 
+// general styling
+body {
+  background-color: $black !important;
+}
+
 // features carousel on home page
 .features-carousel {
   position: relative;
@@ -36,6 +41,12 @@ $screen-lg-min: 1200px;
     text-align: center;
     display: flex;
     align-items: center;
+    .item-content {
+      margin: 0 auto;
+      background-color: rgba($white, .5);
+      padding: 20px;
+      min-width: 60%;
+    }
     a {
       width: 100%;
     }
@@ -53,6 +64,7 @@ $screen-lg-min: 1200px;
       }
       span {
         font-size: 3rem;
+        color: $white;
       }
     }
   }
@@ -96,6 +108,9 @@ header.site-header {
 .featured-authors, .featured-blog-posts {
   flex-wrap: wrap;
   margin-bottom: 40px;
+  .row {
+    margin-bottom: 20px;
+  }
   .wp-block-column {
     margin: 0 0 40px 0;
     padding: 0 20px;
@@ -142,5 +157,28 @@ article.type-people {
   .job-title {
     margin-top: 1rem;
     font-size: 1.5rem;
+  }
+}
+
+// event styling
+.type-tribe_events {
+  @media (min-width: $screen-sm-min) {
+    .tribe-events-event-image {
+      float: right;
+      padding-left: 20px;
+      width: 50%;
+    }
+  }
+}
+
+// blog posts styling
+.type-post {
+  @media (min-width: $screen-sm-min) {
+    .post-image, .featured-image {
+      float: right;
+      padding-left: 20px;
+      width: 33%;
+      @include clearfix;
+    }
   }
 }

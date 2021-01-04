@@ -6,6 +6,14 @@
  * Only edit this file if you have direct access to it on your server (to fix errors if they happen).
  */
 
+/**
+ * Theme assets
+ */
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('bootstrapcss', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+    wp_enqueue_script('bootstrapjs', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js');
+}, 100);
+
 // register secondary menu
 register_nav_menus(
     array(

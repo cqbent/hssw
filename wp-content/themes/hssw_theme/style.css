@@ -6,6 +6,10 @@
  Template:     generatepress
  Version:      0.1
 */
+body {
+  background-color: #000000 !important;
+}
+
 .features-carousel {
   position: relative;
 }
@@ -15,6 +19,12 @@
   text-align: center;
   display: flex;
   align-items: center;
+}
+.features-carousel .item .item-content {
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  min-width: 60%;
 }
 .features-carousel .item a {
   width: 100%;
@@ -32,6 +42,7 @@
 }
 .features-carousel .owl-nav button span {
   font-size: 3rem;
+  color: #ffffff;
 }
 
 .site-content .content-area.no-sidebar {
@@ -67,6 +78,9 @@ header.site-header .secondary-nav ul li {
 .featured-authors, .featured-blog-posts {
   flex-wrap: wrap;
   margin-bottom: 40px;
+}
+.featured-authors .row, .featured-blog-posts .row {
+  margin-bottom: 20px;
 }
 .featured-authors .wp-block-column, .featured-blog-posts .wp-block-column {
   margin: 0 0 40px 0;
@@ -116,6 +130,27 @@ header.site-header .secondary-nav ul li {
 article.type-people .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .type-tribe_events .tribe-events-event-image {
+    float: right;
+    padding-left: 20px;
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .type-post .post-image, .type-post .featured-image {
+    float: right;
+    padding-left: 20px;
+    width: 33%;
+  }
+  .type-post .post-image:after, .type-post .featured-image:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

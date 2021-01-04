@@ -86,10 +86,12 @@ function features_carousel() {
 		$image = $feature['image'] ? wp_get_attachment_image_url($feature['image']['ID'], 'full') : '';
 		$output .= '
 				<div class="item" style="background-image: url(' . $image . ')">
-					<a href="' . $link['url'] . '">
-					<h2>' . $feature['feature_title'] . '</h2>
-					<div class="text">' . $feature['feature_text'] . '</div>
-					</a>
+					<div class="item-content">
+						<a href="' . $link['url'] . '">
+							<h2>' . $feature['feature_title'] . '</h2>
+							<div class="text">' . $feature['feature_text'] . '</div>
+						</a>
+					</div>
 				</div>
 			';
 	}
@@ -118,10 +120,12 @@ function featured_authors() {
 		while ($query->have_posts()) {
 			$query->the_post();
 			$output .= '
-				<div class="wp-block-column">
-					' . get_the_post_thumbnail() . '
-					<div class="title"><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></div>
-					<div class="name">' . get_the_excerpt() . '</div>
+				<div class="row">
+					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
+					<div class="content col-sm-8">
+						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
+						<div class="name">' . get_the_excerpt() . '</div>
+					</div>
 				</div>
 			';
 		}
@@ -144,10 +148,12 @@ function featured_blog_posts() {
 		while ($query->have_posts()) {
 			$query->the_post();
 			$output .= '
-				<div class="wp-block-column">
-					' . get_the_post_thumbnail() . '
-					<div class="title"><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></div>
-					<div class="name">' . get_the_excerpt() . '</div>
+				<div class="row">
+					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
+					<div class="content col-sm-8">
+						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
+						<div class="excerpt">' . get_the_excerpt() . '</div>
+					</div>
 				</div>
 			';
 		}
