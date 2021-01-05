@@ -132,6 +132,10 @@ article.type-people .job-title {
   font-size: 1.5rem;
 }
 
+.tribe-events {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .type-tribe_events .tribe-events-event-image {
     float: right;

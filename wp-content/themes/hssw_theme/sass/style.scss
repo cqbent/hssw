@@ -161,6 +161,10 @@ article.type-people {
 }
 
 // event styling
+.tribe-events {
+  width: 100%;
+}
+
 .type-tribe_events {
   @media (min-width: $screen-sm-min) {
     .tribe-events-event-image {
