@@ -2,8 +2,8 @@
   <div class="container">
     <div class="logo">
       <a class="brand" href="{{ home_url('/') }}">
-        <img src="{{ get_stylesheet_directory_uri() }}/assets/images/hssw_logo_typewriter.png" alt="{{ get_bloginfo('name', 'display') }}" class="logo" />
-        <span>Harvard Square <br />Script Writers</span>
+        <img src="{{ get_stylesheet_directory_uri() }}/assets/images/hssw_logo_acronym.png" alt="{{ get_bloginfo('name', 'display') }}" class="logo" />
+        <span></span>
       </a>
     </div>
     <nav class="nav-primary">

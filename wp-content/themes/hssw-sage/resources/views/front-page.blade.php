@@ -12,5 +12,6 @@
 
     <h2>Featured Blog Posts</h2>
     @php print featured_blog_posts() @endphp
+
   @endwhile
 @endsection

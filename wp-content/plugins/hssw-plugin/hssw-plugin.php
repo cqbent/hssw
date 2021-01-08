@@ -201,6 +201,11 @@ function featured_blog_posts() {
 	return $output;
 }
 
-function featured_events() {
-
+// limit search to posts
+function exclude_pages_from_search($query) {
+	if ( $query->is_main_query() && is_search() ) {
+		$query->set( 'post_type', 'post' );
+	}
+	return $query;
 }
+add_filter( 'pre_get_posts','exclude_pages_from_search' );
