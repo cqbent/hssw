@@ -1,0 +1,31 @@
+/** Import Bootstrap functions */
+@import "~bootstrap/scss/functions";
+
+// variables
+$black: #000;
+$dark-gray: #333;
+$gray: #dcdcdc;
+$white: #fff;
+$red: #bf1e2e;
+
+$body-color: $white;
+$link-color: $red;
+
+// fonts
+$typewriter: "Special Elite", cursive;
+$font-family-base: "Nunito Sans", sans-serif;
+
+// screen sizes
+$screen-xs-min: 576px;
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+
+
+$theme-colors: (
+  primary: #525ddc
+);
+
+/** Bootstrap navbar fix (https://git.io/fADqW) */
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;

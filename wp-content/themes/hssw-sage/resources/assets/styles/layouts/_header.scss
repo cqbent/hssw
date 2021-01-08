@@ -1,0 +1,289 @@
+.banner .nav li {
+  @extend .nav-item;
+}
+
+.banner .nav a {
+  @extend .nav-link;
+}
+
+header.banner {
+  position: relative;
+  height: 100px;
+  background-color: $black;
+  z-index: 2;
+  .container {
+    position: relative;
+  }
+  .logo {
+    font-family: $typewriter;
+    color: $white;
+    font-size: 1.75rem;
+    line-height: 1;
+    a {
+      color: $white;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    img {
+      float: left;
+    }
+    span {
+      display: block;
+      padding-top: 20px;
+    }
+  }
+  nav.nav-primary {
+    .menu-top-nav-bar-container {
+      padding: 15px;
+    }
+
+    ul.nav {
+      .menu-item {
+        width: 100%;
+        font-size: 1rem;
+
+        a {
+          color: $gray;
+          padding: 0;
+        }
+
+        .sub-menu {
+          display: none;
+          list-style: none;
+          margin: 0 0 10px 0;
+          padding: 0;
+          max-width: 400px;
+
+          .menu-item {
+            padding: 0;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: normal;
+
+            .sub-menu {
+              display: block;
+              margin: 0 0 0 15px;
+            }
+          }
+        }
+      }
+
+      > .menu-item:hover {
+        > .sub-menu {
+          display: block;
+        }
+      }
+    }
+
+    .navbar-toggler {
+      display: block;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      position: absolute;
+      top: 34px;
+      right: 15px;
+
+      .icon-bar {
+        width: 40px;
+        height: 2px;
+        border-radius: 10px;
+        border: 2px $red solid;
+        display: block;
+        margin-bottom: 8px;
+      }
+    }
+
+    @media (max-width: $screen-md-min) {
+      #navbar {
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        background: rgba($black, 0.9);
+      }
+    }
+
+    @media (min-width: $screen-md-min) {
+      position: absolute;
+      right: 15px;
+      top: 0;
+      margin-top: 20px;
+      //height: 42px;
+      //margin-top: 20px;
+      //position: absolute;
+      //bottom: 0;
+      //right: 0;
+
+      .navbar-toggler {
+        display: none;
+      }
+
+      .menu-top-nav-bar-container {
+        padding: 0 15px;
+
+        &.collapse,
+        &.fade {
+          display: block;
+          opacity: 1;
+        }
+
+        ul.nav {
+          margin: 0;
+          float: right;
+
+          .menu-item {
+            width: auto;
+            border: none;
+            padding: 0 10px;
+            font-weight: 400;
+
+            a {
+              position: relative;
+              padding: 10px 0;
+
+              &:hover {
+                color: $red;
+              }
+            }
+
+            &.alignright {
+              margin-left: auto;
+            }
+
+            &:hover,
+            &.current-menu-item,
+            &.current-menu-ancestor,
+            &.current-page-ancestor {
+              a {
+                color: $red;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  height: 4px;
+                  width: 100%;
+                  background-color: $red;
+                  display: none;
+                }
+              }
+            }
+
+            .sub-menu {
+              position: absolute;
+              min-width: 200px;
+              width: auto;
+              margin: 0;
+              padding: 0;
+              background: rgba($black, 0.9);
+
+              .menu-item {
+                font-size: 0.875rem;
+                float: none;
+                padding: 0 0 5px 0;
+
+                a {
+                  padding: 5px 10px;
+                  color: $white;
+                  &::after {
+                    display: none;
+                  }
+                }
+
+                &.current-menu-item,
+                &:hover {
+                  > a {
+                    color: $red;
+                  }
+                }
+
+                .sub-menu {
+                  //display: none;
+                  position: relative;
+                  background: none;
+                  margin-left: 10px;
+
+                  .menu-item {
+                    text-transform: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-xs-min) {
+    .toplinks {
+      margin-right: 80px;
+    }
+
+    .brand {
+      img.tagline {
+        display: inline-block;
+      }
+    }
+
+    nav.nav-primary {
+      .navbar-toggler {
+        .icon-bar {
+          width: 50px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .toplinks {
+      margin-top: 0;
+
+      .social,
+      .search-form {
+        display: inline-block;
+      }
+    }
+
+    .brand {
+      img {
+        height: 60px;
+      }
+    }
+
+    nav.nav-primary {
+      .navbar-toggler {
+        top: 25px;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .toplinks {
+      margin-right: 20px;
+
+      .links {
+        display: inline-block;
+      }
+
+      .donate,
+      .j1 {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+      }
+    }
+
+    .brand {
+      img {
+        height: 80px;
+      }
+    }
+  }
+
+  @media (min-width: $screen-lg-min) {
+    .header-container {
+      max-width: $screen-lg-min;
+    }
+  }
+}

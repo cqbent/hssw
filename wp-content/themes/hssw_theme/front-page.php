@@ -41,7 +41,11 @@ get_header(); ?>
                                 ?> <h2>Author of the Week</h2> <?php
                                 print featured_authors();
 
-                                ?> <h2>Featured Blog Posts</h2> <?php
+                                ?> <h2>Featured Events</h2> <?php
+                                print featured_other_events();
+                                ?>
+
+                                <h2>Featured Blog Posts</h2> <?php
                                 print featured_blog_posts();
                                 ?>
                             </div>

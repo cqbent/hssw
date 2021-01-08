@@ -135,6 +135,44 @@ function featured_authors() {
 	return $output;
 }
 
+function featured_other_events() {
+	$args   = array(
+		'post_type'      => 'tribe_events',
+		'post_status'    => 'publish',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'tribe_events_cat',
+				'field'    => 'slug',
+				'terms'    => array('author-of-week'),
+				'operator' => 'NOT IN'
+			),
+		),
+		'posts_per_page' => 2,
+
+	);
+	$output = '';
+	$query  = new \WP_Query( $args );
+	if ( $query->have_posts() ) {
+		$output = '<div class="featured-events wp-block-columns">';
+		while ($query->have_posts()) {
+			$query->the_post();
+			$output .= '
+				<div class="row flex-row-reverse">
+					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
+					<div class="content col-sm-8">
+						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
+						<div class="name">' . get_the_excerpt() . '</div>
+					</div>
+				</div>
+			';
+		}
+		$output .= '</div>';
+		wp_reset_postdata();
+	}
+	return $output;
+}
+
+
 function featured_blog_posts() {
 	$args   = array(
 		'post_type'      => 'post',

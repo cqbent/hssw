@@ -8,6 +8,11 @@
 */
 body {
   background-color: #000000 !important;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+button.search-submit {
+  height: 47px;
 }
 
 .features-carousel {
@@ -45,10 +50,13 @@ body {
   color: #ffffff;
 }
 
-.site-content .content-area.no-sidebar {
+.one-container .site-content {
+  padding: 20px 0;
+}
+.one-container .site-content .content-area.no-sidebar {
   width: 100%;
 }
-.site-content .content-area .inside-article:after {
+.one-container .site-content .content-area .inside-article:after {
   content: "";
   display: block;
   clear: both;
@@ -132,7 +140,7 @@ article.type-people .job-title {
   font-size: 1.5rem;
 }
 
-.tribe-events {
+.tribe-events, .tribe-events-pg-template {
   width: 100%;
 }
 
