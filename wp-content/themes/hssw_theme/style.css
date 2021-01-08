@@ -68,6 +68,10 @@ header.site-header {
 header.site-header .inside-header {
   position: relative;
 }
+header.site-header .site-logo img {
+  height: 80px;
+  width: auto;
+}
 header.site-header .secondary-nav {
   position: absolute;
   right: 40px;
