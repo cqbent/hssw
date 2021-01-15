@@ -1,5 +1,7 @@
 body {
   background-color: $dark-gray;
+  background-image: url("https://www.hsswriters.com/wp-content/themes/wp-jazz-basic/images/beigebg_hssw.jpg");
+  background-size: cover;
 }
 
 .container {
@@ -10,6 +12,10 @@ body {
   background-color: $black;
 }
 
+article {
+  margin-bottom: 20px;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -17,4 +23,8 @@ img {
 
 a {
   text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: $serif;
 }

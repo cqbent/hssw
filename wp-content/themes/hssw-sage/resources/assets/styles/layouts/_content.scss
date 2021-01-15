@@ -111,6 +111,22 @@ article.type-people {
 // event styling
 .tribe-events, .tribe-events-pg-template {
   width: 100%;
+  color: $white !important;
+  .tribe-events-l-container {
+    padding: 20px;
+  }
+  button {
+    @extend .btn;
+    color: $white;
+    background-color: $red;
+    border-color: $red;
+  }
+  input[type=text] {
+    border: none;
+  }
+}
+.tribe-common {
+  color: $white !important;
 }
 
 .type-tribe_events {

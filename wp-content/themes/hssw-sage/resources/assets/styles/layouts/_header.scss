@@ -27,6 +27,8 @@ header.banner {
     }
     img {
       float: left;
+      height: 40px;
+      margin-top: 30px;
     }
     span {
       display: block;
@@ -34,18 +36,22 @@ header.banner {
     }
   }
   nav.nav-primary {
-    .menu-top-nav-bar-container {
-      padding: 15px;
+    #navbar {
+      width: 100%;
+      background: $black;
+      > .nav {
+        width: 100%;
+        padding: 20px;
+      }
     }
 
     ul.nav {
       .menu-item {
         width: 100%;
         font-size: 1rem;
-
         a {
           color: $gray;
-          padding: 0;
+          padding: 5px 0;
         }
 
         .sub-menu {
@@ -84,42 +90,37 @@ header.banner {
       position: absolute;
       top: 34px;
       right: 15px;
-
       .icon-bar {
         width: 40px;
         height: 2px;
         border-radius: 10px;
         border: 2px $red solid;
-        display: block;
         margin-bottom: 8px;
-      }
-    }
-
-    @media (max-width: $screen-md-min) {
-      #navbar {
-        position: absolute;
-        width: 100%;
-        top: 100%;
-        background: rgba($black, 0.9);
-      }
-    }
-
-    @media (min-width: $screen-md-min) {
-      position: absolute;
-      right: 15px;
-      top: 0;
-      margin-top: 20px;
-      //height: 42px;
-      //margin-top: 20px;
-      //position: absolute;
-      //bottom: 0;
-      //right: 0;
-
-      .navbar-toggler {
         display: none;
       }
+      .fa-times {
+        color: $red;
+        font-size: 2rem;
+        padding: 5px 10px;
+      }
+      &.collapsed {
+        .fa-times {
+          display: none;
+        }
+        .icon-bar {
+          display: block;
+        }
+      }
+    }
 
-      .menu-top-nav-bar-container {
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin-top: 30px;
+      #navbar {
+        display: block;
+        opacity: 1;
         padding: 0 15px;
 
         &.collapse,
@@ -127,7 +128,9 @@ header.banner {
           display: block;
           opacity: 1;
         }
-
+        > .nav {
+          padding: 0;
+        }
         ul.nav {
           margin: 0;
           float: right;
@@ -174,17 +177,16 @@ header.banner {
               position: absolute;
               min-width: 200px;
               width: auto;
-              margin: 0;
-              padding: 0;
+              margin: 0 0 0 -10px;
+              padding: 0 0 0 10px;
               background: rgba($black, 0.9);
-
               .menu-item {
                 font-size: 0.875rem;
                 float: none;
                 padding: 0 0 5px 0;
 
                 a {
-                  padding: 5px 10px;
+                  padding: 5px 0;
                   color: $white;
                   &::after {
                     display: none;
@@ -212,6 +214,23 @@ header.banner {
             }
           }
         }
+      }
+
+      .navbar-toggler {
+        display: none;
+      }
+    }
+  }
+  nav.nav-secondary {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: .75rem;
+    text-transform: uppercase;
+    .menu-item {
+      a {
+        padding: 0 .5rem;
+        color: $gray;
       }
     }
   }
@@ -249,6 +268,7 @@ header.banner {
     .brand {
       img {
         height: 60px;
+        margin-top: 10px;
       }
     }
 
@@ -260,20 +280,6 @@ header.banner {
   }
 
   @media (min-width: $screen-md-min) {
-    .toplinks {
-      margin-right: 20px;
-
-      .links {
-        display: inline-block;
-      }
-
-      .donate,
-      .j1 {
-        padding: 10px 20px;
-        font-size: 1.2rem;
-      }
-    }
-
     .brand {
       img {
         height: 80px;
