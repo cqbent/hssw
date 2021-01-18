@@ -157,6 +157,13 @@ class ApiManager
                 }
             ),
             array (
+                self::ROUTE_PATH              => '/abandoned_checkout',
+                self::ROUTE_METHODS           => 'GET',
+                self::ROUTE_CALLBACK          => function ($request) {
+                    return $this->modify_response($this->get_ce_checkout($request->get_param('uuid')));
+                }
+            ),
+            array (
                 self::ROUTE_PATH              => '/wc_key',
                 self::ROUTE_METHODS           => 'GET',
                 self::ROUTE_CALLBACK          => function () {
@@ -334,6 +341,20 @@ class ApiManager
     private function modify_response($response)
     {
         return $response;
+    }
+
+    private function get_ce_checkout($checkout_uuid) {
+        if (empty($checkout_uuid)) {
+            return new WP_REST_Response("No uuid provided", 400);
+        }
+
+        $checkout = CreativeMail::get_instance()->get_database_manager()->get_checkout_data( 'user_id,user_email,checkout_contents,checkout_updated,checkout_created,checkout_recovered,checkout_uuid',
+            'checkout_uuid = %s', [ $checkout_uuid ] );
+        if (empty($checkout)) {
+            return new WP_REST_Response($checkout, 404);
+        }
+
+        return new WP_REST_Response($checkout, 200);
     }
 
     private function get_wc_keys()

@@ -71,11 +71,11 @@ p.ce4wp-campaigns__item__subtitle {
             </section>
             <section class="ce4wp-campaigns__item__section ce4wp-campaigns__item__section--grow">
                 <?php if ( $campaign->is_draft ) { ?>
-                <a class="ce4wp-campaigns__item__title" onclick="ce4wpNavigateToDashboard(this, 'c182bb37-9cef-4962-a706-7fa14ffef01e', { campaignId: '<?= esc_attr( $campaign->id ); ?>' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
+                <a class="ce4wp-campaigns__item__title" onclick="ce4wpNavigateToDashboard(this, 'c182bb37-9cef-4962-a706-7fa14ffef01e', { campaignId: '<?= esc_attr( $campaign->id ); ?>', source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
                     <strong><?= esc_html( $campaign->name ); ?></strong>
                 </a>
                 <?php } else { ?>
-                    <a class="ce4wp-campaigns__item__title" onclick="ce4wpNavigateToDashboard(this, 'bd38068c-329b-4c9f-9b2d-fb03a9278bbb', { campaignId: '<?= esc_attr( $campaign->id ); ?>' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
+                    <a class="ce4wp-campaigns__item__title" onclick="ce4wpNavigateToDashboard(this, 'bd38068c-329b-4c9f-9b2d-fb03a9278bbb', { campaignId: '<?= esc_attr( $campaign->id ); ?>', source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
                         <strong><?= esc_html( $campaign->name ); ?></strong>
                     </a>
                 <?php } ?>
@@ -92,10 +92,10 @@ p.ce4wp-campaigns__item__subtitle {
     <?php } ?>
 </section>
 <section class="ce4wp-campaign-actions">
-    <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, '93b1417d-2efb-406d-a9a6-aa8af8f813a3', undefined, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
+    <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, '93b1417d-2efb-406d-a9a6-aa8af8f813a3', { source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
         <?= __( 'Create a new campaign', 'ce4wp' ); ?>
     </button>
-    <button class="button" onclick="ce4wpNavigateToDashboard(this, '5166faec-1dbb-4434-bad0-bb2f75898f92', undefined, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
+    <button class="button" onclick="ce4wpNavigateToDashboard(this, '5166faec-1dbb-4434-bad0-bb2f75898f92', { source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
         <?= __( 'View all campaigns', 'ce4wp' ); ?>
     </button>
 </section>

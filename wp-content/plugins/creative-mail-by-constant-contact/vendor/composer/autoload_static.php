@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9f5866ac3f3a25f2b6311871ff5ad9ff
+class ComposerStaticInit5218f9aec364198b823da642da7b30b2
 {
     public static $prefixLengthsPsr4 = array (
         'F' => 
@@ -74,6 +74,8 @@ class ComposerStaticInit9f5866ac3f3a25f2b6311871ff5ad9ff
         'CreativeMail\\Integrations\\Integration' => __DIR__ . '/../..' . '/src/integrations/Integration.php',
         'CreativeMail\\Managers\\AdminManager' => __DIR__ . '/../..' . '/src/managers/AdminManager.php',
         'CreativeMail\\Managers\\ApiManager' => __DIR__ . '/../..' . '/src/managers/ApiManager.php',
+        'CreativeMail\\Managers\\CheckoutManager' => __DIR__ . '/../..' . '/src/managers/CheckoutManager.php',
+        'CreativeMail\\Managers\\DatabaseManager' => __DIR__ . '/../..' . '/src/managers/DatabaseManager.php',
         'CreativeMail\\Managers\\EmailManager' => __DIR__ . '/../..' . '/src/managers/EmailManager.php',
         'CreativeMail\\Managers\\InstanceManager' => __DIR__ . '/../..' . '/src/managers/InstanceManager.php',
         'CreativeMail\\Managers\\IntegrationManager' => __DIR__ . '/../..' . '/src/managers/IntegrationManager.php',
@@ -128,9 +130,9 @@ class ComposerStaticInit9f5866ac3f3a25f2b6311871ff5ad9ff
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9f5866ac3f3a25f2b6311871ff5ad9ff::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9f5866ac3f3a25f2b6311871ff5ad9ff::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9f5866ac3f3a25f2b6311871ff5ad9ff::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5218f9aec364198b823da642da7b30b2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5218f9aec364198b823da642da7b30b2::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5218f9aec364198b823da642da7b30b2::$classMap;
 
         }, null, ClassLoader::class);
     }

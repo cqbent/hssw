@@ -3,7 +3,7 @@
         <p style="margin-top: 0;">
             <?= __( 'Easily manage and brand all of your important transactional WooCommerce store emails.', 'ce4wp' ); ?>
         </p>
-        <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, '1fabdbe2-95ed-4e1e-a2f3-ba0278f5096f', undefined, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
+        <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, '1fabdbe2-95ed-4e1e-a2f3-ba0278f5096f', { source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
             <?= __( "Let's go!", 'ce4wp' ); ?>
         </button>
     </section>

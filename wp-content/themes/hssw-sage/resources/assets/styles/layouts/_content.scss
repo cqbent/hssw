@@ -73,23 +73,19 @@
 // people pages styling
 .people-grid {
   flex-wrap: wrap;
-  .wp-block-column {
-    margin: 0 0 40px 0;
+  .block-column {
+    //margin: 0 0 40px 0;
+    margin-bottom: 40px;
     text-align: center;
     padding: 0 20px;
+    font-size: 1.25rem;
     img {
       border-radius: 50%;
+      width: 100%;
+      margin-bottom: 10px;
     }
     .name {
       font-weight: 700;
-    }
-    @media (min-width: $screen-sm-min) {
-      flex: 0 0 50%;
-      max-width: 50%;
-    }
-    @media (min-width: $screen-md-min) {
-      flex: 0 0 33.3333%;
-      max-width: 33.3333%;
     }
   }
 }
@@ -113,7 +109,7 @@ article.type-people {
   width: 100%;
   color: $white !important;
   .tribe-events-l-container {
-    padding: 20px;
+    padding: 20px 0 !important;
   }
   button {
     @extend .btn;

@@ -1,8 +1,8 @@
 <?php
 
-    use CreativeMail\CreativeMail;
-    use CreativeMail\Helpers\EnvironmentHelper;
-    use CreativeMail\Helpers\OptionsHelper;
+use CreativeMail\CreativeMail;
+use CreativeMail\Helpers\EnvironmentHelper;
+use CreativeMail\Helpers\OptionsHelper;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

@@ -40,6 +40,6 @@
     </div>
 </section>
 <section class="ce4wp-campaign-actions">
-    <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, '93b1417d-2efb-406d-a9a6-aa8af8f813a3', undefined, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)"><?= __( 'Create a new campaign', 'ce4wp' ); ?></button>
-    <button class="button" onclick="ce4wpNavigateToDashboard(this, '5166faec-1dbb-4434-bad0-bb2f75898f92', undefined, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)"><?= __( 'View all campaigns', 'ce4wp' ); ?></button>
+    <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, '93b1417d-2efb-406d-a9a6-aa8af8f813a3', { source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)"><?= __( 'Create a new campaign', 'ce4wp' ); ?></button>
+    <button class="button" onclick="ce4wpNavigateToDashboard(this, '5166faec-1dbb-4434-bad0-bb2f75898f92', { source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)"><?= __( 'View all campaigns', 'ce4wp' ); ?></button>
 </section>

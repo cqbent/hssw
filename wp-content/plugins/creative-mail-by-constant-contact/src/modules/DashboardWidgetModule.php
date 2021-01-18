@@ -80,15 +80,26 @@ class DashboardWidgetModule
 
     private function show_woo_commerce()
     {
-        $email_manager = CreativeMail::get_instance()->get_email_manager();
-        $number_of_active_notifications = count( $email_manager->get_managed_email_notifications() );
+        $number_of_possible_notifications = 0;
+        $number_of_active_notifications = 0;
 
-        if ( $number_of_active_notifications > 0 ) {
-            $number_of_possible_notifications = count( $email_manager->get_valid_email_notification_names() );
-            include CE4WP_PLUGIN_DIR . 'src/views/admin-dashboard-widget/woocommerce.php';
-        } else {
-            include CE4WP_PLUGIN_DIR . 'src/views/admin-dashboard-widget/no-woocommerce.php';
+        try {
+            $email_manager = CreativeMail::get_instance()->get_email_manager();
+            $supported_email_notifications = $email_manager->get_managed_email_notifications();
+            $active_email_notifications = array_filter($supported_email_notifications, function ($email_notification) {
+                return $email_notification->active === true;
+            });
+
+            $number_of_active_notifications = count($active_email_notifications);
+
+            if ($number_of_active_notifications > 0) {
+                $number_of_possible_notifications = count($email_manager->get_valid_email_notification_names());
+                include CE4WP_PLUGIN_DIR . 'src/views/admin-dashboard-widget/woocommerce.php';
+            } else {
+                include CE4WP_PLUGIN_DIR . 'src/views/admin-dashboard-widget/no-woocommerce.php';
+            }
         }
+        catch(\Exception $ex) { }
     }
 
     private function show_exception()

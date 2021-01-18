@@ -19,10 +19,12 @@ function ce4wpNavigateToDashboard(element, linkReference, linkParameters, startC
       link_parameters: linkParameters || undefined,
       action: 'ce4wp_request_sso'
     },
-    success: function(data){
-      ce4wpWindow.location = data;
-      if (typeof finishCallback === 'function') {
-        finishCallback(element)
+    success: function(response) {
+      if (response.success) {
+        ce4wpWindow.location = response.data.url;
+        if (typeof finishCallback === 'function') {
+          finishCallback(element)
+        }
       }
     },
     error: function(){

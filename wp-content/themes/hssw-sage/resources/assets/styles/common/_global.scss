@@ -1,7 +1,10 @@
 body {
   background-color: $dark-gray;
-  background-image: url("https://www.hsswriters.com/wp-content/themes/wp-jazz-basic/images/beigebg_hssw.jpg");
+  background-image: url("../images/beigelightbg_hssw.jpg");
   background-size: cover;
+  &#tinymce {
+    background: $black;
+  }
 }
 
 .container {
@@ -10,10 +13,15 @@ body {
 
 .wrap.container {
   background-color: $black;
+  padding: 20px;
+  @include clearfix;
 }
 
 article {
-  margin-bottom: 20px;
+  //padding-bottom: 20px;
+  header {
+    margin-bottom: 20px;
+  }
 }
 
 img {

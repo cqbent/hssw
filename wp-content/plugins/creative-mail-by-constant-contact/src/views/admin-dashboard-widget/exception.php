@@ -1,6 +1,6 @@
 <div style="display: flex;">
     <section style="flex: 1;">
-        <p style="margin-top: 0;"><?= __( 'Well... this is embarassing!', 'ce4wp' ); ?></p>
+        <p style="margin-top: 0;"><?= __( 'Well... this is embarrassing!', 'ce4wp' ); ?></p>
         <p><?= __( 'Creative Mail ran into an error.', 'ce4wp' ); ?></p>
         <p><?= __( 'Please try again at a later time.', 'ce4wp') ?></p>
     </section>

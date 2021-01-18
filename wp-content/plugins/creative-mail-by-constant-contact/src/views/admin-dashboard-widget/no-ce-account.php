@@ -3,7 +3,7 @@
         <p style="margin-top: 0;">
             <?= __('Our intelligent email editor makes it easy to create professional emails to engage your audience.', 'ce4wp'); ?>
         </p>
-        <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, undefined, undefined, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
+        <button class="button button-primary" onclick="ce4wpNavigateToDashboard(this, 'd25f690a-217a-4d68-9c58-8693965d4673', { source: 'dashboard_widget' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
             <?= __("Let's go!", 'ce4wp'); ?>
         </button>
     </section>

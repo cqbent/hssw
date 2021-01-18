@@ -9,6 +9,7 @@ use CreativeMail\Helpers\SsoHelper;
 use CreativeMail\Modules\DashboardWidgetModule;
 use CreativeMail\Modules\FeedbackNoticeModule;
 use Exception;
+use stdClass;
 
 /**
  * The AdminManager will manage the admin section of the plugin.
@@ -76,10 +77,10 @@ class AdminManager
         add_action('wp_ajax_ce4wp_request_sso', [$this, 'request_single_sign_on_url'] );
 
         // deactivation footer
-        //add_action(self::ADMIN_ENQUEUE_SCRIPTS_HOOK, [$this, 'deactivation_modal_js'], 20);
-        //add_action(self::ADMIN_ENQUEUE_SCRIPTS_HOOK, [$this, 'deactivation_modal_css']);
-        //add_action('admin_footer', [$this, 'show_deactivation_modal']);
-        //add_action('wp_ajax_ce4wp_deactivate_survey', [$this, 'deactivate_survey_post'] );
+        add_action(self::ADMIN_ENQUEUE_SCRIPTS_HOOK, [$this, 'deactivation_modal_js'], 20);
+        add_action(self::ADMIN_ENQUEUE_SCRIPTS_HOOK, [$this, 'deactivation_modal_css']);
+        add_action('admin_footer', [$this, 'show_deactivation_modal']);
+        add_action('wp_ajax_ce4wp_deactivate_survey', [$this, 'deactivate_survey_post'] );
     }
 
     private function check_nonce()
@@ -88,7 +89,9 @@ class AdminManager
 
         if (!wp_verify_nonce($nonce,self::ADMIN_AJAX_NONCE))
         {
-            die (admin_url('admin.php?page=creativemail'));
+            $response        = new stdClass();
+            $response->url   = admin_url('admin.php?page=creativemail');
+            wp_send_json_success($response);
         }
     }
 
@@ -106,6 +109,9 @@ class AdminManager
         $linkParameters = array_key_exists('link_parameters', $_POST) ? $_POST['link_parameters'] : null;
 
         $sso = $this->get_sso_link($linkReference, $linkParameters);
+
+        $response        = new stdClass();
+        $response->url   = $sso;
 
         if (is_null($sso)) {
             $redirectUrl = EnvironmentHelper::get_app_gateway_url('wordpress/v1.0/instances/open?clearSession=true&redirectUrl=');
@@ -126,11 +132,9 @@ class AdminManager
                 }
                 $onboardingUrl .= '&utm_source=wordpress&utm_medium=plugin&utm_campaign=' . $utm_campaign;
             }
-            echo $redirectUrl . rawurlencode($onboardingUrl);
-            die();
+            $response->url = $redirectUrl . rawurlencode($onboardingUrl);
         }
-        echo $sso;
-        die();
+        wp_send_json_success($response);
     }
 
     function deactivate_survey_post()
@@ -211,7 +215,8 @@ class AdminManager
                     <span><input type="radio" name="ce4wp_deactivation_option" value="3"> %s</span>
                     <span><input type="radio" name="ce4wp_deactivation_option" value="4"> %s</span>
                     <span><input type="radio" name="ce4wp_deactivation_option" value="5"> %s</span>
-                    <span><input type="radio" name="ce4wp_deactivation_option" value="6"> %s: <input type="text" name="other" /></span>
+                    <span><input type="radio" name="ce4wp_deactivation_option" value="6"> %s</span>
+                    <span><input type="radio" name="ce4wp_deactivation_option" value="7"> %s: <input type="text" name="other" /></span>
                     <br>
                     <span><input type="submit" class="button button-primary" value="Submit"></span>
                     </fieldset>
@@ -221,13 +226,14 @@ class AdminManager
             </div>
           </div>
         </div>',
-            __('Why are you deactivating Creative Mail?', self::DOMAIN_CE4WP),
-            __('I no longer send newsletters', self::DOMAIN_CE4WP),
-            __('I do not like the email designer', self::DOMAIN_CE4WP),
-            __('I could not get the plugin to work', self::DOMAIN_CE4WP),
-            __('My version of PHP is not supported', self::DOMAIN_CE4WP),
-            __('Emails are not sending or arriving', self::DOMAIN_CE4WP),
-            __('Its a temporary deactivation', self::DOMAIN_CE4WP),
+            __('Sadness... why leave so soon?', self::DOMAIN_CE4WP),
+            __('I’m not sending email campaigns right now', self::DOMAIN_CE4WP),
+            __('It didn’t have the features I want', self::DOMAIN_CE4WP),
+            __('I didn’t like the email editor', self::DOMAIN_CE4WP),
+            __('It was too confusing', self::DOMAIN_CE4WP),
+            __('There were technical issues', self::DOMAIN_CE4WP),
+            __('I don’t have enough email contacts', self::DOMAIN_CE4WP),
+            __('It’s a temporary deactivation', self::DOMAIN_CE4WP),
             __('Other', self::DOMAIN_CE4WP),
             __('Thank you', self::DOMAIN_CE4WP),
             __('Close this window and deactivate Creative Mail', self::DOMAIN_CE4WP)
@@ -276,7 +282,7 @@ class AdminManager
 
         update_option('ce4wp_admin_footer_text_rated', 1);
 
-        wp_die();
+        wp_send_json_success();
     }
 
     /**
@@ -374,7 +380,9 @@ class AdminManager
 
         // Create the root menu item
         $icon = file_get_contents(CE4WP_PLUGIN_DIR . 'assets/images/icon.svg');
-        add_menu_page('Creative Mail', esc_html__('Creative Mail', self::DOMAIN_CE4WP), 'manage_options', 'creativemail', $main_action, 'data:image/svg+xml;base64,' . base64_encode($icon), '99.68491');
+        // Filter to change the menu position if there is any conflict.
+        $position = apply_filters( 'ce4wp_menu_position', '35.5' );
+        add_menu_page('Creative Mail', esc_html__('Creative Mail', self::DOMAIN_CE4WP), 'manage_options', 'creativemail', $main_action, 'data:image/svg+xml;base64,' . base64_encode($icon), $position);
 
         $sub_actions = array(
             array(
@@ -452,15 +460,9 @@ class AdminManager
      */
     public function show_setup()
     {
-        include CE4WP_PLUGIN_DIR . 'src/views/onboarding.php';
-    }
+        $this->enqueue_dashboard_js();
 
-    /**
-     * Renders the consent screen.
-     */
-    public function show_consent()
-    {
-        include CE4WP_PLUGIN_DIR . 'src/views/consent.php';
+        include CE4WP_PLUGIN_DIR . 'src/views/onboarding.php';
     }
 
     /**
@@ -468,13 +470,17 @@ class AdminManager
      */
     public function show_dashboard()
     {
+        $this->enqueue_dashboard_js();
+
+        include CE4WP_PLUGIN_DIR . 'src/views/dashboard.php';
+    }
+
+    private function enqueue_dashboard_js() {
         wp_enqueue_script('ce4wp_dashboard', CE4WP_PLUGIN_URL.'assets/js/dashboard.js', null,CE4WP_PLUGIN_VERSION);
         wp_localize_script('ce4wp_dashboard', 'ce4wp_data', array(
             'url' => admin_url('admin-ajax.php'),
             'nonce' => $this->create_nonce()
         ));
-
-        include CE4WP_PLUGIN_DIR . 'src/views/dashboard.php';
     }
 
     /**

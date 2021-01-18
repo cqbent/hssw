@@ -31,12 +31,16 @@ class EmailManager
         'customer_new_account',
         'customer_reset_password',
         'customer_invoice',
-        'customer_note'
+        'customer_note',
+        'cart_abandoned_ce4wp'
     ];
+
+    const CHECKOUT_CONSENT_CHECKBOX_ID = 'ce4wp_checkout_consent_checkbox';
+    const CHECKOUT_CONSENT_CHECKBOX_VALUE = 'ce4wp_checkout_consent';
 
     public function __construct()
     {
-
+        $this->managed_email_notifications = $this->get_managed_email_notifications();
     }
 
     public function add_hooks()
@@ -79,19 +83,19 @@ class EmailManager
 
     public function ce_checkout_order_meta( $order_id )
     {
-        if ($_POST['ce_checkout_consent_checkbox']) {
-            $checkbox_value = esc_attr($_POST['ce_checkout_consent_checkbox']);
-            update_post_meta($order_id, 'ce_checkout_consent', $checkbox_value);
+        if ($_POST[self::CHECKOUT_CONSENT_CHECKBOX_ID]) {
+            $checkbox_value = esc_attr($_POST[self::CHECKOUT_CONSENT_CHECKBOX_ID]);
+            update_post_meta($order_id, self::CHECKOUT_CONSENT_CHECKBOX_VALUE, $checkbox_value);
         }
     }
 
     public function add_checkout_field( $checkout)
     {
-        $checked = $checkout->get_value('ce_checkout_consent_checkbox') ? $checkout->get_value('ce_checkout_consent_checkbox') : 1;
+        $checked = $checkout->get_value(self::CHECKOUT_CONSENT_CHECKBOX_ID) ? $checkout->get_value(self::CHECKOUT_CONSENT_CHECKBOX_ID) : 0;
         $checkbox_text = stripslashes(OptionsHelper::get_checkout_checkbox_text());
 
         woocommerce_form_field(
-            'ce_checkout_consent_checkbox', array(
+            self::CHECKOUT_CONSENT_CHECKBOX_ID, array(
             'type'    => 'checkbox',
             'class'    => array('ce-field form-row-wide'),
             'label'    => $checkbox_text,
@@ -141,12 +145,12 @@ class EmailManager
     public function print_ce_manage_button($options)
     {
         ?><tr valign="top">
-            <th scope="row" class="titledesc">Customize Emails</th>
+            <th scope="row" class="titledesc"><?php _e('Customize Emails', 'ce4wp'); ?></th>
             <td class="forminp forminp-<?php echo sanitize_title($options['type']); ?>">
                 <a href="admin.php?page=creativemail">
-                    <button type="button" class="button button-secondary" value="<?php _e('Manage', 'ce4wp'); ?>">Manage</button>
+                    <button type="button" class="button button-secondary" value="<?php _e('Manage', 'ce4wp'); ?>"><?php _e('Manage', 'ce4wp'); ?></button>
                 </a>
-                <p class="description">Manage all your email settings and templates with Creative Mail</p>
+                <p class="description"><?php _e('Manage all your email settings and templates with Creative Mail', 'ce4wp'); ?></p>
             </td>
             </tr><?php
     }
@@ -587,9 +591,6 @@ class EmailManager
      */
     public function manage_emails()
     {
-
-        $this->managed_email_notifications = $this->get_managed_email_notifications();
-
         if (empty($this->managed_email_notifications) || ! is_array($this->managed_email_notifications) ) {
             return;
         }
@@ -692,7 +693,6 @@ class EmailManager
      */
     public function get_managed_notification_param( $email_id, $param )
     {
-
         foreach($this->managed_email_notifications as $managed_email_notification) {
             if ($email_id == $managed_email_notification->name && property_exists($managed_email_notification, $param)) {
                 return $managed_email_notification->$param;

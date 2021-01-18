@@ -18,6 +18,8 @@ return array(
     'CreativeMail\\Integrations\\Integration' => $baseDir . '/src/integrations/Integration.php',
     'CreativeMail\\Managers\\AdminManager' => $baseDir . '/src/managers/AdminManager.php',
     'CreativeMail\\Managers\\ApiManager' => $baseDir . '/src/managers/ApiManager.php',
+    'CreativeMail\\Managers\\CheckoutManager' => $baseDir . '/src/managers/CheckoutManager.php',
+    'CreativeMail\\Managers\\DatabaseManager' => $baseDir . '/src/managers/DatabaseManager.php',
     'CreativeMail\\Managers\\EmailManager' => $baseDir . '/src/managers/EmailManager.php',
     'CreativeMail\\Managers\\InstanceManager' => $baseDir . '/src/managers/InstanceManager.php',
     'CreativeMail\\Managers\\IntegrationManager' => $baseDir . '/src/managers/IntegrationManager.php',

@@ -1,27 +1,3 @@
-<?php
-use CreativeMail\Helpers\EnvironmentHelper;
-use CreativeMail\Helpers\OptionsHelper;
-
-$redirectUrl = EnvironmentHelper::get_app_gateway_url('wordpress/v1.0/instances/open?clearSession=true&redirectUrl=');
-$onboardingUrl = EnvironmentHelper::get_app_url() . 'marketing/onboarding/signup?wp_site_name=' . $this->instance_name
-    . '&wp_site_uuid=' . $this->instance_uuid
-    . '&wp_handshake=' . $this->instance_handshake_token
-    . '&wp_callback_url=' . $this->instance_callback_url
-    . '&wp_instance_url=' . $this->instance_url
-    . '&wp_version=' . get_bloginfo('version')
-    . '&plugin_version=' . CE4WP_PLUGIN_VERSION;
-$referred_by = OptionsHelper::get_referred_by();
-if (isset($referred_by)) {
-    $utm_campaign = '';
-    if (is_array($referred_by) && array_key_exists('plugin', $referred_by) && array_key_exists('source', $referred_by)) {
-        $utm_campaign = $referred_by['plugin'] . $referred_by['source'];
-    } else if (is_string($referred_by)) {
-        $utm_campaign = str_replace(';', '|', $referred_by);
-    }
-    $onboardingUrl .= '&utm_source=wordpress&utm_medium=plugin&utm_campaign=' . $utm_campaign;
-}
-?>
-
 <div class="ce4wp-admin-wrapper">
     <header class="ce4wp-swoosh-header"></header>
 
@@ -74,12 +50,12 @@ if (isset($referred_by)) {
                                 </li>
                             </ul>
                             <a id='ce4wp-go-button'
-                               href="<?php echo esc_url($redirectUrl . rawurlencode($onboardingUrl)) ?>"
                                target="_blank"
                                class="ce4wp-button-base-root ce4wp-button-root ce4wp-button-contained ce4wp-button-contained-primary ce4wp-mb-4 ce4wp-mt-2"
                                tabindex="0"
                                type="button"
-                               data-element-type="button">
+                               data-element-type="button"
+                               onclick="ce4wpNavigateToDashboard(this, undefined, { source: 'onboarding' }, ce4wpWidgetStartCallback, ce4wpWidgetFinishCallback)">
                                 <span class="ce4wp-button-label" style="width: 100%;">
                                     <?=  __('I Agree and let\'s get started!', 'ce4wp') ?><span class="ce4wp-button-endIcon">
                                     <svg class="ce4wp-Svgicon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">

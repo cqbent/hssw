@@ -55,13 +55,13 @@ function hssw_people_grid() {
 	$output = '';
 	$query  = new \WP_Query( $args );
 	if ( $query->have_posts() ) {
-		$output = '<div class="people-grid wp-block-columns">';
+		$output = '<div class="people-grid row">';
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$image = get_the_post_thumbnail();
 			$link = get_the_permalink();
 			$output .= '
-				<div class="wp-block-column">
+				<div class="block-column col-sm-6 col-md-4">
 					<a href="'. $link . '">
 						' . $image . '
 						<div class="name">' . get_the_title() . '</div>

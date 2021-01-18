@@ -48,9 +48,13 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
 
         $contactModel->setEventType(CE4WP_NF_EVENTTYPE);
 
-        $contactModel->setOptIn(true);
+        $contactModel->setOptIn(false);
         $contactModel->setOptOut(false);
-        $contactModel->setOptActionBy(OptActionBy::Visitor);
+        $contactModel->setOptActionBy(OptActionBy::Owner);
+
+        if(isset($contact->optinByOwner)){
+            $contactModel->setOptIn(boolval($contact->optinByOwner));
+        }
 
         $email = $contact->email;
         if (!empty($email)) {
@@ -58,7 +62,7 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
             $contactModel->setEmail($email);
         }
 
-        $name = $contact->name;
+        $name = !empty($contact->name) ? $contact->name : null;
         $firstName = null;
         $lastName = null;
         if (!empty($name)){
@@ -78,6 +82,23 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
         }
 
         return $contactModel;
+    }
+
+    public function attemptAdditionalNameExtraction($contact, $field_key, $field_values){
+        //Attempt additional checking for name in an attempt to get custom form fields for names
+        $name = null;
+        if (strpos($field_key, "full_name") !== false || isset($field_values["name"])) {
+            $contact->name = $field_values[$field_key];
+            return;
+        }
+        if (strpos($field_key, "first_name") !== false || isset($field_values["firstname"])) {
+            $contact->firstName = $field_values[$field_key];
+            return;
+        }
+        if (strpos($field_key, "last_name") !== false || isset($field_values["lastname"])) {
+            $contact->lastname = $field_values[$field_key];
+            return;
+        }
     }
 
     public function ceHandleNinjaFormSubmission($form_data)
@@ -136,39 +157,43 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
                         foreach ($fields as $field) {
                             // Get field settings so we can map the values with it's field type
                             $field_settings = $field->get_settings();
-                            switch ($field_settings["type"]) {
-                                case 'email':
-                                    $email = $field_values[$field_settings["key"]];
-                                    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            $field_key = $field_settings["key"];
+                            $field_type = $field_settings["type"];
+
+                            switch($field_type)
+                            {
+                                case 'email';
+                                    $email = isset($field_values[$field_key]) ? $field_values[$field_key] : null;
+                                    if (filter_var($email, FILTER_VALIDATE_EMAIL)){
                                         $contact->email = $email;
                                     }
                                     break;
-                                case 'name' || 'full_name':
-                                    $contact->name = $field_values[$field_settings["key"]];
+                                case 'name';
+                                case 'full_name';
+                                    $contact->name = $field_values[$field_key];
                                     break;
-                                case 'firstname' || 'first_name':
-                                    $contact->firstName = $field_values[$field_settings["key"]];
+                                case 'firstname';
+                                case 'first_name';
+                                    $contact->firstName = $field_values[$field_key];
                                     break;
-                                case 'lastname' || 'last_name':
-                                    $contact->lastName = $field_values[$field_settings["key"]];
+                                case 'lastname';
+                                case 'last_name';
+                                    $contact->lastname = $field_values[$field_key];
                                     break;
-                            }
-                            if ($this->isNullOrEmpty($contact->name) && $this->isNullOrEmpty($contact->firstName)){
-                                //Attempt additional checking for name in an attempt to get custom form fields for names
-                                $name = null;
-
-                                if (strpos($field_settings["key"], "full_name") !== false) {
-                                    $contact->name = $field["value"];
-                                }
-                                if (strpos($field_settings["key"], "first_name") !== false) {
-                                    $contact->firstName = $field["value"];
-                                }
-                                if (strpos($field_settings["key"], "last_name") !== false) {
-                                    $contact->lastname = $field["value"];
-                                }
+                                case 'textbox';
+                                case 'text';
+                                    if (empty($contact->name) && (empty($contact->firstName) || empty($contact->lastName))){
+                                        $this->attemptAdditionalNameExtraction($contact, $field_key, $field_values);
+                                    }
+                                    break;
+                                default;
+                                    break;
                             }
                         }
-                        if (!empty($contact->email)) {
+
+                        if (!empty($contact->email) && $contact->email != null) {
+                            //set optin by owner on db sync
+                            $contact->optinByOwner = true;
                             //Convert to contactModel and push to the array
                             $contactModel = $this->convertToContactModel($contact);
                             array_push($contactsArray, $contactModel);

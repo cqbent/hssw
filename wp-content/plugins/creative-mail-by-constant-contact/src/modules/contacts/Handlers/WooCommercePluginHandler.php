@@ -10,10 +10,15 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_WC_EVENTTYPE', 'WordPress - WooCommerce');
 
+use CreativeMail\Modules\Contacts\Models\ContactAddressModel;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 
 class WooCommercePluginHandler extends BaseContactFormPluginHandler
 {
+    const CHECKOUT_CONSENT_CHECKBOX_ID = 'ce4wp_checkout_consent_checkbox';
+    const CHECKOUT_CONSENT_CHECKBOX_VALUE = 'ce4wp_checkout_consent';
+    const CHECKOUT_CONSENT_CHECKBOX_VALUE_OLD = 'ce_checkout_consent';
+
     public function convertToContactModel($orderId)
     {
         $contactModel = new ContactModel();
@@ -31,6 +36,12 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
                 $contactModel->setEmail($products_detail["_billing_email"][0]);
             }
 
+            $contactAddress = $this->getContactAddressFromOrder($products_detail);
+
+            if (!empty($contactAddress)) {
+                $contactModel->setContactAddress($contactAddress);
+            }
+
             if (!empty($contactModel->getEmail())) {
                 $contactModel->setEventType(CE4WP_WC_EVENTTYPE);
                 $contactModel->setOptActionBy(2);
@@ -40,15 +51,16 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
 
             $checkbox_value = null;
 
-            if (array_key_exists('ce_checkout_consent_checkbox', $_POST)) {
-              $checkbox_value = esc_attr($_POST['ce_checkout_consent_checkbox']);
-            } else if (!empty($products_detail["ce_checkout_consent_checkbox"])) {
-              $checkbox_value = $products_detail["ce_checkout_consent_checkbox"];
-            } else if (array_key_exists('ce_checkout_consent', $_POST)) {
-              // In the database the value is saved as ce_checkout_consent instead of ce_checkout_consent_checkbox
-              $checkbox_value = esc_attr($_POST['ce_checkout_consent']);
-            } else if (!empty($products_detail["ce_checkout_consent"])) {
-              $checkbox_value = $products_detail["ce_checkout_consent"];
+            if (!empty($_POST[self::CHECKOUT_CONSENT_CHECKBOX_ID])) {
+                $checkbox_value = esc_attr($_POST[self::CHECKOUT_CONSENT_CHECKBOX_ID]);
+            } else if (!empty($products_detail[self::CHECKOUT_CONSENT_CHECKBOX_ID])) {
+                $checkbox_value = $products_detail[self::CHECKOUT_CONSENT_CHECKBOX_ID];
+            } else if (!empty($_POST[self::CHECKOUT_CONSENT_CHECKBOX_VALUE])) {
+                $checkbox_value = esc_attr($_POST[self::CHECKOUT_CONSENT_CHECKBOX_VALUE]);
+            } else if (!empty($products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE])) {
+                $checkbox_value = $products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE];
+            } else if (!empty($products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE_OLD])) {
+                $checkbox_value = $products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE_OLD];
             }
 
             if (!is_null($checkbox_value)) {
@@ -60,32 +72,58 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
         return $contactModel;
     }
 
-    //    public function ceHandlerWooCommerceNewCustomer($customer_id, $new_customer_data) {
-    //      try {
-    //        $this->upsertContact($this->convertToContactModel($new_customer_data));
-    //      }
-    //      catch (\Exception $exception) {
-    //        // silent exception
-    //      }
-    //    }
+    function getContactAddressFromOrder($products_detail)
+    {
+        $contactAddress = new ContactAddressModel();
 
-    function ceHandlerWooCommerceNewOrder($order_id)
+        if (isset($products_detail)) {
+            if (!empty($products_detail["_billing_address_1"])) {
+                $contactAddress->setAddress($products_detail["_billing_address_1"][0]);
+            }
+            if (!empty($products_detail["_billing_address_2"])) {
+                $contactAddress->setAddress2($products_detail["_billing_address_2"][0]);
+            }
+            if (!empty($products_detail["_billing_city"])) {
+                $contactAddress->setCity($products_detail["_billing_city"][0]);
+            }
+            if (!empty($products_detail["_billing_country"])) {
+                $contactAddress->setCountryCode($products_detail["_billing_country"][0]);
+            }
+            if (!empty($products_detail["_billing_postcode"])) {
+                $contactAddress->setPostalCode($products_detail["_billing_postcode"][0]);
+            }
+            if (!empty($products_detail["_billing_state"])) {
+                $contactAddress->setStateCode($products_detail["_billing_state"][0]);
+            }
+        }
+        return $contactAddress;
+    }
+
+//    public function ceHandlerWooCommerceNewCustomer($customer_id, $new_customer_data, $password)
+//    {
+//        try {
+//            $this->upsertContact($this->convertToContactModel($new_customer_data));
+//        } catch (\Exception $exception) {
+//            // silent exception
+//        }
+//    }
+
+    public function ceHandlerWooCommerceNewOrder($order_id)
     {
         try {
             $order = wc_get_order($order_id);
             $this->upsertContact($this->convertToContactModel($order->ID));
-        }
-        catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             // silent exception
         }
     }
 
     public function registerHooks()
     {
-        add_action('woocommerce_new_order', array($this, 'ceHandlerWooCommerceNewOrder'));
+        add_action('woocommerce_new_order', array($this, 'ceHandlerWooCommerceNewOrder'), 10, 1);
         // hook function to synchronize
         add_action(CE4WP_SYNCHRONIZE_ACTION, array($this, 'syncAction'));
-        //add_action('woocommerce_created_customer', array($this,'ceHandlerWooCommerceNewCustomer'));
+//        add_action('woocommerce_created_customer', array($this, 'ceHandlerWooCommerceNewCustomer'), 10, 3);
     }
 
     public function unregisterHooks()
@@ -98,7 +136,7 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
 
     public function syncAction($limit = null)
     {
-        if(!is_int($limit) || $limit <= 0) {
+        if (!is_int($limit) || $limit <= 0) {
             $limit = null;
         }
 
@@ -107,7 +145,7 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
         $args = array(
             'posts_per_page' => -1,
             'post_type' => 'shop_order',
-            'post_status'=> array_keys(wc_get_order_statuses())
+            'post_status' => array_keys(wc_get_order_statuses())
         );
 
         if ($limit != null) {
@@ -116,7 +154,7 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
 
         $products_orders = get_posts($args);
 
-        foreach ( $products_orders as $products_order ) {
+        foreach ($products_orders as $products_order) {
 
             $contactModel = $this->convertToContactModel($products_order->ID);
 
@@ -129,7 +167,7 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
         if (!empty($backfillArray)) {
 
             $batches = array_chunk($backfillArray, CE4WP_BATCH_SIZE);
-            foreach($batches as $batch){
+            foreach ($batches as $batch) {
                 $this->batchUpsertContacts($batch);
             }
         }

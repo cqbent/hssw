@@ -1,6 +1,12 @@
 Changelog
 =========
 
+#### 1.3.0 - January 12 2021
+- Support for abandoned cart emails
+
+#### 1.2.4 - December 16 2020
+- Introduces a 'Reset' button on the settings page for accounts that are stuck.
+
 #### 1.2.3 - December 7 2020
 - Fixes an issue where the banner would show up again after being dismissed.
 - Support WordPress 5.6
