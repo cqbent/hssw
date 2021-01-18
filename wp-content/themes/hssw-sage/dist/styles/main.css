@@ -15386,7 +15386,7 @@ a.text-dark:focus {
 
 body {
   background-color: #333;
-  background-image: url(/wp-content/themes/hssw-sage/dist/images/beigelightbg_hssw.jpg);
+  background-image: url("http://iag.eos.mybluehost.me/hssw/wp-content/themes/hssw-sage/dist/images/beigelightbg_hssw.jpg");
   background-size: cover;
 }
 
