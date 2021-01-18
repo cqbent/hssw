@@ -153,7 +153,7 @@ function featured_other_events() {
 	$output = '';
 	$query  = new \WP_Query( $args );
 	if ( $query->have_posts() ) {
-		$output = '<div class="featured-events wp-block-columns">';
+		$output = '<div class="featured-events">';
 		while ($query->have_posts()) {
 			$query->the_post();
 			$output .= '

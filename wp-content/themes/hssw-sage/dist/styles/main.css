@@ -16014,47 +16014,54 @@ footer.content-info .container {
 /* line 57, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors,
-.featured-blog-posts {
+.featured-blog-posts,
+.featured-events {
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px #fff solid;
 }
 
-/* line 60, resources/assets/styles/layouts/_content.scss */
+/* line 61, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .row,
 .featured-authors .sidebar-primary .wrap > .content,
 .sidebar-primary .featured-authors .wrap > .content,
 .featured-blog-posts .row,
 .featured-blog-posts .sidebar-primary .wrap > .content,
-.sidebar-primary .featured-blog-posts .wrap > .content {
+.sidebar-primary .featured-blog-posts .wrap > .content,
+.featured-events .row,
+.featured-events .sidebar-primary .wrap > .content,
+.sidebar-primary .featured-events .wrap > .content {
   margin-bottom: 20px;
 }
 
-/* line 63, resources/assets/styles/layouts/_content.scss */
+/* line 64, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .wp-block-column,
-.featured-blog-posts .wp-block-column {
+.featured-blog-posts .wp-block-column,
+.featured-events .wp-block-column {
   margin: 0 0 40px 0;
   padding: 0 20px;
 }
 
 @media (min-width: 768px) {
-  /* line 63, resources/assets/styles/layouts/_content.scss */
+  /* line 64, resources/assets/styles/layouts/_content.scss */
 
   .featured-authors .wp-block-column,
-  .featured-blog-posts .wp-block-column {
+  .featured-blog-posts .wp-block-column,
+  .featured-events .wp-block-column {
     flex: 0 0 50%;
     max-width: 50%;
   }
 }
 
-/* line 74, resources/assets/styles/layouts/_content.scss */
+/* line 75, resources/assets/styles/layouts/_content.scss */
 
 .people-grid {
   flex-wrap: wrap;
 }
 
-/* line 76, resources/assets/styles/layouts/_content.scss */
+/* line 77, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column {
   margin-bottom: 40px;
@@ -16063,7 +16070,7 @@ footer.content-info .container {
   font-size: 1.25rem;
 }
 
-/* line 82, resources/assets/styles/layouts/_content.scss */
+/* line 83, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column img {
   border-radius: 50%;
@@ -16071,14 +16078,14 @@ footer.content-info .container {
   margin-bottom: 10px;
 }
 
-/* line 87, resources/assets/styles/layouts/_content.scss */
+/* line 88, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column .name {
   font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  /* line 94, resources/assets/styles/layouts/_content.scss */
+  /* line 95, resources/assets/styles/layouts/_content.scss */
 
   article .featured-image {
     float: right;
@@ -16087,14 +16094,14 @@ footer.content-info .container {
   }
 }
 
-/* line 101, resources/assets/styles/layouts/_content.scss */
+/* line 102, resources/assets/styles/layouts/_content.scss */
 
 article .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
 
-/* line 108, resources/assets/styles/layouts/_content.scss */
+/* line 109, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
 .tribe-events-pg-template {
@@ -16102,14 +16109,14 @@ article .job-title {
   color: #fff !important;
 }
 
-/* line 111, resources/assets/styles/layouts/_content.scss */
+/* line 112, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
 .tribe-events-pg-template .tribe-events-l-container {
   padding: 20px 0 !important;
 }
 
-/* line 114, resources/assets/styles/layouts/_content.scss */
+/* line 115, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
 .tribe-events-pg-template button {
@@ -16118,21 +16125,21 @@ article .job-title {
   border-color: #ee2015;
 }
 
-/* line 120, resources/assets/styles/layouts/_content.scss */
+/* line 121, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
 .tribe-events-pg-template input[type=text] {
   border: none;
 }
 
-/* line 124, resources/assets/styles/layouts/_content.scss */
+/* line 125, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
 @media (min-width: 768px) {
-  /* line 130, resources/assets/styles/layouts/_content.scss */
+  /* line 131, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;
