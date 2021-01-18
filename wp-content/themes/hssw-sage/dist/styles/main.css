@@ -16068,7 +16068,7 @@ footer.content-info .container {
 @media (min-width: 768px) {
   /* line 94, resources/assets/styles/layouts/_content.scss */
 
-  article.type-people .featured-image {
+  article .featured-image {
     float: right;
     max-width: 33%;
     margin: 0 0 20px 20px;
@@ -16077,7 +16077,7 @@ footer.content-info .container {
 
 /* line 101, resources/assets/styles/layouts/_content.scss */
 
-article.type-people .job-title {
+article .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
