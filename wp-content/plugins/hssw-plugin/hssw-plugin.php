@@ -209,3 +209,16 @@ function exclude_pages_from_search($query) {
 	return $query;
 }
 add_filter( 'pre_get_posts','exclude_pages_from_search' );
+
+function hssw_search_form( $form ) {
+	$form = '<form role="search" method="get" class="search-form" action="http://hssw.local/">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input type="search" class="search-field" placeholder="Search" value="" name="s">
+		</label>
+		<input type="submit" class="search-submit" value="Go">
+	</form>';
+
+	return $form;
+}
+add_filter( 'get_search_form', 'hssw_search_form' );

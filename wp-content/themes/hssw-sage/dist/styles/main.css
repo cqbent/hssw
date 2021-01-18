@@ -15898,14 +15898,26 @@ header.banner nav.nav-secondary .menu-item a {
   }
 }
 
-/* line 3, resources/assets/styles/layouts/_sidebar.scss */
+/* line 2, resources/assets/styles/layouts/_sidebar.scss */
+
+.sidebar .widget {
+  margin-bottom: 20px;
+}
+
+/* line 6, resources/assets/styles/layouts/_sidebar.scss */
+
+.sidebar .search-form label {
+  margin-right: 5px;
+}
+
+/* line 11, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults {
   border-radius: 0;
   font-size: .875rem;
 }
 
-/* line 6, resources/assets/styles/layouts/_sidebar.scss */
+/* line 14, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults .ctct-form-text,
 .sidebar .ctct-inline-form .ctct-form-defaults label,
@@ -15913,13 +15925,13 @@ header.banner nav.nav-secondary .menu-item a {
   font-size: .875rem !important;
 }
 
-/* line 9, resources/assets/styles/layouts/_sidebar.scss */
+/* line 17, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults h2 {
   font-size: 1.25rem !important;
 }
 
-/* line 12, resources/assets/styles/layouts/_sidebar.scss */
+/* line 20, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults input.ctct-form-element {
   padding: 2px 5px !important;

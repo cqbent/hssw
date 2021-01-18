@@ -1,4 +1,12 @@
 .sidebar {
+  .widget {
+    margin-bottom: 20px;
+  }
+  .search-form {
+    label {
+      margin-right: 5px;
+    }
+  }
   .ctct-inline-form {
     .ctct-form-defaults {
       border-radius: 0;

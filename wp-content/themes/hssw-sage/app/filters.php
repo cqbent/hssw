@@ -5,7 +5,7 @@ namespace App;
 add_filter('sage/display_sidebar', function ($display) {
     static $display;
 
-    isset($display) || $display = in_array(true, [
+    isset($display) || $display = in_array(false, [
         // The sidebar will be displayed if any of the following return true
         is_404(),
         is_front_page(),
