@@ -12,8 +12,10 @@ $body-color: $white;
 $link-color: $red;
 
 // fonts
+$nunito: "Nunito Sans", sans-serif;
+$georgia: Georgia, serif;
 $typewriter: "Special Elite", cursive;
-$font-family-base: "Nunito Sans", sans-serif;
+$font-family-base: $georgia;
 $fontawesome: "Font Awesome 5 Free";
 $serif: "Esteban", serif;
 
