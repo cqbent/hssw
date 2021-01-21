@@ -8,6 +8,11 @@
     }
   }
   .ctct-inline-form {
+    background: linear-gradient(to bottom, cadetblue, gold);
+    padding: 4px;
+    .ctct-form-container {
+      background: $black;
+    }
     .ctct-form-defaults {
       border-radius: 0;
       font-size: .875rem;

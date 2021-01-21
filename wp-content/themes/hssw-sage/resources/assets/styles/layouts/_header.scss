@@ -7,6 +7,7 @@
 }
 
 header.banner {
+  font-family: $nunito;
   position: relative;
   height: 100px;
   background-color: $black;
@@ -36,6 +37,7 @@ header.banner {
     }
   }
   nav.nav-primary {
+    text-transform: uppercase;
     #navbar {
       width: 100%;
       background: $black;
@@ -48,7 +50,7 @@ header.banner {
     ul.nav {
       .menu-item {
         width: 100%;
-        font-size: 1rem;
+        font-size: .875rem;
         a {
           color: $gray;
           padding: 5px 0;
@@ -225,7 +227,7 @@ header.banner {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: .75rem;
+    font-size: .675rem;
     text-transform: uppercase;
     .menu-item {
       a {
