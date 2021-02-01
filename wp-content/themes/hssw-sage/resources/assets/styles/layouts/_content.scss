@@ -30,6 +30,9 @@
       background-color: rgba($white, .5);
       padding: 20px;
       min-width: 60%;
+      h2 {
+
+      }
     }
     a {
       width: 100%;
@@ -69,6 +72,10 @@
       max-width: 50%;
     }
   }
+}
+
+.featured-blog-posts {
+  border: none;
 }
 
 // people pages styling

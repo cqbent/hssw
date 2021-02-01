@@ -15436,15 +15436,6 @@ a {
   text-decoration: none;
 }
 
-/* line 36, resources/assets/styles/common/_global.scss */
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Esteban", serif;
-}
-
 /* line 5, resources/assets/styles/components/_comments.scss */
 
 .comment-list ol {
@@ -15837,24 +15828,30 @@ header.banner nav.nav-secondary {
 /* line 233, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary .menu-item a {
-  padding: 0 .5rem;
+  padding: 0 10px;
   color: #dcdcdc;
 }
 
+/* line 236, resources/assets/styles/layouts/_header.scss */
+
+header.banner nav.nav-secondary .menu-item a:hover {
+  color: #ee2015;
+}
+
 @media (min-width: 576px) {
-  /* line 241, resources/assets/styles/layouts/_header.scss */
+  /* line 244, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks {
     margin-right: 80px;
   }
 
-  /* line 246, resources/assets/styles/layouts/_header.scss */
+  /* line 249, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img.tagline {
     display: inline-block;
   }
 
-  /* line 253, resources/assets/styles/layouts/_header.scss */
+  /* line 256, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler .icon-bar {
     width: 50px;
@@ -15862,27 +15859,27 @@ header.banner nav.nav-secondary .menu-item a {
 }
 
 @media (min-width: 768px) {
-  /* line 261, resources/assets/styles/layouts/_header.scss */
+  /* line 264, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks {
     margin-top: 0;
   }
 
-  /* line 264, resources/assets/styles/layouts/_header.scss */
+  /* line 267, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks .social,
   header.banner .toplinks .search-form {
     display: inline-block;
   }
 
-  /* line 271, resources/assets/styles/layouts/_header.scss */
+  /* line 274, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img {
     height: 60px;
     margin-top: 10px;
   }
 
-  /* line 278, resources/assets/styles/layouts/_header.scss */
+  /* line 281, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler {
     top: 25px;
@@ -15890,7 +15887,7 @@ header.banner nav.nav-secondary .menu-item a {
 }
 
 @media (min-width: 992px) {
-  /* line 286, resources/assets/styles/layouts/_header.scss */
+  /* line 289, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img {
     height: 80px;
@@ -15898,7 +15895,7 @@ header.banner nav.nav-secondary .menu-item a {
 }
 
 @media (min-width: 1200px) {
-  /* line 293, resources/assets/styles/layouts/_header.scss */
+  /* line 296, resources/assets/styles/layouts/_header.scss */
 
   header.banner .header-container {
     max-width: 1200px;
@@ -15998,13 +15995,13 @@ footer.content-info .container {
   min-width: 60%;
 }
 
-/* line 34, resources/assets/styles/layouts/_content.scss */
+/* line 37, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .item a {
   width: 100%;
 }
 
-/* line 39, resources/assets/styles/layouts/_content.scss */
+/* line 42, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button {
   position: absolute;
@@ -16012,26 +16009,26 @@ footer.content-info .container {
   color: #fff;
 }
 
-/* line 43, resources/assets/styles/layouts/_content.scss */
+/* line 46, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button.owl-prev {
   left: 10px;
 }
 
-/* line 46, resources/assets/styles/layouts/_content.scss */
+/* line 49, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button.owl-next {
   right: 10px;
 }
 
-/* line 49, resources/assets/styles/layouts/_content.scss */
+/* line 52, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button span {
   font-size: 3rem;
   color: #fff;
 }
 
-/* line 57, resources/assets/styles/layouts/_content.scss */
+/* line 60, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors,
 .featured-blog-posts,
@@ -16041,7 +16038,7 @@ footer.content-info .container {
   border-bottom: 1px #fff solid;
 }
 
-/* line 61, resources/assets/styles/layouts/_content.scss */
+/* line 64, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .row,
 .featured-authors .sidebar-primary .wrap > .content,
@@ -16055,7 +16052,7 @@ footer.content-info .container {
   margin-bottom: 20px;
 }
 
-/* line 64, resources/assets/styles/layouts/_content.scss */
+/* line 67, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .wp-block-column,
 .featured-blog-posts .wp-block-column,
@@ -16065,7 +16062,7 @@ footer.content-info .container {
 }
 
 @media (min-width: 768px) {
-  /* line 64, resources/assets/styles/layouts/_content.scss */
+  /* line 67, resources/assets/styles/layouts/_content.scss */
 
   .featured-authors .wp-block-column,
   .featured-blog-posts .wp-block-column,
@@ -16075,13 +16072,19 @@ footer.content-info .container {
   }
 }
 
-/* line 75, resources/assets/styles/layouts/_content.scss */
+/* line 77, resources/assets/styles/layouts/_content.scss */
+
+.featured-blog-posts {
+  border: none;
+}
+
+/* line 82, resources/assets/styles/layouts/_content.scss */
 
 .people-grid {
   flex-wrap: wrap;
 }
 
-/* line 77, resources/assets/styles/layouts/_content.scss */
+/* line 84, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column {
   margin-bottom: 40px;
@@ -16090,7 +16093,7 @@ footer.content-info .container {
   font-size: 1.25rem;
 }
 
-/* line 83, resources/assets/styles/layouts/_content.scss */
+/* line 90, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column img {
   border-radius: 50%;
@@ -16098,14 +16101,14 @@ footer.content-info .container {
   margin-bottom: 10px;
 }
 
-/* line 88, resources/assets/styles/layouts/_content.scss */
+/* line 95, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column .name {
   font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  /* line 95, resources/assets/styles/layouts/_content.scss */
+  /* line 102, resources/assets/styles/layouts/_content.scss */
 
   article .featured-image {
     float: right;
@@ -16114,14 +16117,14 @@ footer.content-info .container {
   }
 }
 
-/* line 102, resources/assets/styles/layouts/_content.scss */
+/* line 109, resources/assets/styles/layouts/_content.scss */
 
 article .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
 
-/* line 109, resources/assets/styles/layouts/_content.scss */
+/* line 116, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
 .tribe-events-pg-template {
@@ -16129,14 +16132,14 @@ article .job-title {
   color: #fff !important;
 }
 
-/* line 112, resources/assets/styles/layouts/_content.scss */
+/* line 119, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
 .tribe-events-pg-template .tribe-events-l-container {
   padding: 20px 0 !important;
 }
 
-/* line 115, resources/assets/styles/layouts/_content.scss */
+/* line 122, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
 .tribe-events-pg-template button {
@@ -16145,21 +16148,21 @@ article .job-title {
   border-color: #ee2015;
 }
 
-/* line 121, resources/assets/styles/layouts/_content.scss */
+/* line 128, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
 .tribe-events-pg-template input[type=text] {
   border: none;
 }
 
-/* line 125, resources/assets/styles/layouts/_content.scss */
+/* line 132, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
 @media (min-width: 768px) {
-  /* line 131, resources/assets/styles/layouts/_content.scss */
+  /* line 138, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;
