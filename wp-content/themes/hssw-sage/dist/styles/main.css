@@ -15436,6 +15436,14 @@ a {
   text-decoration: none;
 }
 
+/* line 41, resources/assets/styles/common/_global.scss */
+
+form input[type=text],
+form textarea {
+  width: 100%;
+  max-width: 992px;
+}
+
 /* line 5, resources/assets/styles/components/_comments.scss */
 
 .comment-list ol {
