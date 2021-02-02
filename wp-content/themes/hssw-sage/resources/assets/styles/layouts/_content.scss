@@ -112,6 +112,18 @@ article {
   }
 }
 
+// header and link gold coloring
+.content {
+  h2, h3, .entry-summary, .excerpt, .tribe-events-calendar-list__event-description {
+    a {
+      color: $gold;
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+}
+
 // event styling
 .tribe-events, .tribe-events-pg-template {
   width: 100%;

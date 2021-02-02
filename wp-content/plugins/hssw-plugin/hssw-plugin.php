@@ -124,7 +124,7 @@ function featured_authors() {
 					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
 					<div class="content col-sm-8">
 						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
-						<div class="name">' . get_the_excerpt() . '</div>
+						<div class="excerpt">' . get_the_excerpt() . '</div>
 					</div>
 				</div>
 			';
@@ -161,7 +161,7 @@ function featured_other_events() {
 					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
 					<div class="content col-sm-8">
 						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
-						<div class="name">' . get_the_excerpt() . '</div>
+						<div class="excerpt">' . get_the_excerpt() . '</div>
 					</div>
 				</div>
 			';

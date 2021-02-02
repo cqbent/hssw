@@ -35,6 +35,12 @@ a {
 
 h1, h2, h3, h4 {
   //font-family: $serif;
+  a {
+    color: $gold;
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
 form {

@@ -15436,7 +15436,25 @@ a {
   text-decoration: none;
 }
 
-/* line 41, resources/assets/styles/common/_global.scss */
+/* line 38, resources/assets/styles/common/_global.scss */
+
+h1 a,
+h2 a,
+h3 a,
+h4 a {
+  color: #dba734;
+}
+
+/* line 40, resources/assets/styles/common/_global.scss */
+
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover {
+  color: #fff;
+}
+
+/* line 47, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
@@ -16132,7 +16150,25 @@ article .job-title {
   font-size: 1.5rem;
 }
 
-/* line 116, resources/assets/styles/layouts/_content.scss */
+/* line 118, resources/assets/styles/layouts/_content.scss */
+
+.content h2 a,
+.content h3 a,
+.content .entry-summary a,
+.content .excerpt a {
+  color: #dba734;
+}
+
+/* line 120, resources/assets/styles/layouts/_content.scss */
+
+.content h2 a:hover,
+.content h3 a:hover,
+.content .entry-summary a:hover,
+.content .excerpt a:hover {
+  color: #dba734;
+}
+
+/* line 128, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
 .tribe-events-pg-template {
@@ -16140,14 +16176,14 @@ article .job-title {
   color: #fff !important;
 }
 
-/* line 119, resources/assets/styles/layouts/_content.scss */
+/* line 131, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
 .tribe-events-pg-template .tribe-events-l-container {
   padding: 20px 0 !important;
 }
 
-/* line 122, resources/assets/styles/layouts/_content.scss */
+/* line 134, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
 .tribe-events-pg-template button {
@@ -16156,21 +16192,21 @@ article .job-title {
   border-color: #ee2015;
 }
 
-/* line 128, resources/assets/styles/layouts/_content.scss */
+/* line 140, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
 .tribe-events-pg-template input[type=text] {
   border: none;
 }
 
-/* line 132, resources/assets/styles/layouts/_content.scss */
+/* line 144, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
 @media (min-width: 768px) {
-  /* line 138, resources/assets/styles/layouts/_content.scss */
+  /* line 150, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;

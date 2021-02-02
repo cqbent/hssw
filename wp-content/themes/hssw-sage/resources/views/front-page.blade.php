@@ -7,10 +7,10 @@
     <h2>Author of the Week</h2>
     @php print featured_authors() @endphp
 
-    <h2>Featured Events</h2>
+    <h2>Events & Workshops</h2>
     @php print featured_other_events() @endphp
 
-    <h2>Featured Blog Posts</h2>
+    <h2>Director's Blog</h2>
     @php print featured_blog_posts() @endphp
 
   @endwhile
