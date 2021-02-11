@@ -21,7 +21,7 @@ header.banner {
     font-size: 1.75rem;
     line-height: 1;
     a {
-      color: $white;
+      //color: $white;
       &:hover {
         text-decoration: none;
       }
@@ -52,7 +52,7 @@ header.banner {
         width: 100%;
         font-size: .875rem;
         a {
-          color: $gray;
+          //color: $gray;
           padding: 5px 0;
         }
 
@@ -148,7 +148,7 @@ header.banner {
               padding: 10px 0;
 
               &:hover {
-                color: $red;
+                color: $white;
               }
             }
 
@@ -161,7 +161,7 @@ header.banner {
             &.current-menu-ancestor,
             &.current-page-ancestor {
               a {
-                color: $red;
+                color: $white;
                 &::after {
                   content: "";
                   position: absolute;
@@ -198,7 +198,7 @@ header.banner {
                 &.current-menu-item,
                 &:hover {
                   > a {
-                    color: $red;
+                    //color: $red;
                   }
                 }
 

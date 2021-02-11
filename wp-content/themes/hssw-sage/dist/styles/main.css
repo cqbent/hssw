@@ -216,7 +216,7 @@ sup {
 /* line 182, node_modules/bootstrap/scss/_reboot.scss */
 
 a {
-  color: #ee2015;
+  color: #ffb966;
   text-decoration: none;
   background-color: transparent;
 }
@@ -224,7 +224,7 @@ a {
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
 
 a:hover {
-  color: #aa140c;
+  color: #ff961a;
   text-decoration: underline;
 }
 
@@ -4516,14 +4516,14 @@ fieldset:disabled .search-form a.search-submit,
 
 .btn-link {
   font-weight: 400;
-  color: #ee2015;
+  color: #ffb966;
   text-decoration: none;
 }
 
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
 
 .btn-link:hover {
-  color: #aa140c;
+  color: #ff961a;
   text-decoration: underline;
 }
 
@@ -7557,7 +7557,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #ee2015;
+  color: #ffb966;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
@@ -7566,7 +7566,7 @@ input[type="button"].btn-block {
 
 .page-link:hover {
   z-index: 2;
-  color: #aa140c;
+  color: #ff961a;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -15442,7 +15442,7 @@ h1 a,
 h2 a,
 h3 a,
 h4 a {
-  color: #dba734;
+  color: #ffb966;
 }
 
 /* line 40, resources/assets/styles/common/_global.scss */
@@ -15454,7 +15454,13 @@ h4 a:hover {
   color: #fff;
 }
 
-/* line 47, resources/assets/styles/common/_global.scss */
+/* line 45, resources/assets/styles/common/_global.scss */
+
+h1 {
+  color: #ffb966;
+}
+
+/* line 50, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
@@ -15553,12 +15559,6 @@ header.banner .logo {
   line-height: 1;
 }
 
-/* line 23, resources/assets/styles/layouts/_header.scss */
-
-header.banner .logo a {
-  color: #fff;
-}
-
 /* line 25, resources/assets/styles/layouts/_header.scss */
 
 header.banner .logo a:hover {
@@ -15610,7 +15610,6 @@ header.banner nav.nav-primary ul.nav .menu-item {
 /* line 54, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-primary ul.nav .menu-item a {
-  color: #dcdcdc;
   padding: 5px 0;
 }
 
@@ -15747,7 +15746,7 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
   /* line 150, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item a:hover {
-    color: #ee2015;
+    color: #fff;
   }
 
   /* line 155, resources/assets/styles/layouts/_header.scss */
@@ -15762,7 +15761,7 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item a,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor a,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor a {
-    color: #ee2015;
+    color: #fff;
   }
 
   /* line 165, resources/assets/styles/layouts/_header.scss */
@@ -15811,13 +15810,6 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item a::after {
     display: none;
-  }
-
-  /* line 200, resources/assets/styles/layouts/_header.scss */
-
-  header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item.current-menu-item > a,
-  header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item:hover > a {
-    color: #ee2015;
   }
 
   /* line 205, resources/assets/styles/layouts/_header.scss */
@@ -15998,11 +15990,17 @@ footer.content-info .container {
 
 /* line 20, resources/assets/styles/layouts/_content.scss */
 
+.home .main h2 {
+  color: #ffb966;
+}
+
+/* line 26, resources/assets/styles/layouts/_content.scss */
+
 .features-carousel {
   position: relative;
 }
 
-/* line 22, resources/assets/styles/layouts/_content.scss */
+/* line 28, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .item {
   min-height: 400px;
@@ -16012,7 +16010,7 @@ footer.content-info .container {
   align-items: center;
 }
 
-/* line 28, resources/assets/styles/layouts/_content.scss */
+/* line 34, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .item .item-content {
   margin: 0 auto;
@@ -16021,13 +16019,13 @@ footer.content-info .container {
   min-width: 60%;
 }
 
-/* line 37, resources/assets/styles/layouts/_content.scss */
+/* line 43, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .item a {
   width: 100%;
 }
 
-/* line 42, resources/assets/styles/layouts/_content.scss */
+/* line 48, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button {
   position: absolute;
@@ -16035,26 +16033,26 @@ footer.content-info .container {
   color: #fff;
 }
 
-/* line 46, resources/assets/styles/layouts/_content.scss */
+/* line 52, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button.owl-prev {
   left: 10px;
 }
 
-/* line 49, resources/assets/styles/layouts/_content.scss */
+/* line 55, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button.owl-next {
   right: 10px;
 }
 
-/* line 52, resources/assets/styles/layouts/_content.scss */
+/* line 58, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button span {
   font-size: 3rem;
   color: #fff;
 }
 
-/* line 60, resources/assets/styles/layouts/_content.scss */
+/* line 66, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors,
 .featured-blog-posts,
@@ -16064,7 +16062,7 @@ footer.content-info .container {
   border-bottom: 1px #fff solid;
 }
 
-/* line 64, resources/assets/styles/layouts/_content.scss */
+/* line 70, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .row,
 .featured-authors .sidebar-primary .wrap > .content,
@@ -16078,7 +16076,7 @@ footer.content-info .container {
   margin-bottom: 20px;
 }
 
-/* line 67, resources/assets/styles/layouts/_content.scss */
+/* line 73, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .wp-block-column,
 .featured-blog-posts .wp-block-column,
@@ -16088,7 +16086,7 @@ footer.content-info .container {
 }
 
 @media (min-width: 768px) {
-  /* line 67, resources/assets/styles/layouts/_content.scss */
+  /* line 73, resources/assets/styles/layouts/_content.scss */
 
   .featured-authors .wp-block-column,
   .featured-blog-posts .wp-block-column,
@@ -16098,19 +16096,19 @@ footer.content-info .container {
   }
 }
 
-/* line 77, resources/assets/styles/layouts/_content.scss */
+/* line 83, resources/assets/styles/layouts/_content.scss */
 
 .featured-blog-posts {
   border: none;
 }
 
-/* line 82, resources/assets/styles/layouts/_content.scss */
+/* line 88, resources/assets/styles/layouts/_content.scss */
 
 .people-grid {
   flex-wrap: wrap;
 }
 
-/* line 84, resources/assets/styles/layouts/_content.scss */
+/* line 90, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column {
   margin-bottom: 40px;
@@ -16119,7 +16117,7 @@ footer.content-info .container {
   font-size: 1.25rem;
 }
 
-/* line 90, resources/assets/styles/layouts/_content.scss */
+/* line 96, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column img {
   border-radius: 50%;
@@ -16127,14 +16125,14 @@ footer.content-info .container {
   margin-bottom: 10px;
 }
 
-/* line 95, resources/assets/styles/layouts/_content.scss */
+/* line 101, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column .name {
   font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  /* line 102, resources/assets/styles/layouts/_content.scss */
+  /* line 108, resources/assets/styles/layouts/_content.scss */
 
   article .featured-image {
     float: right;
@@ -16143,32 +16141,34 @@ footer.content-info .container {
   }
 }
 
-/* line 109, resources/assets/styles/layouts/_content.scss */
+/* line 115, resources/assets/styles/layouts/_content.scss */
 
 article .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
 
-/* line 118, resources/assets/styles/layouts/_content.scss */
+/* line 124, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a,
 .content h3 a,
 .content .entry-summary a,
-.content .excerpt a {
-  color: #dba734;
+.content .excerpt a,
+.content .tribe-events-calendar-list__event-description a {
+  color: #ffb966;
 }
 
-/* line 120, resources/assets/styles/layouts/_content.scss */
+/* line 126, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a:hover,
 .content h3 a:hover,
 .content .entry-summary a:hover,
-.content .excerpt a:hover {
-  color: #dba734;
+.content .excerpt a:hover,
+.content .tribe-events-calendar-list__event-description a:hover {
+  color: #ffb966;
 }
 
-/* line 128, resources/assets/styles/layouts/_content.scss */
+/* line 134, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
 .tribe-events-pg-template {
@@ -16176,14 +16176,14 @@ article .job-title {
   color: #fff !important;
 }
 
-/* line 131, resources/assets/styles/layouts/_content.scss */
+/* line 137, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
 .tribe-events-pg-template .tribe-events-l-container {
   padding: 20px 0 !important;
 }
 
-/* line 134, resources/assets/styles/layouts/_content.scss */
+/* line 140, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
 .tribe-events-pg-template button {
@@ -16192,21 +16192,21 @@ article .job-title {
   border-color: #ee2015;
 }
 
-/* line 140, resources/assets/styles/layouts/_content.scss */
+/* line 146, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
 .tribe-events-pg-template input[type=text] {
   border: none;
 }
 
-/* line 144, resources/assets/styles/layouts/_content.scss */
+/* line 150, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
 @media (min-width: 768px) {
-  /* line 150, resources/assets/styles/layouts/_content.scss */
+  /* line 156, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;

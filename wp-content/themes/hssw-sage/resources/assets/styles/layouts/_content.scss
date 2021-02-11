@@ -15,7 +15,13 @@
 }
 
 // home page styling
-
+.home {
+  .main {
+    h2 {
+      color: $gold;
+    }
+  }
+}
 // features carousel on home page
 .features-carousel {
   position: relative;
