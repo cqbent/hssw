@@ -15743,30 +15743,28 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     padding: 10px 0;
   }
 
-  /* line 150, resources/assets/styles/layouts/_header.scss */
+  /* line 149, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item a:hover {
     color: #fff;
   }
 
-  /* line 155, resources/assets/styles/layouts/_header.scss */
+  /* line 154, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item.alignright {
     margin-left: auto;
   }
 
-  /* line 163, resources/assets/styles/layouts/_header.scss */
+  /* line 161, resources/assets/styles/layouts/_header.scss */
 
-  header.banner nav.nav-primary #navbar ul.nav .menu-item:hover a,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item a,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor a,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor a {
     color: #fff;
   }
 
-  /* line 165, resources/assets/styles/layouts/_header.scss */
+  /* line 163, resources/assets/styles/layouts/_header.scss */
 
-  header.banner nav.nav-primary #navbar ul.nav .menu-item:hover a::after,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item a::after,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor a::after,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor a::after {
@@ -15780,7 +15778,7 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     display: none;
   }
 
-  /* line 178, resources/assets/styles/layouts/_header.scss */
+  /* line 176, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu {
     position: absolute;
@@ -15791,7 +15789,7 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     background: rgba(0, 0, 0, 0.9);
   }
 
-  /* line 185, resources/assets/styles/layouts/_header.scss */
+  /* line 183, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item {
     font-size: 0.875rem;
@@ -15799,20 +15797,19 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     padding: 0 0 5px 0;
   }
 
-  /* line 190, resources/assets/styles/layouts/_header.scss */
+  /* line 188, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item a {
     padding: 5px 0;
-    color: #fff;
   }
 
-  /* line 193, resources/assets/styles/layouts/_header.scss */
+  /* line 191, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item a::after {
     display: none;
   }
 
-  /* line 205, resources/assets/styles/layouts/_header.scss */
+  /* line 203, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item .sub-menu {
     position: relative;
@@ -15820,20 +15817,20 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     margin-left: 10px;
   }
 
-  /* line 211, resources/assets/styles/layouts/_header.scss */
+  /* line 209, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item .sub-menu .menu-item {
     text-transform: none;
   }
 
-  /* line 221, resources/assets/styles/layouts/_header.scss */
+  /* line 219, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler {
     display: none;
   }
 }
 
-/* line 226, resources/assets/styles/layouts/_header.scss */
+/* line 224, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary {
   position: absolute;
@@ -15843,33 +15840,33 @@ header.banner nav.nav-secondary {
   text-transform: uppercase;
 }
 
-/* line 233, resources/assets/styles/layouts/_header.scss */
+/* line 231, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary .menu-item a {
   padding: 0 10px;
   color: #dcdcdc;
 }
 
-/* line 236, resources/assets/styles/layouts/_header.scss */
+/* line 234, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary .menu-item a:hover {
   color: #ee2015;
 }
 
 @media (min-width: 576px) {
-  /* line 244, resources/assets/styles/layouts/_header.scss */
+  /* line 242, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks {
     margin-right: 80px;
   }
 
-  /* line 249, resources/assets/styles/layouts/_header.scss */
+  /* line 247, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img.tagline {
     display: inline-block;
   }
 
-  /* line 256, resources/assets/styles/layouts/_header.scss */
+  /* line 254, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler .icon-bar {
     width: 50px;
@@ -15877,27 +15874,27 @@ header.banner nav.nav-secondary .menu-item a:hover {
 }
 
 @media (min-width: 768px) {
-  /* line 264, resources/assets/styles/layouts/_header.scss */
+  /* line 262, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks {
     margin-top: 0;
   }
 
-  /* line 267, resources/assets/styles/layouts/_header.scss */
+  /* line 265, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks .social,
   header.banner .toplinks .search-form {
     display: inline-block;
   }
 
-  /* line 274, resources/assets/styles/layouts/_header.scss */
+  /* line 272, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img {
     height: 60px;
     margin-top: 10px;
   }
 
-  /* line 281, resources/assets/styles/layouts/_header.scss */
+  /* line 279, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler {
     top: 25px;
@@ -15905,7 +15902,7 @@ header.banner nav.nav-secondary .menu-item a:hover {
 }
 
 @media (min-width: 992px) {
-  /* line 289, resources/assets/styles/layouts/_header.scss */
+  /* line 287, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img {
     height: 80px;
@@ -15913,7 +15910,7 @@ header.banner nav.nav-secondary .menu-item a:hover {
 }
 
 @media (min-width: 1200px) {
-  /* line 296, resources/assets/styles/layouts/_header.scss */
+  /* line 294, resources/assets/styles/layouts/_header.scss */
 
   header.banner .header-container {
     max-width: 1200px;
@@ -15991,7 +15988,7 @@ footer.content-info .container {
 /* line 20, resources/assets/styles/layouts/_content.scss */
 
 .home .main h2 {
-  color: #ffb966;
+  color: #40E0D0;
 }
 
 /* line 26, resources/assets/styles/layouts/_content.scss */
@@ -16017,15 +16014,24 @@ footer.content-info .container {
   background-color: rgba(255, 255, 255, 0.5);
   padding: 20px;
   min-width: 60%;
+  color: #ee2015;
+  font-family: "Courier New", Courier, monospace;
 }
 
-/* line 43, resources/assets/styles/layouts/_content.scss */
+/* line 45, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .item a {
   width: 100%;
+  color: #ee2015;
 }
 
 /* line 48, resources/assets/styles/layouts/_content.scss */
+
+.features-carousel .item a h1 {
+  color: #ee2015;
+}
+
+/* line 54, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button {
   position: absolute;
@@ -16033,26 +16039,26 @@ footer.content-info .container {
   color: #fff;
 }
 
-/* line 52, resources/assets/styles/layouts/_content.scss */
+/* line 58, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button.owl-prev {
   left: 10px;
 }
 
-/* line 55, resources/assets/styles/layouts/_content.scss */
+/* line 61, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button.owl-next {
   right: 10px;
 }
 
-/* line 58, resources/assets/styles/layouts/_content.scss */
+/* line 64, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .owl-nav button span {
   font-size: 3rem;
   color: #fff;
 }
 
-/* line 66, resources/assets/styles/layouts/_content.scss */
+/* line 72, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors,
 .featured-blog-posts,
@@ -16062,7 +16068,7 @@ footer.content-info .container {
   border-bottom: 1px #fff solid;
 }
 
-/* line 70, resources/assets/styles/layouts/_content.scss */
+/* line 76, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .row,
 .featured-authors .sidebar-primary .wrap > .content,
@@ -16076,7 +16082,7 @@ footer.content-info .container {
   margin-bottom: 20px;
 }
 
-/* line 73, resources/assets/styles/layouts/_content.scss */
+/* line 79, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .wp-block-column,
 .featured-blog-posts .wp-block-column,
@@ -16086,7 +16092,7 @@ footer.content-info .container {
 }
 
 @media (min-width: 768px) {
-  /* line 73, resources/assets/styles/layouts/_content.scss */
+  /* line 79, resources/assets/styles/layouts/_content.scss */
 
   .featured-authors .wp-block-column,
   .featured-blog-posts .wp-block-column,
@@ -16096,19 +16102,19 @@ footer.content-info .container {
   }
 }
 
-/* line 83, resources/assets/styles/layouts/_content.scss */
+/* line 89, resources/assets/styles/layouts/_content.scss */
 
 .featured-blog-posts {
   border: none;
 }
 
-/* line 88, resources/assets/styles/layouts/_content.scss */
+/* line 94, resources/assets/styles/layouts/_content.scss */
 
 .people-grid {
   flex-wrap: wrap;
 }
 
-/* line 90, resources/assets/styles/layouts/_content.scss */
+/* line 96, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column {
   margin-bottom: 40px;
@@ -16117,7 +16123,7 @@ footer.content-info .container {
   font-size: 1.25rem;
 }
 
-/* line 96, resources/assets/styles/layouts/_content.scss */
+/* line 102, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column img {
   border-radius: 50%;
@@ -16125,14 +16131,14 @@ footer.content-info .container {
   margin-bottom: 10px;
 }
 
-/* line 101, resources/assets/styles/layouts/_content.scss */
+/* line 107, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column .name {
   font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  /* line 108, resources/assets/styles/layouts/_content.scss */
+  /* line 114, resources/assets/styles/layouts/_content.scss */
 
   article .featured-image {
     float: right;
@@ -16141,14 +16147,14 @@ footer.content-info .container {
   }
 }
 
-/* line 115, resources/assets/styles/layouts/_content.scss */
+/* line 121, resources/assets/styles/layouts/_content.scss */
 
 article .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
 
-/* line 124, resources/assets/styles/layouts/_content.scss */
+/* line 130, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a,
 .content h3 a,
@@ -16158,7 +16164,7 @@ article .job-title {
   color: #ffb966;
 }
 
-/* line 126, resources/assets/styles/layouts/_content.scss */
+/* line 132, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a:hover,
 .content h3 a:hover,
@@ -16168,7 +16174,7 @@ article .job-title {
   color: #ffb966;
 }
 
-/* line 134, resources/assets/styles/layouts/_content.scss */
+/* line 140, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
 .tribe-events-pg-template {
@@ -16176,14 +16182,14 @@ article .job-title {
   color: #fff !important;
 }
 
-/* line 137, resources/assets/styles/layouts/_content.scss */
+/* line 143, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
 .tribe-events-pg-template .tribe-events-l-container {
   padding: 20px 0 !important;
 }
 
-/* line 140, resources/assets/styles/layouts/_content.scss */
+/* line 146, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
 .tribe-events-pg-template button {
@@ -16192,21 +16198,21 @@ article .job-title {
   border-color: #ee2015;
 }
 
-/* line 146, resources/assets/styles/layouts/_content.scss */
+/* line 152, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
 .tribe-events-pg-template input[type=text] {
   border: none;
 }
 
-/* line 150, resources/assets/styles/layouts/_content.scss */
+/* line 156, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
 @media (min-width: 768px) {
-  /* line 156, resources/assets/styles/layouts/_content.scss */
+  /* line 162, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;

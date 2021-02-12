@@ -18,7 +18,7 @@
 .home {
   .main {
     h2 {
-      color: $gold;
+      color: $turqoise;
     }
   }
 }
@@ -36,12 +36,18 @@
       background-color: rgba($white, .5);
       padding: 20px;
       min-width: 60%;
+      color: $red;
+      font-family: $courier;
       h2 {
 
       }
     }
     a {
       width: 100%;
+      color: $red;
+      h1 {
+        color: $red;
+      }
     }
   }
   .owl-nav {

@@ -146,7 +146,6 @@ header.banner {
             a {
               position: relative;
               padding: 10px 0;
-
               &:hover {
                 color: $white;
               }
@@ -156,7 +155,6 @@ header.banner {
               margin-left: auto;
             }
 
-            &:hover,
             &.current-menu-item,
             &.current-menu-ancestor,
             &.current-page-ancestor {
@@ -189,7 +187,7 @@ header.banner {
 
                 a {
                   padding: 5px 0;
-                  color: $white;
+                  //color: $white;
                   &::after {
                     display: none;
                   }
