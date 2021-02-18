@@ -222,3 +222,18 @@ function hssw_search_form( $form ) {
 	return $form;
 }
 add_filter( 'get_search_form', 'hssw_search_form' );
+
+function hssw_event_categories() {
+	$event_categories = get_terms(array('taxonomy' => Tribe__Events__Main::TAXONOMY));
+	if ($event_categories) {
+		$output = '<ul class="event-categories">';
+		foreach ($event_categories as $category) {
+			$url = esc_url( get_term_link( $category ) );
+			$name = esc_html( get_term_field( 'name', $category ) );
+			$output .= '<li><a href="'.$url.'">'.$name.'</a></li>';
+		}
+		$output .= '</ul>';
+	}
+	return $output;
+}
+add_shortcode('hssw_event_categories', 'hssw_event_categories');

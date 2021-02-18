@@ -133,3 +133,19 @@ add_action('after_setup_theme', function () {
         return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
     });
 });
+
+/*
+alter archive title
+*/
+add_filter( 'get_the_archive_title', function ( $title ) {
+    if ( is_post_type_archive( 'tribe_events' ) ) {
+        //$title = sprintf( __( '%s' ), post_type_archive_title( '', false ) );
+        if (is_tax()) {
+            $title = single_term_title('', false);
+        }
+        else {
+            $title = post_type_archive_title( '', false );
+        }
+    }
+    return $title;
+});

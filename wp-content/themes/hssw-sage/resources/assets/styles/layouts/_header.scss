@@ -158,8 +158,8 @@ header.banner {
             &.current-menu-item,
             &.current-menu-ancestor,
             &.current-page-ancestor {
-              a {
-                color: $white;
+              > a {
+                color: $red;
                 &::after {
                   content: "";
                   position: absolute;

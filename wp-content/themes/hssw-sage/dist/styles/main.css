@@ -15757,17 +15757,17 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
 
   /* line 161, resources/assets/styles/layouts/_header.scss */
 
-  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item a,
-  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor a,
-  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor a {
-    color: #fff;
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item > a,
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor > a,
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor > a {
+    color: #ee2015;
   }
 
   /* line 163, resources/assets/styles/layouts/_header.scss */
 
-  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item a::after,
-  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor a::after,
-  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor a::after {
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item > a::after,
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor > a::after,
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor > a::after {
     content: "";
     position: absolute;
     bottom: 0;
