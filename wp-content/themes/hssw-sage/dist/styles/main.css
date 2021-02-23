@@ -15458,9 +15458,22 @@ h4 a:hover {
 
 h1 {
   color: #ffb966;
+  font-size: 2rem;
 }
 
-/* line 50, resources/assets/styles/common/_global.scss */
+/* line 49, resources/assets/styles/common/_global.scss */
+
+h2 {
+  font-size: 1.5rem;
+}
+
+/* line 52, resources/assets/styles/common/_global.scss */
+
+h3 {
+  font-size: 1.25rem;
+}
+
+/* line 57, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
