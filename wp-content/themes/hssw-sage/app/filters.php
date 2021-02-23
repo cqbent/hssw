@@ -105,4 +105,19 @@ add_filter('comments_template', function ($comments_template) {
     return $comments_template;
 }, 100);
 
+/*
+alter archive title
+*/
+add_filter( 'get_the_archive_title', function ( $title ) {
+    if ( is_post_type_archive( 'tribe_events' ) ) {
+        //$title = sprintf( __( '%s' ), post_type_archive_title( '', false ) );
+        if (is_tax()) {
+            $title = single_term_title('', false);
+        }
+        else {
+            $title = 'Events & Workshops';
+        }
+    }
+    return $title;
+});
 

@@ -9,11 +9,11 @@
 header.banner {
   font-family: $nunito;
   position: relative;
-  height: 100px;
-  background-color: $black;
   z-index: 2;
   .container {
+    background-color: $black;
     position: relative;
+    height: 100px;
   }
   .logo {
     font-family: $typewriter;
@@ -224,7 +224,7 @@ header.banner {
   nav.nav-secondary {
     position: absolute;
     top: 10px;
-    right: 15px;
+    right: 30px;
     font-size: .675rem;
     text-transform: uppercase;
     .menu-item {
@@ -234,6 +234,46 @@ header.banner {
         &:hover {
           color: $red;
         }
+      }
+      &.current-menu-item {
+        a {
+          color: $red;
+        }
+      }
+    }
+  }
+  .search-form {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    .search-toggle {
+      display: block;
+      height: 15px;
+      width: 15px;
+      background-image: url(../images/magnifying_glass.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+    }
+    #search-fields {
+      position: absolute;
+      right: 0;
+      top: 60px;
+      width: 200px;
+      .search-field {
+        padding: 2px 5px;
+        height: 25px;
+        width: 80%;
+        float: left;
+      }
+      .btn {
+        font-size: 12px;
+        padding: 3px 5px;
+        float: right;
+        color: $white;
+        border: none;
+        width: calc(20% - 5px);
+        min-width: 20px;
       }
     }
   }
