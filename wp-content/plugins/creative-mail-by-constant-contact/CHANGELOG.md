@@ -1,7 +1,13 @@
 Changelog
 =========
 
-#### 1.3.0 - January 12 2021
+#### 1.3.2 - February 17 2021
+- Fixes an issue where the contact sync might cause a critical error
+
+#### 1.3.1 - January 20 2021
+- Add the ability to show the amount of recovered revenue via abandoned carts
+
+#### 1.3.0 - January 6 2021
 - Support for abandoned cart emails
 
 #### 1.2.4 - December 16 2020

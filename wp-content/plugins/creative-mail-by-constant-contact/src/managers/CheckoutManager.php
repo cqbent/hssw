@@ -27,6 +27,7 @@ class CheckoutManager
 
     const UPDATE_CHECKOUT_DATA = 'update_checkout_data';
     const META_CHECKOUT_UUID = 'ce4wp_checkout_uuid';
+    const META_CHECKOUT_RECOVERED = 'ce4wp_checkout_recovered';
     const CHECKOUT_UUID = 'checkout_uuid';
     const NONCE = 'nonce';
     const EMAIL = 'email';
@@ -44,6 +45,7 @@ class CheckoutManager
     const USER_EMAIL = 'user_email';
     const PRODUCTS = 'products';
     const CUSTOMER = 'customer';
+    const DATETIME_ZERO = "0000-00-00 00:00:00";
 
     /**
      * Add hooks
@@ -162,20 +164,20 @@ class CheckoutManager
             return;
         }
         // check if order had checkout uuid
-        $uuid = $order->get_meta( self::META_CHECKOUT_UUID);
+        $uuid = $order->get_meta( self::META_CHECKOUT_UUID, true);
         // check if order is created with checkout meta
         if (empty($uuid)) {
             return;
         }
-        // get the recovery date if recovered
-        $recovery_date = $this->get_checkout_recovery_date($uuid);
-        // Remote post to ce4wp marking checkout as completed
+        // try find recovery date from order meta data
+        $recovery_date = $order->get_meta( self::META_CHECKOUT_RECOVERED, true);
+        // Remote post to ce4wp marking checkout as completed/created
         $requestItem = new stdClass();
         $requestItem->uuid = $uuid;
         $requestItem->order_id = $order->get_id();
         $requestItem->order_total = $order->get_total();
         $requestItem->order_currency = $order->get_currency();
-        $requestItem->recovery_date = $recovery_date;
+        $requestItem->recovery_date = (empty($recovery_date) || $recovery_date === self::DATETIME_ZERO) ? null : $recovery_date;
         $endpoint = EnvironmentHelper::get_app_gateway_url('wordpress') . $endpoint;
         // call remote endpoint to update
         $this->ce4wp_remote_post($requestItem, $endpoint);
@@ -524,6 +526,13 @@ class CheckoutManager
         }
 
         $order->update_meta_data( self::META_CHECKOUT_UUID, $checkout_id );
+
+        // get the recovery date if recovered
+        $recovery_date = $this->get_checkout_recovery_date($checkout_id);
+        if (!empty($recovery_date) && $recovery_date !== self::DATETIME_ZERO)
+        {
+            $order->update_meta_data(self::META_CHECKOUT_RECOVERED, $recovery_date);
+        }
         CreativeMail::get_instance()->get_database_manager()->remove_checkout_data($checkout_id);
         WC()->session->__unset( self::CHECKOUT_UUID );
     }
