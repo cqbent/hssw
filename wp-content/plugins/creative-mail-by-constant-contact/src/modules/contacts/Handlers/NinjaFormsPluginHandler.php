@@ -4,6 +4,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_NF_EVENTTYPE', 'WordPress - NinjaForms');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 use CreativeMail\Modules\Contacts\Models\OptActionBy;
 
@@ -47,8 +48,8 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
         $contactModel = new ContactModel();
 
         $contactModel->setEventType(CE4WP_NF_EVENTTYPE);
-
-        $contactModel->setOptIn(false);
+        //optin true on sync, false on form submission
+        $contactModel->setOptIn($contact->opt_in);
         $contactModel->setOptOut(false);
         $contactModel->setOptActionBy(OptActionBy::Owner);
 
@@ -111,10 +112,10 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
                 return;
             };
             $ninjaContact->name = $this->getNameFromForm($form_data["fields_by_key"]);
-
+            $ninjaContact->opt_in = false;
             $this->upsertContact($this->convertToContactModel($ninjaContact));
         } catch (\Exception $exception) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 
@@ -203,10 +204,9 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
                                     array_push($contactsArray, $contactModel);
                                 }
                             } catch (\Exception $exception) {
-                                // silent exception
+                                RaygunManager::get_instance()->exception_handler($exception);
                                 continue;
                             }
-
                             if (isset($limit) && count($contactsArray) >= $limit) {
                                 break;
                             }
@@ -226,7 +226,7 @@ class NinjaFormsPluginHandler extends BaseContactFormPluginHandler
                 }
             }
         } catch (\Exception $exception) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 }

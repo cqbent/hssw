@@ -60,3 +60,20 @@ function ce4wpWidgetFinishCallback (element) {
     element.removeAttribute('disabled')
   }
 }
+
+function ce4wpOnMenuClick(event) {
+  event.stopImmediatePropagation();
+  event.preventDefault();
+  var element = this;
+  jQuery(function($){
+    var link_reference = $(element).find("span").data("link_reference");
+    ce4wpNavigateToDashboard(element, link_reference, { source: 'ce4wp_admin_menu' }, ce4wpDashboardStartCallback, ce4wpDashboardFinishCallback);
+  });
+}
+
+jQuery(function($){
+  $('#ce4wp-menu-contacts').parent().on('click', ce4wpOnMenuClick);
+  $('#ce4wp-menu-campaigns').parent().on('click', ce4wpOnMenuClick);
+  $('#ce4wp-menu-woocommerce').parent().on('click', ce4wpOnMenuClick);
+  $('#ce4wp-menu-automation').parent().on('click', ce4wpOnMenuClick);
+});

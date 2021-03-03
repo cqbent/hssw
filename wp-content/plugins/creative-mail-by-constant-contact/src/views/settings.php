@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
     $contact_sync_available = !empty(CreativeMail::get_instance()->get_integration_manager()->get_active_plugins());
-
+    $supported_plugin_available = !empty(CreativeMail::get_instance()->get_integration_manager()->get_supported_integrations(true))
 ?>
 
 <div class="ce4wp-admin-wrapper">
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
           </div>
 
-          <div class="ce4wp-card" style="display: <?php echo !empty($this->instance_id) ? 'block' : 'none' ?>">
+          <div class="ce4wp-card">
             <div class="ce4wp-px-4 ce4wp-py-4">
               <h2 class="ce4wp-typography-root ce4wp-typography-h2 ce4wp-mb-2"><?= __( 'Contact Sync', 'ce4wp' ); ?></h2>
 
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($contact_sync_available) {
                     include 'activated-integrations.php';
                 }
-                else {
+                if($supported_plugin_available){
                     include 'available-integrations.php';
                 }
                 ?>
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label class="ce4wp-checkbox">
                           <input type="checkbox" name="ce4wp_show_marketing_checkbox" <?php echo (esc_attr(OptionsHelper::get_checkout_checkbox_enabled()) === '1') ? 'checked' : '';?> />
                           <span class="ce4wp-typography-root ce4wp-body2">
-                            <?php echo __('Yes I want to ask my customers in the WooCommerce Checkout for consent to sent marketing emails', 'ce4wp'); ?>
+                            <?php echo __('Yes I want to ask my customers in the WooCommerce Checkout for consent to send marketing emails.', 'ce4wp'); ?>
                           </span>
                         </label>
                       </td>
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </table>
 
                 <div class="ce-kvp">
-                  <input name="save_button" type="submit" class="ce4wp-button-text-primary ce4wp-right" id="save_customer_information" value="Save" />
+                  <input name="save_button" type="submit" class="ce4wp-button-base-root ce4wp-button-root ce4wp-button-contained ce4wp-button-contained-primary ce4wp-mt-2" id="save_customer_information" value="Save" />
                 </div>
               </form>
             </div>

@@ -40,12 +40,12 @@ class IntegrationManager
             new Integration('woocommerce', 'WooCommerce', 'woocommerce/woocommerce.php', WooCommercePluginHandler::class, false),
             new Integration('contact-form-7', 'Contact Form 7', 'contact-form-7/wp-contact-form-7.php', ContactFormSevenPluginHandler::class, false),
             new Integration('newsletter', 'Newsletter', 'newsletter/plugin.php', NewsLetterContactFormPluginHandler::class, false),
-            new Integration('wpforms', 'WPForms', 'wpforms/wpforms.php', WpFormsPluginHandler::class, false),
-            new Integration('wpformslite', 'WPForms Lite', 'wpforms-lite/wpforms.php', WpFormsPluginHandler::class, true),
-            new Integration('gravityforms', 'GravityForms', 'gravityforms/gravityforms.php', GravityFormsPluginHandler::class, false),
+            new Integration('wpforms', 'WPForms', 'wpforms/wpforms.php', WpFormsPluginHandler::class, false, 'https://wpforms.com/'),
+            new Integration('wpformslite', 'WPForms Lite', 'wpforms-lite/wpforms.php', WpFormsPluginHandler::class, true, '/wordpress/wp-admin/plugin-install.php?tab=plugin-information&plugin=wpforms-lite&TB_iframe=true&width=772&height=1144'),
+            new Integration('gravityforms', 'GravityForms', 'gravityforms/gravityforms.php', GravityFormsPluginHandler::class, false, 'https://www.gravityforms.com/'),
             new Integration('elementor', 'Elementor', 'elementor/elementor.php', ElementorPluginHandler::class, false),
-            new Integration('ninjaforms', 'Ninja forms', 'ninja-forms/ninja-forms.php', NinjaFormsPluginHandler::class, false),
-            new Integration('caldera', 'Caldera Forms', 'caldera-forms/caldera-core.php', CalderaPluginHandler::class, false)
+            new Integration('ninjaforms', 'Ninja forms', 'ninja-forms/ninja-forms.php', NinjaFormsPluginHandler::class, false, '/wordpress/wp-admin/plugin-install.php?tab=plugin-information&plugin=ninja-forms&TB_iframe=true&width=772&height=1144'),
+            new Integration('caldera', 'Caldera Forms', 'caldera-forms/caldera-core.php', CalderaPluginHandler::class, false, '/wordpress/wp-admin/plugin-install.php?tab=plugin-information&plugin=caldera-forms&TB_iframe=true&width=772&height=1144')
         );
     }
 
@@ -72,7 +72,7 @@ class IntegrationManager
                 // register hooks for integration class
                 $this->active_integrations[$active_plugin->get_slug()]->registerHooks();
             } catch (\Exception $e) {
-                // silent
+                RaygunManager::get_instance()->exception_handler($e);
             }
         }
     }
@@ -163,12 +163,36 @@ class IntegrationManager
     }
 
     /**
+     * Will get all the supported plugins that are installed and active on this WP instance.
+     *
+     * @return array
+     */
+    private function get_not_installed()
+    {
+
+        $supported_plugins = array();
+
+        foreach ($this->supported_integrations as $integration) {
+
+            // Check if the plugin is activated
+            if (!in_array($integration->get_class(), apply_filters('active_plugins', get_option('active_plugins')))) {
+                array_push($supported_plugins, $integration);
+            }
+        }
+
+        return $supported_plugins;
+    }
+
+    /**
      * Will return a list of all the integrations that we support.
      *
      * @return array A list of all the supported integrations.
      */
-    public function get_supported_integrations()
+    public function get_supported_integrations($filter_on_already_installed = false)
     {
+        if($filter_on_already_installed) {
+            return $this->get_not_installed();
+        }
         return $this->supported_integrations;
     }
 

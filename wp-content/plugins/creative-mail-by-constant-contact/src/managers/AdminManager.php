@@ -29,6 +29,7 @@ class AdminManager
 
     const ADMIN_NOTICES_HOOK = 'admin_notices';
     const ADMIN_INIT_HOOK = 'admin_init';
+    const ADMIN_MENU_HOOK = 'admin_menu';
     const ADMIN_ENQUEUE_SCRIPTS_HOOK = 'admin_enqueue_scripts';
 
     const ADMIN_AJAX_NONCE = 'ajax-nonce';
@@ -60,7 +61,7 @@ class AdminManager
      */
     public function add_hooks()
     {
-        add_action('admin_menu', array( $this, 'build_menu' ));
+        add_action(self::ADMIN_MENU_HOOK, array( $this, 'build_menu' ));
         add_action(self::ADMIN_ENQUEUE_SCRIPTS_HOOK, array( $this, 'add_assets' ));
         add_action(self::ADMIN_NOTICES_HOOK,  array($this, 'add_admin_notice_permalink' ));
         add_action(self::ADMIN_NOTICES_HOOK,  array($this, 'add_admin_notice_review' ));
@@ -362,9 +363,11 @@ class AdminManager
         wp_enqueue_style('ce4wp-font-poppins', 'https://fonts.googleapis.com/css?family=Poppins:400,500');
         wp_enqueue_script('wp-api');
 
+        $this->enqueue_dashboard_js();
+
         if ($this->is_cm_screen_and_show_footer())
         {
-            wp_enqueue_script('ce4wp_admin_footer_rating', CE4WP_PLUGIN_URL . 'assets/js/footer_rating.js', null, CE4WP_PLUGIN_VERSION, true);
+            wp_enqueue_script('ce4wp_admin_footer_rating', CE4WP_PLUGIN_URL . 'assets/js/footer_rating.js', 'wp-api', CE4WP_PLUGIN_VERSION, true);
         }
     }
 
@@ -373,8 +376,9 @@ class AdminManager
      */
     public function build_menu()
     {
+        $hasConnectedAccount = OptionsHelper::get_instance_id() !== null;
         // Did the user complete the entire setup?
-        $main_action = OptionsHelper::get_instance_id() !== null
+        $main_action = $hasConnectedAccount
             ? array( $this, 'show_dashboard' )
             : array( $this, 'show_setup' );
 
@@ -384,18 +388,55 @@ class AdminManager
         $position = apply_filters( 'ce4wp_menu_position', '35.5' );
         add_menu_page('Creative Mail', esc_html__('Creative Mail', self::DOMAIN_CE4WP), 'manage_options', 'creativemail', $main_action, 'data:image/svg+xml;base64,' . base64_encode($icon), $position);
 
-        $sub_actions = array(
-            array(
-                'title'    => esc_html__('Settings', self::DOMAIN_CE4WP),
-                'text'     => 'Settings',
-                'slug'     => 'creativemail_settings',
-                'callback' => array( $this, 'show_settings_page' )
-            )
-        );
+        $sub_actions = array();
+
+        if ($hasConnectedAccount) {
+            array_push($sub_actions, array(
+                'title'    => esc_html__('Campaigns', self::DOMAIN_CE4WP),
+                'text'     => '<span id="ce4wp-menu-campaigns" data-link_reference="5166faec-1dbb-4434-bad0-bb2f75898f92">'. __( 'Campaigns', self::DOMAIN_CE4WP) .'</span>',
+                'slug'     => 'creativemail_campaigns',
+                'callback' => null
+            ));
+            array_push($sub_actions, array(
+                'title'    => esc_html__('WooCommerce', self::DOMAIN_CE4WP),
+                'text'     => '<span id="ce4wp-menu-woocommerce" data-link_reference="1fabdbe2-95ed-4e1e-a2f3-ba0278f5096f">'. __( 'WooCommerce', self::DOMAIN_CE4WP) .'</span>',
+                'slug'     => 'creativemail_woocommerce',
+                'callback' => null
+            ));
+            array_push($sub_actions, array(
+                'title'    => esc_html__('Contacts', self::DOMAIN_CE4WP),
+                'text'     => '<span id="ce4wp-menu-contacts" data-link_reference="836b20fc-9ff1-41b2-912b-a8646caf05a4">'. __( 'Contacts', self::DOMAIN_CE4WP) .'</span>',
+                'slug'     => 'creativemail_contacts',
+                'callback' => null
+            ));
+            array_push($sub_actions, array(
+                'title'    => esc_html__('Automation', self::DOMAIN_CE4WP),
+                'text'     => '<span id="ce4wp-menu-automation" data-link_reference="d5baea05-c603-4cca-852e-f8e82414f6b0">'. __( 'Automation', self::DOMAIN_CE4WP) .'</span>',
+                'slug'     => 'creativemail_automation',
+                'callback' => null
+            ));
+        }
+
+        array_push($sub_actions, array(
+            'title'    => esc_html__('Settings', self::DOMAIN_CE4WP),
+            'text'     => __( 'Settings', self::DOMAIN_CE4WP),
+            'slug'     => 'creativemail_settings',
+            'callback' => array( $this, 'show_settings_page' )
+        ));
 
         foreach ($sub_actions as $sub_action) {
             add_submenu_page('creativemail', 'Creative Mail - ' . $sub_action['title'], $sub_action['text'], 'manage_options', $sub_action['slug'], $sub_action['callback']);
         }
+
+        //add woocommerce sub menu page
+        add_submenu_page(
+            'woocommerce',
+            esc_html__('Creative Mail', self::DOMAIN_CE4WP),
+            esc_html__('Creative Mail', self::DOMAIN_CE4WP),
+            'manage_woocommerce',
+            'ce4wp-woo-settings',
+            [ $this, 'show_settings_page' ]
+        );
     }
 
     public function add_admin_notice_permalink()
@@ -460,8 +501,6 @@ class AdminManager
      */
     public function show_setup()
     {
-        $this->enqueue_dashboard_js();
-
         include CE4WP_PLUGIN_DIR . 'src/views/onboarding.php';
     }
 
@@ -470,13 +509,11 @@ class AdminManager
      */
     public function show_dashboard()
     {
-        $this->enqueue_dashboard_js();
-
         include CE4WP_PLUGIN_DIR . 'src/views/dashboard.php';
     }
 
     private function enqueue_dashboard_js() {
-        wp_enqueue_script('ce4wp_dashboard', CE4WP_PLUGIN_URL.'assets/js/dashboard.js', null,CE4WP_PLUGIN_VERSION);
+        wp_enqueue_script('ce4wp_dashboard', CE4WP_PLUGIN_URL.'assets/js/dashboard.js', 'jquery',CE4WP_PLUGIN_VERSION);
         wp_localize_script('ce4wp_dashboard', 'ce4wp_data', array(
             'url' => admin_url('admin-ajax.php'),
             'nonce' => $this->create_nonce()
@@ -509,6 +546,7 @@ class AdminManager
                 return SsoHelper::generate_sso_link($instance_id, $instance_api_key, $connected_account_id, $linkReference, $linkParameters);
             }
             catch(Exception $ex) {
+                RaygunManager::get_instance()->exception_handler($ex);
             }
         }
 

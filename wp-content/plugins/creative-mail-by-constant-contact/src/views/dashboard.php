@@ -22,11 +22,13 @@
               </p>
               <div id="ce4wploaded">
                 <a id='ce4wp-go-button' onclick="ce4wpNavigateToDashboard(this, 'd25f690a-217a-4d68-9c58-8693965d4673', { source: 'ce4wp_dashboard' }, ce4wpDashboardStartCallback, ce4wpDashboardFinishCallback)" class="ce4wp-button-base-root ce4wp-button-root ce4wp-button-contained ce4wp-button-contained-primary ce4wp-mt-2" tabindex="0" type="button" data-element-type="button">
-                  <span class="ce4wp-button-label" style="width: 100%;"><?= __( 'Open your Creative Mail dashboard', 'ce4wp'); ?><span class="ce4wp-button-endIcon">
+                  <span class="ce4wp-button-label ce4wp-hide-on-mobile" style="width: 100%;"><?= __( 'Open your Creative Mail dashboard', 'ce4wp'); ?><span class="ce4wp-button-endIcon">
                     <svg class="ce4wp-Svgicon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path>
                     </svg>
                     </span>
+                  </span>
+                    <span class="ce4wp-button-label ce4wp-show-on-mobile" style="width: 100%;"><?= __( 'Open Creative Mail dashboard', 'ce4wp'); ?>
                   </span>
                 </a>
                 <h6 id='ce4wp-sub-apps-title' class="ce4wp-typography-root ce4wp-typography-h6 ce4wp-mt-4 ce4wp-mb-3">

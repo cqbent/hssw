@@ -5,6 +5,7 @@ namespace CreativeMail\Modules;
 use CreativeMail\CreativeMail;
 use CreativeMail\Helpers\EnvironmentHelper;
 use CreativeMail\Helpers\OptionsHelper;
+use CreativeMail\Managers\RaygunManager;
 use Exception;
 
 class FeedbackNoticeModule
@@ -65,7 +66,9 @@ class FeedbackNoticeModule
 
                 include CE4WP_PLUGIN_DIR . 'src/views/admin-feedback-notice/many-contacts.php';
             }
-        } catch (Exception $exception) {}
+        } catch (Exception $exception) {
+            RaygunManager::get_instance()->exception_handler($exception);
+        }
     }
 
     private function get_contact_metrics()

@@ -4,6 +4,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_CAL_EVENTTYPE', 'WordPress - Caldera Forms');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 use CreativeMail\Modules\Contacts\Models\OptActionBy;
 
@@ -53,10 +54,11 @@ class CalderaPluginHandler extends BaseContactFormPluginHandler
         $contactModel = new ContactModel();
 
         $contactModel->setEventType(CE4WP_CAL_EVENTTYPE);
-
-        $contactModel->setOptIn(true);
+        //optin true on sync, false on form submission
+        $contactModel->setOptIn($contact->opt_in);
         $contactModel->setOptOut(false);
         $contactModel->setOptActionBy(OptActionBy::Owner);
+
         $contactModel->setEmail($email);
 
         if (!empty($contact->firstname)) {
@@ -79,12 +81,14 @@ class CalderaPluginHandler extends BaseContactFormPluginHandler
             $calderaContact->firstname = array_key_exists("firstname", $nameValues) ? $nameValues["firstname"] : null;
             $calderaContact->lastname = array_key_exists("lastname", $nameValues) ? $nameValues["lastname"] : null;
             $calderaContact->email = $this->GetEmailFromForm($entryData);
+            //set opt in to false for form submissions
+            $calderaContact->opt_in = false;
             if (empty($calderaContact->email)) {
                 return;
             }
             $this->upsertContact($this->convertToContactModel($calderaContact));
         } catch (\Exception $exception) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 
@@ -128,12 +132,15 @@ class CalderaPluginHandler extends BaseContactFormPluginHandler
                 $contact->firstname = array_key_exists("firstname", $nameValues) ? $nameValues["firstname"] : null;
                 $contact->lastname = array_key_exists("lastname", $nameValues) ? $nameValues["lastname"] : null;
 
+                //contact opt in is true on sync
+                $contact->opt_in = true;
+
                 //Convert to contactModel
                 $contactModel = null;
                 try {
                     $contactModel = $this->convertToContactModel($contact);
                 } catch (\Exception $exception) {
-                    // silent exception
+                    RaygunManager::get_instance()->exception_handler($exception);
                     continue;
                 }
 
@@ -152,7 +159,7 @@ class CalderaPluginHandler extends BaseContactFormPluginHandler
                     try {
                         $this->batchUpsertContacts($batch);
                     } catch (\Exception $exception) {
-                        // silent exception
+                        RaygunManager::get_instance()->exception_handler($exception);
                     }
                 }
             }

@@ -4,6 +4,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_CF7_EVENTTYPE', 'WordPress - Contact Form 7');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactFormSevenSubmission;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 use CreativeMail\Modules\Contacts\Models\OptActionBy;
@@ -46,7 +47,6 @@ class ContactFormSevenPluginHandler extends BaseContactFormPluginHandler
 
         // convert
         $contactModel = new ContactModel();
-
         $email = $this->findValue($contactForm, $this->emailFields);
         if (!empty($email)) {
             $contactModel->setEmail($email);
@@ -62,6 +62,7 @@ class ContactFormSevenPluginHandler extends BaseContactFormPluginHandler
             $contactModel->setLastName($lastName);
         }
 
+        $contactModel->setOptIn(false);
         $contactModel->setEventType(CE4WP_CF7_EVENTTYPE);
 
         return $contactModel;
@@ -112,6 +113,7 @@ class ContactFormSevenPluginHandler extends BaseContactFormPluginHandler
                 $contactModel = new ContactModel();
                 $contactModel->setOptIn(true);
                 $contactModel->setOptOut(false);
+
                 $contactModel->setOptActionBy(OptActionBy::Visitor);
                 try {
                     $email = $this->findValueFromDb($form_data, $this->emailFields);
@@ -127,7 +129,7 @@ class ContactFormSevenPluginHandler extends BaseContactFormPluginHandler
                         $contactModel->setLastName($lastname);
                     }
                 } catch (\Exception $exception) {
-                    // silent exception
+                    RaygunManager::get_instance()->exception_handler($exception);
                     continue;
                 }
 
@@ -152,7 +154,7 @@ class ContactFormSevenPluginHandler extends BaseContactFormPluginHandler
         try {
             $this->upsertContact($this->convertToContactModel($contact_form));
         } catch (\Exception $exception) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 

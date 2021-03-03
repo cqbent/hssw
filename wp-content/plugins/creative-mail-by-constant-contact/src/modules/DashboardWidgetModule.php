@@ -6,6 +6,7 @@ use CreativeMail\Clients\CreativeMailClient;
 use CreativeMail\CreativeMail;
 use CreativeMail\Exceptions\CreativeMailException;
 use CreativeMail\Helpers\OptionsHelper;
+use CreativeMail\Managers\RaygunManager;
 
 class DashboardWidgetModule
 {
@@ -58,6 +59,7 @@ class DashboardWidgetModule
                 $this->show_woo_commerce();
             }
         } catch ( CreativeMailException $exception ) {
+            RaygunManager::get_instance()->exception_handler($exception);
             $this->show_exception();
         }
     }

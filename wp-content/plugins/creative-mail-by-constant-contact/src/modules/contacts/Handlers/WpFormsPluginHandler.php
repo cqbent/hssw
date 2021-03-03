@@ -5,6 +5,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_WPF_EVENTTYPE', 'WordPress - WPForms');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 use CreativeMail\Modules\Contacts\Models\OptActionBy;
 use function Sodium\add;
@@ -38,9 +39,9 @@ class WpFormsPluginHandler extends BaseContactFormPluginHandler
         $contactModel = new ContactModel();
 
         $contactModel->setEventType(CE4WP_WPF_EVENTTYPE);
-        $contactModel->setOptIn(true);
+        $contactModel->setOptIn(false);
         $contactModel->setOptOut(false);
-        $contactModel->setOptActionBy(OptActionBy::Visitor);
+        $contactModel->setOptActionBy(OptActionBy::Owner);
 
         $emailField = $this->get_form_type_field($formData, 'email');
         if (array_key_exists('value', $emailField)) {
@@ -61,6 +62,15 @@ class WpFormsPluginHandler extends BaseContactFormPluginHandler
             }
         }
 
+        $consentField = $this->get_form_type_field($formData, "gdpr-checkbox");
+        if ($this->isNotNullOrEmpty($consentField) && array_key_exists('value', $consentField) && $consentField) {
+            //If a gdpr checkbox is present it is required before submitting
+            //The value is a string like "I consent to having this website store my information . . . " instead of a bool
+            //Will assume people won't alter or change this to be the other way around so having this value == consent
+            $contactModel->setOptIn(true);
+            $contactModel->setOptActionBy(OptActionBy::Visitor);
+        }
+
         return $contactModel;
     }
 
@@ -68,8 +78,9 @@ class WpFormsPluginHandler extends BaseContactFormPluginHandler
     {
         try {
             $this->upsertContact($this->convertToContactModel($fields));
-        } catch (\Exception $exception) {
-            // silent exception
+        }
+        catch (\Exception $exception) {
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 
@@ -115,7 +126,7 @@ class WpFormsPluginHandler extends BaseContactFormPluginHandler
                     }
 
                 } catch (\Exception $exception) {
-                    // silent exception
+                    RaygunManager::get_instance()->exception_handler($exception);
                     continue;
                 }
 
@@ -130,7 +141,7 @@ class WpFormsPluginHandler extends BaseContactFormPluginHandler
                     try {
                         $this->batchUpsertContacts($batch);
                     } catch (\Exception $exception) {
-                        // silent exception
+                        RaygunManager::get_instance()->exception_handler($exception);
                     }
                 }
             }

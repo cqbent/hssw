@@ -4,6 +4,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_GF_EVENTTYPE', 'WordPress - GravityForms');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 use CreativeMail\Modules\Contacts\Models\OptActionBy;
 
@@ -17,9 +18,10 @@ class GravityFormsPluginHandler extends BaseContactFormPluginHandler
         $contactModel = new ContactModel();
 
         $contactModel->setEventType(CE4WP_GF_EVENTTYPE);
-        $contactModel->setOptIn(true);
+        //optin true on sync, false on form submission
+        $contactModel->setOptIn($user->opt_in);
         $contactModel->setOptOut(false);
-        $contactModel->setOptActionBy(OptActionBy::Visitor);
+        $contactModel->setOptActionBy(OptActionBy::Owner);
 
         $email = $user->email;
         if (!empty($email)) {
@@ -110,9 +112,11 @@ class GravityFormsPluginHandler extends BaseContactFormPluginHandler
             if (empty($contact->email)) {
                 return;
             };
+
+            $contact->opt_in = false;
             $this->upsertContact($this->convertToContactModel($contact));
         } catch (\Exception $exception) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 
@@ -174,6 +178,7 @@ class GravityFormsPluginHandler extends BaseContactFormPluginHandler
                         continue;
                     }
                     $contact->name = $this->GetNameValuesFromForm($entry, $formArray);
+                    $contact->opt_in = true;
 
                     //Convert to contactModel
 
@@ -181,7 +186,7 @@ class GravityFormsPluginHandler extends BaseContactFormPluginHandler
                     try {
                         $contactModel = $this->convertToContactModel($contact);
                     } catch (\Exception $exception) {
-                        // silent exception
+                        RaygunManager::get_instance()->exception_handler($exception);
                         continue;
                     }
 
@@ -204,7 +209,7 @@ class GravityFormsPluginHandler extends BaseContactFormPluginHandler
                 try {
                     $this->batchUpsertContacts($batch);
                 } catch (\Exception $exception) {
-                    // silent exception
+                    RaygunManager::get_instance()->exception_handler($exception);
                 }
             }
         }

@@ -10,6 +10,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_WC_EVENTTYPE', 'WordPress - WooCommerce');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactAddressModel;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 
@@ -60,14 +61,15 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
             } else if (!empty($_POST[self::CHECKOUT_CONSENT_CHECKBOX_VALUE])) {
                 $checkbox_value = esc_attr($_POST[self::CHECKOUT_CONSENT_CHECKBOX_VALUE]);
             } else if (!empty($products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE])) {
-                $checkbox_value = $products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE];
+                $checkbox_value = $products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE][0]; //this value appears to be in array;
             } else if (!empty($products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE_OLD])) {
-                $checkbox_value = $products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE_OLD];
+                $checkbox_value = $products_detail[self::CHECKOUT_CONSENT_CHECKBOX_VALUE_OLD][0]; //this value appears to be in array;
             }
 
             if (!is_null($checkbox_value)) {
                 $contactModel->setOptActionBy(1);
                 $contactModel->setOptIn((bool)$checkbox_value);
+                $contactModel->setOptOut(!(bool)$checkbox_value);
             }
 
         }
@@ -101,39 +103,28 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
         return $contactAddress;
     }
 
-//    public function ceHandlerWooCommerceNewCustomer($customer_id, $new_customer_data, $password)
-//    {
-//        try {
-//            $this->upsertContact($this->convertToContactModel($new_customer_data));
-//        } catch (\Exception $exception) {
-//            // silent exception
-//        }
-//    }
-
     public function ceHandlerWooCommerceNewOrder($order_id)
     {
         try {
             $order = wc_get_order($order_id);
             $this->upsertContact($this->convertToContactModel($order->ID));
         } catch (\Exception $exception) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 
     public function registerHooks()
     {
-        add_action('woocommerce_new_order', array($this, 'ceHandlerWooCommerceNewOrder'), 10, 1);
+        add_action('woocommerce_checkout_order_created', array($this, 'ceHandlerWooCommerceNewOrder'), 10, 1);
         // hook function to synchronize
         add_action(CE4WP_SYNCHRONIZE_ACTION, array($this, 'syncAction'));
-//        add_action('woocommerce_created_customer', array($this, 'ceHandlerWooCommerceNewCustomer'), 10, 3);
     }
 
     public function unregisterHooks()
     {
-        remove_action('woocommerce_new_order', array($this, 'ceHandlerWooCommerceOrder'));
+        remove_action('woocommerce_checkout_order_created', array($this, 'ceHandlerWooCommerceOrder'));
         // remove hook function to synchronize
         remove_action(CE4WP_SYNCHRONIZE_ACTION, array($this, 'syncAction'));
-        //remove_action('woocommerce_created_customer', array($this,'ceHandlerWooCommerceNewCustomer'));
     }
 
     public function syncAction($limit = null)
@@ -172,7 +163,6 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
         }
 
         if (!empty($backfillArray)) {
-
             $batches = array_chunk($backfillArray, CE4WP_BATCH_SIZE);
             foreach ($batches as $batch) {
                 $this->batchUpsertContacts($batch);

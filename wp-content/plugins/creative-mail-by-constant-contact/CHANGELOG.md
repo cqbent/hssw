@@ -1,6 +1,10 @@
 Changelog
 =========
 
+#### 1.3.3 - March 3 2021
+- UI Improvements on the settings screen.
+- Direct access to Creative Mail features from the left side nav in WP Admin.
+
 #### 1.3.2 - February 17 2021
 - Fixes an issue where the contact sync might cause a critical error
 

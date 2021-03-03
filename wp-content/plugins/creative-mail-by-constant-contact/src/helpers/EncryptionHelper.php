@@ -78,6 +78,7 @@ class EncryptionHelper
             try {
                 return Crypto::decrypt($encrypted, self::get_encryption_key());
             } catch ( \Exception $e ) {
+                RaygunManager::get_instance()->exception_handler($e);
                 return $encrypted;
             }
         }

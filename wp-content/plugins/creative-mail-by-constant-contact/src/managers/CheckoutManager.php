@@ -135,6 +135,7 @@ class CheckoutManager
     public function order_completed($order_id)
     {
         $this->update_checkout($order_id, '/v1.0/checkout/order_completed');
+        $this->cleanup_old_checkouts($order_id);
     }
 
     /**
@@ -148,6 +149,37 @@ class CheckoutManager
      */
     public function order_processed( $order_id) {
         $this->update_checkout($order_id, '/v1.0/checkout/order_created');
+    }
+
+    /**
+     * Cleanup previous checkouts in case old is still marked as abandoned
+     *
+     * @param int $order_id    Woocommerce order id.
+     *
+     * @since 1.3.3
+     *
+     * @return void
+     */
+    private function cleanup_old_checkouts( $order_id )
+    {
+        $order = wc_get_order($order_id);
+        if ( empty( $order ) ) {
+            return;
+        }
+        try
+        {
+            $data = $this->get_checkout_uuid_by_email($order->get_billing_email());
+            foreach ($data as $checkout_data)
+            {
+                $endpoint = EnvironmentHelper::get_app_gateway_url('wordpress') . '/v1.0/checkout/'. $checkout_data->checkout_uuid;
+                $this->ce4wp_remote_delete($endpoint);
+                CreativeMail::get_instance()->get_database_manager()->remove_checkout_data($checkout_data->checkout_uuid);
+            }
+        }
+        catch (\Exception $e)
+        {
+            RaygunManager::get_instance()->exception_handler($e);
+        }
     }
 
     /**
@@ -328,6 +360,17 @@ class CheckoutManager
     }
 
     /**
+     * Helper function to retrieve checkout UUID for email address.
+     *
+     * @since 1.3.3
+     *
+     * @return array List of checkout UUIDs if exists, else empty string.
+     */
+    private function get_checkout_uuid_by_email($email_address) {
+        return CreativeMail::get_instance()->get_database_manager()->get_checkout_data( self::CHECKOUT_UUID, 'user_email = %s', [ $email_address ] );
+    }
+
+    /**
      * Save current checkout data to db.
      *
      * @param string  $billing_email Manually set customer billing email if provided.
@@ -504,7 +547,7 @@ class CheckoutManager
         }
         catch (\Exception $e)
         {
-            // silent
+            RaygunManager::get_instance()->exception_handler($e);
         }
 
         return $data;
@@ -668,7 +711,7 @@ class CheckoutManager
                 );
             }
         } catch (\Exception $e) {
-            // silent
+            RaygunManager::get_instance()->exception_handler($e);
         }
     }
 

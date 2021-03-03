@@ -16,6 +16,7 @@ class Integration
     private $integrationHandler;
     private $slug;
     private $hide_from_suggestions;
+    private $url;
 
     /**
      * Integration constructor.
@@ -25,14 +26,16 @@ class Integration
      * @param $class                 string The path the the plugin class that should be used to check if the plugin required for this integration is installed.
      * @param $integration_handler   string The name of the class that should be instantiated when this integration gets activated.
      * @param $hide_from_suggestions boolean If you want to hide this plugin from the suggestion list, set this to true
+     * @param $url                   string The link to the plugin store, default will set it based on the slug
      */
-    public function __construct($slug, $name, $class, $integration_handler, $hide_from_suggestions)
+    public function __construct($slug, $name, $class, $integration_handler, $hide_from_suggestions, $url = null)
     {
         $this->slug = $slug;
         $this->name = $name;
         $this->class = $class;
         $this->integrationHandler = $integration_handler;
         $this->hide_from_suggestions = $hide_from_suggestions;
+        $this->url = is_null($url) ? "/wordpress/wp-admin/plugin-install.php?tab=plugin-information&plugin=$slug&TB_iframe=true&width=772&height=1144" : $url;
     }
 
     /**
@@ -83,5 +86,15 @@ class Integration
     public function is_hidden_from_suggestions()
     {
         return $this->hide_from_suggestions;
+    }
+
+    /**
+     * Gets the market url of the plugin
+     *
+     * @return bool
+     */
+    public function get_url()
+    {
+        return $this->url;
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d
+class ComposerStaticInita94ac5d1b50913d18d3aa28a2e5a3c7b
 {
     public static $prefixLengthsPsr4 = array (
         'F' => 
@@ -61,6 +61,16 @@ class ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'R' => 
+        array (
+            'Raygun4php' => 
+            array (
+                0 => __DIR__ . '/..' . '/mindscape/raygun4php/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'CreativeMail\\Clients\\CreativeMailClient' => __DIR__ . '/../..' . '/src/clients/CreativeMailClient.php',
         'CreativeMail\\Constants\\EnvironmentNames' => __DIR__ . '/../..' . '/src/constants/EnvironmentNames.php',
@@ -79,6 +89,7 @@ class ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d
         'CreativeMail\\Managers\\EmailManager' => __DIR__ . '/../..' . '/src/managers/EmailManager.php',
         'CreativeMail\\Managers\\InstanceManager' => __DIR__ . '/../..' . '/src/managers/InstanceManager.php',
         'CreativeMail\\Managers\\IntegrationManager' => __DIR__ . '/../..' . '/src/managers/IntegrationManager.php',
+        'CreativeMail\\Managers\\RaygunManager' => __DIR__ . '/../..' . '/src/managers/RaygunManager.php',
         'CreativeMail\\Modules\\Api\\Models\\ApiRequestItem' => __DIR__ . '/../..' . '/src/modules/api/Models/ApiRequestItem.php',
         'CreativeMail\\Modules\\Api\\Processes\\ApiBackgroundProcess' => __DIR__ . '/../..' . '/src/modules/api/Processes/ApiBackgroundProcess.php',
         'CreativeMail\\Modules\\Blog\\Models\\BlogAttachment' => __DIR__ . '/../..' . '/src/modules/blog/models/BlogAttachment.php',
@@ -123,6 +134,16 @@ class ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d
         'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
         'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
         'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
+        'Raygun4php\\Raygun4PhpException' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/Raygun4PhpException.php',
+        'Raygun4php\\RaygunClient' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunClient.php',
+        'Raygun4php\\RaygunClientMessage' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunClientMessage.php',
+        'Raygun4php\\RaygunEnvironmentMessage' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunEnvironmentMessage.php',
+        'Raygun4php\\RaygunExceptionMessage' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunExceptionMessage.php',
+        'Raygun4php\\RaygunExceptionTraceLineMessage' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunExceptionTraceLineMessage.php',
+        'Raygun4php\\RaygunIdentifier' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunIdentifier.php',
+        'Raygun4php\\RaygunMessage' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunMessage.php',
+        'Raygun4php\\RaygunMessageDetails' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunMessageDetails.php',
+        'Raygun4php\\RaygunRequestMessage' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunRequestMessage.php',
         'WP_Async_Request' => __DIR__ . '/..' . '/a5hleyrich/wp-background-processing/classes/wp-async-request.php',
         'WP_Background_Process' => __DIR__ . '/..' . '/a5hleyrich/wp-background-processing/classes/wp-background-process.php',
     );
@@ -130,9 +151,10 @@ class ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit747596c80a8c73a211d3b7d122d0bc2d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita94ac5d1b50913d18d3aa28a2e5a3c7b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita94ac5d1b50913d18d3aa28a2e5a3c7b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita94ac5d1b50913d18d3aa28a2e5a3c7b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInita94ac5d1b50913d18d3aa28a2e5a3c7b::$classMap;
 
         }, null, ClassLoader::class);
     }

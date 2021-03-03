@@ -9,7 +9,8 @@
         "ext-json": "*",
         "a5hleyrich/wp-background-processing": "^1.0",
         "squizlabs/php_codesniffer": "*",
-        "ext-zip": "*"
+        "ext-zip": "*",
+        "mindscape/raygun4php": "1.*"
     },
     "autoload": {
         "psr-4": {

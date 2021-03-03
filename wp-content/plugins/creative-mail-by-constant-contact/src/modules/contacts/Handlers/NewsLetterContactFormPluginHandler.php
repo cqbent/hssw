@@ -4,6 +4,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_NL_EVENTTYPE', 'WordPress - NewsLetter');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 use CreativeMail\Modules\Contacts\Models\OptActionBy;
 
@@ -39,8 +40,9 @@ class NewsLetterContactFormPluginHandler extends BaseContactFormPluginHandler
     {
         try {
             $this->upsertContact($this->convertToContactModel($user));
-        } catch (\Exception $exception) {
-            // silent exception
+        }
+        catch (\Exception $exception) {
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 
@@ -103,7 +105,7 @@ class NewsLetterContactFormPluginHandler extends BaseContactFormPluginHandler
                         $contactModel->setLastName($surname);
                     }
                 } catch (\Exception $exception) {
-                    // silent exception
+                    RaygunManager::get_instance()->exception_handler($exception);
                     continue;
                 }
 
@@ -120,7 +122,7 @@ class NewsLetterContactFormPluginHandler extends BaseContactFormPluginHandler
                 try {
                     $this->batchUpsertContacts($batch);
                 } catch (\Exception $exception) {
-                    // silent exception
+                    RaygunManager::get_instance()->exception_handler($exception);
                 }
             }
         }

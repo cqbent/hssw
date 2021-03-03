@@ -4,6 +4,7 @@ namespace CreativeMail\Modules\Contacts\Handlers;
 
 define('CE4WP_EL_EVENTTYPE', 'WordPress - Elementor');
 
+use CreativeMail\Managers\RaygunManager;
 use CreativeMail\Modules\Contacts\Models\ContactModel;
 use CreativeMail\Modules\Contacts\Models\OptActionBy;
 
@@ -41,9 +42,9 @@ class ElementorPluginHandler extends BaseContactFormPluginHandler
 
         $contactModel->setEventType(CE4WP_EL_EVENTTYPE);
 
-        $contactModel->setOptIn(true);
+        $contactModel->setOptIn(false);
         $contactModel->setOptOut(false);
-        $contactModel->setOptActionBy(OptActionBy::Visitor);
+        $contactModel->setOptActionBy(OptActionBy::Owner);
 
         $email = $contact->email;
         if (!empty($email)) {
@@ -76,7 +77,7 @@ class ElementorPluginHandler extends BaseContactFormPluginHandler
             };
             $this->upsertContact($this->convertToContactModel($elemContact));
         } catch (\Exception $exception) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
     }
 

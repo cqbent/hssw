@@ -83,10 +83,12 @@ class EmailManager
 
     public function ce_checkout_order_meta( $order_id )
     {
-        if ($_POST[self::CHECKOUT_CONSENT_CHECKBOX_ID]) {
+        if (isset($_POST[self::CHECKOUT_CONSENT_CHECKBOX_ID])) {
             $checkbox_value = esc_attr($_POST[self::CHECKOUT_CONSENT_CHECKBOX_ID]);
-            update_post_meta($order_id, self::CHECKOUT_CONSENT_CHECKBOX_VALUE, $checkbox_value);
+        } else {
+            $checkbox_value = "0";
         }
+        update_post_meta($order_id, self::CHECKOUT_CONSENT_CHECKBOX_VALUE, $checkbox_value);
     }
 
     public function add_checkout_field( $checkout)
@@ -258,7 +260,7 @@ class EmailManager
                 $data->salt = bin2hex($salt);
                 $data->generated_password = base64_encode($gp);
             } catch (\Exception $ex) {
-                // the great logging experience
+                RaygunManager::get_instance()->exception_handler($ex);
             }
         }
 
@@ -481,9 +483,9 @@ class EmailManager
                             }
                         }
 
-                    } catch (\Exception $exc)
+                    } catch (\Exception $ex)
                     {
-                        // unable to get this data
+                        RaygunManager::get_instance()->exception_handler($ex);
                     }
 
                     $src = wc_placeholder_img_src();
@@ -556,7 +558,7 @@ class EmailManager
                 $with_data = true;
             }
             catch (\Exception $ex) {
-                // something failed here
+                RaygunManager::get_instance()->exception_handler($ex);
                 $with_data = false;
             }
         }
@@ -766,7 +768,7 @@ class EmailManager
                 return $order->get_view_order_url();
             }
         } catch ( \Exception $exception ) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
 
         return null;
@@ -777,7 +779,7 @@ class EmailManager
         try {
             return wc_get_page_permalink('myaccount');
         } catch ( \Exception $exception ) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
 
         return null;
@@ -799,7 +801,7 @@ class EmailManager
 
             return $data;
         } catch ( \Exception $exception ) {
-            // silent exception
+            RaygunManager::get_instance()->exception_handler($exception);
         }
         return null;
     }
