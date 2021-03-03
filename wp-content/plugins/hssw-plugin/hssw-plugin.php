@@ -238,3 +238,42 @@ function hssw_event_categories() {
 	return $output;
 }
 add_shortcode('hssw_event_categories', 'hssw_event_categories');
+
+function hssw_cat_posts($attributes) {
+	$atts = shortcode_atts(array('cat' => 'author-of-the-week'), $attributes);
+	$args   = array(
+		'post_type'      => 'post',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'category_name' => $atts['cat']
+	);
+	$output = '';
+	$query  = new \WP_Query( $args );
+	if ( $query->have_posts() ) {
+		$output = '<div class="featured-blog-posts wp-block-columns">';
+		while ($query->have_posts()) {
+			$query->the_post();
+			$output .= '
+				<div class="row">
+					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
+					<div class="content col-sm-8">
+						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
+						<div class="excerpt">' . get_the_excerpt() . '</div>
+					</div>
+				</div>
+			';
+		}
+		$output .= '</div>';
+		wp_reset_postdata();
+	}
+	return $output;
+}
+add_shortcode('hssw_cat_posts', 'hssw_cat_posts');
+
+function hssw_exclude_category_from_blog( $query ) {
+
+	if( $query->is_main_query() && ! is_admin() && $query->is_home() ) {
+		$query->set( 'cat', ['-15','-635'] );
+	}
+}
+add_action( 'pre_get_posts', 'hssw_exclude_category_from_blog' );

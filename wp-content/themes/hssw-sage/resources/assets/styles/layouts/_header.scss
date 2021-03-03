@@ -157,6 +157,7 @@ header.banner {
 
             &.current-menu-item,
             &.current-menu-ancestor,
+            &.current_page_parent,
             &.current-page-ancestor {
               > a {
                 color: $red;
@@ -260,21 +261,6 @@ header.banner {
       right: 0;
       top: 60px;
       width: 200px;
-      .search-field {
-        padding: 2px 5px;
-        height: 25px;
-        width: 80%;
-        float: left;
-      }
-      .btn {
-        font-size: 12px;
-        padding: 3px 5px;
-        float: right;
-        color: $white;
-        border: none;
-        width: calc(20% - 5px);
-        min-width: 20px;
-      }
     }
   }
 

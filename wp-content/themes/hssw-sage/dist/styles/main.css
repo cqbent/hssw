@@ -15481,6 +15481,35 @@ form textarea {
   max-width: 992px;
 }
 
+/* line 62, resources/assets/styles/common/_global.scss */
+
+form #search-fields .search-field {
+  padding: 2px 5px;
+  height: 25px;
+  width: 80%;
+  float: left;
+}
+
+/* line 68, resources/assets/styles/common/_global.scss */
+
+form #search-fields .btn,
+form #search-fields .comment-form input[type="submit"],
+.comment-form form #search-fields input[type="submit"],
+form #search-fields .search-form .search-submit,
+.search-form form #search-fields .search-submit,
+form #search-fields .tribe-events button,
+.tribe-events form #search-fields button,
+form #search-fields .tribe-events-pg-template button,
+.tribe-events-pg-template form #search-fields button {
+  font-size: 12px;
+  padding: 3px 5px;
+  float: right;
+  color: #fff;
+  border: none;
+  width: calc(20% - 5px);
+  min-width: 20px;
+}
+
 /* line 5, resources/assets/styles/components/_comments.scss */
 
 .comment-list ol {
@@ -15768,18 +15797,20 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     margin-left: auto;
   }
 
-  /* line 161, resources/assets/styles/layouts/_header.scss */
+  /* line 162, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item > a,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor > a,
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current_page_parent > a,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor > a {
     color: #ee2015;
   }
 
-  /* line 163, resources/assets/styles/layouts/_header.scss */
+  /* line 164, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-item > a::after,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-menu-ancestor > a::after,
+  header.banner nav.nav-primary #navbar ul.nav .menu-item.current_page_parent > a::after,
   header.banner nav.nav-primary #navbar ul.nav .menu-item.current-page-ancestor > a::after {
     content: "";
     position: absolute;
@@ -15791,7 +15822,7 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     display: none;
   }
 
-  /* line 176, resources/assets/styles/layouts/_header.scss */
+  /* line 177, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu {
     position: absolute;
@@ -15802,7 +15833,7 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     background: rgba(0, 0, 0, 0.9);
   }
 
-  /* line 183, resources/assets/styles/layouts/_header.scss */
+  /* line 184, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item {
     font-size: 0.875rem;
@@ -15810,19 +15841,19 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     padding: 0 0 5px 0;
   }
 
-  /* line 188, resources/assets/styles/layouts/_header.scss */
+  /* line 189, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item a {
     padding: 5px 0;
   }
 
-  /* line 191, resources/assets/styles/layouts/_header.scss */
+  /* line 192, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item a::after {
     display: none;
   }
 
-  /* line 203, resources/assets/styles/layouts/_header.scss */
+  /* line 204, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item .sub-menu {
     position: relative;
@@ -15830,20 +15861,20 @@ header.banner nav.nav-primary .navbar-toggler.collapsed .icon-bar {
     margin-left: 10px;
   }
 
-  /* line 209, resources/assets/styles/layouts/_header.scss */
+  /* line 210, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary #navbar ul.nav .menu-item .sub-menu .menu-item .sub-menu .menu-item {
     text-transform: none;
   }
 
-  /* line 219, resources/assets/styles/layouts/_header.scss */
+  /* line 220, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler {
     display: none;
   }
 }
 
-/* line 224, resources/assets/styles/layouts/_header.scss */
+/* line 225, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary {
   position: absolute;
@@ -15853,26 +15884,26 @@ header.banner nav.nav-secondary {
   text-transform: uppercase;
 }
 
-/* line 231, resources/assets/styles/layouts/_header.scss */
+/* line 232, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary .menu-item a {
   padding: 0 10px;
   color: #dcdcdc;
 }
 
-/* line 234, resources/assets/styles/layouts/_header.scss */
+/* line 235, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary .menu-item a:hover {
   color: #ee2015;
 }
 
-/* line 239, resources/assets/styles/layouts/_header.scss */
+/* line 240, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-secondary .menu-item.current-menu-item a {
   color: #ee2015;
 }
 
-/* line 245, resources/assets/styles/layouts/_header.scss */
+/* line 246, resources/assets/styles/layouts/_header.scss */
 
 header.banner .search-form {
   position: absolute;
@@ -15880,7 +15911,7 @@ header.banner .search-form {
   top: 10px;
 }
 
-/* line 249, resources/assets/styles/layouts/_header.scss */
+/* line 250, resources/assets/styles/layouts/_header.scss */
 
 header.banner .search-form .search-toggle {
   display: block;
@@ -15892,7 +15923,7 @@ header.banner .search-form .search-toggle {
   cursor: pointer;
 }
 
-/* line 258, resources/assets/styles/layouts/_header.scss */
+/* line 259, resources/assets/styles/layouts/_header.scss */
 
 header.banner .search-form #search-fields {
   position: absolute;
@@ -15901,48 +15932,20 @@ header.banner .search-form #search-fields {
   width: 200px;
 }
 
-/* line 263, resources/assets/styles/layouts/_header.scss */
-
-header.banner .search-form #search-fields .search-field {
-  padding: 2px 5px;
-  height: 25px;
-  width: 80%;
-  float: left;
-}
-
-/* line 269, resources/assets/styles/layouts/_header.scss */
-
-header.banner .search-form #search-fields .btn,
-header.banner .search-form #search-fields .comment-form input[type="submit"],
-.comment-form header.banner .search-form #search-fields input[type="submit"],
-header.banner .search-form #search-fields .search-submit,
-header.banner .search-form #search-fields .tribe-events button,
-.tribe-events header.banner .search-form #search-fields button,
-header.banner .search-form #search-fields .tribe-events-pg-template button,
-.tribe-events-pg-template header.banner .search-form #search-fields button {
-  font-size: 12px;
-  padding: 3px 5px;
-  float: right;
-  color: #fff;
-  border: none;
-  width: calc(20% - 5px);
-  min-width: 20px;
-}
-
 @media (min-width: 576px) {
-  /* line 282, resources/assets/styles/layouts/_header.scss */
+  /* line 268, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks {
     margin-right: 80px;
   }
 
-  /* line 287, resources/assets/styles/layouts/_header.scss */
+  /* line 273, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img.tagline {
     display: inline-block;
   }
 
-  /* line 294, resources/assets/styles/layouts/_header.scss */
+  /* line 280, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler .icon-bar {
     width: 50px;
@@ -15950,27 +15953,27 @@ header.banner .search-form #search-fields .tribe-events-pg-template button,
 }
 
 @media (min-width: 768px) {
-  /* line 302, resources/assets/styles/layouts/_header.scss */
+  /* line 288, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks {
     margin-top: 0;
   }
 
-  /* line 305, resources/assets/styles/layouts/_header.scss */
+  /* line 291, resources/assets/styles/layouts/_header.scss */
 
   header.banner .toplinks .social,
   header.banner .toplinks .search-form {
     display: inline-block;
   }
 
-  /* line 312, resources/assets/styles/layouts/_header.scss */
+  /* line 298, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img {
     height: 60px;
     margin-top: 10px;
   }
 
-  /* line 319, resources/assets/styles/layouts/_header.scss */
+  /* line 305, resources/assets/styles/layouts/_header.scss */
 
   header.banner nav.nav-primary .navbar-toggler {
     top: 25px;
@@ -15978,7 +15981,7 @@ header.banner .search-form #search-fields .tribe-events-pg-template button,
 }
 
 @media (min-width: 992px) {
-  /* line 327, resources/assets/styles/layouts/_header.scss */
+  /* line 313, resources/assets/styles/layouts/_header.scss */
 
   header.banner .brand img {
     height: 80px;
@@ -15986,7 +15989,7 @@ header.banner .search-form #search-fields .tribe-events-pg-template button,
 }
 
 @media (min-width: 992px) {
-  /* line 334, resources/assets/styles/layouts/_header.scss */
+  /* line 320, resources/assets/styles/layouts/_header.scss */
 
   header.banner .header-container {
     max-width: 992px;
@@ -16005,27 +16008,33 @@ header.banner .search-form #search-fields .tribe-events-pg-template button,
   margin-right: 5px;
 }
 
-/* line 10, resources/assets/styles/layouts/_sidebar.scss */
+/* line 9, resources/assets/styles/layouts/_sidebar.scss */
+
+.sidebar .search-form #search-fields {
+  display: block;
+}
+
+/* line 13, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form {
   background: linear-gradient(to bottom, cadetblue, gold);
   padding: 4px;
 }
 
-/* line 13, resources/assets/styles/layouts/_sidebar.scss */
+/* line 16, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-container {
   background: #000;
 }
 
-/* line 16, resources/assets/styles/layouts/_sidebar.scss */
+/* line 19, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults {
   border-radius: 0;
   font-size: .875rem;
 }
 
-/* line 19, resources/assets/styles/layouts/_sidebar.scss */
+/* line 22, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults .ctct-form-text,
 .sidebar .ctct-inline-form .ctct-form-defaults label,
@@ -16033,13 +16042,13 @@ header.banner .search-form #search-fields .tribe-events-pg-template button,
   font-size: .875rem !important;
 }
 
-/* line 22, resources/assets/styles/layouts/_sidebar.scss */
+/* line 25, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults h2 {
   font-size: 1.25rem !important;
 }
 
-/* line 25, resources/assets/styles/layouts/_sidebar.scss */
+/* line 28, resources/assets/styles/layouts/_sidebar.scss */
 
 .sidebar .ctct-inline-form .ctct-form-defaults input.ctct-form-element {
   padding: 2px 5px !important;
