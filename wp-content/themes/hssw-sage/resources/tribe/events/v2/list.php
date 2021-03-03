@@ -74,8 +74,6 @@ if ( empty( $disable_event_search ) ) {
 			<?php endforeach; ?>
 
 		</div>
-        <h2>Archived Author of the Week Posts</h2>
-        <?php print hssw_aw_posts(); ?>
 		<?php $this->template( 'list/nav' ); ?>
 
 		<?php $this->template( 'components/ical-link' ); ?>
