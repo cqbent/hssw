@@ -111,7 +111,6 @@ function featured_authors() {
 			),
 		),
 		'posts_per_page' => 2,
-
 	);
 	$output = '';
 	$query  = new \WP_Query( $args );

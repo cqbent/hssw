@@ -3624,7 +3624,8 @@ textarea.form-control.is-invalid,
 .comment-form input[type="submit"],
 .search-form .search-submit,
 .tribe-events button,
-.tribe-events-pg-template button {
+.tribe-events-pg-template button,
+.tribe-events-single button {
   display: inline-block;
   font-weight: 400;
   color: #fff;
@@ -3647,7 +3648,8 @@ textarea.form-control.is-invalid,
   .comment-form input[type="submit"],
   .search-form .search-submit,
   .tribe-events button,
-  .tribe-events-pg-template button {
+  .tribe-events-pg-template button,
+  .tribe-events-single button {
     transition: none;
   }
 }
@@ -3658,7 +3660,8 @@ textarea.form-control.is-invalid,
 .comment-form input:hover[type="submit"],
 .search-form .search-submit:hover,
 .tribe-events button:hover,
-.tribe-events-pg-template button:hover {
+.tribe-events-pg-template button:hover,
+.tribe-events-single button:hover {
   color: #fff;
   text-decoration: none;
 }
@@ -3670,11 +3673,13 @@ textarea.form-control.is-invalid,
 .search-form .search-submit:focus,
 .tribe-events button:focus,
 .tribe-events-pg-template button:focus,
+.tribe-events-single button:focus,
 .btn.focus,
 .comment-form input.focus[type="submit"],
 .search-form .focus.search-submit,
 .tribe-events button.focus,
-.tribe-events-pg-template button.focus {
+.tribe-events-pg-template button.focus,
+.tribe-events-single button.focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(238, 32, 21, 0.25);
 }
@@ -3686,11 +3691,13 @@ textarea.form-control.is-invalid,
 .search-form .disabled.search-submit,
 .tribe-events button.disabled,
 .tribe-events-pg-template button.disabled,
+.tribe-events-single button.disabled,
 .btn:disabled,
 .comment-form input:disabled[type="submit"],
 .search-form .search-submit:disabled,
 .tribe-events button:disabled,
-.tribe-events-pg-template button:disabled {
+.tribe-events-pg-template button:disabled,
+.tribe-events-single button:disabled {
   opacity: 0.65;
 }
 
@@ -4550,7 +4557,8 @@ fieldset:disabled .search-form a.search-submit,
 .comment-form .btn-group-lg > input[type="submit"],
 .search-form .btn-group-lg > .search-submit,
 .tribe-events .btn-group-lg > button,
-.tribe-events-pg-template .btn-group-lg > button {
+.tribe-events-pg-template .btn-group-lg > button,
+.tribe-events-single .btn-group-lg > button {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -4564,7 +4572,8 @@ fieldset:disabled .search-form a.search-submit,
 .comment-form .btn-group-sm > input[type="submit"],
 .search-form .btn-group-sm > .search-submit,
 .tribe-events .btn-group-sm > button,
-.tribe-events-pg-template .btn-group-sm > button {
+.tribe-events-pg-template .btn-group-sm > button,
+.tribe-events-single .btn-group-sm > button {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -4983,11 +4992,13 @@ input[type="button"].btn-block {
 .search-form .btn-group > .search-submit,
 .tribe-events .btn-group > button,
 .tribe-events-pg-template .btn-group > button,
+.tribe-events-single .btn-group > button,
 .btn-group-vertical > .btn,
 .comment-form .btn-group-vertical > input[type="submit"],
 .search-form .btn-group-vertical > .search-submit,
 .tribe-events .btn-group-vertical > button,
-.tribe-events-pg-template .btn-group-vertical > button {
+.tribe-events-pg-template .btn-group-vertical > button,
+.tribe-events-single .btn-group-vertical > button {
   position: relative;
   flex: 1 1 auto;
 }
@@ -4999,11 +5010,13 @@ input[type="button"].btn-block {
 .search-form .btn-group > .search-submit:hover,
 .tribe-events .btn-group > button:hover,
 .tribe-events-pg-template .btn-group > button:hover,
+.tribe-events-single .btn-group > button:hover,
 .btn-group-vertical > .btn:hover,
 .comment-form .btn-group-vertical > input:hover[type="submit"],
 .search-form .btn-group-vertical > .search-submit:hover,
 .tribe-events .btn-group-vertical > button:hover,
-.tribe-events-pg-template .btn-group-vertical > button:hover {
+.tribe-events-pg-template .btn-group-vertical > button:hover,
+.tribe-events-single .btn-group-vertical > button:hover {
   z-index: 1;
 }
 
@@ -5014,31 +5027,37 @@ input[type="button"].btn-block {
 .search-form .btn-group > .search-submit:focus,
 .tribe-events .btn-group > button:focus,
 .tribe-events-pg-template .btn-group > button:focus,
+.tribe-events-single .btn-group > button:focus,
 .btn-group > .btn:active,
 .comment-form .btn-group > input:active[type="submit"],
 .search-form .btn-group > .search-submit:active,
 .tribe-events .btn-group > button:active,
 .tribe-events-pg-template .btn-group > button:active,
+.tribe-events-single .btn-group > button:active,
 .btn-group > .btn.active,
 .comment-form .btn-group > input.active[type="submit"],
 .search-form .btn-group > .active.search-submit,
 .tribe-events .btn-group > button.active,
 .tribe-events-pg-template .btn-group > button.active,
+.tribe-events-single .btn-group > button.active,
 .btn-group-vertical > .btn:focus,
 .comment-form .btn-group-vertical > input:focus[type="submit"],
 .search-form .btn-group-vertical > .search-submit:focus,
 .tribe-events .btn-group-vertical > button:focus,
 .tribe-events-pg-template .btn-group-vertical > button:focus,
+.tribe-events-single .btn-group-vertical > button:focus,
 .btn-group-vertical > .btn:active,
 .comment-form .btn-group-vertical > input:active[type="submit"],
 .search-form .btn-group-vertical > .search-submit:active,
 .tribe-events .btn-group-vertical > button:active,
 .tribe-events-pg-template .btn-group-vertical > button:active,
+.tribe-events-single .btn-group-vertical > button:active,
 .btn-group-vertical > .btn.active,
 .comment-form .btn-group-vertical > input.active[type="submit"],
 .search-form .btn-group-vertical > .active.search-submit,
 .tribe-events .btn-group-vertical > button.active,
-.tribe-events-pg-template .btn-group-vertical > button.active {
+.tribe-events-pg-template .btn-group-vertical > button.active,
+.tribe-events-single .btn-group-vertical > button.active {
   z-index: 1;
 }
 
@@ -5063,6 +5082,7 @@ input[type="button"].btn-block {
 .search-form .btn-group > .search-submit:not(:first-child),
 .tribe-events .btn-group > button:not(:first-child),
 .tribe-events-pg-template .btn-group > button:not(:first-child),
+.tribe-events-single .btn-group > button:not(:first-child),
 .btn-group > .btn-group:not(:first-child) {
   margin-left: -1px;
 }
@@ -5074,11 +5094,13 @@ input[type="button"].btn-block {
 .search-form .btn-group > .search-submit:not(:last-child):not(.dropdown-toggle),
 .tribe-events .btn-group > button:not(:last-child):not(.dropdown-toggle),
 .tribe-events-pg-template .btn-group > button:not(:last-child):not(.dropdown-toggle),
+.tribe-events-single .btn-group > button:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn-group:not(:last-child) > .btn,
 .comment-form .btn-group > .btn-group:not(:last-child) > input[type="submit"],
 .search-form .btn-group > .btn-group:not(:last-child) > .search-submit,
 .tribe-events .btn-group > .btn-group:not(:last-child) > button,
-.tribe-events-pg-template .btn-group > .btn-group:not(:last-child) > button {
+.tribe-events-pg-template .btn-group > .btn-group:not(:last-child) > button,
+.tribe-events-single .btn-group > .btn-group:not(:last-child) > button {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -5090,11 +5112,13 @@ input[type="button"].btn-block {
 .search-form .btn-group > .search-submit:not(:first-child),
 .tribe-events .btn-group > button:not(:first-child),
 .tribe-events-pg-template .btn-group > button:not(:first-child),
+.tribe-events-single .btn-group > button:not(:first-child),
 .btn-group > .btn-group:not(:first-child) > .btn,
 .comment-form .btn-group > .btn-group:not(:first-child) > input[type="submit"],
 .search-form .btn-group > .btn-group:not(:first-child) > .search-submit,
 .tribe-events .btn-group > .btn-group:not(:first-child) > button,
-.tribe-events-pg-template .btn-group > .btn-group:not(:first-child) > button {
+.tribe-events-pg-template .btn-group > .btn-group:not(:first-child) > button,
+.tribe-events-single .btn-group > .btn-group:not(:first-child) > button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -5127,7 +5151,8 @@ input[type="button"].btn-block {
 .comment-form .btn-group-sm > input[type="submit"] + .dropdown-toggle-split,
 .search-form .btn-group-sm > .search-submit + .dropdown-toggle-split,
 .tribe-events .btn-group-sm > button + .dropdown-toggle-split,
-.tribe-events-pg-template .btn-group-sm > button + .dropdown-toggle-split {
+.tribe-events-pg-template .btn-group-sm > button + .dropdown-toggle-split,
+.tribe-events-single .btn-group-sm > button + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
@@ -5139,7 +5164,8 @@ input[type="button"].btn-block {
 .comment-form .btn-group-lg > input[type="submit"] + .dropdown-toggle-split,
 .search-form .btn-group-lg > .search-submit + .dropdown-toggle-split,
 .tribe-events .btn-group-lg > button + .dropdown-toggle-split,
-.tribe-events-pg-template .btn-group-lg > button + .dropdown-toggle-split {
+.tribe-events-pg-template .btn-group-lg > button + .dropdown-toggle-split,
+.tribe-events-single .btn-group-lg > button + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -5159,6 +5185,7 @@ input[type="button"].btn-block {
 .search-form .btn-group-vertical > .search-submit,
 .tribe-events .btn-group-vertical > button,
 .tribe-events-pg-template .btn-group-vertical > button,
+.tribe-events-single .btn-group-vertical > button,
 .btn-group-vertical > .btn-group {
   width: 100%;
 }
@@ -5170,6 +5197,7 @@ input[type="button"].btn-block {
 .search-form .btn-group-vertical > .search-submit:not(:first-child),
 .tribe-events .btn-group-vertical > button:not(:first-child),
 .tribe-events-pg-template .btn-group-vertical > button:not(:first-child),
+.tribe-events-single .btn-group-vertical > button:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: -1px;
 }
@@ -5181,11 +5209,13 @@ input[type="button"].btn-block {
 .search-form .btn-group-vertical > .search-submit:not(:last-child):not(.dropdown-toggle),
 .tribe-events .btn-group-vertical > button:not(:last-child):not(.dropdown-toggle),
 .tribe-events-pg-template .btn-group-vertical > button:not(:last-child):not(.dropdown-toggle),
+.tribe-events-single .btn-group-vertical > button:not(:last-child):not(.dropdown-toggle),
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
 .comment-form .btn-group-vertical > .btn-group:not(:last-child) > input[type="submit"],
 .search-form .btn-group-vertical > .btn-group:not(:last-child) > .search-submit,
 .tribe-events .btn-group-vertical > .btn-group:not(:last-child) > button,
-.tribe-events-pg-template .btn-group-vertical > .btn-group:not(:last-child) > button {
+.tribe-events-pg-template .btn-group-vertical > .btn-group:not(:last-child) > button,
+.tribe-events-single .btn-group-vertical > .btn-group:not(:last-child) > button {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -5197,11 +5227,13 @@ input[type="button"].btn-block {
 .search-form .btn-group-vertical > .search-submit:not(:first-child),
 .tribe-events .btn-group-vertical > button:not(:first-child),
 .tribe-events-pg-template .btn-group-vertical > button:not(:first-child),
+.tribe-events-single .btn-group-vertical > button:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) > .btn,
 .comment-form .btn-group-vertical > .btn-group:not(:first-child) > input[type="submit"],
 .search-form .btn-group-vertical > .btn-group:not(:first-child) > .search-submit,
 .tribe-events .btn-group-vertical > .btn-group:not(:first-child) > button,
-.tribe-events-pg-template .btn-group-vertical > .btn-group:not(:first-child) > button {
+.tribe-events-pg-template .btn-group-vertical > .btn-group:not(:first-child) > button,
+.tribe-events-single .btn-group-vertical > .btn-group:not(:first-child) > button {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -5213,11 +5245,13 @@ input[type="button"].btn-block {
 .search-form .btn-group-toggle > .search-submit,
 .tribe-events .btn-group-toggle > button,
 .tribe-events-pg-template .btn-group-toggle > button,
+.tribe-events-single .btn-group-toggle > button,
 .btn-group-toggle > .btn-group > .btn,
 .comment-form .btn-group-toggle > .btn-group > input[type="submit"],
 .search-form .btn-group-toggle > .btn-group > .search-submit,
 .tribe-events .btn-group-toggle > .btn-group > button,
-.tribe-events-pg-template .btn-group-toggle > .btn-group > button {
+.tribe-events-pg-template .btn-group-toggle > .btn-group > button,
+.tribe-events-single .btn-group-toggle > .btn-group > button {
   margin-bottom: 0;
 }
 
@@ -5228,21 +5262,25 @@ input[type="button"].btn-block {
 .search-form .btn-group-toggle > .search-submit input[type="radio"],
 .tribe-events .btn-group-toggle > button input[type="radio"],
 .tribe-events-pg-template .btn-group-toggle > button input[type="radio"],
+.tribe-events-single .btn-group-toggle > button input[type="radio"],
 .btn-group-toggle > .btn input[type="checkbox"],
 .comment-form .btn-group-toggle > input[type="submit"] input[type="checkbox"],
 .search-form .btn-group-toggle > .search-submit input[type="checkbox"],
 .tribe-events .btn-group-toggle > button input[type="checkbox"],
 .tribe-events-pg-template .btn-group-toggle > button input[type="checkbox"],
+.tribe-events-single .btn-group-toggle > button input[type="checkbox"],
 .btn-group-toggle > .btn-group > .btn input[type="radio"],
 .comment-form .btn-group-toggle > .btn-group > input[type="submit"] input[type="radio"],
 .search-form .btn-group-toggle > .btn-group > .search-submit input[type="radio"],
 .tribe-events .btn-group-toggle > .btn-group > button input[type="radio"],
 .tribe-events-pg-template .btn-group-toggle > .btn-group > button input[type="radio"],
+.tribe-events-single .btn-group-toggle > .btn-group > button input[type="radio"],
 .btn-group-toggle > .btn-group > .btn input[type="checkbox"],
 .comment-form .btn-group-toggle > .btn-group > input[type="submit"] input[type="checkbox"],
 .search-form .btn-group-toggle > .btn-group > .search-submit input[type="checkbox"],
 .tribe-events .btn-group-toggle > .btn-group > button input[type="checkbox"],
-.tribe-events-pg-template .btn-group-toggle > .btn-group > button input[type="checkbox"] {
+.tribe-events-pg-template .btn-group-toggle > .btn-group > button input[type="checkbox"],
+.tribe-events-single .btn-group-toggle > .btn-group > button input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
@@ -5445,6 +5483,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-prepend button,
 .input-group-prepend .tribe-events-pg-template button,
 .tribe-events-pg-template .input-group-prepend button,
+.input-group-prepend .tribe-events-single button,
+.tribe-events-single .input-group-prepend button,
 .input-group-append .btn,
 .input-group-append .comment-form input[type="submit"],
 .comment-form .input-group-append input[type="submit"],
@@ -5453,7 +5493,9 @@ input[type="button"].btn-block {
 .input-group-append .tribe-events button,
 .tribe-events .input-group-append button,
 .input-group-append .tribe-events-pg-template button,
-.tribe-events-pg-template .input-group-append button {
+.tribe-events-pg-template .input-group-append button,
+.input-group-append .tribe-events-single button,
+.tribe-events-single .input-group-append button {
   position: relative;
   z-index: 2;
 }
@@ -5469,6 +5511,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-prepend button:focus,
 .input-group-prepend .tribe-events-pg-template button:focus,
 .tribe-events-pg-template .input-group-prepend button:focus,
+.input-group-prepend .tribe-events-single button:focus,
+.tribe-events-single .input-group-prepend button:focus,
 .input-group-append .btn:focus,
 .input-group-append .comment-form input:focus[type="submit"],
 .comment-form .input-group-append input:focus[type="submit"],
@@ -5477,7 +5521,9 @@ input[type="button"].btn-block {
 .input-group-append .tribe-events button:focus,
 .tribe-events .input-group-append button:focus,
 .input-group-append .tribe-events-pg-template button:focus,
-.tribe-events-pg-template .input-group-append button:focus {
+.tribe-events-pg-template .input-group-append button:focus,
+.input-group-append .tribe-events-single button:focus,
+.tribe-events-single .input-group-append button:focus {
   z-index: 3;
 }
 
@@ -5492,6 +5538,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-prepend button + .btn,
 .input-group-prepend .tribe-events-pg-template button + .btn,
 .tribe-events-pg-template .input-group-prepend button + .btn,
+.input-group-prepend .tribe-events-single button + .btn,
+.tribe-events-single .input-group-prepend button + .btn,
 .input-group-prepend .comment-form .btn + input[type="submit"],
 .comment-form .input-group-prepend .btn + input[type="submit"],
 .input-group-prepend .comment-form input[type="submit"] + input[type="submit"],
@@ -5508,6 +5556,10 @@ input[type="button"].btn-block {
 .comment-form .input-group-prepend .tribe-events-pg-template button + input[type="submit"],
 .tribe-events-pg-template .input-group-prepend .comment-form button + input[type="submit"],
 .comment-form .tribe-events-pg-template .input-group-prepend button + input[type="submit"],
+.input-group-prepend .tribe-events-single .comment-form button + input[type="submit"],
+.comment-form .input-group-prepend .tribe-events-single button + input[type="submit"],
+.tribe-events-single .input-group-prepend .comment-form button + input[type="submit"],
+.comment-form .tribe-events-single .input-group-prepend button + input[type="submit"],
 .input-group-prepend .search-form .btn + .search-submit,
 .search-form .input-group-prepend .btn + .search-submit,
 .input-group-prepend .comment-form .search-form input[type="submit"] + .search-submit,
@@ -5524,6 +5576,10 @@ input[type="button"].btn-block {
 .search-form .input-group-prepend .tribe-events-pg-template button + .search-submit,
 .tribe-events-pg-template .input-group-prepend .search-form button + .search-submit,
 .search-form .tribe-events-pg-template .input-group-prepend button + .search-submit,
+.input-group-prepend .tribe-events-single .search-form button + .search-submit,
+.search-form .input-group-prepend .tribe-events-single button + .search-submit,
+.tribe-events-single .input-group-prepend .search-form button + .search-submit,
+.search-form .tribe-events-single .input-group-prepend button + .search-submit,
 .input-group-prepend .tribe-events .btn + button,
 .tribe-events .input-group-prepend .btn + button,
 .input-group-prepend .comment-form .tribe-events input[type="submit"] + button,
@@ -5538,6 +5594,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-prepend button + button,
 .input-group-prepend .tribe-events-pg-template .tribe-events button + button,
 .tribe-events .tribe-events-pg-template .input-group-prepend button + button,
+.input-group-prepend .tribe-events-single .tribe-events button + button,
+.tribe-events .tribe-events-single .input-group-prepend button + button,
 .input-group-prepend .tribe-events-pg-template .btn + button,
 .tribe-events-pg-template .input-group-prepend .btn + button,
 .input-group-prepend .comment-form .tribe-events-pg-template input[type="submit"] + button,
@@ -5554,6 +5612,28 @@ input[type="button"].btn-block {
 .tribe-events-pg-template .tribe-events .input-group-prepend button + button,
 .input-group-prepend .tribe-events-pg-template button + button,
 .tribe-events-pg-template .input-group-prepend button + button,
+.input-group-prepend .tribe-events-single .tribe-events-pg-template button + button,
+.tribe-events-pg-template .tribe-events-single .input-group-prepend button + button,
+.input-group-prepend .tribe-events-single .btn + button,
+.tribe-events-single .input-group-prepend .btn + button,
+.input-group-prepend .comment-form .tribe-events-single input[type="submit"] + button,
+.tribe-events-single .input-group-prepend .comment-form input[type="submit"] + button,
+.comment-form .input-group-prepend .tribe-events-single input[type="submit"] + button,
+.tribe-events-single .comment-form .input-group-prepend input[type="submit"] + button,
+.input-group-prepend .search-form .tribe-events-single .search-submit + button,
+.tribe-events-single .input-group-prepend .search-form .search-submit + button,
+.search-form .input-group-prepend .tribe-events-single .search-submit + button,
+.tribe-events-single .search-form .input-group-prepend .search-submit + button,
+.input-group-prepend .tribe-events .tribe-events-single button + button,
+.tribe-events-single .input-group-prepend .tribe-events button + button,
+.tribe-events .input-group-prepend .tribe-events-single button + button,
+.tribe-events-single .tribe-events .input-group-prepend button + button,
+.input-group-prepend .tribe-events-pg-template .tribe-events-single button + button,
+.tribe-events-single .input-group-prepend .tribe-events-pg-template button + button,
+.tribe-events-pg-template .input-group-prepend .tribe-events-single button + button,
+.tribe-events-single .tribe-events-pg-template .input-group-prepend button + button,
+.input-group-prepend .tribe-events-single button + button,
+.tribe-events-single .input-group-prepend button + button,
 .input-group-prepend .btn + .input-group-text,
 .input-group-prepend .comment-form input[type="submit"] + .input-group-text,
 .comment-form .input-group-prepend input[type="submit"] + .input-group-text,
@@ -5563,6 +5643,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-prepend button + .input-group-text,
 .input-group-prepend .tribe-events-pg-template button + .input-group-text,
 .tribe-events-pg-template .input-group-prepend button + .input-group-text,
+.input-group-prepend .tribe-events-single button + .input-group-text,
+.tribe-events-single .input-group-prepend button + .input-group-text,
 .input-group-prepend .input-group-text + .input-group-text,
 .input-group-prepend .input-group-text + .btn,
 .input-group-prepend .comment-form .input-group-text + input[type="submit"],
@@ -5573,6 +5655,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-prepend .input-group-text + button,
 .input-group-prepend .tribe-events-pg-template .input-group-text + button,
 .tribe-events-pg-template .input-group-prepend .input-group-text + button,
+.input-group-prepend .tribe-events-single .input-group-text + button,
+.tribe-events-single .input-group-prepend .input-group-text + button,
 .input-group-append .btn + .btn,
 .input-group-append .comment-form input[type="submit"] + .btn,
 .comment-form .input-group-append input[type="submit"] + .btn,
@@ -5582,6 +5666,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-append button + .btn,
 .input-group-append .tribe-events-pg-template button + .btn,
 .tribe-events-pg-template .input-group-append button + .btn,
+.input-group-append .tribe-events-single button + .btn,
+.tribe-events-single .input-group-append button + .btn,
 .input-group-append .comment-form .btn + input[type="submit"],
 .comment-form .input-group-append .btn + input[type="submit"],
 .input-group-append .comment-form input[type="submit"] + input[type="submit"],
@@ -5598,6 +5684,10 @@ input[type="button"].btn-block {
 .comment-form .input-group-append .tribe-events-pg-template button + input[type="submit"],
 .tribe-events-pg-template .input-group-append .comment-form button + input[type="submit"],
 .comment-form .tribe-events-pg-template .input-group-append button + input[type="submit"],
+.input-group-append .tribe-events-single .comment-form button + input[type="submit"],
+.comment-form .input-group-append .tribe-events-single button + input[type="submit"],
+.tribe-events-single .input-group-append .comment-form button + input[type="submit"],
+.comment-form .tribe-events-single .input-group-append button + input[type="submit"],
 .input-group-append .search-form .btn + .search-submit,
 .search-form .input-group-append .btn + .search-submit,
 .input-group-append .comment-form .search-form input[type="submit"] + .search-submit,
@@ -5614,6 +5704,10 @@ input[type="button"].btn-block {
 .search-form .input-group-append .tribe-events-pg-template button + .search-submit,
 .tribe-events-pg-template .input-group-append .search-form button + .search-submit,
 .search-form .tribe-events-pg-template .input-group-append button + .search-submit,
+.input-group-append .tribe-events-single .search-form button + .search-submit,
+.search-form .input-group-append .tribe-events-single button + .search-submit,
+.tribe-events-single .input-group-append .search-form button + .search-submit,
+.search-form .tribe-events-single .input-group-append button + .search-submit,
 .input-group-append .tribe-events .btn + button,
 .tribe-events .input-group-append .btn + button,
 .input-group-append .comment-form .tribe-events input[type="submit"] + button,
@@ -5628,6 +5722,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-append button + button,
 .input-group-append .tribe-events-pg-template .tribe-events button + button,
 .tribe-events .tribe-events-pg-template .input-group-append button + button,
+.input-group-append .tribe-events-single .tribe-events button + button,
+.tribe-events .tribe-events-single .input-group-append button + button,
 .input-group-append .tribe-events-pg-template .btn + button,
 .tribe-events-pg-template .input-group-append .btn + button,
 .input-group-append .comment-form .tribe-events-pg-template input[type="submit"] + button,
@@ -5644,6 +5740,28 @@ input[type="button"].btn-block {
 .tribe-events-pg-template .tribe-events .input-group-append button + button,
 .input-group-append .tribe-events-pg-template button + button,
 .tribe-events-pg-template .input-group-append button + button,
+.input-group-append .tribe-events-single .tribe-events-pg-template button + button,
+.tribe-events-pg-template .tribe-events-single .input-group-append button + button,
+.input-group-append .tribe-events-single .btn + button,
+.tribe-events-single .input-group-append .btn + button,
+.input-group-append .comment-form .tribe-events-single input[type="submit"] + button,
+.tribe-events-single .input-group-append .comment-form input[type="submit"] + button,
+.comment-form .input-group-append .tribe-events-single input[type="submit"] + button,
+.tribe-events-single .comment-form .input-group-append input[type="submit"] + button,
+.input-group-append .search-form .tribe-events-single .search-submit + button,
+.tribe-events-single .input-group-append .search-form .search-submit + button,
+.search-form .input-group-append .tribe-events-single .search-submit + button,
+.tribe-events-single .search-form .input-group-append .search-submit + button,
+.input-group-append .tribe-events .tribe-events-single button + button,
+.tribe-events-single .input-group-append .tribe-events button + button,
+.tribe-events .input-group-append .tribe-events-single button + button,
+.tribe-events-single .tribe-events .input-group-append button + button,
+.input-group-append .tribe-events-pg-template .tribe-events-single button + button,
+.tribe-events-single .input-group-append .tribe-events-pg-template button + button,
+.tribe-events-pg-template .input-group-append .tribe-events-single button + button,
+.tribe-events-single .tribe-events-pg-template .input-group-append button + button,
+.input-group-append .tribe-events-single button + button,
+.tribe-events-single .input-group-append button + button,
 .input-group-append .btn + .input-group-text,
 .input-group-append .comment-form input[type="submit"] + .input-group-text,
 .comment-form .input-group-append input[type="submit"] + .input-group-text,
@@ -5653,6 +5771,8 @@ input[type="button"].btn-block {
 .tribe-events .input-group-append button + .input-group-text,
 .input-group-append .tribe-events-pg-template button + .input-group-text,
 .tribe-events-pg-template .input-group-append button + .input-group-text,
+.input-group-append .tribe-events-single button + .input-group-text,
+.tribe-events-single .input-group-append button + .input-group-text,
 .input-group-append .input-group-text + .input-group-text,
 .input-group-append .input-group-text + .btn,
 .input-group-append .comment-form .input-group-text + input[type="submit"],
@@ -5662,7 +5782,9 @@ input[type="button"].btn-block {
 .input-group-append .tribe-events .input-group-text + button,
 .tribe-events .input-group-append .input-group-text + button,
 .input-group-append .tribe-events-pg-template .input-group-text + button,
-.tribe-events-pg-template .input-group-append .input-group-text + button {
+.tribe-events-pg-template .input-group-append .input-group-text + button,
+.input-group-append .tribe-events-single .input-group-text + button,
+.tribe-events-single .input-group-append .input-group-text + button {
   margin-left: -1px;
 }
 
@@ -5731,11 +5853,13 @@ input[type="button"].btn-block {
 .search-form .input-group-lg > .input-group-prepend > .search-submit,
 .tribe-events .input-group-lg > .input-group-prepend > button,
 .tribe-events-pg-template .input-group-lg > .input-group-prepend > button,
+.tribe-events-single .input-group-lg > .input-group-prepend > button,
 .input-group-lg > .input-group-append > .btn,
 .comment-form .input-group-lg > .input-group-append > input[type="submit"],
 .search-form .input-group-lg > .input-group-append > .search-submit,
 .tribe-events .input-group-lg > .input-group-append > button,
-.tribe-events-pg-template .input-group-lg > .input-group-append > button {
+.tribe-events-pg-template .input-group-lg > .input-group-append > button,
+.tribe-events-single .input-group-lg > .input-group-append > button {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -5770,11 +5894,13 @@ input[type="button"].btn-block {
 .search-form .input-group-sm > .input-group-prepend > .search-submit,
 .tribe-events .input-group-sm > .input-group-prepend > button,
 .tribe-events-pg-template .input-group-sm > .input-group-prepend > button,
+.tribe-events-single .input-group-sm > .input-group-prepend > button,
 .input-group-sm > .input-group-append > .btn,
 .comment-form .input-group-sm > .input-group-append > input[type="submit"],
 .search-form .input-group-sm > .input-group-append > .search-submit,
 .tribe-events .input-group-sm > .input-group-append > button,
-.tribe-events-pg-template .input-group-sm > .input-group-append > button {
+.tribe-events-pg-template .input-group-sm > .input-group-append > button,
+.tribe-events-single .input-group-sm > .input-group-append > button {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -5795,18 +5921,21 @@ input[type="button"].btn-block {
 .search-form .input-group > .input-group-prepend > .search-submit,
 .tribe-events .input-group > .input-group-prepend > button,
 .tribe-events-pg-template .input-group > .input-group-prepend > button,
+.tribe-events-single .input-group > .input-group-prepend > button,
 .input-group > .input-group-prepend > .input-group-text,
 .input-group > .input-group-append:not(:last-child) > .btn,
 .comment-form .input-group > .input-group-append:not(:last-child) > input[type="submit"],
 .search-form .input-group > .input-group-append:not(:last-child) > .search-submit,
 .tribe-events .input-group > .input-group-append:not(:last-child) > button,
 .tribe-events-pg-template .input-group > .input-group-append:not(:last-child) > button,
+.tribe-events-single .input-group > .input-group-append:not(:last-child) > button,
 .input-group > .input-group-append:not(:last-child) > .input-group-text,
 .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .comment-form .input-group > .input-group-append:last-child > input:not(:last-child):not(.dropdown-toggle)[type="submit"],
 .search-form .input-group > .input-group-append:last-child > .search-submit:not(:last-child):not(.dropdown-toggle),
 .tribe-events .input-group > .input-group-append:last-child > button:not(:last-child):not(.dropdown-toggle),
 .tribe-events-pg-template .input-group > .input-group-append:last-child > button:not(:last-child):not(.dropdown-toggle),
+.tribe-events-single .input-group > .input-group-append:last-child > button:not(:last-child):not(.dropdown-toggle),
 .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -5819,18 +5948,21 @@ input[type="button"].btn-block {
 .search-form .input-group > .input-group-append > .search-submit,
 .tribe-events .input-group > .input-group-append > button,
 .tribe-events-pg-template .input-group > .input-group-append > button,
+.tribe-events-single .input-group > .input-group-append > button,
 .input-group > .input-group-append > .input-group-text,
 .input-group > .input-group-prepend:not(:first-child) > .btn,
 .comment-form .input-group > .input-group-prepend:not(:first-child) > input[type="submit"],
 .search-form .input-group > .input-group-prepend:not(:first-child) > .search-submit,
 .tribe-events .input-group > .input-group-prepend:not(:first-child) > button,
 .tribe-events-pg-template .input-group > .input-group-prepend:not(:first-child) > button,
+.tribe-events-single .input-group > .input-group-prepend:not(:first-child) > button,
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
 .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
 .comment-form .input-group > .input-group-prepend:first-child > input:not(:first-child)[type="submit"],
 .search-form .input-group > .input-group-prepend:first-child > .search-submit:not(:first-child),
 .tribe-events .input-group > .input-group-prepend:first-child > button:not(:first-child),
 .tribe-events-pg-template .input-group > .input-group-prepend:first-child > button:not(:first-child),
+.tribe-events-single .input-group > .input-group-prepend:first-child > button:not(:first-child),
 .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -7700,7 +7832,8 @@ a.badge:focus {
 .comment-form input[type="submit"] .badge,
 .search-form .search-submit .badge,
 .tribe-events button .badge,
-.tribe-events-pg-template button .badge {
+.tribe-events-pg-template button .badge,
+.tribe-events-single button .badge {
   position: relative;
   top: -1px;
 }
@@ -15500,7 +15633,9 @@ form #search-fields .search-form .search-submit,
 form #search-fields .tribe-events button,
 .tribe-events form #search-fields button,
 form #search-fields .tribe-events-pg-template button,
-.tribe-events-pg-template form #search-fields button {
+.tribe-events-pg-template form #search-fields button,
+form #search-fields .tribe-events-single button,
+.tribe-events-single form #search-fields button {
   font-size: 12px;
   padding: 3px 5px;
   float: right;
@@ -16262,7 +16397,8 @@ article .job-title {
 /* line 140, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
-.tribe-events-pg-template {
+.tribe-events-pg-template,
+.tribe-events-single {
   width: 100%;
   color: #fff !important;
 }
@@ -16270,40 +16406,92 @@ article .job-title {
 /* line 143, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
-.tribe-events-pg-template .tribe-events-l-container {
+.tribe-events-pg-template .tribe-events-l-container,
+.tribe-events-single .tribe-events-l-container {
   padding: 20px 0 !important;
 }
 
-/* line 146, resources/assets/styles/layouts/_content.scss */
+/* line 147, resources/assets/styles/layouts/_content.scss */
+
+.tribe-events .tribe-events-meta-group .tribe-events-event-categories-label,
+.tribe-events .tribe-events-meta-group .tribe-events-event-categories,
+.tribe-events-pg-template .tribe-events-meta-group .tribe-events-event-categories-label,
+.tribe-events-pg-template .tribe-events-meta-group .tribe-events-event-categories,
+.tribe-events-single .tribe-events-meta-group .tribe-events-event-categories-label,
+.tribe-events-single .tribe-events-meta-group .tribe-events-event-categories {
+  display: none;
+}
+
+/* line 152, resources/assets/styles/layouts/_content.scss */
+
+.tribe-events .tribe-events-content div,
+.tribe-events-pg-template .tribe-events-content div,
+.tribe-events-single .tribe-events-content div {
+  margin-bottom: 1rem;
+}
+
+/* line 156, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
-.tribe-events-pg-template button {
+.tribe-events-pg-template button,
+.tribe-events-single button {
   color: #fff;
   background-color: #ee2015;
   border-color: #ee2015;
 }
 
-/* line 152, resources/assets/styles/layouts/_content.scss */
+/* line 162, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
-.tribe-events-pg-template input[type=text] {
+.tribe-events-pg-template input[type=text],
+.tribe-events-single input[type=text] {
   border: none;
 }
 
-/* line 156, resources/assets/styles/layouts/_content.scss */
+/* line 166, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
 @media (min-width: 768px) {
-  /* line 162, resources/assets/styles/layouts/_content.scss */
+  /* line 171, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;
     padding-left: 20px;
     width: 50%;
   }
+}
+
+/* line 180, resources/assets/styles/layouts/_content.scss */
+
+.ecs-event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 184, resources/assets/styles/layouts/_content.scss */
+
+.ecs-event-list li {
+  margin-bottom: 20px;
+}
+
+/* line 2, node_modules/bootstrap/scss/mixins/_clearfix.scss */
+
+.ecs-event-list li::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+/* line 187, resources/assets/styles/layouts/_content.scss */
+
+.ecs-event-list li img {
+  float: left;
+  max-width: 33%;
+  margin-right: 15px;
 }
 
 /* line 1, resources/assets/styles/layouts/_tinymce.scss */
