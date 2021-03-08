@@ -171,6 +171,13 @@ function featured_other_events() {
 	return $output;
 }
 
+function hssw_events($attributes) {
+	$args = array(
+
+	);
+	$query = tribe_get_events();
+}
+
 
 function featured_blog_posts() {
 	$args   = array(

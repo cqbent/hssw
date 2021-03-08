@@ -15606,7 +15606,25 @@ h3 {
   font-size: 1.25rem;
 }
 
-/* line 57, resources/assets/styles/common/_global.scss */
+/* line 56, resources/assets/styles/common/_global.scss */
+
+.red {
+  color: #ee2015;
+}
+
+/* line 59, resources/assets/styles/common/_global.scss */
+
+.gold {
+  color: #ffb966;
+}
+
+/* line 62, resources/assets/styles/common/_global.scss */
+
+.turqoise {
+  color: #40E0D0;
+}
+
+/* line 67, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
@@ -15614,7 +15632,7 @@ form textarea {
   max-width: 992px;
 }
 
-/* line 62, resources/assets/styles/common/_global.scss */
+/* line 72, resources/assets/styles/common/_global.scss */
 
 form #search-fields .search-field {
   padding: 2px 5px;
@@ -15623,7 +15641,7 @@ form #search-fields .search-field {
   float: left;
 }
 
-/* line 68, resources/assets/styles/common/_global.scss */
+/* line 78, resources/assets/styles/common/_global.scss */
 
 form #search-fields .btn,
 form #search-fields .comment-form input[type="submit"],
@@ -16492,6 +16510,13 @@ article .job-title {
   float: left;
   max-width: 33%;
   margin-right: 30px;
+}
+
+/* line 197, resources/assets/styles/layouts/_content.scss */
+
+.page.author-of-the-week h1,
+.page.events-workshops h1 {
+  color: #40E0D0;
 }
 
 /* line 1, resources/assets/styles/layouts/_tinymce.scss */

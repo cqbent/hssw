@@ -191,3 +191,10 @@ article {
     }
   }
 }
+
+// author of week and events pages
+.page.author-of-the-week, .page.events-workshops {
+  h1 {
+    color: $turqoise;
+  }
+}
