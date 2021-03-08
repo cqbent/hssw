@@ -11,7 +11,6 @@ add_filter('sage/display_sidebar', function ($display) {
         is_front_page(),
         is_post_type_archive(['post']),
         is_home(),
-        is_singular('tribe_events')
     ]);
     return $display;
 });
