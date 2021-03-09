@@ -122,6 +122,4 @@ add_filter( 'get_the_archive_title', function ( $title ) {
 /*
  * increase excerpt length
  */
-add_filter( 'excerpt_length', function($length) {
-    return 55;
-}, 999 );
+//add_filter( 'excerpt_length', function($length) { return 55;}, 999 );
