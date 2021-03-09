@@ -1,0 +1,64 @@
+[
+    {
+        "title": "Buttons",
+        "type": "group"
+    },
+    {
+        "title": "Primary",
+        "type": "item",
+        "selector": "a,button",
+        "classes": "btn btn-primary"
+    },
+    {
+        "title": "Misc",
+        "type": "group"
+    },
+    {
+        "title": "Span",
+        "type": "item",
+        "selector": "p,div",
+        "inline": "span",
+        "classes": "span"
+    },
+    {
+        "title": "More",
+        "type": "item",
+        "selector": "a",
+        "classes": "more"
+    },
+    {
+        "title": "Large Text",
+        "type": "item",
+        "selector": "p,h2,h3,h4,div",
+        "inline": "span",
+        "classes": "large-text"
+    },
+    {
+        "title": "Small Text",
+        "type": "item",
+        "selector": "p,h2,h3,h4,div",
+        "inline": "span",
+        "classes": "small-text"
+    },
+    {
+        "title": "Gold Text",
+        "type": "item",
+        "selector": "p,h2,h3,h4,div",
+        "inline": "span",
+        "classes": "gold"
+    },
+    {
+        "title": "Red Text",
+        "type": "item",
+        "selector": "p,h2,h3,h4,div",
+        "inline": "span",
+        "classes": "red"
+    },
+    {
+        "title": "Purple Text",
+        "type": "item",
+        "selector": "p,h2,h3,h4,div",
+        "inline": "span",
+        "classes": "purple"
+    }
+]

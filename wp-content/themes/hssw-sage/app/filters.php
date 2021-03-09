@@ -43,7 +43,7 @@ add_filter('body_class', function (array $classes) {
  * Add "… Continued" to the excerpt
  */
 add_filter('excerpt_more', function () {
-    return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
+    return ' &hellip; <a href="' . get_permalink() . '" class="more">' . __('More', 'sage') . '</a>';
 });
 
 /**
@@ -119,3 +119,9 @@ add_filter( 'get_the_archive_title', function ( $title ) {
     return $title;
 });
 
+/*
+ * increase excerpt length
+ */
+add_filter( 'excerpt_length', function($length) {
+    return 55;
+}, 999 );

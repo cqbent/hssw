@@ -8,8 +8,9 @@ export default {
     if ($('.single-tribe_events').length) {
       //console.log('single event');
       $('.menu-primary .blog').removeClass('current_page_parent');
-      var event_cat = $('.tribe-events-event-categories-label a').attr('href');
-      if (author_path.indexOf(event_cat)) {
+      var event_cat = $('.tribe_events').attr('class');
+      if (event_cat.indexOf(author_path) > -1) {
+        console.log(event_cat.indexOf(author_path));
         $('.menu-primary .author-of-week').addClass('current_page_parent');
       }
       else {

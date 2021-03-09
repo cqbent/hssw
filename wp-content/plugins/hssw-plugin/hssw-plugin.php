@@ -172,12 +172,51 @@ function featured_other_events() {
 }
 
 function hssw_events($attributes) {
-	$args = array(
-
-	);
-	$query = tribe_get_events();
+	$atts = shortcode_atts(array('past' => false, 'aow' => true, 'posts' => -1), $attributes);
+	$args['post_per_page'] = $atts['posts'];
+	if ($atts['past']) {
+		$args['end_date'] = 'now';
+	}
+	else {
+		$args['start_date'] = 'now';
+	}
+	if ($atts['aow']) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'tribe_events_cat',
+				'field'    => 'slug',
+				'terms'    => 'author-of-week',
+			)
+		);
+	}
+	else {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'tribe_events_cat',
+				'field'    => 'slug',
+				'terms'    => array('author-of-week'),
+				'operator' => 'NOT IN'
+			)
+		);
+	}
+	$events = tribe_get_events($args);
+	$output = '<div class="featured-authors wp-block-columns">';
+	foreach ($events as $post) {
+		$output .= '
+			<div class="row">
+				<div class="image col-sm-4">' . get_the_post_thumbnail($post->ID) . '</div>
+				<div class="content col-sm-8">
+					<h3 class="title "><a href="'. get_the_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></h3>
+					<div class="start-date">' . tribe_get_start_date($post->ID) . '</div>
+					<div class="excerpt">' . get_the_excerpt($post->ID) . '</div>
+				</div>
+			</div>
+		';
+	}
+	$output .= '</div>';
+	return $output;
 }
-
+add_shortcode('hssw_events', 'hssw_events');
 
 function featured_blog_posts() {
 	$args   = array(

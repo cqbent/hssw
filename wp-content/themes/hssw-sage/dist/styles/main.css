@@ -16,7 +16,7 @@
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
-  --purple: #6f42c1;
+  --purple: #a352cc;
   --pink: #e83e8c;
   --red: #ee2015;
   --orange: #fd7e14;
@@ -216,7 +216,7 @@ sup {
 /* line 182, node_modules/bootstrap/scss/_reboot.scss */
 
 a {
-  color: #ffb966;
+  color: #a352cc;
   text-decoration: none;
   background-color: transparent;
 }
@@ -224,7 +224,7 @@ a {
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
 
 a:hover {
-  color: #ff961a;
+  color: #7b30a2;
   text-decoration: underline;
 }
 
@@ -4523,14 +4523,14 @@ fieldset:disabled .search-form a.search-submit,
 
 .btn-link {
   font-weight: 400;
-  color: #ffb966;
+  color: #a352cc;
   text-decoration: none;
 }
 
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
 
 .btn-link:hover {
-  color: #ff961a;
+  color: #7b30a2;
   text-decoration: underline;
 }
 
@@ -7689,7 +7689,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #ffb966;
+  color: #a352cc;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
@@ -7698,7 +7698,7 @@ input[type="button"].btn-block {
 
 .page-link:hover {
   z-index: 2;
-  color: #ff961a;
+  color: #7b30a2;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -15624,7 +15624,13 @@ h3 {
   color: #40E0D0;
 }
 
-/* line 67, resources/assets/styles/common/_global.scss */
+/* line 65, resources/assets/styles/common/_global.scss */
+
+.purple {
+  color: #a352cc;
+}
+
+/* line 70, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
@@ -15632,7 +15638,7 @@ form textarea {
   max-width: 992px;
 }
 
-/* line 72, resources/assets/styles/common/_global.scss */
+/* line 75, resources/assets/styles/common/_global.scss */
 
 form #search-fields .search-field {
   padding: 2px 5px;
@@ -15641,7 +15647,7 @@ form #search-fields .search-field {
   float: left;
 }
 
-/* line 78, resources/assets/styles/common/_global.scss */
+/* line 81, resources/assets/styles/common/_global.scss */
 
 form #search-fields .btn,
 form #search-fields .comment-form input[type="submit"],
@@ -15805,6 +15811,7 @@ header.banner nav.nav-primary ul.nav .menu-item {
 /* line 54, resources/assets/styles/layouts/_header.scss */
 
 header.banner nav.nav-primary ul.nav .menu-item a {
+  color: #ffb966;
   padding: 5px 0;
 }
 
