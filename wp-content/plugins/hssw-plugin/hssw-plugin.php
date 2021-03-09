@@ -172,7 +172,7 @@ function featured_other_events() {
 }
 
 function hssw_events($attributes) {
-	$atts = shortcode_atts(array('past' => false, 'aow' => true, 'posts' => -1), $attributes);
+	$atts = shortcode_atts(array('past' => false, 'all' => false, 'posts' => -1), $attributes);
 	$args['post_per_page'] = $atts['posts'];
 	if ($atts['past']) {
 		$args['end_date'] = 'now';
@@ -180,7 +180,7 @@ function hssw_events($attributes) {
 	else {
 		$args['start_date'] = 'now';
 	}
-	if ($atts['aow']) {
+	if (!$atts['all']) {
 		$args['tax_query'] = array(
 			array(
 				'taxonomy' => 'tribe_events_cat',
