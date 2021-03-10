@@ -16479,8 +16479,21 @@ article .job-title {
   color: #fff !important;
 }
 
+/* line 168, resources/assets/styles/layouts/_content.scss */
+
+.tribe-common .tribe-tickets {
+  color: #000 !important;
+}
+
+/* line 171, resources/assets/styles/layouts/_content.scss */
+
+.tribe-common .tribe-tickets button {
+  border: none;
+  color: #000;
+}
+
 @media (min-width: 768px) {
-  /* line 171, resources/assets/styles/layouts/_content.scss */
+  /* line 179, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;
@@ -16489,7 +16502,7 @@ article .job-title {
   }
 }
 
-/* line 180, resources/assets/styles/layouts/_content.scss */
+/* line 188, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list {
   list-style: none;
@@ -16497,7 +16510,7 @@ article .job-title {
   padding: 0;
 }
 
-/* line 184, resources/assets/styles/layouts/_content.scss */
+/* line 192, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list li {
   margin-bottom: 20px;
@@ -16511,7 +16524,7 @@ article .job-title {
   content: "";
 }
 
-/* line 187, resources/assets/styles/layouts/_content.scss */
+/* line 195, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list li img {
   float: left;
@@ -16519,7 +16532,7 @@ article .job-title {
   margin-right: 30px;
 }
 
-/* line 197, resources/assets/styles/layouts/_content.scss */
+/* line 205, resources/assets/styles/layouts/_content.scss */
 
 .page.author-of-the-week h1,
 .page.events-workshops h1 {

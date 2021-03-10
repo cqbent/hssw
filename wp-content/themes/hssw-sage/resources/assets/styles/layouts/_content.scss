@@ -165,6 +165,14 @@ article {
 }
 .tribe-common {
   color: $white !important;
+  .tribe-tickets {
+    //background: none;
+    color: $black !important;
+    button {
+      border: none;
+      color: $black;
+    }
+  }
 }
 .type-tribe_events {
   @media (min-width: $screen-sm-min) {
