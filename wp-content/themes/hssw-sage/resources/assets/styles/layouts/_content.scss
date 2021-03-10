@@ -165,10 +165,10 @@ article {
 }
 .tribe-common {
   color: $white !important;
-  .tribe-tickets {
+  &.tribe-tickets {
     //background: none;
     color: $black !important;
-    button {
+    .tribe-tickets__item__quantity button {
       border: none;
       color: $black;
     }

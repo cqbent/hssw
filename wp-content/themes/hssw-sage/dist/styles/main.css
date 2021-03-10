@@ -16481,13 +16481,13 @@ article .job-title {
 
 /* line 168, resources/assets/styles/layouts/_content.scss */
 
-.tribe-common .tribe-tickets {
+.tribe-common.tribe-tickets {
   color: #000 !important;
 }
 
 /* line 171, resources/assets/styles/layouts/_content.scss */
 
-.tribe-common .tribe-tickets button {
+.tribe-common.tribe-tickets .tribe-tickets__item__quantity button {
   border: none;
   color: #000;
 }
