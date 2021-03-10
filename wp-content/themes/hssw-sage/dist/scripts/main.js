@@ -7335,9 +7335,10 @@ Router.prototype.loadEvents = function loadEvents () {
   },
   finalize: function finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
+
+    // script to customize what is page parent of aow events and posts
     var author_path = 'author-of-week';
     if ($('.single-tribe_events').length) {
-      //console.log('single event');
       $('.menu-primary .blog').removeClass('current_page_parent');
       var event_cat = $('.tribe_events').attr('class');
       if (event_cat.indexOf(author_path) > -1) {
@@ -7358,6 +7359,9 @@ Router.prototype.loadEvents = function loadEvents () {
         $('.menu-primary .events').addClass('current_page_parent');
       }
     }
+
+    // add disabled class to menu item with disabled class
+    $('.menu-primary li.disabled > a').addClass('disabled');
   },
 });
 

@@ -38,13 +38,21 @@ add_filter('body_class', function (array $classes) {
 
     return array_filter($classes);
 });
+// empty excerpt more link
+add_filter('excerpt_more', function ($more) {
+    return '';
+}, 21);
 
 /**
- * Add "… Continued" to the excerpt
+ * Add "… More" to the excerpt here so always shows up
  */
-add_filter('excerpt_more', function () {
-    return ' &hellip; <a href="' . get_permalink() . '" class="more">' . __('More', 'sage') . '</a>';
-});
+add_filter('get_the_excerpt', function ($excerpt) {
+    $post = get_post();
+    $excerpt .= ' &hellip; <a href="' . get_permalink($post->ID) . '" class="more">' . __('More', 'sage') . '</a>';
+    return $excerpt;
+}, 21);
+
+
 
 /**
  * Template Hierarchy should search for .blade.php files
@@ -122,4 +130,4 @@ add_filter( 'get_the_archive_title', function ( $title ) {
 /*
  * increase excerpt length
  */
-//add_filter( 'excerpt_length', function($length) { return 55;}, 999 );
+//add_filter( 'excerpt_length', function($length) { return 55; }, 999 );
