@@ -208,7 +208,7 @@ function hssw_events($attributes) {
 				<div class="content col-sm-8">
 					<h3 class="title "><a href="'. get_the_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></h3>
 					<div class="start-date">' . tribe_get_start_date($post->ID) . '</div>
-					<div class="excerpt">' . get_the_excerpt($post->ID) . '</div>
+					<div class="excerpt">' . wp_trim_excerpt('', $post->ID) . '... <a href="'. get_the_permalink($post->ID) . '">More</a></div>
 				</div>
 			</div>
 		';
