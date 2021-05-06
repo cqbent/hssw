@@ -875,6 +875,7 @@ class WP_Optimize_Minify_Functions {
 				'brizy-edit-iframe',
 				// Beaver builder
 				'fl_builder',
+				'trp-edit-translation',
 			);
 			return (bool) count(array_intersect($excluded_params, $get_params));
 		}

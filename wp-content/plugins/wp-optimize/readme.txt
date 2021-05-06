@@ -3,9 +3,9 @@ Contributors: DavidAnderson, ruhanirabin, DNutbourne, aporter, snightingale, lum
 Donate link: https://david.dw-perspective.org.uk/donate
 Tags: cache, minify, database, image optimize, performance, clean, spam, speed, caching, smush, smushing
 Requires PHP: 5.6
-Requires at least: 4.4
+Requires at least: 4.5
 Tested up to: 5.7
-Stable tag: 3.1.8
+Stable tag: 3.1.9
 License: GPLv2+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -363,6 +363,27 @@ If none of the above works, disable processing of JavaScript files in the minify
 
 
 == Changelog ==
+
+= 3.1.9 - 29/Apr/2021 =
+
+* FEATURE: Power Tweak - Change meta_key field length and create new index
+* FEATURE: Premium - Automatic Backups using UpdraftPlus during scheduled optimizations
+* FEATURE: Keep last X revisions
+* FIX: Overlapping header notice in mobile view
+* FIX: Cache - Wildcard not working in cache exclusions 
+* FIX: Prevent error in htaccess when mod_header isn't available
+* FIX: PHP Fatal error on deleting plugin
+* FIX: PHP 8 Issue: loadAsync JS error
+* FIX: RankMath breaks robots.txt
+* TWEAK: Bypass minify when editing translations using TranslatePress
+* TWEAK: Purge minify cache from front end
+* TWEAK: Minify - Prevent cache directory creation while disabled
+* TWEAK: Add Google Fonts API version 2 support
+* TWEAK: Minify - Save all tab content settings changes with single Click
+* TWEAK: Improved optimization preview
+* TWEAK: Filter the list of preloaded URLs
+* TWEAK: Update seasonal notices
+* TWEAK: Bump WP version requirement to 4.5+
 
 = 3.1.8 - 12/Mar/2021 =
 
@@ -1095,4 +1116,4 @@ If none of the above works, disable processing of JavaScript files in the minify
 * Fix Interface
 
 == Upgrade Notice ==
-* 3.1.8: Premium - Unused images - Fixed issue with images including a size suffix similar to WP sizes.
+* 3.1.9: New 'keep last X revisions' feature; new Premium power tweak; various small tweaks and fixes; a recommended update for all.

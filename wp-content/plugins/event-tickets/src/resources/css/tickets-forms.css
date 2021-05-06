@@ -409,6 +409,7 @@
 	.event-tickets .tribe-tickets__form .tribe-tickets__form-field-label {
 		color: #141827;
 		display: block;
+		font-size: inherit;
 		font-weight: 400;
 		margin-bottom: 4px;
 	}

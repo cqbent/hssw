@@ -3,7 +3,7 @@
 Plugin Name: WP-Optimize - Clean, Compress, Cache
 Plugin URI: https://getwpo.com
 Description: WP-Optimize makes your site fast and efficient. It cleans the database, compresses images and caches pages. Fast sites attract more traffic and users.
-Version: 3.1.8
+Version: 3.1.9
 Author: David Anderson, Ruhani Rabin, Team Updraft
 Author URI: https://updraftplus.com
 Text Domain: wp-optimize
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) die('No direct access allowed');
 
 // Check to make sure if WP_Optimize is already call and returns.
 if (!class_exists('WP_Optimize')) :
-define('WPO_VERSION', '3.1.8');
+define('WPO_VERSION', '3.1.9');
 define('WPO_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('WPO_PLUGIN_MAIN_PATH', plugin_dir_path(__FILE__));
 define('WPO_PREMIUM_NOTIFICATION', false);
@@ -1200,6 +1200,7 @@ class WP_Optimize {
 			'settings_page_url' => admin_url('admin.php?page=wpo_settings'),
 			'sites' => $this->get_sites(),
 			'user_always_ignores_table_delete_warning' => (get_user_meta(get_current_user_id(), 'wpo-ignores-table-delete-warning', true)) ? true : false,
+			'post_meta_tweak_completed' => __('The tweak has been performed.', 'wp-optimize'),
 		));
 	}
 
@@ -2316,7 +2317,8 @@ class WP_Optimize {
 	 * Prevents bots from indexing plugins list
 	 */
 	public function robots_txt($output) {
-		$output .= "Disallow: /uploads/wpo-plugins-tables-list.json";
+		$output .= "\n";
+		$output .= "Disallow: /uploads/wpo-plugins-tables-list.json\n";
 		return $output;
 	}
 }

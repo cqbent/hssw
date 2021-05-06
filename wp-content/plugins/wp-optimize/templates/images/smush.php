@@ -85,8 +85,8 @@
 				<span tabindex="0" data-tooltip="<?php _e('The original images are stored alongside the compressed images, you can visit the edit screen of the individual images in the Media Library to restore them.', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 				<br>
 				<input type="checkbox" id="smush-backup-delete" class="smush-options back_up_original" <?php checked($smush_options['back_up_delete_after']); ?> >
-				<label for="smush-backup-delete"><?php _e('Automatically delete image backups after', 'wp-optimize');?><input id="smush-backup-delete-days" type="number" min="1" value="<?php esc_attr_e($smush_options['back_up_delete_after_days']); ?>"><?php _e('days', 'wp-optimize');?></label><label> — <?php _e('or', 'wp-optimize'); ?></label> <button type="button" id="wpo_smush_delete_backup_btn" class="wpo_primary_small button"><?php _e('Delete all backup images now', 'wp-optimize'); ?></button>
-				<img id="wpo_smush_delete_backup_spinner" class="display-none" src="<?php esc_attr_e(admin_url('images/spinner-2x.gif')); ?>" alt="...">
+				<label for="smush-backup-delete"><?php _e('Automatically delete image backups after', 'wp-optimize');?><input id="smush-backup-delete-days" type="number" min="1" value="<?php intval($smush_options['back_up_delete_after_days']); ?>"><?php _e('days', 'wp-optimize');?></label><label> — <?php _e('or', 'wp-optimize'); ?></label> <button type="button" id="wpo_smush_delete_backup_btn" class="wpo_primary_small button"><?php _e('Delete all backup images now', 'wp-optimize'); ?></button>
+				<img id="wpo_smush_delete_backup_spinner" class="display-none" src="<?php echo esc_attr(admin_url('images/spinner-2x.gif')); ?>" alt="...">
 				<span id="wpo_smush_delete_backup_done" class="dashicons dashicons-yes display-none save-done"></span>
 				<br>
 				<button type="button" id="wpo_smush_mark_all_as_uncompressed_btn" class="wpo_primary_small button"><?php _e('Mark all images as uncompressed', 'wp-optimize'); ?></button>
@@ -96,8 +96,8 @@
 			</div>
 		</div>
 		<div class="save-options">
-			<input type="button" id="wpo_smush_images_save_options_button" style="display:none" class="wpo_primary_small button-primary" value="<?php _e('Save options', 'wp-optimize'); ?>" />
-			<img id="wpo_smush_images_save_options_spinner" class="display-none" src="<?php esc_attr_e(admin_url('images/spinner-2x.gif')); ?>" alt="...">
+			<input type="button" id="wpo_smush_images_save_options_button" style="display:none" class="wpo_primary_small button-primary" value="<?php esc_attr_e('Save options', 'wp-optimize'); ?>" />
+			<img id="wpo_smush_images_save_options_spinner" class="display-none" src="<?php echo esc_attr(admin_url('images/spinner-2x.gif')); ?>" alt="...">
 			<span id="wpo_smush_images_save_options_done" class="display-none"><span class="dashicons dashicons-yes"></span> <?php _e('Saved options', 'wp-optimize');?></span>
 			<span id="wpo_smush_images_save_options_fail" class="display-none"><span class="dashicons dashicons-no"></span> <?php _e('Failed to save options', 'wp-optimize');?></span>
 		</div>
@@ -119,9 +119,9 @@
 		</div>
 		<div id="wpo_smush_images_grid"></div>
 		<div class="smush-actions">
-			<input type="button" id="wpo_smush_images_btn" class="wpo_primary_small button-primary align-left" value="<?php _e('Compress the selected images', 'wp-optimize'); ?>" />
-			<input type="button" id="wpo_smush_mark_as_compressed" class="wpo_primary_small button align-left" value="<?php _e('Mark as already compressed', 'wp-optimize'); ?>" />
-			<input type="button" id="wpo_smush_get_logs" class="wpo_smush_get_logs wpo_primary_small button-primary align-right" value="<?php _e('View logs', 'wp-optimize'); ?>" />
+			<input type="button" id="wpo_smush_images_btn" class="wpo_primary_small button-primary align-left" value="<?php esc_attr_e('Compress the selected images', 'wp-optimize'); ?>" />
+			<input type="button" id="wpo_smush_mark_as_compressed" class="wpo_primary_small button align-left" value="<?php esc_attr_e('Mark as already compressed', 'wp-optimize'); ?>" />
+			<input type="button" id="wpo_smush_get_logs" class="wpo_smush_get_logs wpo_primary_small button-primary align-right" value="<?php esc_attr_e('View logs', 'wp-optimize'); ?>" />
 		</div>
 	</div>
 </div>
@@ -159,7 +159,7 @@
 		</tbody>
 	</table>
 	</div>
-	<input type="button" id="wpo_smush_images_pending_tasks_cancel_button" class="wpo_primary_small button-primary" value="<?php _e('Cancel', 'wp-optimize'); ?>" />
+	<input type="button" id="wpo_smush_images_pending_tasks_cancel_button" class="wpo_primary_small button-primary" value="<?php esc_attr_e('Cancel', 'wp-optimize'); ?>" />
 </div>
 
 <div id="smush-complete-summary" class="complete-animation" style="display:none;">
@@ -171,26 +171,26 @@
 		</div>
 	</div>
 	<div id="summary-message"></div>
-	<input type="button" id="wpo_smush_get_logs" class="wpo_smush_get_logs wpo_primary_small button-primary" value="<?php _e('View logs', 'wp-optimize'); ?>" />
-	<input type="button" id="wpo_smush_clear_stats_btn" class="wpo_primary_small button-primary align-right" value="<?php _e('Clear compression statistics', 'wp-optimize'); ?>" />
-	<img id="wpo_smush_images_clear_stats_spinner" class="display-none align-right" src="<?php esc_attr_e(admin_url('images/spinner-2x.gif')); ?>" alt="...">
+	<input type="button" id="wpo_smush_get_logs" class="wpo_smush_get_logs wpo_primary_small button-primary" value="<?php esc_attr_e('View logs', 'wp-optimize'); ?>" />
+	<input type="button" id="wpo_smush_clear_stats_btn" class="wpo_primary_small button-primary align-right" value="<?php esc_attr_e('Clear compression statistics', 'wp-optimize'); ?>" />
+	<img id="wpo_smush_images_clear_stats_spinner" class="display-none align-right" src="<?php echo esc_attr(admin_url('images/spinner-2x.gif')); ?>" alt="...">
 	<span id="wpo_smush_images_clear_stats_done" class="dashicons dashicons-yes display-none save-done align-right"></span>
 	<span class="clearfix"></span>
-	<input type="button" class="wpo_primary_small button-primary wpo_smush_stats_cta_btn" value="<?php _e('Close', 'wp-optimize'); ?>" />
+	<input type="button" class="wpo_primary_small button-primary wpo_smush_stats_cta_btn" value="<?php esc_attr_e('Close', 'wp-optimize'); ?>" />
 </div>
 
 <div id="smush-log-modal" class="complete-animation" style="display:none;">
 	<div id="log-panel"></div>
 	<a href="#" class="wpo_primary_small button-primary"> <?php _e('Download log file', 'wp-optimize'); ?></a>
-	<input type="button" class="wpo_primary_small button-primary close" value="<?php _e('Close', 'wp-optimize'); ?>" />
+	<input type="button" class="wpo_primary_small button-primary close" value="<?php esc_attr_e('Close', 'wp-optimize'); ?>" />
 </div>
 
 <div id="smush-information-modal" style="display:none;">
 	<div class="smush-information"></div>
-	<input type="button" class="wpo_primary_small button-primary information-modal-close" value="<?php _e('Close', 'wp-optimize'); ?>" />
+	<input type="button" class="wpo_primary_small button-primary information-modal-close" value="<?php esc_attr_e('Close', 'wp-optimize'); ?>" />
 </div>
 
 <div id="smush-information-modal-cancel-btn" style="display:none;">
 	<div class="smush-information"></div>
-	<input type="button" class="wpo_primary_small button-primary" value="<?php _e('Cancel', 'wp-optimize'); ?>" />
+	<input type="button" class="wpo_primary_small button-primary" value="<?php esc_attr_e('Cancel', 'wp-optimize'); ?>" />
 </div>

@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Tribe\\Tickets\\Admin\\Manager\\Service_Provider' => $baseDir . '/src/Tribe/Admin/Manager/Service_Provider.php',
+    'Tribe\\Tickets\\Admin\\Settings\\Service_Provider' => $baseDir . '/src/Tribe/Admin/Settings/Service_Provider.php',
     'Tribe\\Tickets\\Editor\\Warnings' => $baseDir . '/src/Tribe/Editor/Warnings.php',
     'Tribe\\Tickets\\Events\\Attendees_List' => $baseDir . '/src/Tribe/Events/Attendees_List.php',
     'Tribe\\Tickets\\Events\\Service_Provider' => $baseDir . '/src/Tribe/Events/Service_Provider.php',

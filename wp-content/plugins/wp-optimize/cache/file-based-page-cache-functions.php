@@ -709,6 +709,9 @@ function wpo_url_exception_match($url, $exception) {
 
 	$exception = preg_quote($exception);
 
+	// fix - unescape possible escaped mask .*
+	$exception = str_replace('\\.\\*', '.*', $exception);
+
 	return preg_match('#^'.$exception.'$#i', $url) || preg_match('#^'.$sub_dir.$exception.'$#i', $url);
 }
 endif;

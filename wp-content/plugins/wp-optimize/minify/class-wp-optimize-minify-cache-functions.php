@@ -62,6 +62,9 @@ class WP_Optimize_Minify_Cache_Functions {
 		// Create directories
 		$dirs = array($cache_dir, $tmp_dir, $header_dir);
 		foreach ($dirs as $target) {
+			$enabled = wp_optimize_minify_config()->get('enabled');
+			if (false === $enabled) break;
+
 			if (!is_dir($target) && !wp_mkdir_p($target)) {
 				error_log('WP_Optimize_Minify_Cache_Functions::cache_path(): The folder "'.$target.'" could not be created.');
 			}

@@ -29,7 +29,8 @@
 		/**
 		 * The standard handler for clearing the cache. Safe to use
 		 */
-		$('.purge_minify_cache').on('click', function() {
+		$('.purge_minify_cache').on('click', function(e) {
+			e.preventDefault();
 			$.blockUI();
 			send_command('purge_minify_cache', null, function(response) {
 				minify.updateFilesLists(response.files);
@@ -72,26 +73,15 @@
 
 		// ======= SLIDERS ========
 		// Generic slider save
+		$('#wp-optimize-nav-tab-wpo_minify-status-contents form :input, #wp-optimize-nav-tab-wpo_minify-js-contents form :input, #wp-optimize-nav-tab-wpo_minify-css-contents form :input, #wp-optimize-nav-tab-wpo_minify-font-contents form :input, #wp-optimize-nav-tab-wpo_minify-settings-contents form :input, #wp-optimize-nav-tab-wpo_minify-advanced-contents form :input').on('change', function() {
+			var elementId = $(this).prop('id');
+			if ('wpo_min_enable_minify_debug' !== elementId && 'wpo_min_edit_default_exclutions' !== elementId) {
+				$(this).closest('form').data('need_saving', true);
+			}
+		});
+		
 		$('input[type=checkbox].wpo-save-setting').on('change', function(e) {
-			var input = $(this),
-				val = input.prop('checked'),
-				name = input.prop('name'),
-				data = {};
-			data[name] = val;
-			$.blockUI();
-			send_command('save_minify_settings', data, function(response) {
-				if (response.success) {
-					input.trigger('wp-optimize/minify/saved_setting');
-					if (response.hasOwnProperty('files')) {
-						minify.updateFilesLists(response.files);
-						minify.updateStats(response.files);
-					}
-				} else {
-					console.log('Settings not saved', data)
-				}
-			}).always(function() {
-				$.unblockUI();
-			});
+			$('.wp-optimize-save-minify-settings').first().trigger('click');
 		});
 
 		// Slider enable minify
@@ -134,32 +124,65 @@
 		$('.wp-optimize-save-minify-settings').on('click', function(e) {
 			e.preventDefault();
 			var btn = $(this),
-				form = btn.closest('form'),
 				spinner = btn.next(),
-				success_icon = spinner.next();
+				success_icon = spinner.next(),
+				$need_refresh_btn = null;
 			
 			spinner.show();
 			$.blockUI();
+
+			var data = {};
+
+			var tabs = $('[data-whichpage="wpo_minify"] .wp-optimize-nav-tab-contents form');
+			tabs.each(function() {
+				var tab = $(this);
+				if (true === tab.data('need_saving')) {
+					data = Object.assign(data, gather_data(tab));
+					tab.data('need_saving', false);
+	
+				}
+			});
+
+			/**
+			 * Gather data from the given form
+			 *
+			 * @param {HTMLFormElement} form
+			 *
+			 * @returns {Array} Array of collected data from the form
+			 */
+			function gather_data(form) {
+				var data = $(form).serializeArray().reduce(form_serialize_reduce_cb, {});
+				$(form).find('input[type="checkbox"]').each(function (i) {
+					if ($(this).hasClass('wpo-save-setting') && null === $need_refresh_btn) {
+						$need_refresh_btn = $(this);
+					}
+					var name = $(this).prop("name");
+					if (name.includes('[]')) {
+						if (!$(this).is(':checked')) return;
+						var newName = name.replace('[]', '');
+						if (!data[newName]) data[newName] = [];
+						data[newName].push($(this).val());
+					} else {
+						data[name] = $(this).is(':checked') ? 'true' : 'false';
+					}
+				});
+				return data;
+			}
 			
-			var data = $(form).serializeArray().reduce(function(collection, item) {
+			/**
+			 * Reduces the form elements array into an object
+			 *
+			 * @param {Object} collection An empty object
+			 * @param {*} item form input element as array element
+			 *
+			 * @returns {Object} collection An object of form data
+			 */
+			function form_serialize_reduce_cb(collection, item) {
 				// Ignore items containing [], which we expect to be returned as arrays
 				if (item.name.includes('[]')) return collection;
 				collection[item.name] = item.value;
 				return collection;
-			}, {});
-
-			$(form).find('input[type="checkbox"]').each(function(i) {
-				var name = $(this).prop("name");
-				if (name.includes('[]')) {
-					if (!$(this).is(':checked')) return;
-					var newName = name.replace('[]', '');
-					if (!data[newName]) data[newName] = [];
-					data[newName].push($(this).val());
-				} else {
-					data[name] = $(this).is(':checked') ? 'true' : 'false';
-				}
-			});
-
+			}
 			send_command('save_minify_settings', data, function(response) {
 				if (response.hasOwnProperty('error')) {
 					// show error
@@ -167,6 +190,10 @@
 					$('.wpo-error__enabling-cache').removeClass('wpo_hidden').find('p').text(response.error.message);
 				} else {
 					$('.wpo-error__enabling-cache').addClass('wpo_hidden').find('p').text('');
+				}
+				
+				if (response.success && $need_refresh_btn) {
+					$need_refresh_btn.trigger('wp-optimize/minify/saved_setting');
 				}
 
 				if (response.hasOwnProperty('files')) {

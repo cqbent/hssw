@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) die('Access denied.');
 
 if (!class_exists('Updraft_Task_1_1')) require_once(WPO_PLUGIN_MAIN_PATH . 'vendor/team-updraft/common-libs/src/updraft-tasks/class-updraft-task.php');
 
-if (!class_exists('Smush_Task')) :
+if (!class_exists('Updraft_Smush_Task')) :
 
 abstract class Updraft_Smush_Task extends Updraft_Task_1_1 {
 

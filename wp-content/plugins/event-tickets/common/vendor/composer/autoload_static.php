@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed
+class ComposerStaticInit5d5790c470bcdd83b8003c14bbea1072
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -194,6 +194,7 @@ class ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed
         'Tribe\\Shortcode\\Manager' => __DIR__ . '/../..' . '/src/Tribe/Shortcode/Manager.php',
         'Tribe\\Shortcode\\Shortcode_Abstract' => __DIR__ . '/../..' . '/src/Tribe/Shortcode/Shortcode_Abstract.php',
         'Tribe\\Shortcode\\Shortcode_Interface' => __DIR__ . '/../..' . '/src/Tribe/Shortcode/Shortcode_Interface.php',
+        'Tribe\\Shortcode\\Utils' => __DIR__ . '/../..' . '/src/Tribe/Shortcode/Utils.php',
         'Tribe\\Tooltip\\View' => __DIR__ . '/../..' . '/src/Tribe/Tooltip/View.php',
         'Tribe\\Traits\\Cache_User' => __DIR__ . '/../..' . '/src/Tribe/Traits/Cache_User.php',
         'Tribe\\Traits\\With_DB_Lock' => __DIR__ . '/../..' . '/src/Tribe/Traits/With_DB_Lock.php',
@@ -213,6 +214,7 @@ class ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed
         'Tribe\\Utils\\Post_Thumbnail' => __DIR__ . '/../..' . '/src/Tribe/Utils/Post_Thumbnail.php',
         'Tribe\\Utils\\Query' => __DIR__ . '/../..' . '/src/Tribe/Utils/Query.php',
         'Tribe\\Utils\\Strings' => __DIR__ . '/../..' . '/src/Tribe/Utils/Strings.php',
+        'Tribe\\Utils\\Taxonomy' => __DIR__ . '/../..' . '/src/Tribe/Utils/Taxonomy.php',
         'Tribe\\Widget\\Manager' => __DIR__ . '/../..' . '/src/Tribe/Widget/Manager.php',
         'Tribe\\Widget\\Widget_Abstract' => __DIR__ . '/../..' . '/src/Tribe/Widget/Widget_Abstract.php',
         'Tribe\\Widget\\Widget_Interface' => __DIR__ . '/../..' . '/src/Tribe/Widget/Widget_Interface.php',
@@ -228,10 +230,10 @@ class ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita2218dc48a4c1c54b9dc7ac250dcd5ed::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5d5790c470bcdd83b8003c14bbea1072::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5d5790c470bcdd83b8003c14bbea1072::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5d5790c470bcdd83b8003c14bbea1072::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit5d5790c470bcdd83b8003c14bbea1072::$classMap;
 
         }, null, ClassLoader::class);
     }

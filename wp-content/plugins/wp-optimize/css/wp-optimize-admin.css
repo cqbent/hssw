@@ -183,7 +183,7 @@ td.wp-optimize-settings-optimization-checkbox {
 	padding: 0px;
 }
 
-#retention-period {
+#retention-period, #revisions-count {
 	width: 60px;
 }
 
@@ -790,7 +790,8 @@ body[class*="wp-optimize_page_"] #wpbody-content {
 
 	body.auto-fold .wpo-main-header {
 		left: 0;
-		top: 46px;
+		top: -70px;
+		position: absolute;
 	}
 }
 
@@ -1342,7 +1343,7 @@ a.wpo-info__trigger span.dashicons {
 	vertical-align: middle;
 }
 
-.wpo_section.wpo_group.wpo-feature-is-disabled > *:not(.wpo-show) {
+.wpo_section.wpo_group.wpo-feature-is-disabled .wpo-fieldgroup:not(.wpo-show) {
     opacity: 0.5;
 }
 
