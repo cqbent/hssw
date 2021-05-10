@@ -16307,7 +16307,8 @@ footer.content-info .container {
 
 .featured-authors,
 .featured-blog-posts,
-.featured-events {
+.featured-events,
+.blog {
   flex-wrap: wrap;
   margin-bottom: 20px;
   border-bottom: 1px #fff solid;
@@ -16323,7 +16324,10 @@ footer.content-info .container {
 .sidebar-primary .featured-blog-posts .wrap > .content,
 .featured-events .row,
 .featured-events .sidebar-primary .wrap > .content,
-.sidebar-primary .featured-events .wrap > .content {
+.sidebar-primary .featured-events .wrap > .content,
+.blog .row,
+.blog .sidebar-primary .wrap > .content,
+.sidebar-primary .blog .wrap > .content {
   margin-bottom: 20px;
 }
 
@@ -16331,7 +16335,8 @@ footer.content-info .container {
 
 .featured-authors .wp-block-column,
 .featured-blog-posts .wp-block-column,
-.featured-events .wp-block-column {
+.featured-events .wp-block-column,
+.blog .wp-block-column {
   margin: 0 0 40px 0;
   padding: 0 20px;
 }
@@ -16341,7 +16346,8 @@ footer.content-info .container {
 
   .featured-authors .wp-block-column,
   .featured-blog-posts .wp-block-column,
-  .featured-events .wp-block-column {
+  .featured-events .wp-block-column,
+  .blog .wp-block-column {
     flex: 0 0 50%;
     max-width: 50%;
   }
@@ -16535,7 +16541,8 @@ article .job-title {
 /* line 205, resources/assets/styles/layouts/_content.scss */
 
 .page.author-of-the-week h1,
-.page.events-workshops h1 {
+.page.events-workshops h1,
+.blog h1 {
   color: #40E0D0;
 }
 

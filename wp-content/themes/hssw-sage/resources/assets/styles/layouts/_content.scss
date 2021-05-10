@@ -69,7 +69,7 @@
   }
 }
 
-.featured-authors, .featured-blog-posts, .featured-events {
+.featured-authors, .featured-blog-posts, .featured-events, .blog {
   flex-wrap: wrap;
   margin-bottom: 20px;
   border-bottom: 1px $white solid;
@@ -201,7 +201,7 @@ article {
 }
 
 // author of week and events pages
-.page.author-of-the-week, .page.events-workshops {
+.page.author-of-the-week, .page.events-workshops, .blog {
   h1 {
     color: $turqoise;
   }

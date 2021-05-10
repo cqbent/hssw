@@ -1,10 +1,10 @@
 <article @php post_class('row') @endphp>
   <div class="column image col-sm-3">
-    {!! get_the_post_thumbnail() !!}
+    {!! hssw_thumbnail_image() !!}
   </div>
   <div class="column content col-sm-9">
     <header>
-      <h2 class="entry-title"><a href="{{ get_permalink() }}">{!! get_the_title() !!}</a></h2>
+      <h3 class="entry-title"><a href="{{ get_permalink() }}">{!! get_the_title() !!}</a></h3>
       @include('partials/entry-meta')
     </header>
     <div class="entry-summary">

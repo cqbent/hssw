@@ -204,8 +204,8 @@ function hssw_events($attributes) {
 	foreach ($events as $post) {
 		$output .= '
 			<div class="row">
-				<div class="image col-sm-4">' . get_the_post_thumbnail($post->ID) . '</div>
-				<div class="content col-sm-8">
+				<div class="image col-sm-3">' . get_the_post_thumbnail($post->ID) . '</div>
+				<div class="content col-sm-9">
 					<h3 class="title "><a href="'. get_the_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></h3>
 					<div class="start-date">' . tribe_get_start_date($post->ID) . '</div>
 					<div class="excerpt">' . wp_trim_excerpt('', $post->ID) . '... <a href="'. get_the_permalink($post->ID) . '">More</a></div>
@@ -300,8 +300,8 @@ function hssw_cat_posts($attributes) {
 			$query->the_post();
 			$output .= '
 				<div class="row">
-					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
-					<div class="content col-sm-8">
+					<div class="image col-sm-3">' . hssw_thumbnail_image() . '</div>
+					<div class="content col-sm-9">
 						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
 						<div class="excerpt">' . get_the_excerpt() . '</div>
 					</div>
@@ -314,6 +314,14 @@ function hssw_cat_posts($attributes) {
 	return $output;
 }
 add_shortcode('hssw_cat_posts', 'hssw_cat_posts');
+
+function hssw_thumbnail_image() {
+	$img = get_the_post_thumbnail();
+	if (!$img) {
+		$img = '<img src="' . get_stylesheet_directory_uri() . '/assets/images/hssw_logo.png" alt="HSSW" />';
+	}
+	return $img;
+}
 
 function hssw_exclude_category_from_blog( $query ) {
 
