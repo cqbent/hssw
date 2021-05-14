@@ -318,9 +318,23 @@ add_shortcode('hssw_cat_posts', 'hssw_cat_posts');
 function hssw_thumbnail_image() {
 	$img = get_the_post_thumbnail();
 	if (!$img) {
-		$img = '<img src="' . get_stylesheet_directory_uri() . '/assets/images/hssw_logo.png" alt="HSSW" />';
+		$img_post_thumbnail = get_post_custom_values('post_thumbnail');
+		if ($img_post_thumbnail) {
+			$img_path = $img_post_thumbnail[0];
+		}
+		else {
+			$img_path = get_stylesheet_directory_uri() . '/assets/images/hssw_logo.png';
+		}
+		$img = '<img src="' . $img_path . '" alt="HSSW" />';
 	}
 	return $img;
+}
+
+/*
+ * hssw_post_thumbnail() - function to get legacy thumbnail images from posts
+ */
+function hssw_post_thumbnail() {
+
 }
 
 function hssw_exclude_category_from_blog( $query ) {

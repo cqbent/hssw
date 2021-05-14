@@ -15669,6 +15669,13 @@ form #search-fields .tribe-events-single button,
   min-width: 20px;
 }
 
+/* line 93, resources/assets/styles/common/_global.scss */
+
+.su-vimeo,
+.su-youtube {
+  margin-bottom: 10px;
+}
+
 /* line 5, resources/assets/styles/components/_comments.scss */
 
 .comment-list ol {
