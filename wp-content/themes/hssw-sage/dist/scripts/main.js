@@ -7362,6 +7362,20 @@ Router.prototype.loadEvents = function loadEvents () {
 
     // add disabled class to menu item with disabled class
     $('.menu-primary li.disabled > a').addClass('disabled');
+
+    $(window).on('load', function () {
+      $('.ctct-inline-form').addClass('some-class');
+      var i = setInterval(function() {
+        if ($('#last_name_0').length) {
+          clearInterval(i);
+          $('#last_name_0')
+            .addClass('ctct-form-checkbox')
+            .attr('type','checkbox')
+            .attr('value','Yes')
+            .after('<label>I agree to this shit</label>');
+        }
+      })
+    })
   },
 });
 

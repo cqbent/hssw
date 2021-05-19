@@ -84,15 +84,17 @@ function features_carousel() {
 	foreach ($features as $feature) {
 		$link = $feature['feature_link'] ? $feature['feature_link'] : '#';
 		$image = $feature['image'] ? wp_get_attachment_image_url($feature['image']['ID'], 'full') : '';
+		$feature_title = $feature['feature_title'] ? '<h2>' . $feature['feature_title'] . '</h2>' : '';
+		$feature_text = $feature['feature_text'] ? '<div class="text">' . $feature['feature_text'] . '</div>' : '';
 		$output .= '
+				<a href="' . $link['url'] . '">
 				<div class="item" style="background-image: url(' . $image . ')">
 					<div class="item-content">
-						<a href="' . $link['url'] . '">
-							<h2>' . $feature['feature_title'] . '</h2>
-							<div class="text">' . $feature['feature_text'] . '</div>
-						</a>
+						' . $feature_title . '
+						' . $feature_text . '
 					</div>
 				</div>
+				</a>
 			';
 	}
 	$output .= '</div>';

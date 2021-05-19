@@ -10,25 +10,4 @@
       display: block;
     }
   }
-  .ctct-inline-form {
-    background: linear-gradient(to bottom, cadetblue, gold);
-    padding: 4px;
-    .ctct-form-container {
-      background: $black;
-    }
-    .ctct-form-defaults {
-      border-radius: 0;
-      font-size: .875rem;
-      .ctct-form-text, label, legend {
-        font-size: .875rem !important;
-      }
-      h2 {
-        font-size: 1.25rem !important;
-      }
-      input.ctct-form-element {
-        padding: 2px 5px !important;
-        height: 30px !important;
-      }
-    }
-  }
 }
