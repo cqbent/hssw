@@ -342,7 +342,7 @@ function hssw_post_thumbnail() {
 
 function hssw_exclude_category_from_blog( $query ) {
 
-	if( $query->is_main_query() && ! is_admin() && $query->is_home() ) {
+	if( $query->is_main_query() && !is_admin() && ($query->is_home() || $query->is_archive()) ) {
 		$query->set( 'cat', ['-15','-635'] );
 	}
 }
