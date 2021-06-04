@@ -82,13 +82,17 @@ function features_carousel() {
 	$features = get_field('features_carousel');
 	$output = '<div class="owl-carousel owl-theme features-carousel">';
 	foreach ($features as $feature) {
+		$item_class = 'item';
 		$link = $feature['feature_link'] ? $feature['feature_link'] : '#';
 		$image = $feature['image'] ? wp_get_attachment_image_url($feature['image']['ID'], 'full') : '';
 		$feature_title = $feature['feature_title'] ? '<h2>' . $feature['feature_title'] . '</h2>' : '';
 		$feature_text = $feature['feature_text'] ? '<div class="text">' . $feature['feature_text'] . '</div>' : '';
+		if ($feature_text != '' || $feature_title != '') {
+			$item_class .= " overlay";
+		}
 		$output .= '
 				<a href="' . $link['url'] . '">
-				<div class="item" style="background-image: url(' . $image . ')">
+				<div class="'. $item_class .'" style="background-image: url(' . $image . ')">
 					<div class="item-content">
 						' . $feature_title . '
 						' . $feature_text . '
