@@ -91,15 +91,13 @@ function features_carousel() {
 			$item_class .= " overlay";
 		}
 		$output .= '
-				<a href="' . $link['url'] . '">
-				<div class="'. $item_class .'" style="background-image: url(' . $image . ')">
-					<div class="item-content">
-						' . $feature_title . '
-						' . $feature_text . '
-					</div>
+			<div class="'. $item_class .'" style="background-image: url(' . $image . ')">
+				<div class="item-content">
+					' . $feature_title . '
+					' . $feature_text . '
 				</div>
-				</a>
-			';
+			</div>
+		';
 	}
 	$output .= '</div>';
 	return $output;
