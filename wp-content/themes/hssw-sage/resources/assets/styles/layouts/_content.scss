@@ -26,12 +26,12 @@
 .features-carousel {
   position: relative;
   .item {
-    min-height: 400px;
+    min-height: 300px;
     background-color: $black;
     text-align: center;
     display: flex;
     align-items: center;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     &.overlay:after {
@@ -80,6 +80,16 @@
         font-size: 3rem;
         color: $white;
       }
+    }
+  }
+  @media (min-width: $screen-sm-min) {
+    .item {
+      min-height: 400px;
+    }
+  }
+  @media (min-width: $screen-md-min) {
+    .item {
+      min-height: 500px;
     }
   }
 }

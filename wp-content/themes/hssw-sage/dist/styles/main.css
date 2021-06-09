@@ -16252,12 +16252,12 @@ footer.content-info .container {
 /* line 28, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .item {
-  min-height: 400px;
+  min-height: 300px;
   background-color: #000;
   text-align: center;
   display: flex;
   align-items: center;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -16327,7 +16327,23 @@ footer.content-info .container {
   color: #fff;
 }
 
-/* line 87, resources/assets/styles/layouts/_content.scss */
+@media (min-width: 768px) {
+  /* line 86, resources/assets/styles/layouts/_content.scss */
+
+  .features-carousel .item {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* line 91, resources/assets/styles/layouts/_content.scss */
+
+  .features-carousel .item {
+    min-height: 500px;
+  }
+}
+
+/* line 97, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors,
 .featured-blog-posts,
@@ -16338,7 +16354,7 @@ footer.content-info .container {
   border-bottom: 1px #fff solid;
 }
 
-/* line 91, resources/assets/styles/layouts/_content.scss */
+/* line 101, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .row,
 .featured-authors .sidebar-primary .wrap > .content,
@@ -16355,7 +16371,7 @@ footer.content-info .container {
   margin-bottom: 20px;
 }
 
-/* line 94, resources/assets/styles/layouts/_content.scss */
+/* line 104, resources/assets/styles/layouts/_content.scss */
 
 .featured-authors .wp-block-column,
 .featured-blog-posts .wp-block-column,
@@ -16366,7 +16382,7 @@ footer.content-info .container {
 }
 
 @media (min-width: 768px) {
-  /* line 94, resources/assets/styles/layouts/_content.scss */
+  /* line 104, resources/assets/styles/layouts/_content.scss */
 
   .featured-authors .wp-block-column,
   .featured-blog-posts .wp-block-column,
@@ -16377,19 +16393,19 @@ footer.content-info .container {
   }
 }
 
-/* line 104, resources/assets/styles/layouts/_content.scss */
+/* line 114, resources/assets/styles/layouts/_content.scss */
 
 .featured-blog-posts {
   border: none;
 }
 
-/* line 109, resources/assets/styles/layouts/_content.scss */
+/* line 119, resources/assets/styles/layouts/_content.scss */
 
 .people-grid {
   flex-wrap: wrap;
 }
 
-/* line 111, resources/assets/styles/layouts/_content.scss */
+/* line 121, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column {
   margin-bottom: 40px;
@@ -16398,7 +16414,7 @@ footer.content-info .container {
   font-size: 1.25rem;
 }
 
-/* line 117, resources/assets/styles/layouts/_content.scss */
+/* line 127, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column img {
   border-radius: 50%;
@@ -16406,14 +16422,14 @@ footer.content-info .container {
   margin-bottom: 10px;
 }
 
-/* line 122, resources/assets/styles/layouts/_content.scss */
+/* line 132, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column .name {
   font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  /* line 129, resources/assets/styles/layouts/_content.scss */
+  /* line 139, resources/assets/styles/layouts/_content.scss */
 
   article .featured-image {
     float: right;
@@ -16422,14 +16438,14 @@ footer.content-info .container {
   }
 }
 
-/* line 136, resources/assets/styles/layouts/_content.scss */
+/* line 146, resources/assets/styles/layouts/_content.scss */
 
 article .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
 
-/* line 145, resources/assets/styles/layouts/_content.scss */
+/* line 155, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a,
 .content h3 a,
@@ -16439,7 +16455,7 @@ article .job-title {
   color: #ffb966;
 }
 
-/* line 147, resources/assets/styles/layouts/_content.scss */
+/* line 157, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a:hover,
 .content h3 a:hover,
@@ -16449,7 +16465,7 @@ article .job-title {
   color: #ffb966;
 }
 
-/* line 155, resources/assets/styles/layouts/_content.scss */
+/* line 165, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
 .tribe-events-pg-template,
@@ -16458,7 +16474,7 @@ article .job-title {
   color: #fff !important;
 }
 
-/* line 158, resources/assets/styles/layouts/_content.scss */
+/* line 168, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
 .tribe-events-pg-template .tribe-events-l-container,
@@ -16466,7 +16482,7 @@ article .job-title {
   padding: 20px 0 !important;
 }
 
-/* line 162, resources/assets/styles/layouts/_content.scss */
+/* line 172, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-meta-group .tribe-events-event-categories-label,
 .tribe-events .tribe-events-meta-group .tribe-events-event-categories,
@@ -16477,7 +16493,7 @@ article .job-title {
   display: none;
 }
 
-/* line 167, resources/assets/styles/layouts/_content.scss */
+/* line 177, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-content div,
 .tribe-events-pg-template .tribe-events-content div,
@@ -16485,7 +16501,7 @@ article .job-title {
   margin-bottom: 1rem;
 }
 
-/* line 171, resources/assets/styles/layouts/_content.scss */
+/* line 181, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
 .tribe-events-pg-template button,
@@ -16495,7 +16511,7 @@ article .job-title {
   border-color: #ee2015;
 }
 
-/* line 177, resources/assets/styles/layouts/_content.scss */
+/* line 187, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
 .tribe-events-pg-template input[type=text],
@@ -16503,7 +16519,7 @@ article .job-title {
   border: none;
 }
 
-/* line 181, resources/assets/styles/layouts/_content.scss */
+/* line 191, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-tickets .tribe-tickets__title,
 .tribe-events-pg-template .tribe-tickets .tribe-tickets__title,
@@ -16511,19 +16527,19 @@ article .job-title {
   display: none;
 }
 
-/* line 186, resources/assets/styles/layouts/_content.scss */
+/* line 196, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
-/* line 188, resources/assets/styles/layouts/_content.scss */
+/* line 198, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common.tribe-tickets {
   color: #000 !important;
 }
 
-/* line 191, resources/assets/styles/layouts/_content.scss */
+/* line 201, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common.tribe-tickets .tribe-tickets__item__quantity button {
   border: none;
@@ -16531,7 +16547,7 @@ article .job-title {
 }
 
 @media (min-width: 768px) {
-  /* line 199, resources/assets/styles/layouts/_content.scss */
+  /* line 209, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;
@@ -16540,7 +16556,7 @@ article .job-title {
   }
 }
 
-/* line 208, resources/assets/styles/layouts/_content.scss */
+/* line 218, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list {
   list-style: none;
@@ -16548,7 +16564,7 @@ article .job-title {
   padding: 0;
 }
 
-/* line 212, resources/assets/styles/layouts/_content.scss */
+/* line 222, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list li {
   margin-bottom: 20px;
@@ -16562,7 +16578,7 @@ article .job-title {
   content: "";
 }
 
-/* line 215, resources/assets/styles/layouts/_content.scss */
+/* line 225, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list li img {
   float: left;
@@ -16570,7 +16586,7 @@ article .job-title {
   margin-right: 30px;
 }
 
-/* line 225, resources/assets/styles/layouts/_content.scss */
+/* line 235, resources/assets/styles/layouts/_content.scss */
 
 .page.author-of-the-week h1,
 .page.events-workshops h1,
