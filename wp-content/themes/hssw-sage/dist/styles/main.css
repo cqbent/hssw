@@ -15590,47 +15590,49 @@ h4 a:hover {
 /* line 45, resources/assets/styles/common/_global.scss */
 
 h1 {
-  color: #40E0D0;
+  color: #ffb966;
   font-size: 2rem;
 }
 
 /* line 49, resources/assets/styles/common/_global.scss */
 
 h2 {
+  color: #40E0D0;
   font-size: 1.5rem;
 }
 
-/* line 52, resources/assets/styles/common/_global.scss */
+/* line 53, resources/assets/styles/common/_global.scss */
 
 h3 {
+  color: #40E0D0;
   font-size: 1.25rem;
 }
 
-/* line 56, resources/assets/styles/common/_global.scss */
+/* line 58, resources/assets/styles/common/_global.scss */
 
 .red {
   color: #ee2015;
 }
 
-/* line 59, resources/assets/styles/common/_global.scss */
+/* line 61, resources/assets/styles/common/_global.scss */
 
 .gold {
   color: #ffb966;
 }
 
-/* line 62, resources/assets/styles/common/_global.scss */
+/* line 64, resources/assets/styles/common/_global.scss */
 
 .turqoise {
   color: #40E0D0;
 }
 
-/* line 65, resources/assets/styles/common/_global.scss */
+/* line 67, resources/assets/styles/common/_global.scss */
 
 .purple {
   color: #a352cc;
 }
 
-/* line 70, resources/assets/styles/common/_global.scss */
+/* line 72, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
@@ -15638,7 +15640,7 @@ form textarea {
   max-width: 992px;
 }
 
-/* line 75, resources/assets/styles/common/_global.scss */
+/* line 77, resources/assets/styles/common/_global.scss */
 
 form #search-fields .search-field {
   padding: 2px 5px;
@@ -15647,7 +15649,7 @@ form #search-fields .search-field {
   float: left;
 }
 
-/* line 81, resources/assets/styles/common/_global.scss */
+/* line 83, resources/assets/styles/common/_global.scss */
 
 form #search-fields .btn,
 form #search-fields .comment-form input[type="submit"],
@@ -15669,34 +15671,34 @@ form #search-fields .tribe-events-single button,
   min-width: 20px;
 }
 
-/* line 93, resources/assets/styles/common/_global.scss */
+/* line 95, resources/assets/styles/common/_global.scss */
 
 .su-vimeo,
 .su-youtube {
   margin-bottom: 10px;
 }
 
-/* line 97, resources/assets/styles/common/_global.scss */
+/* line 99, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form {
   background: linear-gradient(to bottom, cadetblue, gold);
   padding: 4px;
 }
 
-/* line 100, resources/assets/styles/common/_global.scss */
+/* line 102, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-container {
   background: #000;
 }
 
-/* line 103, resources/assets/styles/common/_global.scss */
+/* line 105, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults {
   border-radius: 0;
   font-size: .875rem;
 }
 
-/* line 106, resources/assets/styles/common/_global.scss */
+/* line 108, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults .ctct-form-text,
 .ctct-inline-form .ctct-form-defaults label,
@@ -15704,13 +15706,13 @@ form #search-fields .tribe-events-single button,
   font-size: .875rem !important;
 }
 
-/* line 109, resources/assets/styles/common/_global.scss */
+/* line 111, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults h2 {
   font-size: 1.25rem !important;
 }
 
-/* line 112, resources/assets/styles/common/_global.scss */
+/* line 114, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults input.ctct-form-element {
   padding: 2px 5px !important;
