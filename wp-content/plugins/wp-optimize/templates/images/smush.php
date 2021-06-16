@@ -13,6 +13,16 @@
 	<p>
 		<?php _e('Note: Currently this feature uses third party services from reSmush.it. The performance of this free image compression service may be limited for large workloads. We are working on a premium service.', 'wp-optimize'); ?>
 	</p>
+	<?php
+	if (defined('WPO_USE_WEBP_CONVERSION') && true === WPO_USE_WEBP_CONVERSION) {
+		$converters = WP_Optimize()->get_options()->get_option('webp_converters', false);
+		if (false !== $converters) {
+			printf('<p>%1$s <strong>' . implode(', ', $converters) . '</strong></p>', __('Available WebP conversion tools:', 'wp-optimize'));
+		} else {
+			printf('<p>%1$s</p>', __('No WebP conversion tools are available on your web-server.', 'wp-optimize'));
+		}
+	}
+	?>
 	<div class="wpo-fieldgroup">
 		<div class="autosmush wpo-fieldgroup__subgroup<?php echo $smush_options['autosmush'] ? ' active' : ''; ?>">
 			<label class="switch" for="smush-automatically">
@@ -20,7 +30,7 @@
 				<span class="slider round"></span>
 			</label>
 			<label for="smush-automatically"><?php _e('Automatically compress newly-added images', 'wp-optimize');?>
-				<span tabindex="0" data-tooltip="<?php _e('The images will be added to a background queue, which will start automatically within the next hour. This avoids the site from freezing during media uploads. The time taken to complete the compression will depend upon the size and quantity of the images.', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
+				<span tabindex="0" data-tooltip="<?php echo __('The images will be added to a background queue, which will start automatically within the next hour.', 'wp-optimize').' '.__('This prevents the site from being slowed down during media uploads.', 'wp-optimize').' '.__('The time taken to complete the compression will depend upon the size and quantity of the images.', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 			</label>
 		</div>
 
@@ -39,17 +49,17 @@
 			<h3><?php _e('Compression options', 'wp-optimize');?></h3>
 			<input type="radio" id="enable_lossy_compression" name="compression_level" <?php checked($smush_options['image_quality'], 90); ?> class="smush-options compression_level"> 
 			<label for="enable_lossy_compression"><?php _e('Prioritize maximum compression', 'wp-optimize');?></label>
-			<span tabindex="0" data-tooltip="<?php _e('Uses lossy compression to ensure maximum savings per image, the resulting images are of a slightly lower quality', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
+			<span tabindex="0" data-tooltip="<?php _e('Uses lossy compression to ensure maximum savings per image. The resulting images are of a slightly lower quality', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 			<br>						
 			<input type="radio" id="enable_lossless_compression" <?php checked($smush_options['image_quality'], 100); ?>name="compression_level" class="smush-options compression_level"> 
 			<label for="enable_lossless_compression"><?php _e('Prioritize retention of detail', 'wp-optimize');?></label>
-			<span tabindex="0" data-tooltip="<?php _e('Uses lossless compression, which results in much better image quality but lower filesize savings per image', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
+			<span tabindex="0" data-tooltip="<?php _e('Uses lossless compression, which results in much better image quality but lower file size savings per image', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 			<br>
 			<input id="enable_custom_compression" <?php checked($custom); ?> type="radio" name="compression_level" class="smush-options compression_level"> 
 			<label for="enable_custom_compression"><?php _e('Custom', 'wp-optimize');?></label>
 			<br>
 			<div class="smush-options custom_compression" <?php if (!$custom) echo 'style="display:none;"';?> >
-				<span class="slider-start"><?php _e('Maximum Compression', 'wp-optimize');?></span>
+				<span class="slider-start"><?php _e('Maximum compression', 'wp-optimize');?></span>
 				<input id="custom_compression_slider" class="compression_level" data-max="Maximum Compression"  type="range" step="1" value="<?php echo $smush_options['image_quality']; ?>" min="89" max="100" list="number" />
 				<datalist id="number">
 					<option value="89"/>
@@ -58,7 +68,7 @@
 					<option value="97"/>
 					<option value="100"/>
 				</datalist>
-				<span class="slider-end"><?php _e('Best Image Quality', 'wp-optimize');?></span>
+				<span class="slider-end"><?php _e('Best image quality', 'wp-optimize');?></span>
 			</div>
 			<p><?php _e('Not sure what to choose?', 'wp-optimize'); ?> <a href="https://getwpo.com/lossy-vs-lossless-image-compression-a-guide-to-the-trade-off-between-image-size-and-quality/" target="_blank"><?php _e('Read our article "Lossy vs Lossless image compression"', 'wp-optimize'); ?></a></p>
 		</div>

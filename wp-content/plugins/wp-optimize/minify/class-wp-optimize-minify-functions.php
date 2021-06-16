@@ -502,15 +502,15 @@ class WP_Optimize_Minify_Functions {
 	public static function replace_css_import($css, $file_url) {
 		$remove_print_mediatypes = wp_optimize_minify_config()->get('remove_print_mediatypes');
 		$debug = wp_optimize_minify_config()->get('debug');
-		return preg_replace_callback('/@import(.*);?/mi', function($matches) use ($file_url, $remove_print_mediatypes, $debug) { // phpcs:ignore PHPCompatibility.FunctionDeclarations.NewClosure.Found
+		return preg_replace_callback('/(?:@import)\s(?:url\()?\s?["\'](.*?)["\']\s?\)?(?:[^;]*);?/im', function($matches) use ($file_url, $remove_print_mediatypes, $debug) { // phpcs:ignore PHPCompatibility.FunctionDeclarations.NewClosure.Found
 			// @import contains url()
-			if (preg_match('/url\s*\((.[^\)]*)[\)*?](.*);/', $matches[1], $url_matches)) {
+			if (preg_match('/url\s*\((.[^\)]*)[\)*?](.*);/', $matches[0], $url_matches)) {
 				$url = trim(str_replace(array('"', "'"), '', $url_matches[1]));
 				$media_query = trim($url_matches[2]);
 			// @import uses quotes only
-			} elseif (preg_match('/["\'](.*)["\'](.*);/', $matches[1], $no_url_matches)) {
+			} elseif (preg_match('/["\'](.*)["\'](.*);?/', $matches[0], $no_url_matches)) {
 				$url = trim($no_url_matches[1]);
-				$media_query = trim($no_url_matches[2]);
+				$media_query = trim($no_url_matches[2], ") ;");
 			}
 			
 			// If $media_query contains print, and $remove_print_mediatypes is true, return empty string

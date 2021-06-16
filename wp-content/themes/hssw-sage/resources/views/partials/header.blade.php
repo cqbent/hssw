@@ -2,7 +2,7 @@
   <div class="container">
     <div class="logo">
       <a class="brand" href="{{ home_url('/') }}">
-        <img src="{{ get_stylesheet_directory_uri() }}/assets/images/hssw_logo.png" alt="{{ get_bloginfo('name', 'display') }}" class="logo" />
+        <img src="{{ get_stylesheet_directory_uri() }}/assets/images/hssw_logo_new.png" alt="{{ get_bloginfo('name', 'display') }}" class="logo" />
         <span></span>
       </a>
     </div>

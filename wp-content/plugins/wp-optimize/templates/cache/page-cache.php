@@ -74,6 +74,8 @@
 		<span tabindex="0" data-tooltip="<?php _e('Enable this option if you do not have user-specific or restricted content on your website.', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 	</div>
 
+	<?php do_action('wpo_after_cache_settings'); ?>
+
 	<div class="wpo-fieldgroup__subgroup">
 		<label for="page_cache_length_value"><?php _e('Cache lifespan', 'wp-optimize'); ?></label>
 		<p>
