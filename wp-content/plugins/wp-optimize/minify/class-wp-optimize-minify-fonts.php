@@ -84,7 +84,7 @@ class WP_Optimize_Minify_Fonts {
 	 * Parses google font api version 1 url
 	 */
 	private static function parse_font_api1_url($font) {
-		parse_str(parse_url($font, PHP_URL_QUERY), $font_elements);
+		parse_str(parse_url(rtrim($font, '|'), PHP_URL_QUERY), $font_elements);
 		// Process each font family
 		foreach (explode('|', $font_elements['family']) as $font_family) {
 			// Separate font and sizes
@@ -139,7 +139,7 @@ class WP_Optimize_Minify_Fonts {
 			if (!isset(self::$fonts[$font_name]['version'])) {
 				self::$fonts[$font_name]['version'] = 'V2';
 			}
-			if (isset($font_styles) && isset($font_units)) {
+			if (isset($font_styles) && isset($font_units) && isset($font_elements[1])) {
 				$font_units = explode(';', $font_elements[1]);
 				switch ($font_styles) {
 					case 'wght':
@@ -200,11 +200,12 @@ class WP_Optimize_Minify_Fonts {
 							if (!isset(self::$fonts[$font_name]['specs']['ital,wght'])) {
 								self::$fonts[$font_name]['specs']['ital,wght'] = array();
 							}
-							if (false != strpos($detail, 'i')) {
-								$detail = str_replace('italic', '', $detail);
-								$detail = str_replace('i', '', $detail);
+							if (false !== strpos($detail, 'i')) {
+								$detail = str_replace(array('italic', 'i'), '', $detail);
+								$detail = '' === $detail ? 400 : $detail;
 								array_push(self::$fonts[$font_name]['specs']['ital,wght'], '1,' . $detail);
 							} else {
+								$detail = 'regular' === $detail ? 400 : $detail;
 								array_push(self::$fonts[$font_name]['specs']['ital,wght'], '0,' . $detail);
 							}
 							break;
@@ -240,15 +241,18 @@ class WP_Optimize_Minify_Fonts {
 	 * @return string
 	 */
 	private static function specs_to_string($font_specs) {
-		$styles = array_keys($font_specs);
 		$result = array();
 		$weights = isset($font_specs['wght']) && count($font_specs['wght']);
 		$italic_weights = isset($font_specs['ital']) && count($font_specs['ital']);
 		$all_weights = isset($font_specs['ital,wght']) && count($font_specs['ital,wght']);
-		if (0 == $weights && 0 == $italic_weights && 0 == $all_weights) {
+
+		// Nothing is set, return
+		if (!$weights && !$italic_weights && !$all_weights) {
 			return '';
 		}
-		if (0 == $weights && 1 == $italic_weights && 0 == $all_weights) {
+
+		// Italic only
+		if ($italic_weights && !$weights && !$all_weights) {
 			if ('1' == $font_specs['ital'][0]) {
 				return ':ital@1';
 			} elseif ('0;1' == $font_specs['ital'][0]) {
@@ -256,34 +260,33 @@ class WP_Optimize_Minify_Fonts {
 			}
 		}
 
-		if (isset($font_specs['ital,wght']) && in_array('ital,wght', $styles) && count($font_specs['ital,wght']) > 0) {
-			foreach ($font_specs as $style => $units) {
-				switch ($style) {
-					case 'wght':
-						foreach ($units as $unit) {
-							$multiple_units = explode(',', $unit);
-							if (count($multiple_units) > 0) {
-								foreach ($multiple_units as $single_unit) {
-									array_push($result, '0,' . $single_unit);
-								}
-							} else {
-								array_push($result, '0,' . $unit);
+		foreach ($font_specs as $style => $units) {
+			switch ($style) {
+				case 'wght':
+					foreach ($units as $unit) {
+						$multiple_units = explode(',', $unit);
+						if (count($multiple_units) > 0) {
+							foreach ($multiple_units as $single_unit) {
+								array_push($result, '0,' . $single_unit);
 							}
+						} else {
+							array_push($result, '0,' . $unit);
 						}
-						break;
-					case 'ital':
-						foreach ($units as $unit) {
-							array_push($result, 1 == $unit ? '1,400' : $unit);
-						}
-						break;
-					case 'ital,wght':
-						foreach ($units as $unit) {
-							array_push($result, $unit);
-						}
-						break;
-				}
+					}
+					break;
+				case 'ital':
+					foreach ($units as $unit) {
+						array_push($result, 1 == $unit ? '1,400' : $unit);
+					}
+					break;
+				case 'ital,wght':
+					foreach ($units as $unit) {
+						array_push($result, $unit);
+					}
+					break;
 			}
 		}
+
 		sort($result);
 		return ':ital,wght@' . implode(';', array_unique($result));
 	}

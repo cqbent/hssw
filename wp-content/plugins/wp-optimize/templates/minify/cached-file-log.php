@@ -7,6 +7,7 @@ foreach ((array) $log->files as $handle => $file) {
 
 	echo '<li'.($file->success ? '' : ' class="failed"').'><span class="wpo_min_file_url"><a href="'.esc_url(get_home_url().$file->url).'" target="_blank">'.htmlspecialchars($file->url).'</a>'.$file_size.'</span>';
 	if (property_exists($file, 'debug')) echo '<span class="wpo_min_file_debug">'.htmlspecialchars($file->debug).'</span>';
+	printf(' <a href="#" data-url="%1$s" class="exclude">%2$s</a>', htmlspecialchars($file->url), __('Exclude', 'wp-optimize'));
 	echo '</li>';
 }
 ?>

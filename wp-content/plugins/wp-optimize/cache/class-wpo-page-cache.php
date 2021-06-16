@@ -903,7 +903,7 @@ EOF;
 	public static function delete_cache_by_url($url, $recursive = false) {
 		if (!defined('WPO_CACHE_FILES_DIR') || '' == $url) return;
 
-		$path = trailingslashit(WPO_CACHE_FILES_DIR) . trailingslashit(wpo_get_url_path($url));
+		$path = self::get_full_path_from_url($url);
 
 		do_action('wpo_delete_cache_by_url', $url, $recursive);
 
@@ -923,7 +923,7 @@ EOF;
 
 		$post_url = get_permalink($post_id);
 	
-		$path = trailingslashit(WPO_CACHE_FILES_DIR) . trailingslashit(wpo_get_url_path($post_url));
+		$path = self::get_full_path_from_url($post_url);
 
 		// for posts with pagination run purging cache recursively.
 		$post = get_post($post_id);
@@ -943,7 +943,7 @@ EOF;
 
 		$homepage_url = get_home_url(get_current_blog_id());
 
-		$path = trailingslashit(WPO_CACHE_FILES_DIR) . trailingslashit(wpo_get_url_path($homepage_url));
+		$path = self::get_full_path_from_url($homepage_url);
 
 		do_action('wpo_delete_cache_by_url', $homepage_url, false);
 
@@ -979,6 +979,69 @@ EOF;
 		}
 
 		closedir($handle);
+	}
+
+	/**
+	 * Delete feed from cache.
+	 */
+	public static function delete_feed_cache() {
+		if (!defined('WPO_CACHE_FILES_DIR')) return;
+
+		$homepage_url = get_home_url(get_current_blog_id());
+
+		$path = self::get_full_path_from_url($homepage_url) . 'feed/';
+
+		do_action('wpo_delete_cache_by_url', $path, true);
+
+		wpo_delete_files($path, true);
+	}
+
+	/**
+	 * Delete post feed from cache.
+	 */
+	public static function delete_post_feed_cache($post_id) {
+		if (!defined('WPO_CACHE_FILES_DIR')) return;
+
+		$post_url = get_permalink($post_id);
+	
+		$path = self::get_full_path_from_url($post_url) . 'feed/';
+
+		do_action('wpo_delete_cache_by_url', $path, true);
+
+		wpo_delete_files($path, true);
+	}
+
+	/**
+	 * Delete comments feed from cache.
+	 */
+	public static function delete_comments_feed() {
+		if (!defined('WPO_CACHE_FILES_DIR')) return;
+
+		$comments_feed_url = trailingslashit(get_home_url(get_current_blog_id())) . 'comments/feed/';
+
+		$path = self::get_full_path_from_url($comments_feed_url);
+
+		do_action('wpo_delete_cache_by_url', $comments_feed_url, true);
+
+		wpo_delete_files($path, true);
+
+		// delete empty comments dir from the cache
+		$comments_url = trailingslashit(get_home_url(get_current_blog_id())) . 'comments/';
+		$path = self::get_full_path_from_url($comments_url);
+
+		if (wpo_is_empty_dir($path)) {
+			wpo_delete_files($path, true);
+		}
+	}
+
+	/**
+	 * Returns full path to the cache folder by url.
+	 *
+	 * @param string $url
+	 * @return string
+	 */
+	private static function get_full_path_from_url($url) {
+		return trailingslashit(WPO_CACHE_FILES_DIR) . trailingslashit(wpo_get_url_path($url));
 	}
 
 	/**

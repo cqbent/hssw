@@ -74,14 +74,29 @@
 		// ======= SLIDERS ========
 		// Generic slider save
 		$('#wp-optimize-nav-tab-wpo_minify-status-contents form :input, #wp-optimize-nav-tab-wpo_minify-js-contents form :input, #wp-optimize-nav-tab-wpo_minify-css-contents form :input, #wp-optimize-nav-tab-wpo_minify-font-contents form :input, #wp-optimize-nav-tab-wpo_minify-settings-contents form :input, #wp-optimize-nav-tab-wpo_minify-advanced-contents form :input').on('change', function() {
-			var elementId = $(this).prop('id');
-			if ('wpo_min_enable_minify_debug' !== elementId && 'wpo_min_edit_default_exclutions' !== elementId) {
-				$(this).closest('form').data('need_saving', true);
-			}
+			$(this).closest('form').data('need_saving', true);
 		});
 		
 		$('input[type=checkbox].wpo-save-setting').on('change', function(e) {
-			$('.wp-optimize-save-minify-settings').first().trigger('click');
+			var input = $(this),
+			val = input.prop('checked'),
+			name = input.prop('name'),
+			data = {};
+			data[name] = val;
+			$.blockUI();
+			send_command('save_minify_settings', data, function(response) {
+				if (response.success) {
+					input.trigger('wp-optimize/minify/saved_setting');
+					if (response.hasOwnProperty('files')) {
+						minify.updateFilesLists(response.files);
+						minify.updateStats(response.files);
+					}
+				} else {
+					console.log('Settings not saved', data)
+				}
+			}).always(function() {
+				$.unblockUI();
+			});
 		});
 
 		// Slider enable minify
@@ -139,7 +154,6 @@
 				if (true === tab.data('need_saving')) {
 					data = Object.assign(data, gather_data(tab));
 					tab.data('need_saving', false);
-	
 				}
 			});
 
@@ -153,9 +167,6 @@
 			function gather_data(form) {
 				var data = $(form).serializeArray().reduce(form_serialize_reduce_cb, {});
 				$(form).find('input[type="checkbox"]').each(function (i) {
-					if ($(this).hasClass('wpo-save-setting') && null === $need_refresh_btn) {
-						$need_refresh_btn = $(this);
-					}
 					var name = $(this).prop("name");
 					if (name.includes('[]')) {
 						if (!$(this).is(':checked')) return;
@@ -192,10 +203,6 @@
 					$('.wpo-error__enabling-cache').addClass('wpo_hidden').find('p').text('');
 				}
 				
-				if (response.success && $need_refresh_btn) {
-					$need_refresh_btn.trigger('wp-optimize/minify/saved_setting');
-				}
-
 				if (response.hasOwnProperty('files')) {
 					minify.updateFilesLists(response.files);
 					minify.updateStats(response.files);
@@ -223,6 +230,87 @@
 		$('#wpo_min_jsprocessed, #wpo_min_cssprocessed').on('click', '.log', function(e) {
 			e.preventDefault();
 			$(this).nextAll('.wpo_min_log').slideToggle('fast');
+		});
+
+		// Handle js excludes
+		$('#wpo_min_jsprocessed').on('click', '.exclude', function(e) {
+			e.preventDefault();
+			var el = $(this);
+			var excluded_file = get_excluded_file(el);
+			add_excluded_js_file(excluded_file);
+			tab_need_saving('js');
+			highlight_excluded_item(el);
+		});
+
+		// Handle css excludes
+		$('#wpo_min_cssprocessed').on('click', '.exclude', function(e) {
+			e.preventDefault();
+			var el = $(this);
+			var excluded_file = get_excluded_file(el);
+			add_excluded_css_file(excluded_file);
+			tab_need_saving('css');
+			highlight_excluded_item(el);
+		});
+
+		/**
+		 * Get excluded file url
+		 *
+		 * @param {HTMLElement} el
+		 *
+		 * @return {string}
+		 */
+		function get_excluded_file(el) {
+			return el.data('url');
+		}
+
+		/**
+		 * Exclude js file
+		 *
+		 * @param {string} excluded_file File url
+		 */
+		function add_excluded_js_file(excluded_file) {
+			var $js_textarea = $('#exclude_js');
+			var list_of_excluded_files = $js_textarea.val();
+			list_of_excluded_files += excluded_file + '\n';
+			$js_textarea.val(list_of_excluded_files);
+		}
+
+		/**
+		 * Exclude css file
+		 *
+		 * @param {string} excluded_file File url
+		 */
+		function add_excluded_css_file(excluded_file) {
+			var $css_textarea = $('#exclude_css');
+			var list_of_excluded_files = $css_textarea.val();
+			list_of_excluded_files += excluded_file + '\n';
+			$css_textarea.val(list_of_excluded_files);
+		}
+
+		/**
+		 *
+		 * @param {string} tab_name Name of the tab that need saving
+		 */
+		function tab_need_saving(tab_name) {
+			$('#wp-optimize-nav-tab-wpo_minify-' + tab_name + '-contents form').data('need_saving', true);
+		}
+
+		/**
+		 * Update UI after excluding the file
+		 *
+		 * @param {HTMLElement} el Target element
+		 */
+		function highlight_excluded_item(el) {
+			el.closest('.wpo_min_log').prev().removeClass('hidden').addClass('updated').slideDown();
+			el.text(wpoptimize.add_to_exclusion);
+			el.removeClass('exclude');
+			el.parent().addClass('disable-list-item');
+			el.replaceWith($('<span>' + el.text() + '</span>'));
+		}
+
+		$('.save_notice').on('click', '.save-exclusions', function(e) {
+			e.preventDefault();
+			$('.wp-optimize-save-minify-settings').first().trigger('click');
 		});
 
 		// Set the initial `enabled` value
@@ -283,6 +371,10 @@
 					<li id="'+this.uid+'">\
 						<span class="filename"><a href="'+this.file_url+'" target="_blank">'+this.filename+'</a> ('+this.fsize+')</span>\
 						<a href="#" class="log">' + wpoptimize.toggle_info + '</a>\
+						<div class="hidden save_notice">\
+							<p>' + wpoptimize.excluded + '</p>\
+							<p><button class="button button-primary save-exclusions">' + wpoptimize.save_exclusions + '</button></p>\
+						</div>\
 						<div class="hidden wpo_min_log">'+this.log+'</div>\
 					</li>\
 				');
@@ -301,6 +393,10 @@
 					<li id="'+this.uid+'">\
 						<span class="filename"><a href="'+this.file_url+'" target="_blank">'+this.filename+'</a> ('+this.fsize+')</span>\
 						<a href="#" class="log">' + wpoptimize.toggle_info + '</a>\
+						<div class="hidden save_notice">\
+							<p>' + wpoptimize.excluded + '</p>\
+							<p><button class="button button-primary save-exclusions">' + wpoptimize.save_exclusions + '</button></p>\
+						</div>\
 						<div class="hidden wpo_min_log">'+this.log+'</div>\
 					</li>\
 				');
