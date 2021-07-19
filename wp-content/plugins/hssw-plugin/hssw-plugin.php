@@ -300,7 +300,7 @@ function hssw_cat_posts($attributes) {
 	$output = '';
 	$query  = new \WP_Query( $args );
 	if ( $query->have_posts() ) {
-		$output = '<div class="featured-blog-posts wp-block-columns">';
+		$output = '<div class="featured-blog-posts ' . $atts['cat'] . ' wp-block-columns">';
 		while ($query->have_posts()) {
 			$query->the_post();
 			$output .= '
