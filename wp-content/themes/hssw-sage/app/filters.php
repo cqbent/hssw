@@ -44,10 +44,15 @@ add_filter('excerpt_more', function ($more) {
 }, 21);
 
 /**
+ * Custom excerpt display:
+ * Show full text of excerpt if created manually
  * Add "… More" to the excerpt here so always shows up
  */
 add_filter('get_the_excerpt', function ($excerpt) {
     $post = get_post();
+    if ($excerpt_more = strpos($post->post_content, '<!--more-->')) {
+        $excerpt = strip_tags(substr($post->post_content, 0, $excerpt_more));
+    }
     $excerpt .= ' &hellip; <a href="' . get_permalink($post->ID) . '" class="more">' . __('More', 'sage') . '</a>';
     return $excerpt;
 }, 21);
@@ -130,4 +135,4 @@ add_filter( 'get_the_archive_title', function ( $title ) {
 /*
  * increase excerpt length
  */
-//add_filter( 'excerpt_length', function($length) { return 55; }, 999 );
+//add_filter( 'excerpt_length', function($length) { return 100; }, 999 );

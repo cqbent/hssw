@@ -3,8 +3,8 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Requires PHP: 5.3
-Tested up to: 5.6
-Stable tag: 2.4
+Tested up to: 5.8
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 2.5 =
+* Adding div when there are no events found, to avoid display issues on some themes
+
 = 2.4 =
 * Updating block script dependencies
 
@@ -185,6 +188,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 Adds link to full documentation
 
 == Changelog ==
+
+= 2.5 =
+* Adding div when there are no events found, to avoid display issues on some themes
 
 = 2.4 =
 * Updating block script dependencies

@@ -111,6 +111,19 @@
   }
 }
 
+.featured-events, .featured-blog-posts.events-workshops {
+  .row {
+    .image {
+      img {
+        width: 100%;
+        max-height: 110px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+
 .featured-blog-posts {
   border: none;
 }
