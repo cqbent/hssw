@@ -16375,6 +16375,23 @@ footer.content-info .container {
 
 /* line 104, resources/assets/styles/layouts/_content.scss */
 
+.featured-authors .row .image img,
+.featured-authors .sidebar-primary .wrap > .content .image img,
+.sidebar-primary .featured-authors .wrap > .content .image img,
+.featured-blog-posts .row .image img,
+.featured-blog-posts .sidebar-primary .wrap > .content .image img,
+.sidebar-primary .featured-blog-posts .wrap > .content .image img,
+.featured-events .row .image img,
+.featured-events .sidebar-primary .wrap > .content .image img,
+.sidebar-primary .featured-events .wrap > .content .image img,
+.blog .row .image img,
+.blog .sidebar-primary .wrap > .content .image img,
+.sidebar-primary .blog .wrap > .content .image img {
+  width: 100%;
+}
+
+/* line 109, resources/assets/styles/layouts/_content.scss */
+
 .featured-authors .wp-block-column,
 .featured-blog-posts .wp-block-column,
 .featured-events .wp-block-column,
@@ -16384,7 +16401,7 @@ footer.content-info .container {
 }
 
 @media (min-width: 768px) {
-  /* line 104, resources/assets/styles/layouts/_content.scss */
+  /* line 109, resources/assets/styles/layouts/_content.scss */
 
   .featured-authors .wp-block-column,
   .featured-blog-posts .wp-block-column,
@@ -16395,7 +16412,7 @@ footer.content-info .container {
   }
 }
 
-/* line 117, resources/assets/styles/layouts/_content.scss */
+/* line 122, resources/assets/styles/layouts/_content.scss */
 
 .featured-events .row .image img,
 .featured-events .sidebar-primary .wrap > .content .image img,
@@ -16408,19 +16425,19 @@ footer.content-info .container {
   object-fit: cover;
 }
 
-/* line 127, resources/assets/styles/layouts/_content.scss */
+/* line 133, resources/assets/styles/layouts/_content.scss */
 
 .featured-blog-posts {
   border: none;
 }
 
-/* line 132, resources/assets/styles/layouts/_content.scss */
+/* line 138, resources/assets/styles/layouts/_content.scss */
 
 .people-grid {
   flex-wrap: wrap;
 }
 
-/* line 134, resources/assets/styles/layouts/_content.scss */
+/* line 140, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column {
   margin-bottom: 40px;
@@ -16429,7 +16446,7 @@ footer.content-info .container {
   font-size: 1.25rem;
 }
 
-/* line 140, resources/assets/styles/layouts/_content.scss */
+/* line 146, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column img {
   border-radius: 50%;
@@ -16437,14 +16454,14 @@ footer.content-info .container {
   margin-bottom: 10px;
 }
 
-/* line 145, resources/assets/styles/layouts/_content.scss */
+/* line 151, resources/assets/styles/layouts/_content.scss */
 
 .people-grid .block-column .name {
   font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  /* line 152, resources/assets/styles/layouts/_content.scss */
+  /* line 158, resources/assets/styles/layouts/_content.scss */
 
   article .featured-image {
     float: right;
@@ -16453,14 +16470,14 @@ footer.content-info .container {
   }
 }
 
-/* line 159, resources/assets/styles/layouts/_content.scss */
+/* line 165, resources/assets/styles/layouts/_content.scss */
 
 article .job-title {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
 
-/* line 168, resources/assets/styles/layouts/_content.scss */
+/* line 174, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a,
 .content h3 a,
@@ -16470,7 +16487,7 @@ article .job-title {
   color: #ffb966;
 }
 
-/* line 170, resources/assets/styles/layouts/_content.scss */
+/* line 176, resources/assets/styles/layouts/_content.scss */
 
 .content h2 a:hover,
 .content h3 a:hover,
@@ -16480,7 +16497,7 @@ article .job-title {
   color: #ffb966;
 }
 
-/* line 178, resources/assets/styles/layouts/_content.scss */
+/* line 184, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events,
 .tribe-events-pg-template,
@@ -16489,7 +16506,7 @@ article .job-title {
   color: #fff !important;
 }
 
-/* line 181, resources/assets/styles/layouts/_content.scss */
+/* line 187, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-l-container,
 .tribe-events-pg-template .tribe-events-l-container,
@@ -16497,7 +16514,7 @@ article .job-title {
   padding: 20px 0 !important;
 }
 
-/* line 185, resources/assets/styles/layouts/_content.scss */
+/* line 191, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-meta-group .tribe-events-event-categories-label,
 .tribe-events .tribe-events-meta-group .tribe-events-event-categories,
@@ -16508,7 +16525,7 @@ article .job-title {
   display: none;
 }
 
-/* line 190, resources/assets/styles/layouts/_content.scss */
+/* line 196, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-events-content div,
 .tribe-events-pg-template .tribe-events-content div,
@@ -16516,7 +16533,7 @@ article .job-title {
   margin-bottom: 1rem;
 }
 
-/* line 194, resources/assets/styles/layouts/_content.scss */
+/* line 200, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events button,
 .tribe-events-pg-template button,
@@ -16526,7 +16543,7 @@ article .job-title {
   border-color: #e7160c;
 }
 
-/* line 200, resources/assets/styles/layouts/_content.scss */
+/* line 206, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events input[type=text],
 .tribe-events-pg-template input[type=text],
@@ -16534,7 +16551,7 @@ article .job-title {
   border: none;
 }
 
-/* line 204, resources/assets/styles/layouts/_content.scss */
+/* line 210, resources/assets/styles/layouts/_content.scss */
 
 .tribe-events .tribe-tickets .tribe-tickets__title,
 .tribe-events-pg-template .tribe-tickets .tribe-tickets__title,
@@ -16542,19 +16559,19 @@ article .job-title {
   display: none;
 }
 
-/* line 209, resources/assets/styles/layouts/_content.scss */
+/* line 215, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common {
   color: #fff !important;
 }
 
-/* line 211, resources/assets/styles/layouts/_content.scss */
+/* line 217, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common.tribe-tickets {
   color: #000 !important;
 }
 
-/* line 214, resources/assets/styles/layouts/_content.scss */
+/* line 220, resources/assets/styles/layouts/_content.scss */
 
 .tribe-common.tribe-tickets .tribe-tickets__item__quantity button {
   border: none;
@@ -16562,7 +16579,7 @@ article .job-title {
 }
 
 @media (min-width: 768px) {
-  /* line 222, resources/assets/styles/layouts/_content.scss */
+  /* line 228, resources/assets/styles/layouts/_content.scss */
 
   .type-tribe_events .tribe-events-event-image {
     float: right;
@@ -16571,7 +16588,7 @@ article .job-title {
   }
 }
 
-/* line 231, resources/assets/styles/layouts/_content.scss */
+/* line 237, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list {
   list-style: none;
@@ -16579,7 +16596,7 @@ article .job-title {
   padding: 0;
 }
 
-/* line 235, resources/assets/styles/layouts/_content.scss */
+/* line 241, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list li {
   margin-bottom: 20px;
@@ -16593,7 +16610,7 @@ article .job-title {
   content: "";
 }
 
-/* line 238, resources/assets/styles/layouts/_content.scss */
+/* line 244, resources/assets/styles/layouts/_content.scss */
 
 .ecs-event-list li img {
   float: left;
@@ -16601,7 +16618,7 @@ article .job-title {
   margin-right: 30px;
 }
 
-/* line 248, resources/assets/styles/layouts/_content.scss */
+/* line 254, resources/assets/styles/layouts/_content.scss */
 
 .page.author-of-the-week h1,
 .page.events-workshops h1,

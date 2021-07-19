@@ -349,3 +349,8 @@ function hssw_exclude_category_from_blog( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'hssw_exclude_category_from_blog' );
+
+/*
+ * display wp custom fields
+ */
+add_filter('acf/settings/remove_wp_meta_box', '__return_false');
