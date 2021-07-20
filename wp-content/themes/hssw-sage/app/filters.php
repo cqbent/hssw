@@ -53,7 +53,7 @@ add_filter('get_the_excerpt', function ($excerpt) {
     if ($excerpt_more = strpos($post->post_content, '<!--more-->')) {
         $excerpt = strip_tags(substr($post->post_content, 0, $excerpt_more));
     }
-    $excerpt .= ' &hellip; <a href="' . get_permalink($post->ID) . '" class="more">' . __('More', 'sage') . '</a>';
+    $excerpt .= ' <a href="' . get_permalink($post->ID) . '" class="more">' . __('More', 'sage') . '</a>';
     return $excerpt;
 }, 21);
 
