@@ -16421,8 +16421,6 @@ footer.content-info .container {
 .featured-blog-posts.events-workshops .sidebar-primary .wrap > .content .image img,
 .sidebar-primary .featured-blog-posts.events-workshops .wrap > .content .image img {
   width: 100%;
-  max-height: 110px;
-  object-fit: cover;
 }
 
 /* line 133, resources/assets/styles/layouts/_content.scss */
@@ -16624,6 +16622,18 @@ article .job-title {
 .page.events-workshops h1,
 .blog h1 {
   color: #40E0D0;
+}
+
+/* line 261, resources/assets/styles/layouts/_content.scss */
+
+.post .byline {
+  display: none;
+}
+
+/* line 265, resources/assets/styles/layouts/_content.scss */
+
+.post.category-blog .byline {
+  display: block;
 }
 
 /* line 1, resources/assets/styles/layouts/_tinymce.scss */

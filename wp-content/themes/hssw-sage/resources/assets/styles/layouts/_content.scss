@@ -121,8 +121,8 @@
     .image {
       img {
         width: 100%;
-        max-height: 110px;
-        object-fit: cover;
+        //max-height: 110px;
+        //object-fit: cover;
       }
     }
   }
@@ -253,5 +253,17 @@ article {
 .page.author-of-the-week, .page.events-workshops, .blog {
   h1 {
     color: $turqoise;
+  }
+}
+
+// single post styling
+.post {
+  .byline {
+    display: none;
+  }
+  &.category-blog {
+    .byline {
+      display: block;
+    }
   }
 }
