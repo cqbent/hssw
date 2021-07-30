@@ -344,11 +344,21 @@ function hssw_post_thumbnail() {
 
 function hssw_exclude_category_from_blog( $query ) {
 
-	if( $query->is_main_query() && !is_admin() && ($query->is_home() || $query->is_archive()) ) {
+	if( $query->is_main_query() && !is_admin() && ($query->is_home()) ) {
 		$query->set( 'cat', ['-15','-635'] );
 	}
 }
 add_action( 'pre_get_posts', 'hssw_exclude_category_from_blog' );
+
+/**
+ * modify get_the_archive_title filter
+ */
+function filter_category_title($title) {
+	$pattern = '/.+?\:/';
+	//return str_replace('Category: ', '', $title);
+	return preg_replace($pattern, '', $title);
+}
+add_filter('get_the_archive_title', 'filter_category_title');
 
 /*
  * display wp custom fields
