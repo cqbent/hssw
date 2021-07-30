@@ -15719,6 +15719,14 @@ form #search-fields .tribe-events-single button,
   height: 30px !important;
 }
 
+/* line 122, resources/assets/styles/common/_global.scss */
+
+.figure-caption,
+.wp-caption-text,
+.wp-caption-text {
+  color: #fff;
+}
+
 /* line 5, resources/assets/styles/components/_comments.scss */
 
 .comment-list ol {
