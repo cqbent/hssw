@@ -94,12 +94,15 @@
   }
 }
 
-.featured-authors, .featured-blog-posts, .featured-events, .blog {
+.featured-authors, .featured-blog-posts, .featured-events, body.blog, body.archive {
   flex-wrap: wrap;
   margin-bottom: 20px;
   border-bottom: 1px $white solid;
   .row {
     margin-bottom: 20px;
+    div[class*="col-"] {
+      margin-bottom: 10px;
+    }
     .image {
       img {
         width: 100%;
