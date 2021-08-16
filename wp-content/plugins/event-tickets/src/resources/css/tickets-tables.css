@@ -115,12 +115,13 @@
 	}
 
 .tribe-tickets-editor-table .ticket_edit {
-		width: 30px;
+		width: 60px;
 	}
 
 /* Edit button styles - separate for portability */
 
 .tribe-tickets-editor-table .ticket_edit_button,
+	.tribe-tickets-editor-table .ticket_delete,
 	.tribe-tickets-editor-table .global_capacity_edit_button {
 		background: none;
 		border: 0;
@@ -129,23 +130,36 @@
 		padding: 0;
 	}
 
-.tribe-tickets-editor-table .ticket_edit_button:hover, .tribe-tickets-editor-table .global_capacity_edit_button:hover {
-			color: #00a0d2;
+.tribe-tickets-editor-table .ticket_edit_button:hover, .tribe-tickets-editor-table .ticket_delete:hover, .tribe-tickets-editor-table .global_capacity_edit_button:hover {
+			color: #727272;
 		}
 
 .tribe-tickets-editor-table .ticket_edit_button .ticket_edit_text,
 		.tribe-tickets-editor-table .ticket_edit_button .global_capacity_edit_text,
+		.tribe-tickets-editor-table .ticket_edit_button .ticket_delete_text,
+		.tribe-tickets-editor-table .ticket_delete .ticket_edit_text,
+		.tribe-tickets-editor-table .ticket_delete .global_capacity_edit_text,
+		.tribe-tickets-editor-table .ticket_delete .ticket_delete_text,
 		.tribe-tickets-editor-table .global_capacity_edit_button .ticket_edit_text,
-		.tribe-tickets-editor-table .global_capacity_edit_button .global_capacity_edit_text {
+		.tribe-tickets-editor-table .global_capacity_edit_button .global_capacity_edit_text,
+		.tribe-tickets-editor-table .global_capacity_edit_button .ticket_delete_text {
 			font-size: 0;
 		}
 
-.tribe-tickets-editor-table .ticket_edit_button .ticket_edit_text::before, .tribe-tickets-editor-table .ticket_edit_button .global_capacity_edit_text::before, .tribe-tickets-editor-table .global_capacity_edit_button .ticket_edit_text::before, .tribe-tickets-editor-table .global_capacity_edit_button .global_capacity_edit_text::before {
+.tribe-tickets-editor-table .ticket_edit_button .ticket_edit_text:before, .tribe-tickets-editor-table .ticket_edit_button .global_capacity_edit_text:before, .tribe-tickets-editor-table .ticket_edit_button .ticket_delete_text:before, .tribe-tickets-editor-table .ticket_delete .ticket_edit_text:before, .tribe-tickets-editor-table .ticket_delete .global_capacity_edit_text:before, .tribe-tickets-editor-table .ticket_delete .ticket_delete_text:before, .tribe-tickets-editor-table .global_capacity_edit_button .ticket_edit_text:before, .tribe-tickets-editor-table .global_capacity_edit_button .global_capacity_edit_text:before, .tribe-tickets-editor-table .global_capacity_edit_button .ticket_delete_text:before {
 				content: '\f464';
 				font-family: 'dashicons';
-				font-size: x-large;
+				font-size: 20px;
 				vertical-align: top;
 			}
+
+.tribe-tickets-editor-table .ticket_edit_button .ticket_delete_text:before, .tribe-tickets-editor-table .ticket_delete .ticket_delete_text:before, .tribe-tickets-editor-table .global_capacity_edit_button .ticket_delete_text:before {
+				content: '\f182';
+			}
+
+.tribe-tickets-editor-table .ticket_delete {
+		margin-left: 12px;
+	}
 
 .tribe-tickets-editor-table .global_capacity_edit_button {
 		vertical-align: middle;

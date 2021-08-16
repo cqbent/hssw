@@ -2,9 +2,9 @@
 
 Contributors: theeventscalendar, brianjessee, camwynsp, paulkim, sc0ttkclark, aguseo, bordoni, borkweb, GeoffBel, geoffgraham, jentheo, leahkoerper, lucatume, neillmcshea, patriciahillebrandt, vicskf, zbtirrell, juanfra
 Tags: tickets, registration, The Events Calendar, RSVP, ticket sales, attendee management
-Requires at least: 4.9.14
-Tested up to: 5.7.2
-Stable tag: 5.1.6
+Requires at least: 4.9.18
+Tested up to: 5.8.0
+Stable tag: 5.1.7
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -177,6 +177,15 @@ We've got a [ProductStash](https://app.productstash.io/the-events-calendar-suite
 Check out our extensive [knowledgebase](https://evnt.is/18wm) for articles on using, tweaking, and troubleshooting our plugins.
 
 == Changelog ==
+
+= [5.1.7] 2021-08-03 =
+
+* Feature - Added export button next to the page title on the Attendees page. [ET-1145]
+* Tweak - Changed the word `Purchaser` to `Attendee` when email confirmation is sent for purchasing a ticket. [ETP-655]
+* Tweak - Added `$attendees` parameter to the `tribe_report_page_after_text_label` action. [ET-1145]
+* Tweak - Removed the edit column when printing the Attendees list. [ETP-702]
+* Tweak - Added "Delete" functionality for the tickets area in the classic editor. [ET-1107]
+* Language - 1 new strings added, 61 updated, 0 fuzzied, and 0 obsoleted
 
 = [5.1.6] 2021-07-07 =
 

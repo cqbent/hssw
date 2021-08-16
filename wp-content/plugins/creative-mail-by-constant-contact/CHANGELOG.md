@@ -1,6 +1,12 @@
 Changelog
 =========
 
+#### 1.4.3 - August 12 2021
+- Updated brand name.
+
+#### 1.4.2 - July 19 2021
+- Fixed a crash when enabling the Elementor contact sync.
+
 #### 1.4.1 - July 12 2021
 - Fixed several bugs
 
