@@ -6,8 +6,11 @@ jQuery(window).load(function() {
 			margin: 0,
 			nav: true,
 			dots: false,
-			autoplay: false,
-			navSpeed: 500,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplaySpeed: 1000,
+			autoplayHoverPause: true,
+			navSpeed: 1000,
 			items: 1
 		});
 	}
