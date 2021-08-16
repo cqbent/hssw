@@ -47548,7 +47548,7 @@ var template_IACSetting = function (_PureComponent) {
 					wp.element.createElement(external_var_wp_components_root_wp_components_["RadioControl"], {
 						className: 'tribe-editor__ticket__iac-setting-input',
 						id: this.id,
-						type: 'text',
+						type: 'radio',
 						selected: iac,
 						onChange: onChange,
 						disabled: isDisabled,
