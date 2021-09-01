@@ -1,0 +1,20 @@
+[22-Aug-2021 22:05:58 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Block_Supports' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/border.php:170
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/border.php on line 170
+[22-Aug-2021 22:06:00 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Block_Supports' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/duotone.php:426
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/duotone.php on line 426
+[22-Aug-2021 22:06:02 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function add_filter() in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/elements.php:71
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/elements.php on line 71
+[22-Aug-2021 22:06:04 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Block_Supports' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/layout.php:99
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/layout.php on line 99
+[22-Aug-2021 22:06:06 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Block_Supports' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/spacing.php:89
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-supports/spacing.php on line 89
