@@ -1,0 +1,16 @@
+[22-Aug-2021 22:05:47 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-grid-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-grid-posts.php on line 9
+[22-Aug-2021 22:05:50 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-medium-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-medium-posts.php on line 9
+[22-Aug-2021 22:05:52 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-offset-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-offset-posts.php on line 9
+[22-Aug-2021 22:05:54 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _x() in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-small-posts.php:9
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/block-patterns/query-small-posts.php on line 9

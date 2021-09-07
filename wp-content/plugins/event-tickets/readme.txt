@@ -1,10 +1,10 @@
 === Event Tickets ===
 
-Contributors: theeventscalendar, brianjessee, camwynsp, paulkim, sc0ttkclark, aguseo, bordoni, borkweb, GeoffBel, geoffgraham, jentheo, leahkoerper, lucatume, neillmcshea, patriciahillebrandt, vicskf, zbtirrell, juanfra
+Contributors: theeventscalendar, brianjessee, camwynsp, paulkim, aguseo, bordoni, borkweb, GeoffBel, geoffgraham, jentheo, leahkoerper, lucatume, neillmcshea, vicskf, zbtirrell, juanfra
 Tags: tickets, registration, The Events Calendar, RSVP, ticket sales, attendee management
 Requires at least: 4.9.18
 Tested up to: 5.8.0
-Stable tag: 5.1.7
+Stable tag: 5.1.9
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -23,7 +23,7 @@ https://vimeo.com/480516958
 
 See Event Tickets in action on our [demo site](https://evnt.is/1ajs). Just getting started? Check out the [Getting Started Guide](https://evnt.is/1aoc) for an introduction to features, settings, and functionality.
 
-Looking for additional features like custom registration fields, QR check-in, Zoom integration, and more? <strong>Check out [Event Tickets Plus](https://evnt.is/18th) and our [other add-ons](https://evnt.is/2a)</strong>. ...and all of them are on sale from November 23-30 during our annual 💰[Black Friday Sale](https://evnt.is/1aod)💰
+Looking for additional features like custom registration fields, QR check-in, Zoom integration, and more? <strong>Check out [Event Tickets Plus](https://evnt.is/18th) and our [other add-ons](https://evnt.is/2a)</strong>.
 
 = 🔌🎨 Plug and Play or Customize =
 
@@ -177,6 +177,18 @@ We've got a [ProductStash](https://app.productstash.io/the-events-calendar-suite
 Check out our extensive [knowledgebase](https://evnt.is/18wm) for articles on using, tweaking, and troubleshooting our plugins.
 
 == Changelog ==
+
+= [5.1.9] 2021-08-31 =
+
+* Fix - Fixed cart calculation inconsistency with WooCommerce when the "Number of decimals" setting was set to `0`. [ETP-324]
+* Fix - Removed RSVP V2 preview templates and functionality. [ET-1162]
+* Fix - Updated deprecated hook `block_categories` to use `block_categories_all`. [ET-1156]
+* Language - 37 new strings added, 162 updated, 6 fuzzied, and 20 obsoleted
+
+= [5.1.8] 2021-08-24 =
+
+* Tweak - Add new event repository schema for finding all events with RSVPs or Tickets.
+* Language - 0 new strings added, 1 updated, 0 fuzzied, and 0 obsoleted
 
 = [5.1.7] 2021-08-03 =
 

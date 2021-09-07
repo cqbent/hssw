@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitfd2c0c7c79c883e60f6515b57705ef5e
+class ComposerStaticInit45000f0908896b286907423ec7c5ab9b
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -170,11 +170,19 @@ class ComposerStaticInitfd2c0c7c79c883e60f6515b57705ef5e
         'Psr\\Log\\Test\\DummyTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/DummyTest.php',
         'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
+        'Tribe\\Admin\\Notice\\Date_Based' => __DIR__ . '/../..' . '/src/Tribe/Admin/Notice/Date_Based.php',
+        'Tribe\\Admin\\Notice\\Marketing\\Black_Friday' => __DIR__ . '/../..' . '/src/Tribe/Admin/Notice/Marketing/Black_Friday.php',
+        'Tribe\\Admin\\Notice\\Marketing\\Stellar_Sale' => __DIR__ . '/../..' . '/src/Tribe/Admin/Notice/Marketing/Stellar_Sale.php',
+        'Tribe\\Admin\\Notice\\Service_Provider' => __DIR__ . '/../..' . '/src/Tribe/Admin/Notice/Service_Provider.php',
         'Tribe\\Admin\\Notice\\WP_Version' => __DIR__ . '/../..' . '/src/Tribe/Admin/Notice/WP_Version.php',
+        'Tribe\\Admin\\Troubleshooting' => __DIR__ . '/../..' . '/src/Tribe/Admin/Troubleshooting.php',
         'Tribe\\Customizer\\Control' => __DIR__ . '/../..' . '/src/Tribe/Customizer/Control.php',
         'Tribe\\Customizer\\Controls\\Heading' => __DIR__ . '/../..' . '/src/Tribe/Customizer/Controls/Heading.php',
+        'Tribe\\Customizer\\Controls\\Number' => __DIR__ . '/../..' . '/src/Tribe/Customizer/Controls/Number.php',
         'Tribe\\Customizer\\Controls\\Radio' => __DIR__ . '/../..' . '/src/Tribe/Customizer/Controls/Radio.php',
+        'Tribe\\Customizer\\Controls\\Range_Slider' => __DIR__ . '/../..' . '/src/Tribe/Customizer/Controls/Range_Slider.php',
         'Tribe\\Customizer\\Controls\\Separator' => __DIR__ . '/../..' . '/src/Tribe/Customizer/Controls/Separator.php',
+        'Tribe\\Customizer\\Controls\\Toggle' => __DIR__ . '/../..' . '/src/Tribe/Customizer/Controls/Toggle.php',
         'Tribe\\DB_Lock' => __DIR__ . '/../..' . '/src/Tribe/DB_Lock.php',
         'Tribe\\Dialog\\View' => __DIR__ . '/../..' . '/src/Tribe/Dialog/View.php',
         'Tribe\\Log\\Action_Logger' => __DIR__ . '/../..' . '/src/Tribe/Log/Action_Logger.php',
@@ -234,10 +242,10 @@ class ComposerStaticInitfd2c0c7c79c883e60f6515b57705ef5e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitfd2c0c7c79c883e60f6515b57705ef5e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitfd2c0c7c79c883e60f6515b57705ef5e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitfd2c0c7c79c883e60f6515b57705ef5e::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitfd2c0c7c79c883e60f6515b57705ef5e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit45000f0908896b286907423ec7c5ab9b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit45000f0908896b286907423ec7c5ab9b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit45000f0908896b286907423ec7c5ab9b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit45000f0908896b286907423ec7c5ab9b::$classMap;
 
         }, null, ClassLoader::class);
     }

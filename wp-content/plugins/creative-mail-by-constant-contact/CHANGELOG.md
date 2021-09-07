@@ -1,6 +1,10 @@
 Changelog
 =========
 
+#### 1.4.4 - August 19 2021
+- Add support for 'return to shop' urls
+- Bug fixes
+
 #### 1.4.3 - August 12 2021
 - Updated brand name.
 

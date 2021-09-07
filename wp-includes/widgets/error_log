@@ -1,0 +1,120 @@
+[16-Aug-2021 19:24:58 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[17-Aug-2021 01:52:12 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[17-Aug-2021 21:25:20 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[19-Aug-2021 06:41:25 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[19-Aug-2021 18:23:15 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[20-Aug-2021 01:11:01 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[21-Aug-2021 19:06:43 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[22-Aug-2021 08:13:37 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[22-Aug-2021 11:16:21 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[22-Aug-2021 19:36:46 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[22-Aug-2021 23:53:38 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[23-Aug-2021 05:36:37 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[24-Aug-2021 15:47:19 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[24-Aug-2021 16:25:24 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[24-Aug-2021 16:43:41 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[25-Aug-2021 12:36:49 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[26-Aug-2021 05:35:58 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[26-Aug-2021 05:45:36 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[26-Aug-2021 08:27:29 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[26-Aug-2021 14:43:15 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[26-Aug-2021 14:53:02 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[28-Aug-2021 12:31:09 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[29-Aug-2021 04:56:55 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[29-Aug-2021 05:33:22 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[29-Aug-2021 17:11:09 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[31-Aug-2021 08:48:17 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[31-Aug-2021 19:31:06 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[01-Sep-2021 03:18:09 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[01-Sep-2021 06:17:25 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[01-Sep-2021 06:23:54 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
