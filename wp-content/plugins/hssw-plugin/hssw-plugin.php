@@ -192,6 +192,9 @@ function hssw_events($attributes) {
 				'terms'    => 'author-of-week',
 			)
 		);
+		$args['orderby'] = 'meta_value';
+		$args['meta_key'] = '_EventStartDate';
+		$args['order'] = 'DESC';
 	}
 	else {
 		$args['tax_query'] = array(
