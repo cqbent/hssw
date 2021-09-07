@@ -192,9 +192,6 @@ function hssw_events($attributes) {
 				'terms'    => 'author-of-week',
 			)
 		);
-		$args['orderby'] = 'meta_value';
-		$args['meta_key'] = '_EventStartDate';
-		$args['order'] = 'DESC';
 	}
 	else {
 		$args['tax_query'] = array(
@@ -206,6 +203,9 @@ function hssw_events($attributes) {
 			)
 		);
 	}
+	$args['orderby'] = 'meta_value';
+	$args['meta_key'] = '_EventStartDate';
+	$args['order'] = 'DESC';
 	$events = tribe_get_events($args);
 	$output = '<div class="featured-authors wp-block-columns">';
 	foreach ($events as $post) {
