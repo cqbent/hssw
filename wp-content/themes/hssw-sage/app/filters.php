@@ -38,26 +38,6 @@ add_filter('body_class', function (array $classes) {
 
     return array_filter($classes);
 });
-// empty excerpt more link
-add_filter('excerpt_more', function ($more) {
-    return '';
-}, 21);
-
-/**
- * Custom excerpt display:
- * Show full text of excerpt if created manually
- * Add "… More" to the excerpt here so always shows up
- */
-add_filter('get_the_excerpt', function ($excerpt) {
-    $post = get_post();
-    if ($excerpt_more = strpos($post->post_content, '<!--more-->')) {
-        $excerpt = strip_tags(substr($post->post_content, 0, $excerpt_more));
-    }
-    $excerpt .= ' <a href="' . get_permalink($post->ID) . '" class="more">' . __('More', 'sage') . '</a>';
-    return $excerpt;
-}, 21);
-
-
 
 /**
  * Template Hierarchy should search for .blade.php files
@@ -131,8 +111,3 @@ add_filter( 'get_the_archive_title', function ( $title ) {
     }
     return $title;
 });
-
-/*
- * increase excerpt length
- */
-//add_filter( 'excerpt_length', function($length) { return 100; }, 999 );

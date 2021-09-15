@@ -20,6 +20,32 @@ function hssw_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'hssw_enqueue_scripts' );
 add_action( 'init', 'people_post_type' );
 
+/**
+ * Custom excerpt display:
+ * Show full text of excerpt if created manually
+ * Add "… More" to the excerpt here so always shows up
+ */
+add_filter('get_the_excerpt', 'hssw_excerpt');
+function hssw_excerpt($excerpt) {
+	$post = get_post();
+	if ($excerpt_more = strpos($post->post_content, '<!--more-->')) {
+		$excerpt = strip_tags(substr($post->post_content, 0, $excerpt_more));
+	}
+	$excerpt .= ' <a href="' . get_permalink($post->ID) . '" class="more">More</a>';
+	return $excerpt;
+}
+// expand length of excerpt so to fix cutoff issues
+function hssw_custom_excerpt_length( $length ) {
+	return 100;
+}
+add_filter( 'excerpt_length', 'hssw_custom_excerpt_length', 999 );
+
+// empty excerpt more link
+add_filter('excerpt_more', function ($more) {
+	return '';
+}, 21);
+
+
 function people_post_type()
 {
 	register_post_type('people',
@@ -209,13 +235,14 @@ function hssw_events($attributes) {
 	$events = tribe_get_events($args);
 	$output = '<div class="featured-authors wp-block-columns">';
 	foreach ($events as $post) {
+		$excerpt = get_the_excerpt($post->ID);
 		$output .= '
 			<div class="row">
 				<div class="image col-sm-3">' . get_the_post_thumbnail($post->ID) . '</div>
 				<div class="content col-sm-9">
 					<h3 class="title "><a href="'. get_the_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></h3>
 					<div class="start-date">' . tribe_get_start_date($post->ID) . '</div>
-					<div class="excerpt">' . wp_trim_excerpt('', $post->ID) . '... <a href="'. get_the_permalink($post->ID) . '">More</a></div>
+					<div class="excerpt">' . get_the_excerpt($post->ID) . '</div>
 				</div>
 			</div>
 		';
@@ -367,3 +394,6 @@ add_filter('get_the_archive_title', 'filter_category_title');
  * display wp custom fields
  */
 add_filter('acf/settings/remove_wp_meta_box', '__return_false');
+
+
+
