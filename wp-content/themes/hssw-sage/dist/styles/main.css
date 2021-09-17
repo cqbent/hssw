@@ -15561,15 +15561,16 @@ article header {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
-/* line 32, resources/assets/styles/common/_global.scss */
+/* line 33, resources/assets/styles/common/_global.scss */
 
 a {
   text-decoration: none;
 }
 
-/* line 38, resources/assets/styles/common/_global.scss */
+/* line 39, resources/assets/styles/common/_global.scss */
 
 h1 a,
 h2 a,
@@ -15578,7 +15579,7 @@ h4 a {
   color: #ffb966;
 }
 
-/* line 40, resources/assets/styles/common/_global.scss */
+/* line 41, resources/assets/styles/common/_global.scss */
 
 h1 a:hover,
 h2 a:hover,
@@ -15587,52 +15588,52 @@ h4 a:hover {
   color: #fff;
 }
 
-/* line 45, resources/assets/styles/common/_global.scss */
+/* line 46, resources/assets/styles/common/_global.scss */
 
 h1 {
   color: #40E0D0;
   font-size: 2rem;
 }
 
-/* line 49, resources/assets/styles/common/_global.scss */
+/* line 50, resources/assets/styles/common/_global.scss */
 
 h2 {
   color: #40E0D0;
   font-size: 1.5rem;
 }
 
-/* line 53, resources/assets/styles/common/_global.scss */
+/* line 54, resources/assets/styles/common/_global.scss */
 
 h3 {
   color: #40E0D0;
   font-size: 1.25rem;
 }
 
-/* line 58, resources/assets/styles/common/_global.scss */
+/* line 59, resources/assets/styles/common/_global.scss */
 
 .red {
   color: #e7160c;
 }
 
-/* line 61, resources/assets/styles/common/_global.scss */
+/* line 62, resources/assets/styles/common/_global.scss */
 
 .gold {
   color: #ffb966;
 }
 
-/* line 64, resources/assets/styles/common/_global.scss */
+/* line 65, resources/assets/styles/common/_global.scss */
 
 .turqoise {
   color: #40E0D0;
 }
 
-/* line 67, resources/assets/styles/common/_global.scss */
+/* line 68, resources/assets/styles/common/_global.scss */
 
 .purple {
   color: #a352cc;
 }
 
-/* line 72, resources/assets/styles/common/_global.scss */
+/* line 73, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
@@ -15640,7 +15641,7 @@ form textarea {
   max-width: 992px;
 }
 
-/* line 77, resources/assets/styles/common/_global.scss */
+/* line 78, resources/assets/styles/common/_global.scss */
 
 form #search-fields .search-field {
   padding: 2px 5px;
@@ -15649,7 +15650,7 @@ form #search-fields .search-field {
   float: left;
 }
 
-/* line 83, resources/assets/styles/common/_global.scss */
+/* line 84, resources/assets/styles/common/_global.scss */
 
 form #search-fields .btn,
 form #search-fields .comment-form input[type="submit"],
@@ -15671,34 +15672,34 @@ form #search-fields .tribe-events-single button,
   min-width: 20px;
 }
 
-/* line 95, resources/assets/styles/common/_global.scss */
+/* line 96, resources/assets/styles/common/_global.scss */
 
 .su-vimeo,
 .su-youtube {
   margin-bottom: 10px;
 }
 
-/* line 99, resources/assets/styles/common/_global.scss */
+/* line 100, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form {
   background: linear-gradient(to bottom, cadetblue, gold);
   padding: 4px;
 }
 
-/* line 102, resources/assets/styles/common/_global.scss */
+/* line 103, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-container {
   background: #000;
 }
 
-/* line 105, resources/assets/styles/common/_global.scss */
+/* line 106, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults {
   border-radius: 0;
   font-size: .875rem;
 }
 
-/* line 108, resources/assets/styles/common/_global.scss */
+/* line 109, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults .ctct-form-text,
 .ctct-inline-form .ctct-form-defaults label,
@@ -15706,20 +15707,20 @@ form #search-fields .tribe-events-single button,
   font-size: .875rem !important;
 }
 
-/* line 111, resources/assets/styles/common/_global.scss */
+/* line 112, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults h2 {
   font-size: 1.25rem !important;
 }
 
-/* line 114, resources/assets/styles/common/_global.scss */
+/* line 115, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults input.ctct-form-element {
   padding: 2px 5px !important;
   height: 30px !important;
 }
 
-/* line 122, resources/assets/styles/common/_global.scss */
+/* line 123, resources/assets/styles/common/_global.scss */
 
 .figure-caption,
 .wp-caption-text,
