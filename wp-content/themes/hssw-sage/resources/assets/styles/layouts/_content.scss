@@ -270,3 +270,9 @@ article {
     }
   }
 }
+
+@include media-breakpoint-down(sm) {
+  img.alignleft, img.alignright {
+    display: block;
+  }
+}
