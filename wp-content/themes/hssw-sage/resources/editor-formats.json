@@ -60,5 +60,12 @@
         "selector": "p,h2,h3,h4,div",
         "inline": "span",
         "classes": "purple"
+    },
+    {
+        "title": "Turqois Text",
+        "type": "item",
+        "selector": "p,h2,h3,h4,div",
+        "inline": "span",
+        "classes": "turqoise"
     }
 ]

@@ -10,7 +10,7 @@
 
 /**
  * Compatibility
-*/
+ */
 
 /* Import Mixins */
 
@@ -321,12 +321,12 @@
 .accordion-header {
 	background: none;
 	border: 0;
+	box-sizing: border-box;
 	color: inherit;
 	cursor: pointer;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 10px 20px;
-	box-sizing: border-box;
 	position: relative;
 	text-align: left;
 	width: 100%;
@@ -340,26 +340,26 @@
 		content: '\f132';
 		font-family: 'dashicons';
 		font-size: 10px;
-		line-height: 17px;
 		font-weight: 400;
 		height: 14px;
 		left: 0;
+		line-height: 17px;
 		padding: 0;
+		padding-right: 1px;
 		position: absolute;
+		text-align: center;
 		top: 12px;
 		width: 15px;
-		text-align: center;
-		padding-right: 1px;
 	}
 
 .accordion-header:after {
-		content: '';
 		border-bottom: 1px solid #ddd;
+		content: '';
 		position: absolute;
 		right: 0;
-		width: 80%;
 		top: 50%;
 		transform: translateY(-50%);
+		width: 80%;
 	}
 
 .accordion-header.is-active:before {
@@ -375,15 +375,15 @@
 		background: none;
 	}
 
-.tribe-tickets-editor-history::after {
+.tribe-tickets-editor-history:after {
 	width: calc(100% - 80px);
 }
 
-.tribe_attendee_meta::after {
+.tribe_attendee_meta:after {
 	width: calc(100% - 170px);
 }
 
-.tribe_advanced_meta::after {
+.tribe_advanced_meta:after {
 	width: calc(100% - 105px);
 }
 
@@ -438,24 +438,24 @@
 		z-index: var(--tec-z-index-spinner-container);
 	}
 
-.tribe-common .tribe-tickets__notice {
-		padding: var(--tec-spacer-3);
+.tribe-common .tribe-tickets__notice, .event-tickets .tribe-tickets__notice {
 		background-color: var(--tec-color-background-secondary);
 		border-radius: var(--tec-border-radius-default);
 		margin: var(--tec-spacer-4) 0;
+		padding: var(--tec-spacer-3);
 	}
 
-.tribe-common .tribe-tickets__notice > *:last-child {
-			padding-bottom: 0;
+.tribe-common .tribe-tickets__notice > *:last-child, .event-tickets .tribe-tickets__notice > *:last-child {
 			margin-bottom: 0;
+			padding-bottom: 0;
 		}
 
-.tribe-common .tribe-tickets-notice__title {
+.tribe-common .tribe-tickets-notice__title, .event-tickets .tribe-tickets-notice__title {
 		margin: 0;
 		position: relative;
 	}
 
-.tribe-common .tribe-tickets-notice__title:empty {
+.tribe-common .tribe-tickets-notice__title:empty, .event-tickets .tribe-tickets-notice__title:empty {
 			display: none;
 		}
 
@@ -463,24 +463,21 @@
 		Error Notices
 	*/
 
-.tribe-common .tribe-tickets__notice--error {
+.tribe-common .tribe-tickets__notice--error, .event-tickets .tribe-tickets__notice--error {
 		background-color: var(--tec-color-background-error);
 		display: none;
 		padding-left: 50px;
-	}
-
-.tribe-common .tribe-tickets__notice--error .tribe-tickets-notice__title {
 		position: relative;
 	}
 
-.tribe-common .tribe-tickets__notice--error .tribe-tickets-notice__title:before {
-			background-image: url( "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cg fill='none' fill-rule='evenodd' transform='translate(1 1)'%3E%3Ccircle cx='8' cy='8' r='7.467' stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='11.733' r='1.067' fill='%23141827' fill-rule='nonzero'/%3E%3Cpath stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M8 3.733v4.8' fill='%23141827'/%3E%3C/g%3E%3C/svg%3E" );
+.tribe-common .tribe-tickets__notice--error:before, .event-tickets .tribe-tickets__notice--error:before {
+			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cg fill='none' fill-rule='evenodd' transform='translate(1 1)'%3E%3Ccircle cx='8' cy='8' r='7.467' stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='11.733' r='1.067' fill='%23141827' fill-rule='nonzero'/%3E%3Cpath stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M8 3.733v4.8' fill='%23141827'/%3E%3C/g%3E%3C/svg%3E");
 			background-size: contain;
 			content: '';
 			height: var(--tec-spacer-3);
-			left: calc(var(--tec-spacer-7)*-1);
+			left: var(--tec-spacer-4);
 			position: absolute;
-			top: 2px;
+			top: var(--tec-spacer-4);
 			width: var(--tec-spacer-3);
 		}
 
@@ -488,7 +485,7 @@
 		"Barred" Notices (visible side borders)
 	*/
 
-.tribe-common .tribe-tickets__notice--barred {
+.tribe-common .tribe-tickets__notice--barred, .event-tickets .tribe-tickets__notice--barred {
 		background-color: var(--tec-color-background);
 		border: var(--tec-spacer-0) solid var(--tec-color-border-secondary);
 		border-bottom: 0;
@@ -497,12 +494,12 @@
 		padding: 0 var(--tec-spacer-2);
 	}
 
-.tribe-common .tribe-tickets__notice--barred-left {
+.tribe-common .tribe-tickets__notice--barred-left, .event-tickets .tribe-tickets__notice--barred-left {
 		border-right: 0;
 		padding: 0 0 0 var(--tec-spacer-2);
 	}
 
-.tribe-common .tribe-tickets__notice--barred-right {
+.tribe-common .tribe-tickets__notice--barred-right, .event-tickets .tribe-tickets__notice--barred-right {
 		border-left: 0;
 		padding: 0 var(--tec-spacer-2) 0 0;
 	}
@@ -530,8 +527,8 @@
 	border-radius: var(--tec-border-radius-default);
 	box-shadow: var(--tec-box-shadow-tooltip);
 	height: auto !important;
-	padding: var(--tec-spacer-5);
 	max-width: 254px;
+	padding: var(--tec-spacer-5);
 }
 
 .tooltipster-base.tribe-tickets-tooltip-theme .tooltipster-box {
@@ -666,8 +663,8 @@ body.page-tribe-attendee-registration .tribe-common-a11y-hidden {
 	}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-events-single {
-			max-width: 1000px;
 			margin: 0 auto;
+			max-width: 1000px;
 		}
 
 /*
@@ -686,15 +683,15 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 		}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__back__to__cart {
-			color: var(--tec-color-text-primary);
+			border: 0;
 			box-shadow: none;
 			box-shadow: initial;
-			border: 0;
+			color: var(--tec-color-text-primary);
 		}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__back__to__cart:before {
-				margin-right: var(--tec-spacer-0);
 				content: url("data:image/svg+xml;charset=utf-8,%3Csvg width='12px' height='8px' viewBox='0 0 12 8' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='arrow' transform='translate(1.000000, 0.000000)' stroke='%23141827' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cline x1='10.7' y1='4' x2='0.1' y2='4' id='Path'/%3E%3Cpolyline id='Path' stroke-linecap='square' points='4.1 0 0.1 4 4.1 8'/%3E%3C/g%3E%3C/svg%3E");
+				margin-right: var(--tec-spacer-0);
 				vertical-align: baseline;
 			}
 
@@ -711,8 +708,8 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__grid {
 			display: grid;
 			-ms-grid-columns: auto;
-			grid-template-columns: auto;
 			-ms-grid-rows: auto;
+			grid-template-columns: auto;
 			grid-template-rows: auto;
 		}
 
@@ -749,6 +746,7 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart {
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__footer__total,
 			body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__footer__quantity {
 				display: block;
+				font-size: var(--tec-font-size-2);
 			}
 
 /* AR override styles */
@@ -764,9 +762,9 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .t
 				}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__item__extra {
+				align-self: center;
 				-ms-grid-row: 1;
 				grid-row: 1;
-				align-self: center;
 			}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__item__extra,
@@ -818,14 +816,9 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart a.
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart a.tribe-tickets__footer__back-link:active,
 				body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart a.tribe-tickets__footer__back-link:focus,
 				body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart a.tribe-tickets__footer__back-link:hover {
-					color: var(--tec-color-text-primary);
 					box-shadow: inset 0 -1px 0 0 var(--tec-color-text-primary);
+					color: var(--tec-color-text-primary);
 				}
-
-body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__footer__total,
-			body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__footer__quantity {
-				font-size: var(--tec-font-size-2);
-			}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__footer__total__label {
 				display: none;
@@ -934,8 +927,8 @@ body.page-tribe-attendee-registration.tribe-theme-twentyseventeen.page.page-one-
 body.page-tribe-attendee-registration.tribe-theme-twentyseventeen.page-one-column #primary .entry-content, body.page-tribe-attendee-registration.tribe-theme-twentyseventeen.page-two-column #primary .entry-content {
 				float: none;
 				float: initial;
-				max-width: 960px !important;
 				margin: auto;
+				max-width: 960px !important;
 				width: 100%;
 			}
 
@@ -1044,8 +1037,8 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 @media (min-width: 960px) {
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__event {
-				padding: 0 var(--tec-spacer-5) var(--tec-spacer-1) 0;
-				margin: 0
+				margin: 0;
+				padding: 0 var(--tec-spacer-5) var(--tec-spacer-1) 0
 		}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__grid {
@@ -1072,16 +1065,15 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart {
 				align-self: baseline;
-				border-radius: var(--tec-border-radius-default);
 				border: 1px solid var(--tec-color-border-secondary);
+				border-radius: var(--tec-border-radius-default);
 				-ms-grid-column: 2;
 				grid-column: 2;
 				-ms-grid-row: 1;
-				-ms-grid-row-span: 2;
 				grid-row: 1/span 2;
+				-ms-grid-row-span: 2;
 				margin: 160px 0 var(--tec-spacer-5) 0;
 				padding: var(--tec-spacer-5) var(--tec-spacer-3);
-				position: -webkit-sticky;
 				position: sticky;
 				top: var(--tec-spacer-5);
 				width: 360px

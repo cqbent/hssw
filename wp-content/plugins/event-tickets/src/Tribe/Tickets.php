@@ -1,6 +1,7 @@
 <?php
 
 use Tribe__Utils__Array as Arr;
+use TEC\Tickets\Commerce\Attendee;
 
 if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 	/**
@@ -3926,10 +3927,8 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 				return;
 			}
 
-			/** @var Tribe__Tickets_Plus__Main $tickets_plus_main */
-			$tickets_plus_main = tribe( 'tickets-plus.main' );
-
-			$meta = $tickets_plus_main->meta();
+			/** @var Tribe__Tickets_Plus__Meta $meta */
+			$meta = tribe( 'tickets-plus.meta' );
 
 			$cart_has_meta = true;
 
@@ -3959,7 +3958,8 @@ if ( ! class_exists( 'Tribe__Tickets__Tickets' ) ) {
 			$url = $attendee_reg->get_url();
 
 			if ( ! empty( $q_provider ) ) {
-				$url = add_query_arg( 'provider', $q_provider, $url );
+				$provider_slug = tribe_tickets_get_provider_query_slug();
+				$url = add_query_arg( $provider_slug, $q_provider, $url );
 			}
 
 			if ( ! empty( $redirect ) ) {

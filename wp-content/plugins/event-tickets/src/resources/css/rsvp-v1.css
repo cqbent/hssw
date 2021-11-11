@@ -136,11 +136,13 @@
 	}
 
 .tribe-answer select {
-		background: white;
+		background-color: white;
 		border: 1px solid #ddd;
 		height: 30px;
 		line-height: 1;
 		margin-left: 5px;
+		padding-bottom: 0;
+		padding-top: 0;
 	}
 
 .tribe-rsvp h2 {

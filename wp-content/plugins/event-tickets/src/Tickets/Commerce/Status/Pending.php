@@ -4,6 +4,9 @@ namespace TEC\Tickets\Commerce\Status;
 
 use TEC\Tickets\Commerce\Module;
 use TEC\Tickets\Commerce\Ticket;
+use TEC\Tickets\Event;
+use Tribe__Date_Utils as Dates;
+
 use WP_Error;
 
 /**
@@ -37,8 +40,7 @@ class Pending extends Status_Abstract {
 	 * {@inheritdoc}
 	 */
 	protected $flags = [
-		'generate_attendees',
-		'reduce_stock',
+		'backfill_purchaser',
 		'count_attendee',
 		'count_incomplete',
 		'count_sales',
@@ -68,11 +70,11 @@ class Pending extends Status_Abstract {
 		$order = tec_tc_get_order( $order );
 
 		// Since there are no cart items we can do anything.
-		if ( empty( $order->cart_items ) || ! is_array( $order->cart_items ) ) {
+		if ( empty( $order->items ) || ! is_array( $order->items ) ) {
 			return true;
 		}
 
-		foreach ( $order->cart_items as $item ) {
+		foreach ( $order->items as $item ) {
 			// Skip if we dont have a ticket id.
 			if ( empty( $item['ticket_id'] ) ) {
 				continue;
@@ -83,7 +85,7 @@ class Pending extends Status_Abstract {
 				continue;
 			}
 
-			/** @var \Tribe__Tickets__Ticket_Object $ticket_type */
+			/** @var \Tribe__Tickets__Ticket_Object $ticket */
 			$ticket = tribe( Ticket::class )->get_ticket( $item['ticket_id'] );
 
 			if ( null === $ticket ) {
@@ -145,9 +147,29 @@ class Pending extends Status_Abstract {
 				}
 			}
 
-			/**
-			 * @todo Determine if we need to check for the sale date.
-			 */
+			if ( ! $ticket->date_in_range( Dates::build_date_object() ) ) {
+				$now             = Dates::build_date_object();
+				$start_sale_date = $ticket->start_date;
+				$start_sale_time = Dates::reformat( $ticket->start_time, tribe_get_time_format() );
+
+				if ( $ticket->date_is_earlier( $now ) ) {
+					$message = sprintf( __( '%s will be available on %s at %s', 'event-tickets' ), tribe_get_ticket_label_plural( 'unavailable_future_display_date' ), $start_sale_date, $start_sale_time );
+				} elseif ( $ticket->date_is_later( $now ) ) {
+					$message = sprintf( __( '%s are no longer available.', 'event-tickets' ), tribe_get_ticket_label_plural( 'unavailable_past' ) );
+				} else {
+					$message = sprintf( __( 'There are no %s available at this time.', 'event-tickets' ), tribe_get_ticket_label_plural( 'unavailable_mixed' ) );
+				}
+
+				return new WP_Error(
+					'tec-tc-ticket-unavailable',
+					$message,
+					[
+						'ticket'     => $item['ticket_id'],
+						'order'      => $order,
+						'new_status' => $this
+					]
+				);
+			}
 		}
 
 		return true;

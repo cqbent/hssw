@@ -27,7 +27,6 @@ class WhoDat {
 	 *
 	 * @since 5.1.9
 	 *
-	 *
 	 * @param string $endpoint   The endpoint path.
 	 * @param array  $query_args Query args appended to the URL.
 	 *
@@ -42,9 +41,12 @@ class WhoDat {
 	 *
 	 * @since 5.1.9
 	 *
+	 * @param string $hash    Which unique hash we are passing to the PayPal system.
+	 * @param string $country Which country code we are using.
+	 *
 	 * @return array|string
 	 */
-	public function get_seller_signup_data( $hash ) {
+	public function get_seller_signup_data( $hash, $country ) {
 		if ( empty( $hash ) ) {
 			$hash = tribe( Signup::class )->generate_unique_signup_hash();
 		}
@@ -55,6 +57,7 @@ class WhoDat {
 			'nonce'       => $hash,
 			'tracking_id' => urlencode( tribe( Signup::class )->generate_unique_tracking_id() ),
 			'return_url'  => esc_url( $return_url ),
+			'country'     => $country,
 		];
 
 		return $this->get( 'seller/signup', $query_args );
@@ -72,7 +75,7 @@ class WhoDat {
 	public function get_seller_referral_data( $url ) {
 		$query_args = [
 			'mode' => tribe( Merchant::class )->get_mode(),
-			'url'  => $url
+			'url'  => $url,
 		];
 
 		return $this->get( 'seller/referral-data', $query_args );
@@ -90,7 +93,7 @@ class WhoDat {
 	public function get_seller_status( $saved_merchant_id ) {
 		$query_args = [
 			'mode'        => tribe( Merchant::class )->get_mode(),
-			'merchant_id' => $saved_merchant_id
+			'merchant_id' => $saved_merchant_id,
 		];
 
 		return $this->post( 'seller/status', $query_args );
@@ -158,8 +161,12 @@ class WhoDat {
 		$default_arguments = [
 			'body' => [],
 		];
-		$request_arguments = array_merge_recursive( $default_arguments, $request_arguments );
-		$request           = wp_remote_post( $url, $request_arguments );
+
+		foreach ( $default_arguments as $key => $default_argument ) {
+			$request_arguments[ $key ] = array_merge( $default_argument, Arr::get( $request_arguments, $key, [] ) );
+		}
+		$request_arguments = array_filter( $request_arguments );
+		$request = wp_remote_post( $url, $request_arguments );
 
 		if ( is_wp_error( $request ) ) {
 			$this->log_error( 'WhoDat request error:', $request->get_error_message(), $url );
@@ -172,6 +179,7 @@ class WhoDat {
 
 		if ( ! is_array( $body ) ) {
 			$this->log_error( 'WhoDat unexpected response:', $body, $url );
+			$this->log_error( 'Response:', print_r( $request, true ), '--->' );
 
 			return null;
 		}

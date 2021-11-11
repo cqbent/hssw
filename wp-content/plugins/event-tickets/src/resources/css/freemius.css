@@ -9,7 +9,7 @@
  */
 
 .events-cal #fs_connect, .toplevel_page_tribe-common #fs_connect, .toplevel_page_tribe-help #fs_connect, .toplevel_page_tribe-app-shop #fs_connect {
-		background-color: #ffffff;
+		background-color: #fff;
 		margin: 20px 20px 0 2px;
 		max-width: 1200px;
 		position: relative;
@@ -78,7 +78,7 @@
 				}
 
 		.events-cal #fs_connect .fs-visual .fs-site-icon:before, .toplevel_page_tribe-common #fs_connect .fs-visual .fs-site-icon:before, .toplevel_page_tribe-help #fs_connect .fs-visual .fs-site-icon:before, .toplevel_page_tribe-app-shop #fs_connect .fs-visual .fs-site-icon:before {
-					background-image: url( ../images/event-tickets.svg );
+					background-image: url('../images/event-tickets.svg');
 					background-position: center center;
 					background-repeat: no-repeat;
 					background-size: 85%;
@@ -94,7 +94,7 @@
 				}
 
 		.events-cal #fs_connect .fs-visual .fs-plugin-icon:before, .toplevel_page_tribe-common #fs_connect .fs-visual .fs-plugin-icon:before, .toplevel_page_tribe-help #fs_connect .fs-visual .fs-plugin-icon:before, .toplevel_page_tribe-app-shop #fs_connect .fs-visual .fs-plugin-icon:before {
-					background-image: url( ../icons/stethoscope.svg );
+					background-image: url('../icons/stethoscope.svg');
 					background-position: center center;
 					background-repeat: no-repeat;
 					background-size: 75%;
@@ -106,12 +106,11 @@
 				}
 
 		.events-cal #fs_connect .fs-visual .fs-connect-logo, .toplevel_page_tribe-common #fs_connect .fs-visual .fs-connect-logo, .toplevel_page_tribe-help #fs_connect .fs-visual .fs-connect-logo, .toplevel_page_tribe-app-shop #fs_connect .fs-visual .fs-connect-logo {
-				background-image: url( ../icons/mailplane.svg );
+				background-image: url('../icons/mailplane.svg');
 				background-position: center center;
 				background-repeat: no-repeat;
 				background-size: 80%;
 				box-sizing: border-box;
-				-moz-box-sizing: border-box;
 				display: block;
 				height: 80px;
 				padding-left: 60px;
@@ -143,7 +142,7 @@
 				}
 
 		.events-cal #fs_connect .fs-content .tribe-powered-by-freemius, .toplevel_page_tribe-common #fs_connect .fs-content .tribe-powered-by-freemius, .toplevel_page_tribe-help #fs_connect .fs-content .tribe-powered-by-freemius, .toplevel_page_tribe-app-shop #fs_connect .fs-content .tribe-powered-by-freemius {
-				background-image: url( ../icons/freemius-logo.svg );
+				background-image: url('../icons/freemius-logo.svg');
 				background-position: right center;
 				background-repeat: no-repeat;
 				background-size: 100px;
@@ -198,9 +197,7 @@
 			}
 
 		.events-cal #fs_connect .fs-permissions.fs-open, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open {
-				box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-				-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-				-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+				box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 				padding: 20px 35px;
 				position: absolute;
 			}
@@ -216,7 +213,7 @@
 						padding-bottom: 10px;
 					}
 
-		.events-cal #fs_connect .fs-permissions.fs-open ul li .dashicons, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open ul li .dashicons, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul li .dashicons, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul li .dashicons {
+		.events-cal #fs_connect .fs-permissions.fs-open ul li .dashicons, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open ul li .dashicons, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul li .dashicons, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul li .dashicons { /* stylelint-disable-line max-nesting-depth */
 							padding-right: 15px;
 						}
 
@@ -226,20 +223,20 @@
 						background-size: 65%;
 					}
 
-		.events-cal #fs_connect .fs-permissions.fs-open ul .dashicons:before, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open ul .dashicons:before, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul .dashicons:before, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul .dashicons:before {
+		.events-cal #fs_connect .fs-permissions.fs-open ul .dashicons:before, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open ul .dashicons:before, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul .dashicons:before, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul .dashicons:before { /* stylelint-disable-line max-nesting-depth */
 							content: '';
 						}
 
 		.events-cal #fs_connect .fs-permissions.fs-open ul .dashicons-admin-users, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open ul .dashicons-admin-users, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul .dashicons-admin-users, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul .dashicons-admin-users {
-						background-image: url( ../icons/user.svg );
+						background-image: url('../icons/user.svg');
 					}
 
 		.events-cal #fs_connect .fs-permissions.fs-open ul .dashicons-admin-settings, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open ul .dashicons-admin-settings, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul .dashicons-admin-settings, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul .dashicons-admin-settings {
-						background-image: url( ../icons/settings.svg );
+						background-image: url('../icons/settings.svg');
 					}
 
 		.events-cal #fs_connect .fs-permissions.fs-open ul .dashicons-testimonial, .toplevel_page_tribe-common #fs_connect .fs-permissions.fs-open ul .dashicons-testimonial, .toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul .dashicons-testimonial, .toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul .dashicons-testimonial {
-						background-image: url( ../icons/megaphone.svg );
+						background-image: url('../icons/megaphone.svg');
 					}
 
 		.events-cal #fs_connect .fs-permissions.fs-open ul .dashicons-admin-plugins,
@@ -250,7 +247,7 @@
 					.toplevel_page_tribe-help #fs_connect .fs-permissions.fs-open ul .dashicons-menu,
 					.toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul .dashicons-admin-plugins,
 					.toplevel_page_tribe-app-shop #fs_connect .fs-permissions.fs-open ul .dashicons-menu {
-						background-image: url( ../icons/plug.svg );
+						background-image: url('../icons/plug.svg');
 					}
 
 		.events-cal #fs_connect .fs-terms, .toplevel_page_tribe-common #fs_connect .fs-terms, .toplevel_page_tribe-help #fs_connect .fs-terms, .toplevel_page_tribe-app-shop #fs_connect .fs-terms {

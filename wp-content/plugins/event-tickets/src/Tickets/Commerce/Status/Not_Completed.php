@@ -34,8 +34,10 @@ class Not_Completed extends Status_Abstract {
 	protected $flags = [
 		'incomplete',
 		'warning',
-		'revert_stock',
-		'archive_attendee'
+		'backfill_purchaser',
+		'increase_stock',
+		'archive_attendees',
+		'decrease_sales',
 	];
 
 	/**

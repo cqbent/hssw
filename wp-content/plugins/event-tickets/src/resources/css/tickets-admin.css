@@ -315,12 +315,12 @@
 .accordion-header {
 	background: none;
 	border: 0;
+	box-sizing: border-box;
 	color: inherit;
 	cursor: pointer;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 10px 20px;
-	box-sizing: border-box;
 	position: relative;
 	text-align: left;
 	width: 100%;
@@ -334,26 +334,26 @@
 		content: '\f132';
 		font-family: 'dashicons';
 		font-size: 10px;
-		line-height: 17px;
 		font-weight: 400;
 		height: 14px;
 		left: 0;
+		line-height: 17px;
 		padding: 0;
+		padding-right: 1px;
 		position: absolute;
+		text-align: center;
 		top: 12px;
 		width: 15px;
-		text-align: center;
-		padding-right: 1px;
 	}
 
 .accordion-header:after {
-		content: '';
 		border-bottom: 1px solid #ddd;
+		content: '';
 		position: absolute;
 		right: 0;
-		width: 80%;
 		top: 50%;
 		transform: translateY(-50%);
+		width: 80%;
 	}
 
 .accordion-header.is-active:before {
@@ -369,15 +369,15 @@
 		background: none;
 	}
 
-.tribe-tickets-editor-history::after {
+.tribe-tickets-editor-history:after {
 	width: calc(100% - 80px);
 }
 
-.tribe_attendee_meta::after {
+.tribe_attendee_meta:after {
 	width: calc(100% - 170px);
 }
 
-.tribe_advanced_meta::after {
+.tribe_advanced_meta:after {
 	width: calc(100% - 105px);
 }
 
@@ -432,24 +432,24 @@
 		z-index: var(--tec-z-index-spinner-container);
 	}
 
-.tribe-common .tribe-tickets__notice {
-		padding: var(--tec-spacer-3);
+.tribe-common .tribe-tickets__notice, .event-tickets .tribe-tickets__notice {
 		background-color: var(--tec-color-background-secondary);
 		border-radius: var(--tec-border-radius-default);
 		margin: var(--tec-spacer-4) 0;
+		padding: var(--tec-spacer-3);
 	}
 
-.tribe-common .tribe-tickets__notice > *:last-child {
-			padding-bottom: 0;
+.tribe-common .tribe-tickets__notice > *:last-child, .event-tickets .tribe-tickets__notice > *:last-child {
 			margin-bottom: 0;
+			padding-bottom: 0;
 		}
 
-.tribe-common .tribe-tickets-notice__title {
+.tribe-common .tribe-tickets-notice__title, .event-tickets .tribe-tickets-notice__title {
 		margin: 0;
 		position: relative;
 	}
 
-.tribe-common .tribe-tickets-notice__title:empty {
+.tribe-common .tribe-tickets-notice__title:empty, .event-tickets .tribe-tickets-notice__title:empty {
 			display: none;
 		}
 
@@ -457,24 +457,21 @@
 		Error Notices
 	*/
 
-.tribe-common .tribe-tickets__notice--error {
+.tribe-common .tribe-tickets__notice--error, .event-tickets .tribe-tickets__notice--error {
 		background-color: var(--tec-color-background-error);
 		display: none;
 		padding-left: 50px;
-	}
-
-.tribe-common .tribe-tickets__notice--error .tribe-tickets-notice__title {
 		position: relative;
 	}
 
-.tribe-common .tribe-tickets__notice--error .tribe-tickets-notice__title:before {
-			background-image: url( "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cg fill='none' fill-rule='evenodd' transform='translate(1 1)'%3E%3Ccircle cx='8' cy='8' r='7.467' stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='11.733' r='1.067' fill='%23141827' fill-rule='nonzero'/%3E%3Cpath stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M8 3.733v4.8' fill='%23141827'/%3E%3C/g%3E%3C/svg%3E" );
+.tribe-common .tribe-tickets__notice--error:before, .event-tickets .tribe-tickets__notice--error:before {
+			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cg fill='none' fill-rule='evenodd' transform='translate(1 1)'%3E%3Ccircle cx='8' cy='8' r='7.467' stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='11.733' r='1.067' fill='%23141827' fill-rule='nonzero'/%3E%3Cpath stroke='%23141827' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M8 3.733v4.8' fill='%23141827'/%3E%3C/g%3E%3C/svg%3E");
 			background-size: contain;
 			content: '';
 			height: var(--tec-spacer-3);
-			left: calc(var(--tec-spacer-7)*-1);
+			left: var(--tec-spacer-4);
 			position: absolute;
-			top: 2px;
+			top: var(--tec-spacer-4);
 			width: var(--tec-spacer-3);
 		}
 
@@ -482,7 +479,7 @@
 		"Barred" Notices (visible side borders)
 	*/
 
-.tribe-common .tribe-tickets__notice--barred {
+.tribe-common .tribe-tickets__notice--barred, .event-tickets .tribe-tickets__notice--barred {
 		background-color: var(--tec-color-background);
 		border: var(--tec-spacer-0) solid var(--tec-color-border-secondary);
 		border-bottom: 0;
@@ -491,12 +488,12 @@
 		padding: 0 var(--tec-spacer-2);
 	}
 
-.tribe-common .tribe-tickets__notice--barred-left {
+.tribe-common .tribe-tickets__notice--barred-left, .event-tickets .tribe-tickets__notice--barred-left {
 		border-right: 0;
 		padding: 0 0 0 var(--tec-spacer-2);
 	}
 
-.tribe-common .tribe-tickets__notice--barred-right {
+.tribe-common .tribe-tickets__notice--barred-right, .event-tickets .tribe-tickets__notice--barred-right {
 		border-left: 0;
 		padding: 0 var(--tec-spacer-2) 0 0;
 	}
@@ -524,8 +521,8 @@
 	border-radius: var(--tec-border-radius-default);
 	box-shadow: var(--tec-box-shadow-tooltip);
 	height: auto !important;
-	padding: var(--tec-spacer-5);
 	max-width: 254px;
+	padding: var(--tec-spacer-5);
 }
 
 .tooltipster-base.tribe-tickets-tooltip-theme .tooltipster-box {
@@ -746,6 +743,7 @@
 }
 
 #event_tickets {
+	font-size: 12px;
 	position: relative;
 }
 
@@ -768,9 +766,9 @@
 		}
 
 #event_tickets .tribe-description-small {
+		color: #888;
 		font-size: 0.95em;
 		margin-top: 5px;
-		color: #888;
 	}
 
 /* Panels */
@@ -780,8 +778,8 @@
 	border-radius: 5px;
 	box-sizing: border-box;
 	opacity: 1;
-	position: relative;
 	padding: 8px;
+	position: relative;
 	visibility: visible;
 	width: 100%;
 	will-change: transform;
@@ -927,17 +925,17 @@
 	}
 
 .ticket_table_intro #ticket_form_total_capacity {
-		position: relative;
 		display: inline-block;
 		line-height: 28px;
+		position: relative;
 
 		position: relative;
 	}
 
 .ticket_table_intro #ticket_form_total_capacity .tooltip {
 		background-color: #efefef;
-		border-radius: 3px;
 		border: 1px solid var(--tec-color-border-secondary);
+		border-radius: 3px;
 		display: none;
 		margin-left: 0.5em;
 		padding: 0.5em;
@@ -965,8 +963,8 @@
 }
 
 .input_block .ticket_form_left {
-		display: block;
 		box-sizing: border-box;
+		display: block;
 		float: left;
 		margin: 0;
 		padding-left: 0;
@@ -1049,11 +1047,7 @@
 	width: 1px;
 }
 
-/* Adjust font size for entire form */
-
-#event_tickets {
-	font-size: 12px;
-}
+/* Adjust font size for form title */
 
 h4.ticket_form_title {
 	font-size: 1.2em;
@@ -1112,8 +1106,8 @@ p.description {
 
 #ticket_form .tooltip_container .tooltip {
 		background-color: #efefef;
-		border-radius: 3px;
 		border: 1px solid var(--tec-color-border-secondary);
+		border-radius: 3px;
 		display: none;
 		margin-left: 0.5em;
 		padding: 0.5em;
@@ -1164,11 +1158,11 @@ p.description {
 }
 
 .ticket-editor-notice {
-	padding: 10px;
-	margin-bottom: 10px;
-	font-size: 13px;
 	border-radius: 4px;
 	display: flex;
+	font-size: 13px;
+	margin-bottom: 10px;
+	padding: 10px;
 }
 
 .ticket-editor-notice.info {
@@ -1189,9 +1183,9 @@ p.description {
 
 .ticket-editor-notice .dashicons {
 		font-size: 20px;
-		width: 20px;
 		height: 20px;
 		margin-right: 2px;
+		width: 20px;
 	}
 
 .tribe_events_page_tickets-attendees .search-box .button {
@@ -1258,8 +1252,8 @@ p.description {
 		}
 
 .input_block .ticket_form_left {
-			float: none;
 			display: inline-block;
+			float: none;
 			padding: 0 0 6px
 	}
 

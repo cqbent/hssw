@@ -8,7 +8,4 @@ $baseDir = dirname($vendorDir);
 return array(
     'Tribe\\Tickets\\' => array($baseDir . '/src/Tribe'),
     'TEC\\Tickets\\' => array($baseDir . '/src/Tickets'),
-    'Sample\\' => array($vendorDir . '/paypal/paypal-checkout-sdk/samples'),
-    'PayPalHttp\\' => array($vendorDir . '/paypal/paypalhttp/lib/PayPalHttp'),
-    'PayPalCheckoutSdk\\' => array($vendorDir . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk'),
 );

@@ -122,4 +122,57 @@ class Success {
 			tribe( Cart::class )->set_cart_hash_cookie( $cookie_param );
 		}
 	}
+
+	/**
+	 * Maybe add a post display state for special Tickets Commerce Success Page in the page list table.
+	 *
+	 * @since 5.1.10
+	 *
+	 * @param array   $post_states An array of post display states.
+	 * @param WP_Post $post        The current post object.
+	 *
+	 * @return array  $post_states An array of post display states.
+	 */
+	public function maybe_add_display_post_states( $post_states, $post ) {
+
+		if ( $this->get_page_id() === $post->ID ) {
+			$post_states['tec_tickets_commerce_page_success'] = __( 'Tickets Commerce Success Page', 'event-tickets' );
+		}
+
+		return $post_states;
+	}
+
+	/**
+	 * Determines whether or not the success page option is set.
+	 *
+	 * @since 5.2.0
+	 *
+	 * @return bool
+	 */
+	public function is_option_set() {
+		$page = $this->get_page_id();
+		return ! empty( $page );
+	}
+
+	/**
+	 * Determines whether or not the success page has the appropriate shortcode in the content.
+	 *
+	 * @since 5.2.0
+	 *
+	 * @return bool
+	 */
+	public function page_has_shortcode() {
+		if ( ! $this->is_option_set() ) {
+			return false;
+		}
+
+		$page = get_post( $this->get_page_id() );
+
+		if ( ! $page instanceof \WP_Post ) {
+			return false;
+		}
+
+		$shortcode = Shortcodes\Success_Shortcode::get_wp_slug();
+		return has_shortcode( $page->post_content, $shortcode );
+	}
 }

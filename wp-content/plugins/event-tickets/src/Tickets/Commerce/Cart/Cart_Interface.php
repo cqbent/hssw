@@ -12,13 +12,23 @@ namespace TEC\Tickets\Commerce\Cart;
 interface Cart_Interface {
 
 	/**
-	 * Sets the cart id.
+	 * Sets the cart hash.
 	 *
 	 * @since 5.1.9
+	 * @since 5.2.0 Renamed to set_hash instead of set_id
 	 *
-	 * @param string $id
+	 * @param string $hash
 	 */
-	public function set_id( $id );
+	public function set_hash( $hash );
+
+	/**
+	 * Gets the cart hash.
+	 *
+	 * @since 5.2.0
+	 *
+	 * @return string
+	 */
+	public function get_hash();
 
 	/**
 	 * Gets the Cart mode based.
@@ -117,4 +127,26 @@ interface Cart_Interface {
 	 * @param null|int   $quantity The quantity to remove.
 	 */
 	public function remove_item( $item_id, $quantity = null );
+
+	/**
+	 * Removes an item from the cart.
+	 *
+	 * @since 5.1.10
+	 *
+	 * @param array $data to be processed by the cart.
+	 *
+	 * @return array
+	 */
+	public function process( array $data = [] );
+
+	/**
+	 * Prepare the data for cart processing.
+	 *
+	 * @since 5.1.10
+	 *
+	 * @param array $data To be processed by the cart.
+	 *
+	 * @return array
+	 */
+	public function prepare_data( array $data = [] );
 }

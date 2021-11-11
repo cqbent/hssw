@@ -12,6 +12,11 @@
 	padding: 20px 0;
 }
 
+	.tribe-tpp h2 {
+		line-height: 1.2;
+		margin-bottom: 20px;
+	}
+
 .tribe-tickets-has-tpp .tribe-tickets-meta-row {
 	display: table-row;
 }
@@ -86,13 +91,8 @@
 			border: 0;
 		}
 
-.tribe-tpp h2 {
-		line-height: 1.2;
-		margin-bottom: 20px;
-	}
-
 /* = Tickets & Tribe Commerce PayPal Modules Front End Styles
-=============================================*/
+============================================= */
 
 /* Title */
 

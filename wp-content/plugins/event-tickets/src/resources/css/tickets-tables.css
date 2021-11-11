@@ -13,9 +13,9 @@
 	z-index: 1;
 }
 .tribe-tickets-editor-table {
+	border: 1px solid var(--tec-color-border-default);
 	border-radius: var(--tec-border-radius-default);
 	border-spacing: 0;
-	border: 1px solid var(--tec-color-border-default);
 	margin: 20px 0;
 }
 .tribe-tickets-editor-table thead,
@@ -55,10 +55,10 @@
 .tribe-tickets-editor-table td.column-primary .tribe-handle {
 			color: #ccc;
 			cursor: move;
+			float: left;
 			font-size: 1.8em;
 			margin-right: 10px;
 			position: relative;
-			float: left;
 		}
 .tribe-tickets-editor-table .ui-sortable td.column-primary .tribe-handle {
 				display: block;
@@ -78,8 +78,8 @@
 	}
 .tribe-tickets-editor-table .tribe-tickets__tickets-editor-ticket-name-title .dashicons {
 			height: 16px;
-			width: 16px;
 			line-height: 16px;
+			width: 16px;
 		}
 .tribe-tickets-editor-table .tribe-tickets__tickets-editor-ticket-name-title .dashicons:before {
 				font-size: 16px;
@@ -198,8 +198,8 @@
 		}
 
 		.tribe-tickets-editor-table tr {
-			position: relative;
 			border-bottom: 1px solid var(--tec-color-border-default);
+			position: relative;
 		}
 
 		.tribe-tickets-editor-table th:not(.column-primary) {

@@ -4,22 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitba97c44520185c0044768bb168145a0a
+class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
         array (
             'Tribe\\Tickets\\' => 14,
             'TEC\\Tickets\\' => 12,
-        ),
-        'S' => 
-        array (
-            'Sample\\' => 7,
-        ),
-        'P' => 
-        array (
-            'PayPalHttp\\' => 11,
-            'PayPalCheckoutSdk\\' => 18,
         ),
     );
 
@@ -32,125 +23,65 @@ class ComposerStaticInitba97c44520185c0044768bb168145a0a
         array (
             0 => __DIR__ . '/../..' . '/src/Tickets',
         ),
-        'Sample\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples',
-        ),
-        'PayPalHttp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp',
-        ),
-        'PayPalCheckoutSdk\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk',
-        ),
     );
 
     public static $classMap = array (
-        'PayPalCheckoutSdk\\Core\\AccessToken' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/AccessToken.php',
-        'PayPalCheckoutSdk\\Core\\AccessTokenRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/AccessTokenRequest.php',
-        'PayPalCheckoutSdk\\Core\\AuthorizationInjector' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/AuthorizationInjector.php',
-        'PayPalCheckoutSdk\\Core\\FPTIInstrumentationInjector' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/FPTIInstrumentationInjector.php',
-        'PayPalCheckoutSdk\\Core\\GzipInjector' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/GzipInjector.php',
-        'PayPalCheckoutSdk\\Core\\PayPalEnvironment' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/PayPalEnvironment.php',
-        'PayPalCheckoutSdk\\Core\\PayPalHttpClient' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/PayPalHttpClient.php',
-        'PayPalCheckoutSdk\\Core\\ProductionEnvironment' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/ProductionEnvironment.php',
-        'PayPalCheckoutSdk\\Core\\RefreshTokenRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/RefreshTokenRequest.php',
-        'PayPalCheckoutSdk\\Core\\SandboxEnvironment' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/SandboxEnvironment.php',
-        'PayPalCheckoutSdk\\Core\\UserAgent' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/UserAgent.php',
-        'PayPalCheckoutSdk\\Core\\Version' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Core/Version.php',
-        'PayPalCheckoutSdk\\Orders\\OrdersAuthorizeRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Orders/OrdersAuthorizeRequest.php',
-        'PayPalCheckoutSdk\\Orders\\OrdersCaptureRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Orders/OrdersCaptureRequest.php',
-        'PayPalCheckoutSdk\\Orders\\OrdersCreateRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Orders/OrdersCreateRequest.php',
-        'PayPalCheckoutSdk\\Orders\\OrdersGetRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Orders/OrdersGetRequest.php',
-        'PayPalCheckoutSdk\\Orders\\OrdersPatchRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Orders/OrdersPatchRequest.php',
-        'PayPalCheckoutSdk\\Orders\\OrdersValidateRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Orders/OrdersValidateRequest.php',
-        'PayPalCheckoutSdk\\Payments\\AuthorizationsCaptureRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Payments/AuthorizationsCaptureRequest.php',
-        'PayPalCheckoutSdk\\Payments\\AuthorizationsGetRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Payments/AuthorizationsGetRequest.php',
-        'PayPalCheckoutSdk\\Payments\\AuthorizationsReauthorizeRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Payments/AuthorizationsReauthorizeRequest.php',
-        'PayPalCheckoutSdk\\Payments\\AuthorizationsVoidRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Payments/AuthorizationsVoidRequest.php',
-        'PayPalCheckoutSdk\\Payments\\CapturesGetRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Payments/CapturesGetRequest.php',
-        'PayPalCheckoutSdk\\Payments\\CapturesRefundRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Payments/CapturesRefundRequest.php',
-        'PayPalCheckoutSdk\\Payments\\RefundsGetRequest' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk/Payments/RefundsGetRequest.php',
-        'PayPalHttp\\Curl' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Curl.php',
-        'PayPalHttp\\Encoder' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Encoder.php',
-        'PayPalHttp\\Environment' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Environment.php',
-        'PayPalHttp\\HttpClient' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/HttpClient.php',
-        'PayPalHttp\\HttpException' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/HttpException.php',
-        'PayPalHttp\\HttpRequest' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/HttpRequest.php',
-        'PayPalHttp\\HttpResponse' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/HttpResponse.php',
-        'PayPalHttp\\IOException' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/IOException.php',
-        'PayPalHttp\\Injector' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Injector.php',
-        'PayPalHttp\\Serializer' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Serializer.php',
-        'PayPalHttp\\Serializer\\Form' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Serializer/Form.php',
-        'PayPalHttp\\Serializer\\FormPart' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Serializer/FormPart.php',
-        'PayPalHttp\\Serializer\\Json' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Serializer/Json.php',
-        'PayPalHttp\\Serializer\\Multipart' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Serializer/Multipart.php',
-        'PayPalHttp\\Serializer\\Text' => __DIR__ . '/..' . '/paypal/paypalhttp/lib/PayPalHttp/Serializer/Text.php',
-        'Sample\\AuthorizeIntentExamples\\AuthorizeOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/AuthorizeIntentExamples/AuthorizeOrder.php',
-        'Sample\\AuthorizeIntentExamples\\CaptureOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/AuthorizeIntentExamples/CaptureOrder.php',
-        'Sample\\AuthorizeIntentExamples\\CreateOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/AuthorizeIntentExamples/CreateOrder.php',
-        'Sample\\CaptureIntentExamples\\CaptureOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/CaptureIntentExamples/CaptureOrder.php',
-        'Sample\\CaptureIntentExamples\\CreateOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/CaptureIntentExamples/CreateOrder.php',
-        'Sample\\GetOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/GetOrder.php',
-        'Sample\\PatchOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/PatchOrder.php',
-        'Sample\\PayPalClient' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/PayPalClient.php',
-        'Sample\\RefundOrder' => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples/RefundOrder.php',
         'TEC\\Tickets\\Assets' => __DIR__ . '/../..' . '/src/Tickets/Assets.php',
         'TEC\\Tickets\\Commerce' => __DIR__ . '/../..' . '/src/Tickets/Commerce.php',
         'TEC\\Tickets\\Commerce\\Abstract_Settings' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Abstract_Settings.php',
+        'TEC\\Tickets\\Commerce\\Admin\\Notices' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Admin/Notices.php',
+        'TEC\\Tickets\\Commerce\\Admin_Tables\\Attendees' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Admin_Tables/Attendees.php',
+        'TEC\\Tickets\\Commerce\\Admin_Tables\\Orders' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Admin_Tables/Orders.php',
         'TEC\\Tickets\\Commerce\\Assets' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Assets.php',
         'TEC\\Tickets\\Commerce\\Attendee' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Attendee.php',
         'TEC\\Tickets\\Commerce\\Cart' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Cart.php',
         'TEC\\Tickets\\Commerce\\Cart\\Cart_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Cart/Cart_Interface.php',
         'TEC\\Tickets\\Commerce\\Cart\\Unmanaged_Cart' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Cart/Unmanaged_Cart.php',
         'TEC\\Tickets\\Commerce\\Checkout' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Checkout.php',
-        'TEC\\Tickets\\Commerce\\Communications\\Email' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Communication/Email.php',
+        'TEC\\Tickets\\Commerce\\Communication\\Email' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Communication/Email.php',
+        'TEC\\Tickets\\Commerce\\Compatibility\\Events' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Compatibility/Events.php',
         'TEC\\Tickets\\Commerce\\Currency' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Currency.php',
         'TEC\\Tickets\\Commerce\\Editor\\Metabox' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Editor/Metabox.php',
+        'TEC\\Tickets\\Commerce\\Flag_Actions\\Archive_Attendees' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Archive_Attendees.php',
+        'TEC\\Tickets\\Commerce\\Flag_Actions\\Backfill_Purchaser' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Backfill_Purchaser.php',
+        'TEC\\Tickets\\Commerce\\Flag_Actions\\Decrease_Sales' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Decrease_Sales.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Decrease_Stock' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Decrease_Stock.php',
+        'TEC\\Tickets\\Commerce\\Flag_Actions\\End_Duplicated_Pending_Orders' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/End_Duplicated_Pending_Orders.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Flag_Action_Abstract' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Flag_Action_Abstract.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Flag_Action_Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Flag_Action_Handler.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Flag_Action_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Flag_Action_Interface.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Generate_Attendees' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Generate_Attendees.php',
+        'TEC\\Tickets\\Commerce\\Flag_Actions\\Increase_Sales' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Increase_Sales.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Increase_Stock' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Increase_Stock.php',
+        'TEC\\Tickets\\Commerce\\Flag_Actions\\Send_Email' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Send_Email.php',
         'TEC\\Tickets\\Commerce\\Gateways\\Abstract_Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Abstract_Gateway.php',
         'TEC\\Tickets\\Commerce\\Gateways\\Interface_Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Interface_Gateway.php',
         'TEC\\Tickets\\Commerce\\Gateways\\Manager' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manager.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Ajax_Request_Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Ajax_Request_Handler.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Manual\\Assets' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manual/Assets.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Manual\\Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manual/Gateway.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Manual\\Hooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manual/Hooks.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Manual\\Order' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manual/Order.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Manual\\Provider' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manual/Provider.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Assets' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Assets.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Buttons' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Buttons.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Client' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Client.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Gateway.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Hooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Hooks.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Location\\Country' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Location/Country.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Merchant' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Merchant.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Models\\PayPal_Order' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Models/PayPal_Order.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Models\\PayPal_Payment' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Models/PayPal_Payment.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Models\\Webhook_Config' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Models/Webhook_Config.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\On_Boarding_Redirect_Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/On_Boarding_Redirect_Handler.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Provider' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Provider.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\REST' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/REST.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\REST\\On_Boarding_Endpoint' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/REST/On_Boarding_Endpoint.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\REST\\Order_Endpoint' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/REST/Order_Endpoint.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\REST\\Webhook_Endpoint' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/REST/Webhook_Endpoint.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Refresh_Token' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Refresh_Token.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Repositories\\Authorization' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Repositories/Authorization.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Repositories\\Order' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Repositories/Order.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Repositories\\Webhooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Repositories/Webhooks.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Settings' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Settings.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Signup' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Signup.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Status' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Status.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Tickets_Form' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Tickets_Form.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Headers' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Headers.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Listeners\\Event_Listener' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Listeners/Event_Listener.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Listeners\\Payment_Capture_Completed' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Listeners/Payment_Capture_Completed.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Listeners\\Payment_Capture_Denied' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Listeners/Payment_Capture_Denied.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Listeners\\Payment_Capture_Refunded' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Listeners/Payment_Capture_Refunded.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Listeners\\Payment_Capture_Reversed' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Listeners/Payment_Capture_Reversed.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Listeners\\Payment_Event_Listener' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Listeners/Payment_Event_Listener.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Webhook_Checker' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Webhook_Checker.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Webhook_Register' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Webhook_Register.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Webhooks_Route' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Webhooks_Route.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Events' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Events.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Handler.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\WhoDat' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/WhoDat.php',
         'TEC\\Tickets\\Commerce\\Hooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Hooks.php',
         'TEC\\Tickets\\Commerce\\Legacy_Compat' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Legacy_Compat.php',
@@ -158,11 +89,14 @@ class ComposerStaticInitba97c44520185c0044768bb168145a0a
         'TEC\\Tickets\\Commerce\\Models\\Order_Model' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Models/Order_Model.php',
         'TEC\\Tickets\\Commerce\\Models\\Ticket_Model' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Models/Ticket_Model.php',
         'TEC\\Tickets\\Commerce\\Module' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Module.php',
+        'TEC\\Tickets\\Commerce\\Notice_Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Notice_Handler.php',
         'TEC\\Tickets\\Commerce\\Order' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Order.php',
+        'TEC\\Tickets\\Commerce\\Payments_Tab' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Payments_Tab.php',
         'TEC\\Tickets\\Commerce\\Provider' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Provider.php',
         'TEC\\Tickets\\Commerce\\Reports\\Attendance_Totals' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Attendance_Totals.php',
-        'TEC\\Tickets\\Commerce\\Reports\\Event' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Event.php',
-        'TEC\\Tickets\\Commerce\\Reports\\Ticket' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Ticket.php',
+        'TEC\\Tickets\\Commerce\\Reports\\Attendees' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Attendees.php',
+        'TEC\\Tickets\\Commerce\\Reports\\Orders' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Orders.php',
+        'TEC\\Tickets\\Commerce\\Reports\\Report_Abstract' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Report_Abstract.php',
         'TEC\\Tickets\\Commerce\\Repositories\\Attendees_Repository' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Repositories/Attendees_Repository.php',
         'TEC\\Tickets\\Commerce\\Repositories\\Order_Repository' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Repositories/Order_Repository.php',
         'TEC\\Tickets\\Commerce\\Repositories\\Tickets_Repository' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Repositories/Tickets_Repository.php',
@@ -227,9 +161,9 @@ class ComposerStaticInitba97c44520185c0044768bb168145a0a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitba97c44520185c0044768bb168145a0a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitba97c44520185c0044768bb168145a0a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitba97c44520185c0044768bb168145a0a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c::$classMap;
 
         }, null, ClassLoader::class);
     }
