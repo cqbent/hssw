@@ -119,8 +119,14 @@ form {
   }
 }
 
+// wp-caption container styling
+.wp-caption {
+  max-width: 100%;
+}
+
 // caption styling
 .figure-caption, .wp-caption-text {
   color: $white;
 }
+
 

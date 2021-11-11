@@ -15722,6 +15722,12 @@ form #search-fields .tribe-events-single button,
 
 /* line 123, resources/assets/styles/common/_global.scss */
 
+.wp-caption {
+  max-width: 100%;
+}
+
+/* line 128, resources/assets/styles/common/_global.scss */
+
 .figure-caption,
 .wp-caption-text,
 .wp-caption-text {
