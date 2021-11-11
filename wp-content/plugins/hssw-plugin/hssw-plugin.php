@@ -26,8 +26,13 @@ add_action( 'init', 'people_post_type' );
  * Add "… More" to the excerpt here so always shows up
  */
 add_filter('get_the_excerpt', 'hssw_excerpt');
-function hssw_excerpt($excerpt) {
-	$post = get_post();
+function hssw_excerpt($excerpt, $id = null) {
+	if ($id) {
+		$post = get_post($id);
+	}
+	else {
+		$post = get_post();
+	}
 	if ($excerpt_more = strpos($post->post_content, '<!--more-->')) {
 		$excerpt = strip_tags(substr($post->post_content, 0, $excerpt_more));
 	}
@@ -236,13 +241,14 @@ function hssw_events($attributes) {
 	$output = '<div class="featured-authors wp-block-columns">';
 	foreach ($events as $post) {
 		$excerpt = get_the_excerpt($post->ID);
+		//var_dump($excerpt);
 		$output .= '
 			<div class="row">
 				<div class="image col-sm-3">' . get_the_post_thumbnail($post->ID) . '</div>
 				<div class="content col-sm-9">
 					<h3 class="title "><a href="'. get_the_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></h3>
 					<div class="start-date">' . tribe_get_start_date($post->ID) . '</div>
-					<div class="excerpt">' . get_the_excerpt($post->ID) . '</div>
+					<div class="excerpt">' . hssw_excerpt($post->post_excerpt, $post->ID) . '</div>
 				</div>
 			</div>
 		';
