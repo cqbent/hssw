@@ -153,7 +153,6 @@
 		}
 .event-tickets .tribe-tickets__form select {
 		-webkit-appearance: none;
-		   -moz-appearance: none;
 		        appearance: none;
 		background-color: var(--tec-color-background);
 		background-image: url('../images/select.png');

@@ -13,16 +13,6 @@
 	<p>
 		<?php _e('Note: Currently this feature uses third party services from reSmush.it. The performance of this free image compression service may be limited for large workloads. We are working on a premium service.', 'wp-optimize'); ?>
 	</p>
-	<?php
-	if (defined('WPO_USE_WEBP_CONVERSION') && true === WPO_USE_WEBP_CONVERSION) {
-		$converters = WP_Optimize()->get_options()->get_option('webp_converters', false);
-		if (false !== $converters) {
-			printf('<p>%1$s <strong>' . implode(', ', $converters) . '</strong></p>', __('Available WebP conversion tools:', 'wp-optimize'));
-		} else {
-			printf('<p>%1$s</p>', __('No WebP conversion tools are available on your web-server.', 'wp-optimize'));
-		}
-	}
-	?>
 	<div class="wpo-fieldgroup">
 		<div class="autosmush wpo-fieldgroup__subgroup<?php echo $smush_options['autosmush'] ? ' active' : ''; ?>">
 			<label class="switch" for="smush-automatically">
@@ -44,10 +34,10 @@
 				<span tabindex="0" data-tooltip="<?php esc_attr_e('The image compression metabox allows you to compress specific images from the media library. But if you are using a solution other than WP-Optimize to compress your images, you can hide these metaboxes by disabling this switch.', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 			</label>
 		</div>
-		
+
 		<div class="compression_options">
 			<h3><?php _e('Compression options', 'wp-optimize');?></h3>
-			<input type="radio" id="enable_lossy_compression" name="compression_level" <?php checked($smush_options['image_quality'], 90); ?> class="smush-options compression_level"> 
+			<input type="radio" id="enable_lossy_compression" name="compression_level" <?php checked($smush_options['image_quality'], 60); ?> class="smush-options compression_level"> 
 			<label for="enable_lossy_compression"><?php _e('Prioritize maximum compression', 'wp-optimize');?></label>
 			<span tabindex="0" data-tooltip="<?php _e('Uses lossy compression to ensure maximum savings per image. The resulting images are of a slightly lower quality', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 			<br>						
@@ -60,9 +50,8 @@
 			<br>
 			<div class="smush-options custom_compression" <?php if (!$custom) echo 'style="display:none;"';?> >
 				<span class="slider-start"><?php _e('Maximum compression', 'wp-optimize');?></span>
-				<input id="custom_compression_slider" class="compression_level" data-max="Maximum Compression"  type="range" step="5" value="<?php echo $smush_options['image_quality']; ?>" min="60" max="85" list="number" />
+				<input id="custom_compression_slider" class="compression_level" data-max="Maximum Compression"  type="range" step="5" value="<?php echo $smush_options['image_quality']; ?>" min="65" max="85" list="number" />
 				<datalist id="number">
-					<option value="60"/>
 					<option value="65"/>
 					<option value="70"/>
 					<option value="75"/>
@@ -72,9 +61,28 @@
 				<span class="slider-end"><?php _e('Best image quality', 'wp-optimize');?></span>
 			</div>
 			<p><?php _e('Not sure what to choose?', 'wp-optimize'); ?> <a href="https://getwpo.com/lossy-vs-lossless-image-compression-a-guide-to-the-trade-off-between-image-size-and-quality/" target="_blank"><?php _e('Read our article "Lossy vs Lossless image compression"', 'wp-optimize'); ?></a></p>
+			<h3><?php _e('WebP conversion', 'wp-optimize');?></h3>
+			<?php
+				$converters = WP_Optimize()->get_options()->get_option('webp_converters', false);
+				if (!$does_server_allows_local_webp_conversion) {
+					printf('<p>%1$s</p>', __('Note: Local WebP conversion tools are not allowed on your server.', 'wp-optimize'));
+				} elseif (!empty($converters)) {
+					printf('<p>%1$s <strong>' . implode(', ', $converters) . '</strong></p>', __('Available WebP conversion tools:', 'wp-optimize'));
+				?>
+					<input type="checkbox" id="enable_webp_conversion" name="webp_conversion" <?php checked($smush_options['webp_conversion']); ?> class="smush-options webp_conversion"> 
+					<label for="enable_webp_conversion"><?php _e('Create WebP version of image', 'wp-optimize');?></label>
+					<span tabindex="0" data-tooltip="<?php _e('Creates WebP image format and serves it whenever possible.', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
+					<br>						
+			<?php
+				} else {
+					printf('<p>%1$s</p>', __('No WebP conversion tools are available on your web-server.', 'wp-optimize'));
+				}
+			?>
 		</div>
 		<button type="button" class="button button-link wpo-toggle-advanced-options"><span class="text"><span class="dashicons dashicons-arrow-down-alt2"></span> <span class="wpo-toggle-advanced-options__text-show"><?php _e('Show advanced options', 'wp-optimize');?></span><span class="wpo-toggle-advanced-options__text-hide"><?php _e('Hide advanced options', 'wp-optimize');?></span></span></button>
 		<div class="smush-advanced wpo-advanced-options">
+			<button type="button" id="wpo_reset_webp_serving_method" class="wpo_primary_small button"><?php _e('Reset WebP serving method', 'wp-optimize'); ?></button>
+			<span id="wpo_reset_webp_serving_method_done" class="display-none"><span class="dashicons dashicons-yes"></span> <?php _e('The WebP serving method has been reset', 'wp-optimize');?></span>
 			<div class="compression_server">
 				<h3><?php _e('Compression service', 'wp-optimize');?></h3>
 				<div> <input type="radio" name="compression_server" id="resmushit" value="resmushit" <?php checked($smush_options['compression_server'], 'resmushit'); ?> >			  
@@ -96,7 +104,7 @@
 				<span tabindex="0" data-tooltip="<?php _e('The original images are stored alongside the compressed images, you can visit the edit screen of the individual images in the Media Library to restore them.', 'wp-optimize');?>"><span class="dashicons dashicons-editor-help"></span> </span>
 				<br>
 				<input type="checkbox" id="smush-backup-delete" class="smush-options back_up_original" <?php checked($smush_options['back_up_delete_after']); ?> >
-				<label for="smush-backup-delete"><?php _e('Automatically delete image backups after', 'wp-optimize');?><input id="smush-backup-delete-days" type="number" min="1" value="<?php intval($smush_options['back_up_delete_after_days']); ?>"><?php _e('days', 'wp-optimize');?></label><label> — <?php _e('or', 'wp-optimize'); ?></label> <button type="button" id="wpo_smush_delete_backup_btn" class="wpo_primary_small button"><?php _e('Delete all backup images now', 'wp-optimize'); ?></button>
+				<label for="smush-backup-delete"><?php _e('Automatically delete image backups after', 'wp-optimize');?><input id="smush-backup-delete-days" type="number" min="1" value="<?php echo (0 !== intval($smush_options['back_up_delete_after_days'])) ? intval($smush_options['back_up_delete_after_days']) : 50; ?>"><?php _e('days', 'wp-optimize');?></label><label> — <?php _e('or', 'wp-optimize'); ?></label> <button type="button" id="wpo_smush_delete_backup_btn" class="wpo_primary_small button"><?php _e('Delete all backup images now', 'wp-optimize'); ?></button>
 				<img id="wpo_smush_delete_backup_spinner" class="display-none" src="<?php echo esc_attr(admin_url('images/spinner-2x.gif')); ?>" alt="...">
 				<span id="wpo_smush_delete_backup_done" class="dashicons dashicons-yes display-none save-done"></span>
 				<br>

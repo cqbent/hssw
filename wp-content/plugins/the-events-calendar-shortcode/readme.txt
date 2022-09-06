@@ -1,10 +1,10 @@
 === The Events Calendar Shortcode & Block ===
 Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
-Requires at least: 4.1
+Requires at least: 5.6
 Requires PHP: 5.3
-Tested up to: 5.8
-Stable tag: 2.5
+Tested up to: 6.0
+Stable tag: 2.5.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,8 @@ Plus, get advanced control over how your events display:
 <li><strong>Full event description:</strong> Show the full event description, instead of just a short excerpt.</li>
 <li><strong>Only show start time:</strong> Just show the start time of your event.</li>
 <li><strong>Hide recurring events:</strong> Only show the first instance of a recurring event.</li>
+<li><strong>Filter bar:</strong> Allow visitors to choose what events they want to see.</li>
+<li><strong>Pagination:</strong> Let visitors show additional pages of events.</li>
 <li><strong>Custom design:</strong> Create your own templates, or use one of the seven built-in options.</li>
 <li><strong>Plus much more:</strong> <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">check out The Events Calendar Shortcode Pro details here</a>.</li>
 </ul>
@@ -94,7 +96,7 @@ You can then add The Events Calendar Block or `[ecs-list-events]` shortcode to t
 
 = What are the shortcode and block options for customizing my events? =
 
-Here’s the full list of shortcode and block options you can use to customize how your events display:
+Here’s the [full list of shortcode and block options](https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options&utm_content=description) you can use to customize how your events display:
 
 * Basic shortcode: `[ecs-list-events]`
 * cat - Show events from an event category `[ecs-list-events cat='festival']` or specify multiple categories `[ecs-list-events cat='festival, workshops']`
@@ -110,7 +112,7 @@ Here’s the full list of shortcode and block options you can use to customize h
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
 * viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']`
 * contentorder - Manage the order of content with commas. Default to `title, thumbnail, excerpt, date, venue`. `[ecs-list-events cat='festival' limit='3' order='DESC' viewall='false' contentorder='title, thumbnail, excerpt, date, venue']`
-* month - Show only specific month (in YYYY-MM format). Type `'current'` for displaying current month only or `'next'` for next month. `[ecs-list-events cat='festival' month='2015-06']`
+* month - Show only specific month (in YYYY-MM format). Type `'current'` for displaying current month only or `'next'` for next month. `[ecs-list-events cat='festival' month='2021-06']`
 * past - Show Outdated Events. `[ecs-list-events cat='festival' past='yes']`
 * key - Hide events when the start date has passed `[ecs-list-events cat='festival' key='start date']`
 * orderby - Change the ordering to the end date `[ecs-list-events orderby="enddate"]`
@@ -126,9 +128,9 @@ With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the
 * raw_description - Avoid filtering any HTML (spacing, links, bullet points, etc) in the description
 * raw_excerpt - Avoid filtering any HTML (spacing, links, etc) in the excerpt
 * featured only - Show only events marked as "featured"
-* date - Show only events for a specific day `[ecs-list-events date='2017-04-16']`
-* year - Show only events for a specific year `[ecs-list-events year='2017']`
-* date range - Show only events between certain days `[ecs-list-events fromdate='2017-05-31' todate='2017-06-15']`
+* date - Show only events for a specific day `[ecs-list-events date='2022-04-16']`
+* year - Show only events for a specific year `[ecs-list-events year='2021']`
+* date range - Show only events between certain days `[ecs-list-events fromdate='2021-05-31' todate='2021-06-15']`
 * timeonly - To show just the start time of the event. `[ecs-list-events timeonly='true']`
 * offset - Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page (with ads in between) or splitting into columns
 * custom design - Create one or more of your own templates for use with the shortcode
@@ -178,6 +180,21 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 2.5.4.1 =
+* Reducing permission requirement for instructions page (Authors)
+
+= 2.5.4 =
+* Fix broken settings page link
+
+= 2.5.3 =
+* Fix for month="next" when near the end of a month
+
+= 2.5.2 =
+* Initial workaround for styling issues for the block in the new full-site editor
+
+= 2.5.1 =
+* Fixes missing categories in the block if many categories available on the site
+
 = 2.5 =
 * Adding div when there are no events found, to avoid display issues on some themes
 
@@ -188,6 +205,21 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 Adds link to full documentation
 
 == Changelog ==
+
+= 2.5.4.1 =
+* Reducing permission requirement for instructions page (Author)
+
+= 2.5.4 =
+* Fix broken settings page link
+
+= 2.5.3 =
+* Fix for month="next" when near the end of a month
+
+= 2.5.2 =
+* Initial workaround for styling issues for the block in the new full-site editor
+
+= 2.5.1 =
+* Fixes missing categories in the block if many categories available on the site
 
 = 2.5 =
 * Adding div when there are no events found, to avoid display issues on some themes
@@ -219,100 +251,3 @@ Adds link to full documentation
 
 = 2.0 =
 * Adds a block in addition to the shortcode that can be used with the new WordPress editor (as of version 5.0) or Gutenberg plugin
-
-= 1.10.1 =
-* Fixing error with very old versions of PHP
-
-= 1.10 =
-* Fix for multi-word category names not working with the "cat" option
-* Option to show "powered by" link
-
-= 1.9 =
-* Adds check for minimum WordPress and PHP version
-* Adds a link to a short tutorial video
-* Changes first example shortcode so it's easier to copy/paste
-
-= 1.8 =
-* Adds new orderby='title' option
-* Fixes resetting the WordPress global query instead of just the post data
-
-= 1.7.3 =
-* Hide the "at" when using venue='true' and an event has no venue
-* Adds additional WordPress filters to hide certain events
-
-= 1.7.2 =
-* Adds the ability to use schema='false' in the shortcode to hide the schema output
-
-= 1.7.1 =
-* Fix for month option where there's an all-day event the first day of the next month
-* Fix for "There are no events" string not being translated automatically into other languages
-
-= 1.7 =
-* Adds structured data to the shortcode output (great for SEO and people finding your events)
-
-= 1.6.1 =
-* Added ecs-featured-event class if event is featured
-* Internal changes to filtering by one or more categories
-
-= 1.6 =
-* Changes default ordering by the start date, use orderby="enddate" for previous default ordering
-
-= 1.5.3 =
-* Fixes translation of the "View all events" link into other languages
-* Adds orderby parameter to order by start date, but still show events until the end date has passed
-
-= 1.5.2 =
-* Adds 'next' option for showing the next month of events
-
-= 1.5.1 =
-* Adds thumbsize option (ie. medium, large, thumbnail, full)
-
-= 1.5 =
-* Adds ability to translate the plugin into local languages
-* Additional description of options
-
-= 1.4.2 =
-* Additional filter for changing the link for an event
-* Adds category CSS classes for each event, so you can format each category differently
-
-= 1.4.1 =
-* Additional filters for formatting a single event
-
-= 1.4 =
-* Checks for whether The Events Calendar is installed
-* Additional filters
-* Improved design of shortcode help page
-
-= 1.3 =
-* Fixes issue with "viewall" showing the events twice
-* Fixes time zone issue by using current_time() instead of date()
-* Hides events that are marked 'hide from listing'
-* Switches to tribe_get_events() to get the events
-* Removes the ... from the end of the excerpt if less than the excerpt length
-* Adds date_thumb option
-* Adds additional filters
-
-= 1.2 =
-* Updates author/description (Event Calendar Newsletter / Brian Hogg Consulting)
-
-= 1.0.11 =
-Add Link to Thumbnail
-merge pull request from d4mation -Replaced extracted variables with $atts as using extract was deprecated
-=1.0.10 =
-Minor Error Change - fix  name and slug
-= 1.0.9 =
-Minor Error Change - Multiple Categories
-= 1.0.8 =
-Add options : multi-categories - Thanks to sujin2f
-= 1.0.7 =
-Add options : contentorder, month, past, key  - Thanks to sujin2f
-= 1.0.6 =
-Fix missing ul
-= 1.0.5 =
-* Add excerpt and thumbnail - Thanks to ankitpokhrel
-= 1.0.2 =
-* Add venue to shortcode - Thanks to ankitpokhrel
-= 1.0.1 =
-* Fix Firefox browser compatibility issue
-= 1 =
-* Initial Release

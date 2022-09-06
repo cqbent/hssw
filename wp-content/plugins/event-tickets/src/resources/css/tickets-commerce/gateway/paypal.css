@@ -715,16 +715,6 @@
 		padding: 12px;
 	}
 
-.event-tickets .tribe-tickets__commerce-checkout-paypal-advanced-payments-form-field::-moz-placeholder {
-			color: #999;
-			font-family: var(--tec-font-family-sans-serif);
-		}
-
-.event-tickets .tribe-tickets__commerce-checkout-paypal-advanced-payments-form-field:-ms-input-placeholder {
-			color: #999;
-			font-family: var(--tec-font-family-sans-serif);
-		}
-
 .event-tickets .tribe-tickets__commerce-checkout-paypal-advanced-payments-form-field::placeholder {
 			color: #999;
 			font-family: var(--tec-font-family-sans-serif);
@@ -738,6 +728,10 @@
 .event-tickets .tribe-tickets__commerce-checkout-paypal-advanced-payments-form-submit-button {
 		height: 55px;
 		margin-top: 24px;
+		width: 100%;
+	}
+
+.event-tickets .tribe-tickets__commerce-checkout-paypal-advanced-payments-form-field--card-name {
 		width: 100%;
 	}
 

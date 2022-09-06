@@ -51,22 +51,31 @@ class ContactFormSevenPluginHandler extends BaseContactFormPluginHandler
         if (!empty($firstName)) {
             $contactModel->setFirstName($firstName);
         }
+
         $lastName = $this->findValue($contactForm, $this->lastnameFields);
         if (!empty($lastName)) {
             $contactModel->setLastName($lastName);
         }
+
         $phone = $this->findValue($contactForm, $this->phoneFields);
+        if (empty($phone)) {
+            $phone = $this->GetValueBySubstring($contactForm->get_posted_data(), $this->phoneFields);
+        }
         if (!empty($phone)) {
             $contactModel->setPhone($phone);
         }
+
         $birthday = $this->findValue($contactForm, $this->birthdayFields);
         if (!empty($birthday)) {
             $contactModel->setBirthday($birthday);
         }
 
-        $contactModel->setOptIn(true);
-        $contactModel->setOptOut(false);
-        $contactModel->setOptActionBy(OptActionBy::Visitor);
+        $consent = $this->GetValueBySubstring($contactForm->get_posted_data(), $this->consentFields);
+        if ($consent === "1") {
+            $contactModel->setOptIn(true);
+            $contactModel->setOptOut(false);
+            $contactModel->setOptActionBy(OptActionBy::Visitor);
+        }
         $contactModel->setEventType(CE4WP_CF7_EVENTTYPE);
 
         return $contactModel;
@@ -166,5 +175,18 @@ class ContactFormSevenPluginHandler extends BaseContactFormPluginHandler
     function __construct()
     {
         parent::__construct();
+    }
+
+    private function GetValueBySubstring($form_values, $possible_values)
+    {
+        foreach ($form_values as $form_key => $form_value) {
+            foreach ($possible_values as $possible_value) {
+                // If the name of the form_key contains the possible_value then we return its value
+                if (mb_strpos(strtolower($form_key), $possible_value) !== false)
+                {
+                    return $form_value;
+                }
+            }
+        }
     }
 }

@@ -535,7 +535,6 @@
 
 .tribe-block__rsvp__number-input-inner input[type='number'] {
 		-webkit-appearance: textfield;
-		   -moz-appearance: textfield;
 		        appearance: textfield;
 		background: transparent;
 		border: none;
@@ -633,14 +632,6 @@
 			width: 100%;
 		}
 
-.tribe-right input[type='text']::-moz-placeholder, .tribe-right input[type='email']::-moz-placeholder {
-				color: #a2aab2;
-			}
-
-.tribe-right input[type='text']:-ms-input-placeholder, .tribe-right input[type='email']:-ms-input-placeholder {
-				color: #a2aab2;
-			}
-
 .tribe-right input[type='text']::placeholder, .tribe-right input[type='email']::placeholder {
 				color: #a2aab2;
 			}
@@ -660,7 +651,6 @@
 
 .tribe-right label[for^='tribe-tickets-attendees-list-optout'] input[type='checkbox'] {
 				-webkit-appearance: none;
-				   -moz-appearance: none;
 				        appearance: none;
 				background-color: #fff;
 				border: 1px solid #e1e3e6;

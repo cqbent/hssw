@@ -2,6 +2,8 @@
 
 class WPCF7_ContactForm {
 
+	use WPCF7_SWV_SchemaHolder;
+
 	const post_type = 'wpcf7_contact_form';
 
 	private static $found_items = 0;
@@ -124,7 +126,11 @@ class WPCF7_ContactForm {
 		$properties = $contact_form->get_properties();
 
 		foreach ( $properties as $key => $value ) {
-			$properties[$key] = WPCF7_ContactFormTemplate::get_default( $key );
+			$default_template = WPCF7_ContactFormTemplate::get_default( $key );
+
+			if ( isset( $default_template ) ) {
+				$properties[$key] = $default_template;
+			}
 		}
 
 		$contact_form->properties = $properties;
@@ -200,18 +206,10 @@ class WPCF7_ContactForm {
 			$this->title = $post->post_title;
 			$this->locale = get_post_meta( $post->ID, '_locale', true );
 
-			$properties = $this->get_properties();
-
-			foreach ( $properties as $key => $value ) {
-				if ( metadata_exists( 'post', $post->ID, '_' . $key ) ) {
-					$properties[$key] = get_post_meta( $post->ID, '_' . $key, true );
-				} elseif ( metadata_exists( 'post', $post->ID, $key ) ) {
-					$properties[$key] = get_post_meta( $post->ID, $key, true );
-				}
-			}
-
-			$this->properties = $properties;
+			$this->construct_properties( $post );
 			$this->upgrade();
+		} else {
+			$this->construct_properties();
 		}
 
 		do_action( 'wpcf7_contact_form', $this );
@@ -264,10 +262,89 @@ class WPCF7_ContactForm {
 
 
 	/**
+	 * Constructs contact form properties. This is called only once
+	 * from the constructor.
+	 */
+	private function construct_properties( $post = null ) {
+		$builtin_properties = array(
+			'form' => '',
+			'mail' => array(),
+			'mail_2' => array(),
+			'messages' => array(),
+			'additional_settings' => '',
+		);
+
+		$properties = apply_filters(
+			'wpcf7_pre_construct_contact_form_properties',
+			$builtin_properties, $this
+		);
+
+		// Filtering out properties with invalid name
+		$properties = array_filter(
+			$properties,
+			function ( $key ) {
+				$sanitized_key = sanitize_key( $key );
+				return $key === $sanitized_key;
+			},
+			ARRAY_FILTER_USE_KEY
+		);
+
+		foreach ( $properties as $name => $val ) {
+			$prop = $this->retrieve_property( $name );
+
+			if ( isset( $prop ) ) {
+				$properties[$name] = $prop;
+			}
+		}
+
+		$this->properties = $properties;
+
+		foreach ( $properties as $name => $val ) {
+			$properties[$name] = apply_filters(
+				"wpcf7_contact_form_property_{$name}",
+				$val, $this
+			);
+		}
+
+		$this->properties = $properties;
+
+		$properties = (array) apply_filters(
+			'wpcf7_contact_form_properties',
+			$properties, $this
+		);
+
+		$this->properties = $properties;
+	}
+
+
+	/**
+	 * Retrieves contact form property of the specified name from the database.
+	 *
+	 * @param string $name Property name.
+	 * @return array|string|null Property value. Null if property does not exist.
+	 */
+	private function retrieve_property( $name ) {
+		$property = null;
+
+		if ( ! $this->initial() ) {
+			$post_id = $this->id;
+
+			if ( metadata_exists( 'post', $post_id, '_' . $name ) ) {
+				$property = get_post_meta( $post_id, '_' . $name, true );
+			} elseif ( metadata_exists( 'post', $post_id, $name ) ) {
+				$property = get_post_meta( $post_id, $name, true );
+			}
+		}
+
+		return $property;
+	}
+
+
+	/**
 	 * Returns the value for the given property name.
 	 *
 	 * @param string $name Property name.
-	 * @return array|string|null Property value. Null if property doesn't exist.
+	 * @return array|string|null Property value. Null if property does not exist.
 	 */
 	public function prop( $name ) {
 		$props = $this->get_properties();
@@ -281,22 +358,7 @@ class WPCF7_ContactForm {
 	 * @return array This contact form's properties.
 	 */
 	public function get_properties() {
-		$properties = (array) $this->properties;
-
-		$properties = wp_parse_args( $properties, array(
-			'form' => '',
-			'mail' => array(),
-			'mail_2' => array(),
-			'messages' => array(),
-			'additional_settings' => '',
-		) );
-
-		$properties = (array) apply_filters(
-			'wpcf7_contact_form_properties',
-			$properties, $this
-		);
-
-		return $properties;
+		return (array) $this->properties;
 	}
 
 
@@ -406,7 +468,7 @@ class WPCF7_ContactForm {
 	 * Returns the specified shortcode attribute value.
 	 *
 	 * @param string $name Shortcode attribute name.
-	 * @return string|null Attribute value. Null if the attribute doesn't exist.
+	 * @return string|null Attribute value. Null if the attribute does not exist.
 	 */
 	public function shortcode_attr( $name ) {
 		if ( isset( $this->shortcode_atts[$name] ) ) {
@@ -905,7 +967,9 @@ class WPCF7_ContactForm {
 			$mailtags[] = $tag->name;
 		}
 
-		$mailtags = array_unique( array_filter( $mailtags ) );
+		$mailtags = array_unique( $mailtags );
+		$mailtags = array_filter( $mailtags );
+		$mailtags = array_values( $mailtags );
 
 		return apply_filters( 'wpcf7_collect_mail_tags', $mailtags, $args, $this );
 	}
@@ -914,10 +978,10 @@ class WPCF7_ContactForm {
 	/**
 	 * Prints a mail-tag suggestion list.
 	 *
-	 * @param string $for Optional. Mail template name. Default 'mail'.
+	 * @param string $template_name Optional. Mail template name. Default 'mail'.
 	 */
-	public function suggest_mail_tags( $for = 'mail' ) {
-		$mail = wp_parse_args( $this->prop( $for ),
+	public function suggest_mail_tags( $template_name = 'mail' ) {
+		$mail = wp_parse_args( $this->prop( $template_name ),
 			array(
 				'active' => false,
 				'recipient' => '',
@@ -1113,6 +1177,21 @@ class WPCF7_ContactForm {
 		}
 
 		return (bool) apply_filters( 'wpcf7_verify_nonce', $is_active, $this );
+	}
+
+
+	/**
+	 * Returns true if the specified setting has a falsey string value.
+	 *
+	 * @param string $name Name of setting.
+	 * @return bool True if the setting value is 'off', 'false', or '0'.
+	 */
+	public function is_false( $name ) {
+		return in_array(
+			$this->pref( $name ),
+			array( 'off', 'false', '0' ),
+			true
+		);
 	}
 
 

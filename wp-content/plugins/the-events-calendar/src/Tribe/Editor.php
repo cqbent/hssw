@@ -118,23 +118,14 @@ class Tribe__Events__Editor extends Tribe__Editor {
 			return $is_enabled;
 		}
 
-		// Classic editor plugin is overriding.
-		if ( tribe( 'events.editor' )->is_classic_option_active() ) {
-			return false;
-		}
-
-		// Blocks aren't toggled on.
-		if ( tribe( 'events.editor.compatibility' )->is_blocks_editor_toggled_on() ) {
-			return $is_enabled;
-		}
-
-		return false;
+		return tribe( 'editor' )->should_load_blocks();
 	}
 
 	/**
-	 * When Gutenberg is active do not care about custom-fields as a metabox, but as part o the Rest API
+	 * When Gutenberg is active, we do not care about custom-fields as a metabox, but as part of the Rest API
 	 *
-	 * Code is located at: https://github.com/moderntribe/the-events-calendar/blob/f8af49bc41048e8632372fc8da77202d9cb98d86/src/Tribe/Admin/Event_Meta_Box.php#L345
+	 * Code is located at:
+	 * https://github.com/moderntribe/the-events-calendar/blob/f8af49bc41048e8632372fc8da77202d9cb98d86/src/Tribe/Admin/Event_Meta_Box.php#L345
 	 *
 	 * @todo  Block that option once the user has Gutenberg active
 	 *
@@ -170,7 +161,7 @@ class Tribe__Events__Editor extends Tribe__Editor {
 		$editor = tribe( 'editor' );
 
 		// Bail if in classic editor
-		if ( $editor->is_classic_editor() ) {
+		if ( ! $editor->should_load_blocks() ) {
 			return false;
 		}
 
@@ -390,6 +381,19 @@ class Tribe__Events__Editor extends Tribe__Editor {
 	}
 
 	/**
+	 * Check whether the current page is an edit post type page.
+	 *
+	 * @since 5.12.0
+	 *
+	 * @return bool
+	 */
+	public function is_edit_screen() {
+		$current_screen = get_current_screen();
+
+		return 'post' === $current_screen->base;
+	}
+
+	/**
 	 * @todo   Move this into the Block PHP files
 	 *
 	 * @since 4.7
@@ -519,6 +523,79 @@ class Tribe__Events__Editor extends Tribe__Editor {
 
 		tribe_asset(
 			$plugin,
+			'tec-widget-blocks',
+			'app/widgets.js',
+			[
+				'react',
+				'react-dom',
+				'wp-components',
+				'wp-api',
+				'wp-api-request',
+				'wp-blocks',
+				'wp-widgets',
+				'wp-i18n',
+				'wp-element',
+				'wp-editor',
+				'tribe-common-gutenberg-data',
+				'tribe-common-gutenberg-utils',
+				'tribe-common-gutenberg-store',
+				'tribe-common-gutenberg-icons',
+				'tribe-common-gutenberg-hoc',
+				'tribe-common-gutenberg-elements',
+				'tribe-common-gutenberg-components',
+			],
+			'enqueue_block_editor_assets',
+			[
+				'in_footer'    => false,
+				'localize'     => [],
+				'priority'     => 106,
+				'conditionals' => [ $this, 'is_edit_screen' ],
+			]
+		);
+
+		tribe_asset(
+			$plugin,
+			'legacy-widget',
+			'legacy-widget.js',
+			[
+				'admin-widgets',
+				'wp-widgets',
+			],
+			'enqueue_block_editor_assets',
+			[
+				'in_footer'    => true,
+				'conditionals' => [ $this, 'is_edit_screen' ],
+			]
+		);
+
+		tribe_asset(
+			$plugin,
+			'tec-widget-blocks-styles',
+			'app/widgets.css',
+			[
+				'wp-widgets',
+			],
+			'enqueue_block_editor_assets',
+			[
+				'in_footer'    => false,
+				'conditionals' => [ $this, 'is_edit_screen' ],
+			]
+		);
+
+		tribe_asset(
+			$plugin,
+			'tec-blocks-category-icon-styles',
+			'tribe-admin-block-category-icons.css',
+			[],
+			'enqueue_block_editor_assets',
+			[
+				'in_footer'    => false,
+				'conditionals' => [ $this, 'is_edit_screen' ],
+			]
+		);
+
+		tribe_asset(
+			$plugin,
 			'tribe-block-editor',
 			'app/editor.css',
 			[],
@@ -606,11 +683,6 @@ class Tribe__Events__Editor extends Tribe__Editor {
 
 		// Make sure we have the post available.
 		if ( empty( $context->post ) ) {
-			return $categories;
-		}
-
-		// Make sure it's an event post.
-		if ( ! tribe_is_event( $context->post ) ) {
 			return $categories;
 		}
 

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b
+class ComposerStaticInit70e09938dd3efe3305121f6b4abcb235
 {
     public static $prefixLengthsPsr4 = array (
         'F' => 
@@ -18,6 +18,7 @@ class ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b
         'C' => 
         array (
             'CreativeMail\\Modules\\' => 21,
+            'CreativeMail\\Models\\' => 20,
             'CreativeMail\\Managers\\' => 22,
             'CreativeMail\\Integrations\\' => 26,
             'CreativeMail\\Helpers\\' => 21,
@@ -39,6 +40,10 @@ class ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b
         'CreativeMail\\Modules\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/modules',
+        ),
+        'CreativeMail\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/models',
         ),
         'CreativeMail\\Managers\\' => 
         array (
@@ -98,6 +103,23 @@ class ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b
         'CreativeMail\\Managers\\InstanceManager' => __DIR__ . '/../..' . '/src/Managers/InstanceManager.php',
         'CreativeMail\\Managers\\IntegrationManager' => __DIR__ . '/../..' . '/src/Managers/IntegrationManager.php',
         'CreativeMail\\Managers\\RaygunManager' => __DIR__ . '/../..' . '/src/Managers/RaygunManager.php',
+        'CreativeMail\\Models\\ApiSchema' => __DIR__ . '/../..' . '/src/Models/ApiSchema.php',
+        'CreativeMail\\Models\\Campaign' => __DIR__ . '/../..' . '/src/Models/Campaign.php',
+        'CreativeMail\\Models\\CartData' => __DIR__ . '/../..' . '/src/Models/CartData.php',
+        'CreativeMail\\Models\\Checkout' => __DIR__ . '/../..' . '/src/Models/Checkout.php',
+        'CreativeMail\\Models\\CheckoutSave' => __DIR__ . '/../..' . '/src/Models/CheckoutSave.php',
+        'CreativeMail\\Models\\CustomerNewAccount' => __DIR__ . '/../..' . '/src/Models/CustomerNewAccount.php',
+        'CreativeMail\\Models\\CustomerNote' => __DIR__ . '/../..' . '/src/Models/CustomerNote.php',
+        'CreativeMail\\Models\\CustomerResetPassword' => __DIR__ . '/../..' . '/src/Models/CustomerResetPassword.php',
+        'CreativeMail\\Models\\EmailNotification' => __DIR__ . '/../..' . '/src/Models/EmailNotification.php',
+        'CreativeMail\\Models\\HashSchema' => __DIR__ . '/../..' . '/src/Models/HashSchema.php',
+        'CreativeMail\\Models\\OptionsSchema' => __DIR__ . '/../..' . '/src/Models/OptionsSchema.php',
+        'CreativeMail\\Models\\Order' => __DIR__ . '/../..' . '/src/Models/Order.php',
+        'CreativeMail\\Models\\OrderBilling' => __DIR__ . '/../..' . '/src/Models/OrderBilling.php',
+        'CreativeMail\\Models\\RequestItem' => __DIR__ . '/../..' . '/src/Models/RequestItem.php',
+        'CreativeMail\\Models\\Response' => __DIR__ . '/../..' . '/src/Models/Response.php',
+        'CreativeMail\\Models\\TriggerExecution' => __DIR__ . '/../..' . '/src/Models/TriggerExecution.php',
+        'CreativeMail\\Models\\User' => __DIR__ . '/../..' . '/src/Models/User.php',
         'CreativeMail\\Modules\\Api\\Models\\ApiRequestItem' => __DIR__ . '/../..' . '/src/Modules/Api/Models/ApiRequestItem.php',
         'CreativeMail\\Modules\\Api\\Processes\\ApiBackgroundProcess' => __DIR__ . '/../..' . '/src/Modules/Api/Processes/ApiBackgroundProcess.php',
         'CreativeMail\\Modules\\Blog\\Models\\BlogAttachment' => __DIR__ . '/../..' . '/src/Modules/Blog/Models/BlogAttachment.php',
@@ -149,6 +171,7 @@ class ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b
         'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
         'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
         'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
+        'Firebase\\JWT\\Key' => __DIR__ . '/..' . '/firebase/php-jwt/src/Key.php',
         'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'Raygun4php\\Raygun4PhpException' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/Raygun4PhpException.php',
         'Raygun4php\\RaygunClient' => __DIR__ . '/..' . '/mindscape/raygun4php/src/Raygun4php/RaygunClient.php',
@@ -167,10 +190,10 @@ class ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6d5caa86b217fc07ec98d191249fa06b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit70e09938dd3efe3305121f6b4abcb235::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit70e09938dd3efe3305121f6b4abcb235::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit70e09938dd3efe3305121f6b4abcb235::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit70e09938dd3efe3305121f6b4abcb235::$classMap;
 
         }, null, ClassLoader::class);
     }

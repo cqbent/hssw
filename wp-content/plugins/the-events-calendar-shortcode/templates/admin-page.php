@@ -5,8 +5,8 @@
 
 	<p class="shortcode">[ecs-list-events cat='festival' limit='8']</p>
 
-    <p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode-short-walk-through-video/?utm_source=plugin&utm_medium=link&utm_campaign=full-documentation&utm_content=top" target="_blank"><?php echo esc_html( __( 'Watch a Short Walk Through Video', 'the-events-calendar-shortcode' ) ) ?></a></p>
-    <p><a href="https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=plugin&utm_medium=link&utm_campaign=full-documentation&utm_content=top" target="_blank"><?php echo esc_html( __( 'View Full Documentation', 'the-events-calendar-shortcode' ) ) ?></a></p>
+    <p><a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode-short-walk-through-video/?utm_source=plugin&utm_medium=link&utm_campaign=full-documentation&utm_content=top" target="_blank"><?php echo esc_html( __( 'Watch a Short Walk Through Video', 'the-events-calendar-shortcode' ) ); ?></a></p>
+    <p><a href="https://eventcalendarnewsletter.com/events-calendar-shortcode-pro-options/?utm_source=plugin&utm_medium=link&utm_campaign=full-documentation&utm_content=top" target="_blank"><?php echo esc_html( __( 'View Full Documentation', 'the-events-calendar-shortcode' ) ); ?></a></p>
 	<table>
 		<tbody>
 		<tr valign="top">
@@ -78,10 +78,10 @@
 
                     <?php if ( apply_filters( 'ecs_show_upgrades', true ) ): ?>
                         <div id="ecs-link-display">
-                            <?php wp_nonce_field( 'ecs-link-nonce', 'ecs-link-nonce' ) ?>
+                            <?php wp_nonce_field( 'ecs-link-nonce', 'ecs-link-nonce' ); ?>
                             <h2>We hope this plugin is helping you out!</h2>
                             <p>Would you like to show your thanks for the plugin? Add a small link underneath your events pointing to The Events Calendar Shortcode project.</p>
-                            <p><label><input type="checkbox" value="1" id="show-ecs-link"<?php echo ( get_option( 'ecs-show-link' ) ? ' checked' : '' ) ?>> Show small link to The Events Calendar Shortcode</label></p>
+                            <p><label><input type="checkbox" value="1" id="show-ecs-link"<?php echo  get_option( 'ecs-show-link' ) ? ' checked' : ''; ?>> Show small link to The Events Calendar Shortcode</label></p>
                             <p class="small toggle-message" style="display:none;">Value saved</p>
                         </div>
                     <?php endif; ?>
@@ -95,11 +95,11 @@
 
 				<?php if ( apply_filters( 'ecs_show_upgrades', true ) ): ?>
 
-					<p><?php echo esc_html( __( 'By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling and you can add your own CSS:', 'the-events-calendar-shortcode' ) ) ?></p>
+					<p><?php echo esc_html( __( 'By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling and you can add your own CSS:', 'the-events-calendar-shortcode' ) ); ?></p>
 
 					<ul>
 						<li>ul class="ecs-event-list"</li>
-						<li>li class="ecs-event" &amp; "ecs-featured-event" <?php echo esc_html( __( '(if featured)', 'the-events-calendar-shortcode' ) ) ?></li>
+						<li>li class="ecs-event" &amp; "ecs-featured-event" <?php echo esc_html( __( '(if featured)', 'the-events-calendar-shortcode' ) ); ?></li>
 						<li><?php echo esc_html( sprintf( __( 'event title link is %s', 'the-events-calendar-shortcode' ), 'H4 class="entry-title summary"' ) ); ?> </li>
 						<li><?php echo esc_html( sprintf( __( 'date class is %s', 'the-events-calendar-shortcode' ), 'time' ) ); ?></li>
 						<li><?php echo esc_html( sprintf( __( 'venue class is %s', 'the-events-calendar-shortcode' ), 'venue' ) ); ?></li>
@@ -109,44 +109,44 @@
 
 					<div id="ecs-pro-description">
 
-						<h3><?php echo esc_html__( 'Want a better looking design without adding any CSS?', 'the-events-calendar-shortcode' ) ?></h3>
+						<h3><?php echo esc_html__( 'Want a better looking design without adding any CSS?', 'the-events-calendar-shortcode' ); ?></h3>
 						<p><?php echo sprintf( esc_html__( 'Check out %sThe Events Calendar Shortcode & Block PRO%s. Some examples of the designs:', 'the-events-calendar-shortcode' ), '<a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design&utm_content=description">', '</a>' ); ?></p>
 						<div id="ecs-pro-designs">
-							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version default design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
-							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version compact design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
-                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-calendar&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-calendar-demo.gif', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version calendar design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
-                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-columns&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-columns-photo-horizontal-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version horizontal/columns/photos design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
-                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-grouped&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-grouped-design.png', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version grouped design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
-                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-filter-bar&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-filter-bar-demo.gif', TECS_CORE_PLUGIN_FILE ) ?>"><br><?php echo esc_html( __( 'Pro version filter bar example', 'the-events-calendar-shortcode' ) ); ?></a></p>
+							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-1&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/shortcode-default-design-2.png', TECS_CORE_PLUGIN_FILE ); ?>"><br><?php echo esc_html( __( 'Pro version default design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
+							<p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-2&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/event-calendar-shortcode-compact-design.png', TECS_CORE_PLUGIN_FILE ); ?>"><br><?php echo esc_html( __( 'Pro version compact design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
+                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-calendar&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-calendar-demo.gif', TECS_CORE_PLUGIN_FILE ); ?>"><br><?php echo esc_html( __( 'Pro version calendar design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
+                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-columns&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-columns-photo-horizontal-design.png', TECS_CORE_PLUGIN_FILE ); ?>"><br><?php echo esc_html( __( 'Pro version horizontal/columns/photos design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
+                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-grouped&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-grouped-design.png', TECS_CORE_PLUGIN_FILE ); ?>"><br><?php echo esc_html( __( 'Pro version grouped design example', 'the-events-calendar-shortcode' ) ); ?></a></p>
+                            <p><a target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-design-image-filter-bar&utm_content=description"><img alt="" style="width: 300px;" src="<?php echo plugins_url( '/static/the-events-calendar-shortcode-filter-bar-demo.gif', TECS_CORE_PLUGIN_FILE ); ?>"><br><?php echo esc_html( __( 'Pro version filter bar example', 'the-events-calendar-shortcode' ) ); ?></a></p>
                         </div>
 
 						<h3 class="additional-options"><?php echo esc_html__( "In addition to designs, you'll get more options including:", 'the-events-calendar-shortcode' ); ?></h3>
-						<h4><?php echo esc_html__( 'Number of days', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Choose how many days to show events from, ie. 1 day or a week', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Tag', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Filter events listed by one or more tags', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Location', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Display events by city, state/province, or country', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Single Event', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'List the details of a single event by ID, for example on a blog post', 'the-events-calendar-shortcode' ) ?></p>
-                        <h4><?php echo esc_html__( 'Featured', 'the-events-calendar-shortcode' ) ?></h4>
-                        <p><?php echo esc_html__( 'Show only events marked as "featured"', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Button', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Add an easy to see button link to your event, and customize the colors/text', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Date', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Show only events for a specific day (ie. 2017-04-16), great for conferences', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Year', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Show only events for a specific year', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Offset', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page or splitting into columns.', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Full Description', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Use the full description instead of the excerpt (short description) of an event in the listing', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Future Only', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Only show events in the future even when using the month or year option.', 'the-events-calendar-shortcode' ) ?></p>
-						<h4><?php echo esc_html__( 'Custom Design', 'the-events-calendar-shortcode' ) ?></h4>
-						<p><?php echo esc_html__( 'Use the new default or compact designs, or create your own using one or more templates in your theme folder', 'the-events-calendar-shortcode' ) ?></p>
-                        <h4><?php echo esc_html__( 'Filter Bar', 'the-events-calendar-shortcode' ) ?></h4>
-                        <p><?php echo esc_html__( 'Allow visitors to change what events are displayed wherever you put a calendar view on your site', 'the-events-calendar-shortcode' ) ?></p>
+						<h4><?php echo esc_html__( 'Number of days', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Choose how many days to show events from, ie. 1 day or a week', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Tag', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Filter events listed by one or more tags', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Location', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Display events by city, state/province, or country', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Single Event', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'List the details of a single event by ID, for example on a blog post', 'the-events-calendar-shortcode' ); ?></p>
+                        <h4><?php echo esc_html__( 'Featured', 'the-events-calendar-shortcode' ); ?></h4>
+                        <p><?php echo esc_html__( 'Show only events marked as "featured"', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Button', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Add an easy to see button link to your event, and customize the colors/text', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Date', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Show only events for a specific day (ie. 2017-04-16), great for conferences', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Year', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Show only events for a specific year', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Offset', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Skip a certain number of events from the beginning, useful for using multiple shortcodes on the same page or splitting into columns.', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Full Description', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Use the full description instead of the excerpt (short description) of an event in the listing', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Future Only', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Only show events in the future even when using the month or year option.', 'the-events-calendar-shortcode' ); ?></p>
+						<h4><?php echo esc_html__( 'Custom Design', 'the-events-calendar-shortcode' ); ?></h4>
+						<p><?php echo esc_html__( 'Use the new default or compact designs, or create your own using one or more templates in your theme folder', 'the-events-calendar-shortcode' ); ?></p>
+                        <h4><?php echo esc_html__( 'Filter Bar', 'the-events-calendar-shortcode' ); ?></h4>
+                        <p><?php echo esc_html__( 'Allow visitors to change what events are displayed wherever you put a calendar view on your site', 'the-events-calendar-shortcode' ); ?></p>
                         <p><?php echo sprintf( esc_html__( '%sGet The Events Calendar Shortcode & Block PRO%s', 'the-events-calendar-shortcode' ), '<a class="ecs-button" target="_blank" href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=plugin&utm_medium=link&utm_campaign=tecs-help-after-options&utm_content=description">', '</a>' ); ?> or <a href="https://demo.eventcalendarnewsletter.com/the-events-calendar-shortcode/">see it in action</p>
 					</div>
 				<?php endif; ?>

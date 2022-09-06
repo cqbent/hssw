@@ -46,6 +46,16 @@ class Hooks extends tad_DI52_ServiceProvider {
 	 */
 	protected function add_actions() {
 		add_action( 'tribe_settings_do_tabs', [ tribe( Payments_Tab::class ), 'register_tab' ], 15 );
+		add_action( 'tribe_settings_after_save_' . Payments_Tab::$slug, [ $this, 'generate_payments_pages' ] );
+	}
+
+	/**
+	 * Generate TicketsCommerce Pages.
+	 *
+	 * @since 5.2.1
+	 */
+	public function generate_payments_pages() {
+		$this->container->make( Payments_Tab::class )->maybe_generate_pages();
 	}
 
 	/**
@@ -54,5 +64,6 @@ class Hooks extends tad_DI52_ServiceProvider {
 	 * @since 5.1.6
 	 */
 	protected function add_filters() {
+		add_filter( 'tec_tickets_settings_tabs_ids', [ tribe( Payments_Tab::class ), 'settings_add_tab_id' ] );
 	}
 }

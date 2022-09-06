@@ -16399,7 +16399,7 @@ footer.content-info .container {
 .featured-events,
 body.blog,
 body.archive {
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
   margin-bottom: 20px;
   border-bottom: 1px #fff solid;
 }

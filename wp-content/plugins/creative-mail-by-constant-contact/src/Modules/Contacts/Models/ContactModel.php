@@ -17,6 +17,7 @@ class ContactModel
     public $optActionBy;
     public $contactAddresses;
     public $eventType;
+    public $numberOfOrders;
     private $birthday;
     private $listId;
 
@@ -119,6 +120,16 @@ class ContactModel
         return $this->optActionBy;
     }
 
+    public function setNumberOfOrders($numberOfOrders)
+    {
+        $this->numberOfOrders = $numberOfOrders;
+    }
+
+    public function getNumberOfOrders()
+    {
+        return $this->numberOfOrders;
+    }
+
     public function setContactAddress(ContactAddressModel $contactAddresses)
     {
         $this->contactAddresses = $contactAddresses;
@@ -178,7 +189,8 @@ class ContactModel
             "opt_out" => $this->getOptOut(),
             "opt_action_by" => $this->getOptActionBy(),
             "event_type" => $this->getEventType(),
-            "list_id" => $this->getListId()
+            "list_id" => $this->getListId(),
+            "number_of_orders" => $this->getNumberOfOrders(),
         );
 
         $address = $this->getContactAddress();

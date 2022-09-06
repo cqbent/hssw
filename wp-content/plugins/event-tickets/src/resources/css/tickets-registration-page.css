@@ -684,7 +684,6 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__back__to__cart {
 			border: 0;
-			box-shadow: none;
 			box-shadow: initial;
 			color: var(--tec-color-text-primary);
 		}
@@ -696,7 +695,6 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 			}
 
 body.tribe-theme-twentyseventeen body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__back__to__cart {
-				box-shadow: none;
 				box-shadow: initial;
 			}
 
@@ -715,16 +713,12 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__validation-notice {
 			display: none;
-			-ms-grid-column: 1;
 			grid-column: 1;
-			-ms-grid-row: 2;
 			grid-row: 2;
 		}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__content {
-			-ms-grid-column: 1;
 			grid-column: 1;
-			-ms-grid-row: 3;
 			grid-row: 3;
 		}
 
@@ -733,9 +727,7 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart {
 			background-color: white;
 			border-top: 1px solid var(--tec-color-border-secondary);
-			-ms-grid-column: 1;
 			grid-column: 1;
-			-ms-grid-row: 1;
 			grid-row: 1;
 			margin: auto;
 			max-width: 800px;
@@ -752,18 +744,15 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .t
 /* AR override styles */
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__item {
-				-ms-grid-columns: 6fr 1fr 2fr 2fr;
 				grid-template-columns: 6fr 1fr 2fr 2fr;
 			}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__item.tribe-tickets__item--price-suffix {
-					-ms-grid-columns: 4fr 3fr 2fr 2fr;
 					grid-template-columns: 4fr 3fr 2fr 2fr;
 				}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart .tribe-tickets__item__extra {
 				align-self: center;
-				-ms-grid-row: 1;
 				grid-row: 1;
 			}
 
@@ -906,7 +895,7 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 body.page-tribe-attendee-registration .tribe-common-c-loader {
 		align-items: center;
-		background-color: rgba(255,255,255,0.8);
+		background-color: #fffc;
 		bottom: 0;
 		display: flex;
 		justify-content: center;
@@ -925,7 +914,6 @@ body.page-tribe-attendee-registration.tribe-theme-twentyseventeen.page.page-one-
 			}
 
 body.page-tribe-attendee-registration.tribe-theme-twentyseventeen.page-one-column #primary .entry-content, body.page-tribe-attendee-registration.tribe-theme-twentyseventeen.page-two-column #primary .entry-content {
-				float: none;
 				float: initial;
 				margin: auto;
 				max-width: 960px !important;
@@ -1043,23 +1031,18 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__grid {
 				border-top: 1px solid var(--tec-color-border-secondary);
-				-ms-grid-columns: calc(100% - 360px) 360px;
 				grid-template-columns: calc(100% - 360px) 360px;
 				padding-top: var(--tec-spacer-10)
 		}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__validation-notice {
-				-ms-grid-column: 1;
 				grid-column: 1;
-				-ms-grid-row: 1;
 				grid-row: 1;
 				margin-right: var(--tec-spacer-5)
 		}
 
 body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration__content {
-				-ms-grid-column: 1;
 				grid-column: 1;
-				-ms-grid-row: 2;
 				grid-row: 2
 		}
 
@@ -1067,9 +1050,7 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__mini-cart {
 				align-self: baseline;
 				border: 1px solid var(--tec-color-border-secondary);
 				border-radius: var(--tec-border-radius-default);
-				-ms-grid-column: 2;
 				grid-column: 2;
-				-ms-grid-row: 1;
 				grid-row: 1/span 2;
 				-ms-grid-row-span: 2;
 				margin: 160px 0 var(--tec-spacer-5) 0;

@@ -62,7 +62,7 @@
 			cursor: move;
 			float: left;
 			font-size: 1.8em;
-			margin-right: 10px;
+			margin-right: var(--tec-spacer-2);
 			position: relative;
 		}
 	}
@@ -85,10 +85,35 @@
 
 	.tribe-tickets__tickets-editor-ticket-name {
 		display: table;
+		font-size: 13px;
+		line-height: var(--tec-spacer-5);
 		table-layout: fixed;
 		width: 100%;
 	}
+	
+	.tribe-tickets__tickets-editor-ticket-available-dates {
+		color: #999;
+		font-size: var(--tec-font-size-1);
+		line-height: var(--tec-spacer-4);
+		
+		&:before {
+			color: #ccc;
+			font-size: var(--tec-spacer-3);
+			height: var(--tec-spacer-3);
+			line-height: var(--tec-spacer-3);
+			margin-top: calc( var(--tec-spacer-0) / 2 );
+			width: var(--tec-spacer-3);
+		}
+	}
 
+	.tribe-tickets__tickets-editor-ticket-available-dates-icon-expired {
+		font-style: italic;
+		
+		&:before {
+			color: var(--tec-color-icon-error);
+		}
+	}
+	
 	.tribe-tickets__tickets-editor-ticket-name-sortable,
 	.tribe-tickets__tickets-editor-ticket-name-title {
 		display: table-cell;
@@ -119,12 +144,18 @@
 	}
 
 	.ticket_edit {
-		width: 60px;
+		white-space: normal;
+		width: 84px;
+
+		@media screen and (--viewport-wpadmin) {
+			white-space: nowrap;
+		}
 	}
 
 	/* Edit button styles - separate for portability */
 	.ticket_edit_button,
 	.ticket_delete,
+	.ticket_duplicate,
 	.global_capacity_edit_button {
 		background: none;
 		border: 0;
@@ -138,7 +169,8 @@
 
 		.ticket_edit_text,
 		.global_capacity_edit_text,
-		.ticket_delete_text {
+		.ticket_delete_text,
+		.ticket_duplicate_text {
 			font-size: 0;
 
 			&:before {
@@ -154,10 +186,30 @@
 				content: '\f182';
 			}
 		}
+
+		.ticket_duplicate_text {
+			&:before {
+				background-color: #ccc;
+				content: '';
+				display: inline-block;
+				height: 22px;
+				mask-image: url("../icons/ticket-copy.svg");
+				mask-position: center;
+				mask-repeat: no-repeat;
+				width: 20px;
+			}
+		}
 	}
 
-	.ticket_delete {
+	.ticket_delete,
+	.ticket_duplicate {
 		margin-left: 12px;
+	}
+
+	.ticket_duplicate:hover {
+		.ticket_duplicate_text:before {
+			background-color: #727272;
+		}
 	}
 
 	.global_capacity_edit_button {

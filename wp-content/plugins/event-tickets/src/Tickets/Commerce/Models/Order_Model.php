@@ -62,11 +62,11 @@ class Order_Model extends Base {
 				'provider'            => Module::class,
 				'provider_slug'       => Commerce::ABBR,
 				'status_log'          => $status_log,
-				'status_name'         => $status->get_name(),
+				'status_obj'          => $status,
 				'gateway'             => $gateway_slug,
 				'gateway_order_id'    => $gateway_order_id,
 				'gateway_payload'     => $gateway_payload,
-				'total_value'         => $total_value,
+				'total_value'         => Commerce\Utils\Value::create( $total_value ),
 				'currency'            => $currency,
 				'purchaser'           => [
 					'user_id'    => (int) $purchaser_user_id,
@@ -83,7 +83,6 @@ class Order_Model extends Base {
 				'events_in_order'     => $events_in_order,
 				'tickets_in_order'    => $tickets_in_order,
 				'flag_action_markers' => $flag_action_markers,
-				'formatted_total'     => tribe_format_currency( $total_value ),
 			];
 		} catch ( \Exception $e ) {
 			return [];

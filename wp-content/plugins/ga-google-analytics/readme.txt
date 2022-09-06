@@ -8,10 +8,10 @@ Author: Jeff Starr
 Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
-Requires at least: 4.1
-Tested up to: 5.8
-Stable tag: 20210719
-Version: 20210719
+Requires at least: 4.6
+Tested up to: 6.0
+Stable tag: 20220517
+Version:    20220517
 Requires PHP: 5.6.20
 Text Domain: ga-google-analytics
 Domain Path: /languages
@@ -267,7 +267,7 @@ By default the plugin includes the `auto` parameter in the tracking code:
 
 However some tracking techniques (such as Site Speed Sample Rate) require replacing the `auto` parameter. To do it:
 
-First disable the `auto` parameter by adding the following code to WordPress functions or custom plugin:
+First disable the `auto` parameter by adding the following code to WordPress functions or [custom plugin](https://digwp.com/2022/02/custom-code-wordpress/):
 
 	// GA Google Analytics - Disable auto parameter
 	function ga_google_analytics_enable_auto($enable) { return false; }
@@ -284,9 +284,15 @@ Save changes and done. The resulting tracking code will now look like this:
 So can adjust things as needed to add any parameters that are required.
 
 
+**How to implement Anonymize?**
+
+1. Add to "Custom Tracker Objects" setting: `{ 'anonymize_ip': true }`
+2. Save changes and done.
+
+
 **Got a question?**
 
-To ask a question, suggest a feature, or provide feedback, [contact me directly](https://perishablepress.com/contact/). Learn more about [Google Analytics](https://www.google.com/analytics/) and [GA tracking methods](https://perishablepress.com/3-ways-track-google-analytics/).
+To ask a question, suggest a feature, or provide feedback, [contact me directly](https://plugin-planet.com/support/#contact). Learn more about [Google Analytics](https://www.google.com/analytics/) and [GA tracking methods](https://perishablepress.com/3-ways-track-google-analytics/).
 
 
 
@@ -298,6 +304,7 @@ I develop and maintain this free plugin with love for the WordPress community. T
 * [Digging into WordPress](https://digwp.com/)
 * [.htaccess made easy](https://htaccessbook.com/)
 * [WordPress Themes In Depth](https://wp-tao.com/wordpress-themes-book/)
+* [Wizard's SQL Recipes for WordPress](https://books.perishablepress.com/downloads/wizards-collection-sql-recipes-wordpress/)
 
 And/or purchase one of my premium WordPress plugins:
 
@@ -319,6 +326,29 @@ If you like GA Google Analytics, please take a moment to [give a 5-star rating](
 
 > New Pro version available! Check out [GA Pro &raquo;](https://plugin-planet.com/ga-google-analytics-pro/)
 
+
+**20220517**
+
+* Changes hook `gapro_tracker_object_universal` to `ga_google_analytics_tracker_object_universal`
+* Changes hook `gapro_tracker_object_global` to `ga_google_analytics_tracker_object_global`
+* Adds `%%username%%` to get current user_login name
+* Adds GA4 information to "How to Use" panel
+* Generates new translation template
+* Tests on WordPress 6.0
+
+**20220124**
+
+* Adds filter hook `gapro_tracker_object_universal`
+* Adds filter hook `gapro_tracker_object_global`
+* Tests on WordPress 5.9
+
+**20220123**
+
+* Updates support panel
+* Improves loading of translations
+* Updates some links to external resources
+* Changes minimum required WP version to 4.6
+* Tests on WordPress 5.9
 
 **20210719**
 

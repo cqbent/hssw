@@ -4,8 +4,8 @@ Donate link: https://david.dw-perspective.org.uk/donate
 Tags: cache, minify, database, image optimize, performance, clean, spam, speed, caching, smush, smushing
 Requires PHP: 5.6
 Requires at least: 4.5
-Tested up to: 5.8
-Stable tag: 3.1.12
+Tested up to: 6.0
+Stable tag: 3.2.6
 License: GPLv2+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -364,6 +364,119 @@ If none of the above works, disable processing of JavaScript files in the minify
 
 == Changelog ==
 
+
+
+
+* FIX: The unused images CSV downloads have a few redundant images listed
+
+
+= 3.2.6 - 15/Jun/2022 =
+
+* FIX: Incorrect static method calling causes parse Error in PHP 5.6.36
+* FIX: WebP - Trailing slash file creation issue in PHP 8 
+* FIX: PHP warning in cache rules file
+* FIX: Asynchronous google fonts loaded twice
+* TWEAK: Conditional Tags anchor tag fix
+
+= 3.2.5 - 03/Jun/2022 =
+
+* FIX: Fix a fatal error that could occur in 3.2.4 if settings had not been saved
+
+= 3.2.4 - 24/May/2022 =
+
+* FEATURE: Create a cron job to delete expired cache files
+* FEATURE: WebP image format can be used to serve images
+* FIX: Incorrect record count after importing
+* FIX: Image smushing issues
+* FIX: Problem with Redirect – Trailing Slash on URLs
+* FIX: Unused images issue with ACF `repeater` and nested fields
+* TWEAK: Added functionality for exclude caching based on conditional tags
+* TWEAK: Update last optimized time for scheduled optimizations
+* TWEAK: Cache - Prevent already header sent warnings while importing posts
+* TWEAK: Improved UI for `actionscheduler_` tables
+* TWEAK: Add filter to allow/disallow `gz` file generation
+* TWEAK: Show error message to user when WP_CACHE constant can't be removed from wp-config.php due to file permission issue.
+
+= 3.2.3 - 09/Mar/2022 =
+
+* FEATURE: Minify: Pre-generate assets
+* FIX: Cache - 'Purge cache permissions' setting does not allow additional roles to access the purge cache tool
+* TWEAK: Make smush details button work in media modal window
+* TWEAK: Do not show overhead in red when the amount is small
+* TWEAK: Avoid PHP Notices caused by "upgrader_process_complete" action
+* TWEAK: Force monolog 2.3.* in order to avoid PHP 7.2+ dependency
+
+= 3.2.2 - 24/Jan/2022 =
+
+* FEATURE: Cache - Allow debugging of which cache file is chosen
+* FEATURE: Premium - Cache - Serve cached content for logged in users, per role
+* FIX: Premium - Unused Images - Fixed trashed images listing
+* FIX: Image selction issue in compressed and unused image is fixed.
+* FIX: ACF plugin compatibility issue with select2 JS library
+* FIX: Premium - Unused Images - Multibyte characters in filename are not recognised correctly
+* FIX: Table optimization displays wrong information about WP All Import plugin tables
+* FIX: Potential PHP fatal error - Call to undefined function _wp_get_current_user()
+* FIX: Minify - correctly minify multiple `calc` function in single property value
+* FIX: SQL error when keeping post revisions and optimizing
+* FIX: Cache - Prevent caching WordPress critical error page
+* FIX: Minify - Google fonts merging issue when the same font is enqueued in both API V1 and V2
+* FIX: Minify - Make `inherit` and `inline` settings work with Google fonts
+* FIX: Database error upon plugin activation
+* TWEAK: Minify - Show a notice if other minification plugins are installed and active
+* TWEAK: Remove unused bundled JavaScript from minify library to avoid irrelevant scan results
+* TWEAK: Image compression - Image compression stats include gains on image sizes
+* TWEAK: Make sure that messages from WP_Error objects in gzip compression are displayed to users.
+* TWEAK: Prevent PHP notice from WooCommerce deprecation
+* TWEAK: Create `task` tables upon activation, if needed.
+* TWEAK: Show error instead of success when table doesn't exist
+* TWEAK: Update seasonal notices
+* TWEAK: Prevent PHP fatal error in media list view, when images are makred as compressed
+* TWEAK: Image edit window - Link does not go to image settings and more/less link not working
+
+= 3.2.1 - 29/Nov/2021 =
+
+* FIX: Apply different image compression levels
+* FIX: Cache - Purge WooCommerce product page after stock update
+* FIX: Database errors after adding a new site
+* FIX: Flatsome theme compatibility with google fonts
+* FIX: Image compression advanced settings, display default backup days instead of empty value.
+* FIX: Image compression was not working when the image extension used capital letters
+* FIX: Premium - Cache - Potential PHP error in User-specific cache
+* FIX: Premium - resolve potential admin-area PHP error if the deprecated mailchimp sync plugin and MC4WP plugin are both active (and potentially other situations where a plugin deactivates another)
+* FIX: Premium - Unused images - compatibility with PHP 8
+* FIX: Premium - Unused images - issue with parenthesis in name
+* FIX: Premium - Unused images - Pagination count doesn't update
+* FIX: Prevent a PHP notice when using with UpdraftCentral
+* FIX: Save prioritize maximum compression setting correctly
+* FIX: Wrong redirect when wiping settings on multisite
+* TWEAK: Premium - add review link at bottom of settings
+* TWEAK: Force monolog/monolog and psr/log versions to retain PHP 5.X compatibility/satisfy wordpress.org SVN hooks
+* TWEAK: Add compatibility with Kinsta
+* TWEAK: Added functionality for to convert MyISAM to InnoDB
+* TWEAK: Add filters for minify input string
+* TWEAK: Cache - Added filter to modify cache exception urls
+* TWEAK: Cache - Optimize preload from sitemap
+* TWEAK: Cache - Serve different versions based on cookie consent
+* TWEAK: changed filter to prevent deprecation notice in php 8.1+
+* TWEAK: Decide automatically whether to inline css or not based on file size
+* TWEAK: Fix typo in text domain name
+* TWEAK: get_hurl function minified.
+* TWEAK: Improve clarity of debug message when DONOTCACHEPAGE constant is used
+* TWEAK: Improve DB UI/UX on multisite
+* TWEAK: Improve minify cache size messages
+* TWEAK: Making Estatik plugin compatible
+* TWEAK: Minify - Add JS translations support
+* TWEAK: Minify HTML only on cache pre-loading
+* TWEAK: Port from previous semaphore classes to Updraft_Semaphore_3_0
+* TWEAK: Premium - Unused images - Show that there are images in the trash without having to re-scan everything
+* TWEAK: Prevent a PHP notice when downloding image compression log file. Fix backup modal styling issue.
+* TWEAK: Prevent fatal error in gzip settings when stylesheet could not be fetched
+* TWEAK: Short-circuit trivial case of nothing in the buffer when page-cacheing, to involve any possible other issues
+* TWEAK: Update comments count after trackbacks and pingbacks deletion
+* TWEAK: Update minified asset when the enqueued scripts and styles version change
+* TWEAK: Use proper constant of includes path in user cache extension
+* TWEAK: Fix path to `wpo-plugins-tables-list.json` in robots.txt
+
 = 3.1.12 - 12/Jul/2021 =
 
 * FEATURE: Ability to defer js files and asynchronously load css files
@@ -431,6 +544,7 @@ If none of the above works, disable processing of JavaScript files in the minify
 * TWEAK: Add visual clue when image compression was cancelled
 * TWEAK: Image compression - multi image selection using Ctrl/Shift keys
 * TWEAK: Premium - Unused images - Reset last clicked image reference when `select none` is clicked
+* FIX: Premium - Unused images - Pagination not working in the trash
 * TWEAK: Prevent bots from indexing plugins list json file
 * TWEAK: Minify - Added a setting to change the time stale cache should be kept
 * TWEAK: Better support for Beaver Builder
@@ -1150,4 +1264,4 @@ If none of the above works, disable processing of JavaScript files in the minify
 * Fix Interface
 
 == Upgrade Notice ==
-* 3.1.12: Ability to defer js files and asynchronously load css files. Option to not aggregate inline styles and scripts; a recommended update for all.
+* 3.2.6: WebP - Trailing slash file creation issue in PHP 8 and incorrect static method calling causes parse Error in PHP 5.6.36; a recommended update for all.

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
+class ComposerStaticInita4d8324535c82574ea73951196f2335b
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -26,9 +26,14 @@ class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
     );
 
     public static $classMap = array (
+        'TEC\\Tickets\\Admin\\Hooks' => __DIR__ . '/../..' . '/src/Tickets/Admin/Hooks.php',
+        'TEC\\Tickets\\Admin\\Plugin_Action_Links' => __DIR__ . '/../..' . '/src/Tickets/Admin/Plugin_Action_Links.php',
+        'TEC\\Tickets\\Admin\\Provider' => __DIR__ . '/../..' . '/src/Tickets/Admin/Provider.php',
+        'TEC\\Tickets\\Admin\\Upsell' => __DIR__ . '/../..' . '/src/Tickets/Admin/Upsell.php',
         'TEC\\Tickets\\Assets' => __DIR__ . '/../..' . '/src/Tickets/Assets.php',
         'TEC\\Tickets\\Commerce' => __DIR__ . '/../..' . '/src/Tickets/Commerce.php',
-        'TEC\\Tickets\\Commerce\\Abstract_Settings' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Abstract_Settings.php',
+        'TEC\\Tickets\\Commerce\\Abstract_Order' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Abstract_Order.php',
+        'TEC\\Tickets\\Commerce\\Admin\\Featured_Settings' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Admin/Featured_Settings.php',
         'TEC\\Tickets\\Commerce\\Admin\\Notices' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Admin/Notices.php',
         'TEC\\Tickets\\Commerce\\Admin_Tables\\Attendees' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Admin_Tables/Attendees.php',
         'TEC\\Tickets\\Commerce\\Admin_Tables\\Orders' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Admin_Tables/Orders.php',
@@ -40,7 +45,6 @@ class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
         'TEC\\Tickets\\Commerce\\Checkout' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Checkout.php',
         'TEC\\Tickets\\Commerce\\Communication\\Email' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Communication/Email.php',
         'TEC\\Tickets\\Commerce\\Compatibility\\Events' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Compatibility/Events.php',
-        'TEC\\Tickets\\Commerce\\Currency' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Currency.php',
         'TEC\\Tickets\\Commerce\\Editor\\Metabox' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Editor/Metabox.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Archive_Attendees' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Archive_Attendees.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Backfill_Purchaser' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Backfill_Purchaser.php',
@@ -54,8 +58,21 @@ class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Increase_Sales' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Increase_Sales.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Increase_Stock' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Increase_Stock.php',
         'TEC\\Tickets\\Commerce\\Flag_Actions\\Send_Email' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Flag_Actions/Send_Email.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\Abstract_Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Abstract_Gateway.php',
-        'TEC\\Tickets\\Commerce\\Gateways\\Interface_Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Interface_Gateway.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_Gateway.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_Merchant' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_Merchant.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_REST_Endpoint' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_REST_Endpoint.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_Requests' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_Requests.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_Settings' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_Settings.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_Signup' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_Signup.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_Webhooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_Webhooks.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Abstract_WhoDat' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Abstract_WhoDat.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Gateway_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Gateway_Interface.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Merchant_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Merchant_Interface.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\REST_Endpoint_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/REST_Endpoint_Interface.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Requests_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Requests_Interface.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Signup_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Signup_Interface.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\Webhook_Event_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/Webhook_Event_Interface.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Contracts\\WhoDat_Interface' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Contracts/WhoDat_Interface.php',
         'TEC\\Tickets\\Commerce\\Gateways\\Manager' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manager.php',
         'TEC\\Tickets\\Commerce\\Gateways\\Manual\\Assets' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manual/Assets.php',
         'TEC\\Tickets\\Commerce\\Gateways\\Manual\\Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Manual/Gateway.php',
@@ -83,6 +100,30 @@ class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Events' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Events.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\Webhooks\\Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/Webhooks/Handler.php',
         'TEC\\Tickets\\Commerce\\Gateways\\PayPal\\WhoDat' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/PayPal/WhoDat.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Application_Fee' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Application_Fee.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Assets' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Assets.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Gateway' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Gateway.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Hooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Hooks.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Merchant' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Merchant.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Payment_Intent' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Payment_Intent.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Payment_Intent_Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Payment_Intent_Handler.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Provider' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Provider.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\REST' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/REST.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\REST\\Order_Endpoint' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/REST/Order_Endpoint.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\REST\\Return_Endpoint' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/REST/Return_Endpoint.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\REST\\Webhook_Endpoint' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/REST/Webhook_Endpoint.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Requests' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Requests.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Settings' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Settings.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Signup' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Signup.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Status' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Status.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Stripe_Elements' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Stripe_Elements.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Webhooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Webhooks.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Webhooks\\Account_Webhook' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Webhooks/Account_Webhook.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Webhooks\\Charge_Webhook' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Webhooks/Charge_Webhook.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Webhooks\\Events' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Webhooks/Events.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Webhooks\\Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Webhooks/Handler.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\Webhooks\\Payment_Intent_Webhook' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/Webhooks/Payment_Intent_Webhook.php',
+        'TEC\\Tickets\\Commerce\\Gateways\\Stripe\\WhoDat' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Gateways/Stripe/WhoDat.php',
         'TEC\\Tickets\\Commerce\\Hooks' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Hooks.php',
         'TEC\\Tickets\\Commerce\\Legacy_Compat' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Legacy_Compat.php',
         'TEC\\Tickets\\Commerce\\Models\\Attendee_Model' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Models/Attendee_Model.php',
@@ -92,6 +133,7 @@ class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
         'TEC\\Tickets\\Commerce\\Notice_Handler' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Notice_Handler.php',
         'TEC\\Tickets\\Commerce\\Order' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Order.php',
         'TEC\\Tickets\\Commerce\\Payments_Tab' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Payments_Tab.php',
+        'TEC\\Tickets\\Commerce\\Promoter_Observer' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Promoter_Observer.php',
         'TEC\\Tickets\\Commerce\\Provider' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Provider.php',
         'TEC\\Tickets\\Commerce\\Reports\\Attendance_Totals' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Attendance_Totals.php',
         'TEC\\Tickets\\Commerce\\Reports\\Attendees' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Reports/Attendees.php',
@@ -122,12 +164,16 @@ class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
         'TEC\\Tickets\\Commerce\\Ticket' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Ticket.php',
         'TEC\\Tickets\\Commerce\\Tickets_View' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Tickets_View.php',
         'TEC\\Tickets\\Commerce\\Traits\\Has_Mode' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Traits/Has_Mode.php',
-        'TEC\\Tickets\\Commerce\\Utils\\Price' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Utils/Price.php',
+        'TEC\\Tickets\\Commerce\\Utils\\Currency' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Utils/Currency.php',
+        'TEC\\Tickets\\Commerce\\Utils\\Value' => __DIR__ . '/../..' . '/src/Tickets/Commerce/Utils/Value.php',
         'TEC\\Tickets\\Event' => __DIR__ . '/../..' . '/src/Tickets/Event.php',
         'TEC\\Tickets\\Hooks' => __DIR__ . '/../..' . '/src/Tickets/Hooks.php',
         'TEC\\Tickets\\Provider' => __DIR__ . '/../..' . '/src/Tickets/Provider.php',
         'TEC\\Tickets\\Settings' => __DIR__ . '/../..' . '/src/Tickets/Settings.php',
+        'Tribe\\Tickets\\Admin\\Home\\Service_Provider' => __DIR__ . '/../..' . '/src/Tribe/Admin/Home/Service_Provider.php',
         'Tribe\\Tickets\\Admin\\Manager\\Service_Provider' => __DIR__ . '/../..' . '/src/Tribe/Admin/Manager/Service_Provider.php',
+        'Tribe\\Tickets\\Admin\\Provider' => __DIR__ . '/../..' . '/src/Tribe/Admin/Provider.php',
+        'Tribe\\Tickets\\Admin\\Settings' => __DIR__ . '/../..' . '/src/Tribe/Admin/Settings.php',
         'Tribe\\Tickets\\Admin\\Settings\\Service_Provider' => __DIR__ . '/../..' . '/src/Tribe/Admin/Settings/Service_Provider.php',
         'Tribe\\Tickets\\Editor\\Warnings' => __DIR__ . '/../..' . '/src/Tribe/Editor/Warnings.php',
         'Tribe\\Tickets\\Events\\Attendees_List' => __DIR__ . '/../..' . '/src/Tribe/Events/Attendees_List.php',
@@ -161,9 +207,9 @@ class ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf0f8f20c527ca1a6cf9c57305f645c8c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita4d8324535c82574ea73951196f2335b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita4d8324535c82574ea73951196f2335b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita4d8324535c82574ea73951196f2335b::$classMap;
 
         }, null, ClassLoader::class);
     }

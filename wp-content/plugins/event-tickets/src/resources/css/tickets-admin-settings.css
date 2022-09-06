@@ -777,6 +777,7 @@ a.event-tickets__admin-tc-banner-link:active,
 	@todo @juanfra: This was already here, inherited. We need to move to common.
 */
 
+#tribe-field-tickets-commerce-stripe-commerce-configure,
 #tribe-field-tickets-commerce-paypal-commerce-configure {
 	padding-left: 0;
 	width: 100%;
@@ -786,7 +787,7 @@ a.event-tickets__admin-tc-banner-link:active,
 		@todo @juanfra: This was already here, inherited. We need to move to common.
 	*/
 
-#tribe-field-tickets-commerce-paypal-commerce-configure .tribe-field-wrap {
+#tribe-field-tickets-commerce-stripe-commerce-configure .tribe-field-wrap, #tribe-field-tickets-commerce-paypal-commerce-configure .tribe-field-wrap {
 		float: none;
 		max-width: none;
 	}
@@ -862,7 +863,7 @@ a.event-tickets__admin-tc-banner-link:active,
 	max-width: 84%;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal {
+.tec-tickets__admin-settings-tickets-commerce-gateway {
 	background: #fff;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -870,67 +871,73 @@ a.event-tickets__admin-tc-banner-link:active,
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	margin-bottom: var(--tec-spacer-3);
 	padding: 45px 32px 20px 32px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-title {
+.tec-tickets__admin-settings-tickets-commerce-gateway-title {
 	font-size: 20px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-description {
+.tec-tickets__admin-settings-tickets-commerce-gateway-description {
+	align-items: start;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 	margin-bottom: 20px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-description p {
+.tec-tickets__admin-settings-tickets-commerce-gateway-description p {
 		max-width: 470px;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-signup-links {
+.tec-tickets__admin-settings-tickets-commerce-gateway-signup-links {
+	flex-grow: 1;
 	margin-top: var(--tec-spacer-8);
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-help-links {
+.tec-tickets__admin-settings-tickets-commerce-gateway-help-links {
 	margin-top: var(--tec-spacer-8);
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-help-link {
+.tec-tickets__admin-settings-tickets-commerce-gateway-help-link {
 	align-items: center;
 	display: flex;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-help-link:not(:last-of-type) {
+.tec-tickets__admin-settings-tickets-commerce-gateway-help-link:not(:last-of-type) {
 		margin-bottom: 8px;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-refresh-link,
-.tec-tickets__admin-settings-tickets-commerce-paypal-help-link-url {
+.tec-tickets__admin-settings-tickets-commerce-gateway-refresh-link,
+.tec-tickets__admin-settings-tickets-commerce-gateway-help-link-url {
 	margin-left: 8px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-refresh-link,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-refresh-link:hover,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-refresh-link:active,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-refresh-link:visited,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-refresh-link:focus,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-help-link-url,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-help-link-url:hover,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-help-link-url:active,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-help-link-url:visited,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-help-link-url:focus {
+.tec-tickets__admin-settings-tickets-commerce-gateway-refresh-link,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-refresh-link:hover,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-refresh-link:active,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-refresh-link:visited,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-refresh-link:focus,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-help-link-url,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-help-link-url:hover,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-help-link-url:active,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-help-link-url:visited,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-help-link-url:focus {
 		color: #405bfb;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-logo ul {
+.tec-tickets__admin-settings-tickets-commerce-gateway-logo ul {
 	list-style: none;
 	margin: inherit;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-logo li {
+.tec-tickets__admin-settings-tickets-commerce-gateway-logo li {
 	line-height: 1.8;
 	margin-bottom: 16px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-logo ul li:before {
+.tec-tickets__admin-settings-tickets-commerce-gateway-logo ul li:before {
 	background-color: #405bfb;
 	border-radius: 100%;
 	content: '';
@@ -940,7 +947,7 @@ a.event-tickets__admin-tc-banner-link:active,
 	width: 7px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-logo {
+.tec-tickets__admin-settings-tickets-commerce-gateway-logo {
 	display: none;
 	flex-basis: 290px;
 	font-size: 13px;
@@ -948,27 +955,28 @@ a.event-tickets__admin-tc-banner-link:active,
 	font-weight: normal;
 	letter-spacing: 0.02em;
 	line-height: 16px;
+	margin-bottom: var(--tec-spacer-4);
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-logo-image {
+.tec-tickets__admin-settings-tickets-commerce-gateway-logo-image {
 	height: auto;
 	margin-bottom: 32px;
 	max-width: 232px;
 	width: 100%;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connect {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connect {
 	display: flex;
 	flex: 1;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connect-text--connected {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connect-text--connected {
 	color: #1eb056;
 	font-size: 16px;
 	font-weight: 600;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-row {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-row {
 	display: flex;
 	font-size: 13px;
 	font-weight: normal;
@@ -976,21 +984,21 @@ a.event-tickets__admin-tc-banner-link:active,
 	text-align: left;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-col1 {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-col1 {
 	flex-basis: 20%;
 	min-width: 125px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-col2 {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-col2 {
 	flex-basis: 80%;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connect,
-.tec-tickets__admin-settings-tickets-commerce-paypal-logo {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connect,
+.tec-tickets__admin-settings-tickets-commerce-gateway-logo {
 	flex-direction: column;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connect-button-link {
+a.tec-tickets__admin-settings-tickets-commerce-gateway-connect-button-link {
 	background: #405bfb;
 	border-radius: 4px;
 	color: #fff;
@@ -1006,61 +1014,92 @@ a.event-tickets__admin-tc-banner-link:active,
 	width: 100%;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connect-button-link:hover,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connect-button-link:active,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connect-button-link:visited,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connect-button-link:focus {
+a.tec-tickets__admin-settings-tickets-commerce-gateway-connect-button-link:hover,
+	a.tec-tickets__admin-settings-tickets-commerce-gateway-connect-button-link:active,
+	a.tec-tickets__admin-settings-tickets-commerce-gateway-connect-button-link:visited,
+	a.tec-tickets__admin-settings-tickets-commerce-gateway-connect-button-link:focus {
 		color: #fff;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-text-name {
+a.tec-tickets__admin-settings-tickets-commerce-gateway-connect-button-link.disabled {
+		background-color: var(--tec-color-button-primary-background);
+		pointer-events: none;
+	}
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-text-name {
 	font-weight: 700;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-text-disconnect-link {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-text-disconnect-link {
 	border-bottom: 1px solid #405bfb;
 	font-size: 13px;
 	margin-left: 10px;
 	text-transform: lowercase;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-text-disconnect-link,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connected-text-disconnect-link:hover,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connected-text-disconnect-link:active,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connected-text-disconnect-link:visited,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connected-text-disconnect-link:focus {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-text-disconnect-link,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-connected-text-disconnect-link:hover,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-connected-text-disconnect-link:active,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-connected-text-disconnect-link:visited,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-connected-text-disconnect-link:focus {
 		color: #405bfb;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-signup-settings {
+.tec-tickets__admin-settings-tickets-commerce-gateway-currency {
+	color: var(--tec-color-text-primary);
+	font-weight: bold;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-currency-message {
+	color: #a3a3a3;
+	margin-top: var(--tec-spacer-1);
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-currency-message--error {
+	color: var(--tec-color-icon-error);
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-capability--no {
+	color: var(--tec-color-icon-error);
+}
+
+/* @todo: Add following green color as variable in common? */
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-capability--yes {
+	color: #1eb056;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-signup-settings {
 	max-width: 340px;
 	width: 100%;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook:not(last-of-type) {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook:not(last-of-type) {
 		margin-bottom: 8px;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook--active .tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook-error {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook--active .tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook-error,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook--active .tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook-error {
 		display: none !important;
 		visibility: hidden;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook:not(.tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook--active) .tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook-name {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook:not(.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook--active) .tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook-name,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook:not(.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook--active) .tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook-name {
 		color: var(--tec-color-text-primary-light);
 		text-decoration: line-through;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-webhook-error {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-webhook-error {
 	color: var(--color-icon-error);
 	margin-left: 8px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-actions-debug {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-actions-debug {
 	margin-top: 20px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-resync-button {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-resync-button {
 	color: var(--tec-color-text-primary);
 	font-family: var(--tec-font-family-sans-serif);
 	font-size: var(--tec-font-size-2);
@@ -1084,21 +1123,21 @@ a.event-tickets__admin-tc-banner-link:active,
 	width: auto;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-resync-button:focus,
-	.tec-tickets__admin-settings-tickets-commerce-paypal-connected-resync-button:hover {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-resync-button:focus,
+	.tec-tickets__admin-settings-tickets-commerce-gateway-connected-resync-button:hover {
 		background-color: var(--tec-color-button-primary-hover);
 		color: white;
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-resync-button:active {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-resync-button:active {
 		background-color: var(--tec-color-button-primary-active);
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-resync-button:disabled {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-resync-button:disabled {
 		background-color: var(--tec-color-button-primary-background);
 	}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-resync-button-icon {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-resync-button-icon {
 	margin-right: 8px;
 	position: relative;
 	stroke: white;
@@ -1106,9 +1145,212 @@ a.event-tickets__admin-tc-banner-link:active,
 	width: 16px;
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connected-resync-button-icon path {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connected-resync-button-icon path {
 		fill: none;
 	}
+
+.tribe-common.tribe-modal__wrapper--gateway-connected .tribe-tickets__notice, .event-tickets.tribe-modal__wrapper--gateway-connected .tribe-tickets__notice {
+			display: block;
+		}
+
+.tribe-common.tribe-modal__wrapper--gateway-connected .tribe-common-c-btn, .event-tickets.tribe-modal__wrapper--gateway-connected .tribe-common-c-btn {
+			width: auto;
+		}
+
+.tribe-common.tribe-modal__wrapper--gateway-connected .tec-tickets__admin-modal-list, .event-tickets.tribe-modal__wrapper--gateway-connected .tec-tickets__admin-modal-list {
+			list-style: initial;
+			margin: 1em 0;
+			padding-left: 16px;
+		}
+
+.tribe-common.tribe-modal__wrapper--gateway-connected p, .event-tickets.tribe-modal__wrapper--gateway-connected p {
+			margin: 1em 0;
+		}
+
+.tribe-common.tribe-modal__wrapper--gateway-connected .tec-tickets__admin-modal-buttons, .event-tickets.tribe-modal__wrapper--gateway-connected .tec-tickets__admin-modal-buttons {
+			display: flex;
+			justify-content: flex-end;
+			margin-top: 26px;
+		}
+
+body.events-cal .tribe-common div.tribe-dialog, body.events-cal .event-tickets div.tribe-dialog {
+			z-index: 99999;
+		}
+
+.tribe-common .tec-tickets__admin-settings-tickets-commerce-gateway-modal-notice-error, .event-tickets .tec-tickets__admin-settings-tickets-commerce-gateway-modal-notice-error {
+		display: block;
+	}
+
+.tribe-common .tec-tickets__admin-settings-tickets-commerce-stripe-modal-content-title, .event-tickets .tec-tickets__admin-settings-tickets-commerce-stripe-modal-content-title {
+		margin-bottom: var(--tec-spacer-3);
+	}
+
+.tribe-common .tec-tickets__admin-settings-tickets-commerce-stripe-modal-content-section, .event-tickets .tec-tickets__admin-settings-tickets-commerce-stripe-modal-content-section {
+		margin-bottom: var(--tec-spacer-3);
+	}
+
+#paypal-connected-modal-button,
+#stripe-connected-modal-button {
+	display: none;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-section-menu {
+	padding-top: var(--tec-spacer-6);
+}
+
+.tec-tickets__admin-settings-tickets-commerce-section-menu-link {
+	border-bottom-color: #c4c4c4;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	color: #23282d;
+	display: inline-block;
+	font-size: var(--tec-font-size-2);
+	margin-right: var(--tec-spacer-5);
+	padding-bottom: var(--tec-spacer-1);
+	text-decoration: none;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-section-menu-link--active {
+	border-bottom-width: var(--tec-spacer-0);
+	font-weight: bold;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-section-menu-link--active,
+.tec-tickets__admin-settings-tickets-commerce-section-menu-link:hover {
+	border-bottom-color: var(--tec-color-accent-primary);
+	color: #23282d;
+}
+
+.tec-tickets__admin-settings-featured {
+	background-color: var(--tec-color-background);
+	border: solid 1px var(--tec-color-border-default);
+	border-radius: 8px;
+	margin-bottom: var(--tec-spacer-7);
+	padding: var(--tec-spacer-8);
+}
+
+.tec-tickets__admin-settings-featured-title {
+	background-color: transparent;
+	font-size: var(--tec-font-size-5);
+	font-weight: bold;
+	margin-bottom: var(--tec-spacer-2);
+	padding: var(--tec-spacer-1) 0;
+}
+
+.tec-tickets__admin-settings-featured-description {
+	margin-bottom: var(--tec-spacer-4);
+	max-width: 720px;
+}
+
+.tec-tickets__admin-settings-featured-link {
+	align-items: center;
+	display: flex;
+}
+
+.tec-tickets__admin-settings-featured-link-url {
+	color: var(--tec-color-accent-primary);
+	padding: 0 var(--tec-spacer-1);
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item {
+	margin-bottom: var(--tec-spacer-7);
+	padding-bottom: var(--tec-spacer-0);
+	text-align: center;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item > div {
+		padding: var(--tec-spacer-0) 0;
+	}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-toggle {
+	margin-right: 35px;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-brand {
+	flex-grow: 1;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-brand-logo-image {
+	max-height: var(--tec-spacer-10);
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-brand-subtitle {
+	font-size: 13px;
+	font-style: italic;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link {
+	background-color: var(--tec-color-accent-primary);
+	border-radius: var(--tec-border-radius-default);
+	color: #fff;
+	display: inline-block;
+	font-size: var(--tec-font-size-2);
+	font-weight: var(--tec-font-weight-bold);
+	padding: var(--tec-spacer-2) var(--tec-spacer-3);
+	text-align: center;
+	text-decoration: none;
+	width: 180px;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link:active,
+	.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link:hover {
+		background-color: var(--tec-color-button-primary-hover);
+		color: #fff;
+	}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link:active {
+		background-color: var(--tec-color-button-primary-active);
+	}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link--active {
+	background-color: var(--tec-color-background);
+	border-color: #3c434a;
+	border-style: solid;
+	border-width: 1px;
+	color: #3c434a;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link--active:active,
+	.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link--active:hover {
+		background-color: var(--tec-color-button-primary-hover);
+		border-color: var(--tec-color-button-primary-hover);
+		color: #fff;
+	}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-button-link--active:active {
+		background-color: var(--tec-color-button-primary-active);
+		border-color: var(--tec-color-button-primary-active);
+	}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-toggle .tec-tickets__admin-settings-tickets-commerce-toggle-checkbox:checked + .tec-tickets__admin-settings-tickets-commerce-toggle-switch {
+	background: #50b078;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-group-header {
+	background: #f9f9f9;
+	color: #23282d;
+	font-size: var(--tec-font-size-4);
+	font-weight: var(--tec-font-weight-bold);
+	padding: var(--tec-spacer-1) var(--tec-spacer-2);
+	width: 100%;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateway-group-header:first-of-type {
+	margin-top: 0;
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-status {
+	color: var(--tec-color-text-disabled);
+	font-size: var(--tec-font-size-2);
+	font-style: italic;
+	font-weight: var(--tec-font-weight-normal);
+	margin: 0 var(--tec-spacer-8);
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item-status--enabled {
+	color: #50b078;
+	font-weight: var(--tec-font-weight-bold);
+}
 
 /* @todo: Check this, see if it goes to common or where should we place it. */
 
@@ -1132,32 +1374,39 @@ a.event-tickets__admin-tc-banner-link:active,
 				width: auto
 		}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal {
-		background-image: url("../images/background-paypal-connect.png");
+.tec-tickets__admin-settings-tickets-commerce-gateway {
+		background-image: url("../images/background-gateway-connect.png");
 		background-position: center right;
-		background-repeat: no-repeat
+		background-repeat: no-repeat;
+		background-size: 420px 100%
 }
 
-		.tec-tickets__admin-settings-tickets-commerce-paypal-merchant-country-container .tribe-dropdown .select2-selection--single {
+		.tec-tickets__admin-settings-tickets-commerce-gateway-merchant-country-container .tribe-dropdown .select2-selection--single {
 			height: 42px;
 		}
 
-		.tec-tickets__admin-settings-tickets-commerce-paypal-merchant-country-container .tribe-dropdown .select2-selection--single .select2-selection__rendered {
+		.tec-tickets__admin-settings-tickets-commerce-gateway-merchant-country-container .tribe-dropdown .select2-selection--single .select2-selection__rendered {
 			line-height: 42px;
 			padding-left: 16px;
 		}
 
-		.tec-tickets__admin-settings-tickets-commerce-paypal-merchant-country-container .select2-container--default .select2-selection--single .select2-selection__arrow {
+		.tec-tickets__admin-settings-tickets-commerce-gateway-merchant-country-container .select2-container--default .select2-selection--single .select2-selection__arrow {
 			height: 42px;
 			right: 12px;
 		}
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-logo {
+.tec-tickets__admin-settings-tickets-commerce-gateway-logo {
 		display: flex
 }
 
-.tec-tickets__admin-settings-tickets-commerce-paypal-connect {
+.tec-tickets__admin-settings-tickets-commerce-gateway-connect {
 		padding-right: 74px
+}
+
+.tec-tickets__admin-settings-tickets-commerce-gateways-item {
+		align-items: center;
+		display: flex;
+		text-align: left
 }
 		}
 

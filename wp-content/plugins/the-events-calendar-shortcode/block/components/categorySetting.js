@@ -21,7 +21,7 @@ class CategorySetting extends Component {
 	 * Load in event categories from tribe endpoint - CDM
 	 */
 	componentDidMount() {
-		apiFetch( { path: '/tribe/events/v1/categories/' } ).then( ( response ) => {
+		apiFetch( { path: '/tribe/events/v1/categories/?per_page=200' } ).then( ( response ) => {
 			const selectOptions = response.categories.map( ( category ) => {
 				return { value: category.slug, label: category.name };
 			} );

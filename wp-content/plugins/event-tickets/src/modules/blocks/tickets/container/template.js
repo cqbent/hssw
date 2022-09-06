@@ -8,7 +8,7 @@ import classNames from 'classnames';
 /**
  * Wordpress dependencies
  */
-import { InnerBlocks } from '@wordpress/editor';
+const { InnerBlocks } = wp.blockEditor;
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -16,7 +16,7 @@ import { __ } from '@wordpress/i18n';
  */
 import Availability from '../availability/container';
 import { InactiveBlock } from '@moderntribe/tickets/elements';
-import { LAYOUT } from '@moderntribe/tickets/elements/inactive-block/element';
+import { LAYOUT } from '@moderntribe/tickets/elements/inactive-block';
 import { TicketInactive } from '@moderntribe/tickets/icons';
 import './style.pcss';
 

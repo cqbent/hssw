@@ -1,6 +1,7 @@
 <?php
 
 use Tribe__Utils__Array as Arr;
+use Tribe\Tickets\Admin\Settings;
 
 class Tribe__Tickets__Assets {
 	/**
@@ -211,10 +212,11 @@ class Tribe__Tickets__Assets {
 		];
 
 		$nonces = [
-			'add_ticket_nonce'    => wp_create_nonce( 'add_ticket_nonce' ),
-			'edit_ticket_nonce'   => wp_create_nonce( 'edit_ticket_nonce' ),
-			'remove_ticket_nonce' => wp_create_nonce( 'remove_ticket_nonce' ),
-			'ajaxurl'             => admin_url( 'admin-ajax.php', ( is_ssl() ? 'https' : 'http' ) ),
+			'add_ticket_nonce'       => wp_create_nonce( 'add_ticket_nonce' ),
+			'edit_ticket_nonce'      => wp_create_nonce( 'edit_ticket_nonce' ),
+			'remove_ticket_nonce'    => wp_create_nonce( 'remove_ticket_nonce' ),
+			'duplicate_ticket_nonce' => wp_create_nonce( 'duplicate_ticket_nonce' ),
+			'ajaxurl'                => admin_url( 'admin-ajax.php', ( is_ssl() ? 'https' : 'http' ) ),
 		];
 
 		$ticket_js_deps = [ 'jquery-ui-datepicker', 'tribe-bumpdown', 'tribe-attrchange', 'tribe-moment', 'underscore', 'tribe-validation', 'event-tickets-admin-accordion-js', 'tribe-timepicker' ];
@@ -326,7 +328,16 @@ class Tribe__Tickets__Assets {
 
 		// Register Ticket Admin Settings page assets.
 		$settings_assets = [
-			[ 'event-tickets-admin-settings-css', 'tickets-admin-settings.css', [ 'tribe-common-admin' ] ],
+			[
+				'event-tickets-admin-settings-css',
+				'tickets-admin-settings.css',
+				[
+					'tribe-common-admin',
+					'tribe-common-full-style',
+					'tribe-common-responsive',
+					'tribe-dialog',
+				],
+			],
 		];
 
 		tribe_assets(
@@ -345,10 +356,17 @@ class Tribe__Tickets__Assets {
 	 *
 	 * @since  4.6
 	 *
+	 * @since 5.2.1 Always enqueue scripts for Ticket settings page.
+	 *
 	 * @return bool
 	 */
 	public function should_enqueue_admin() {
 		global $post;
+
+		// Should enqueue if Ticket settings page.
+		if ( tribe( Settings::class )->is_tec_tickets_settings() ) {
+			return true;
+		}
 
 		/**
 		 * Filter the array of module names.
@@ -373,18 +391,12 @@ class Tribe__Tickets__Assets {
 	 * @return bool
 	 */
 	public function should_enqueue_admin_settings_assets() {
-
 		$admin_helpers = Tribe__Admin__Helpers::instance();
-
-		// The list of admin tabs that the plugin hooks into.
-		$admin_tabs = [
-			'event-tickets',
-			'event-tickets-commerce',
-			'payments',
-		];
+		$admin_pages   = tribe( 'admin.pages' );
+		$admin_page    = $admin_pages->get_current_page();
 
 		// Load specifically on Ticket Settings page only.
-		$should_enqueue = $admin_helpers->is_screen() && in_array( tribe_get_request_var( 'tab' ), $admin_tabs, true );
+		$should_enqueue = $admin_helpers->is_screen() && Settings::$settings_page_id === $admin_page;
 
 		/**
 		 * Allow filtering of whether the base Admin Settings Assets should be loaded.

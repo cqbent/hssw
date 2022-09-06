@@ -136,10 +136,12 @@ class WP_Optimization_revisions extends WP_Optimization {
 			$tmp = explode(',', $row[1]);
 			rsort($tmp);
 			$tmp = implode(',', array_slice($tmp, $this->revisions_retention_count));
-			$revisions .= $tmp . ',';
+			if ('' !== $tmp) {
+				$revisions .= $tmp . ',';
+			}
 		}
 		$revisions = rtrim($revisions, ',');
-		$revisions = explode(',', $revisions);
+		$revisions = empty($revisions) ? array() : explode(',', $revisions);
 
 		while (count($revisions) > 0) {
 			$delete_this_time = array_splice($revisions, 0, min(count($revisions), 250));

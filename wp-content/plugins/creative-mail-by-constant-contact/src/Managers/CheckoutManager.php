@@ -6,7 +6,14 @@ namespace CreativeMail\Managers;
 use CreativeMail\CreativeMail;
 use CreativeMail\Helpers\EnvironmentHelper;
 use CreativeMail\Helpers\OptionsHelper;
-use stdClass;
+use CreativeMail\Models\CartData;
+use CreativeMail\Models\Checkout;
+use CreativeMail\Models\CheckoutSave;
+use CreativeMail\Models\User;
+use CreativeMail\Modules\Contacts\Models\OptActionBy;
+use CreativeMail\Models\Order;
+use CreativeMail\Models\OrderBilling;
+use CreativeMail\Models\RequestItem;
 use WC_Coupon;
 use WC_Order;
 
@@ -101,7 +108,7 @@ class CheckoutManager
      *
      * @since 1.3.0
      */
-    public function ce4wp_filter_checkout_fields($fields) {
+    public function ce4wp_filter_checkout_fields( $fields ) {
         $fields['billing'][self::BILLING_EMAIL_NOTICE] = array(
             'type' => 'ce4wp_notice',
             'required'  => false,
@@ -140,10 +147,10 @@ class CheckoutManager
      *
      * @return void
      */
-    public function order_completed($order_id)
+    public function order_completed( $order_id )
     {
-        $this->update_checkout($order_id, '/v1.0/checkout/order_completed');
-        $this->cleanup_old_checkouts($order_id);
+        $this->update_checkout( $order_id, '/v1.0/checkout/order_completed' );
+        $this->cleanup_old_checkouts( $order_id );
     }
 
     /**
@@ -155,8 +162,8 @@ class CheckoutManager
      *
      * @return void
      */
-    public function order_processed( $order_id) {
-        $this->update_checkout($order_id, '/v1.0/checkout/order_created');
+    public function order_processed( $order_id ) {
+        $this->update_checkout( $order_id, '/v1.0/checkout/order_created' );
     }
 
     /**
@@ -179,7 +186,7 @@ class CheckoutManager
             $data = $this->get_checkout_uuid_by_email($order->get_billing_email());
             foreach ($data as $checkout_data)
             {
-                $endpoint = EnvironmentHelper::get_app_gateway_url('wordpress') . '/v1.0/checkout/'. $checkout_data->checkout_uuid;
+                $endpoint = EnvironmentHelper::get_app_gateway_url( 'wordpress' ) . '/v1.0/checkout/'. $checkout_data->checkout_uuid;
                 $this->ce4wp_remote_delete($endpoint);
                 CreativeMail::get_instance()->get_database_manager()->remove_checkout_data($checkout_data->checkout_uuid);
             }
@@ -193,34 +200,37 @@ class CheckoutManager
     /**
      * Update of checkout data in the external service
      *
-     * @param int $order_id    Newly created order id.
-     * @param string $endpoint Endpoint to call
+     * @param int      $order_id The order id.
+     * @param string   $endpoint Endpoint to call
      *
      * @since 1.3.0
      */
-    private function update_checkout($order_id, $endpoint) {
-        $order = wc_get_order($order_id);
+    private function update_checkout( $order_id, $endpoint ) {
+        $order = wc_get_order( $order_id );
         if ( empty( $order ) ) {
             return;
         }
+
         // check if order had checkout uuid
         $uuid = $order->get_meta( self::META_CHECKOUT_UUID, true);
         // check if order is created with checkout meta
-        if (empty($uuid)) {
+        if ( empty( $uuid ) ) {
             return;
         }
+
         // try find recovery date from order meta data
-        $recovery_date = $order->get_meta( self::META_CHECKOUT_RECOVERED, true);
+        $recovery_date = $order->get_meta( self::META_CHECKOUT_RECOVERED, true );
         // Remote post to ce4wp marking checkout as completed/created
-        $requestItem = new stdClass();
+        $requestItem = new Checkout();
         $requestItem->uuid = $uuid;
         $requestItem->order_id = $order->get_id();
         $requestItem->order_total = $order->get_total();
         $requestItem->order_currency = $order->get_currency();
-        $requestItem->recovery_date = (empty($recovery_date) || $recovery_date === self::DATETIME_ZERO) ? null : $recovery_date;
-        $endpoint = EnvironmentHelper::get_app_gateway_url('wordpress') . $endpoint;
+        $requestItem->recovery_date = ( empty( $recovery_date ) || $recovery_date === self::DATETIME_ZERO ) ? null : $recovery_date;
+
+        $endpoint = EnvironmentHelper::get_app_gateway_url( 'wordpress' ) . $endpoint;
         // call remote endpoint to update
-        $this->ce4wp_remote_post($requestItem, $endpoint);
+        $this->ce4wp_remote_post( $requestItem, $endpoint );
     }
 
     /**
@@ -287,9 +297,9 @@ class CheckoutManager
             wp_send_json_success();
         }
 
-        $endpoint = EnvironmentHelper::get_app_gateway_url('wordpress') . '/v1.0/checkout/'. $checkout_id;
-        $this->ce4wp_remote_delete($endpoint);
-        CreativeMail::get_instance()->get_database_manager()->change_checkout_consent($checkout_id, false);
+        $endpoint = EnvironmentHelper::get_app_gateway_url( 'wordpress' ) . '/v1.0/checkout/'. $checkout_id;
+        $this->ce4wp_remote_delete( $endpoint );
+        CreativeMail::get_instance()->get_database_manager()->change_checkout_consent( $checkout_id, false );
 
         wp_send_json_success();
     }
@@ -301,7 +311,7 @@ class CheckoutManager
      *
      * @since 1.3.0
      */
-    public function save_or_clear_checkout_data( $template_name) {
+    public function save_or_clear_checkout_data( $template_name ) {
 
         // If checkout page displayed, save checkout data.
         if ( 'checkout/form-checkout.php' === $template_name ) {
@@ -403,15 +413,15 @@ class CheckoutManager
                 }
             }
         }
-        $is_checkout           = $is_checkout ?: is_checkout();
+        $is_checkout  = $is_checkout ?: is_checkout();
         $uuid         = WC()->session->get( self::CHECKOUT_UUID );
 
         if ( empty( $billing_email ) ) {
             return;
         }
 
-        $has_no_consent = WC()->session->get( self::BILLING_EMAIL_NO_CONSENT);
-        if($has_no_consent === true)
+        $has_no_consent = WC()->session->get( self::BILLING_EMAIL_NO_CONSENT );
+        if( $has_no_consent === true )
         {
             return;
         }
@@ -447,23 +457,23 @@ class CheckoutManager
         $cart_coupons = WC()->cart->get_applied_coupons();
 
         $checkout_content = [
-            self::PRODUCTS        => array_values($cart_products),
+            self::PRODUCTS        => array_values( $cart_products ),
             self::COUPONS         => $cart_coupons,
         ];
 
-        CreativeMail::get_instance()->get_database_manager()->upsert_checkout($uuid, $user_id, $billing_email, $checkout_content, $current_time);
+        CreativeMail::get_instance()->get_database_manager()->upsert_checkout( $uuid, $user_id, $billing_email, $checkout_content, $current_time );
 
         // Remote post to ce4wp create or update cart if email is provided
-        $requestItem = new stdClass();
-        $requestItem->data = wp_json_encode($this->get_cart_data_for_endpoint($cart_products, $cart_coupons));
+        $requestItem = new CheckoutSave();
+        $requestItem->data = wp_json_encode($this->get_cart_data_for_endpoint( $cart_products, $cart_coupons ) );
         $requestItem->uuid = $uuid;
         $requestItem->user_id = $user_id;
         $requestItem->billing_email = $billing_email;
-        $requestItem->timestamp = strtotime($current_time);
-        $endpoint = EnvironmentHelper::get_app_gateway_url('wordpress') . '/v1.0/checkout/upsert';
+        $requestItem->timestamp = strtotime( $current_time );
+        $endpoint = EnvironmentHelper::get_app_gateway_url( 'wordpress' ) . '/v1.0/checkout/upsert';
 
-        $consent = CreativeMail::get_instance()->get_database_manager()->has_checkout_consent($uuid);
-        if ($consent) {
+        $consent = CreativeMail::get_instance()->get_database_manager()->has_checkout_consent( $uuid );
+        if ( $consent ) {
             $this->ce4wp_remote_post($requestItem, $endpoint);
         }
     }
@@ -473,20 +483,19 @@ class CheckoutManager
      *
      * @since 1.3.0
      */
-    private function get_cart_data_for_endpoint($cart_products, $cart_coupons) {
-        $data = new stdClass();
+    private function get_cart_data_for_endpoint( $cart_products, $cart_coupons ) {
+        $data = new CartData();
         $data->products = array();
         $data->coupons = array();
         $data->currency_symbol = get_woocommerce_currency_symbol();
         $data->currency = get_woocommerce_currency();
 
-        $data->user = new stdClass();
-
+        $data->user = new User();
         try
         {
             // Get user first and last name of available
             $current_user = wp_get_current_user();
-            if ($current_user->exists() ) {
+            if ( $current_user->exists() ) {
                 $data->user->id = $current_user->ID;
                 $data->user->username = $current_user->user_login;
                 $data->user->display_name = $current_user->display_name;
@@ -497,30 +506,30 @@ class CheckoutManager
 
             $dp = 2; // decimal point
 
-            foreach ($cart_products as $value)
+            foreach ( $cart_products as $value )
             {
-                $product = array_key_exists('data', $value) ? $value['data'] : wc_get_product($value[self::PRODUCT_ID]);
+                $product = array_key_exists( 'data', $value ) ? $value['data'] : wc_get_product( $value[self::PRODUCT_ID] );
                 $product_id = $product->get_id();
                 $product_data = array(
                     'images' => array()
                 );
                 $attachment_ids = $product->get_gallery_image_ids();
-                foreach ($attachment_ids as $attachment_id) {
-                    $product_data['images'][] = wp_get_attachment_url($attachment_id);
+                foreach ( $attachment_ids as $attachment_id ) {
+                    $product_data[ 'images' ][] = wp_get_attachment_url( $attachment_id );
                 }
 
-                $product_data["on_sale"] = $product->is_on_sale();
-                $product_data["sale_price"] = $product->get_sale_price();
-                $product_data["regular_price"] = $product->get_regular_price();
+                $product_data[ "on_sale" ] = $product->is_on_sale();
+                $product_data[ "sale_price" ] = $product->get_sale_price();
+                $product_data[ "regular_price" ] = $product->get_regular_price();
                 $src = wc_placeholder_img_src();
-                if ($image_id = $product->get_image_id()) {
-                    list($src) = wp_get_attachment_image_src($image_id, 'full');
+                if ( $image_id = $product->get_image_id() ) {
+                    list( $src ) = wp_get_attachment_image_src( $image_id, 'full' );
                 }
 
-                $line_subtotal = empty($value['line_subtotal']) ? 0: $value['line_subtotal'];
-                $line_subtotal_tax =empty($value['line_subtotal_tax']) ? 0: $value['line_subtotal_tax'];
-                $line_total = empty($value['line_total']) ? 0: $value['line_total'];
-                $line_tax = empty($value['line_tax']) ? 0: $value['line_tax'];
+                $line_subtotal = empty( $value['line_subtotal'] ) ? 0: $value[ 'line_subtotal' ];
+                $line_subtotal_tax =empty( $value[ 'line_subtotal_tax' ] ) ? 0: $value[ 'line_subtotal_tax' ];
+                $line_total = empty( $value[ 'line_total' ] ) ? 0: $value[ 'line_total' ];
+                $line_tax = empty( $value[ 'line_tax' ] ) ? 0: $value[ 'line_tax' ];
 
                 $data->products[] = array(
                     'name' => $product->get_name(),
@@ -528,23 +537,23 @@ class CheckoutManager
                     'product_image' => $src,
                     'product_data' => $product_data,
                     'sku' => is_object($product) ? $product->get_sku() : null,
-                    'product_url' => get_the_permalink($product_id),
-                    'variation_id' => $value[self::VARIATION_ID],
-                    'subtotal' => wc_format_decimal($line_subtotal, $dp),
-                    'subtotal_tax' => wc_format_decimal($line_subtotal_tax, $dp),
-                    'total' => wc_format_decimal($line_total, $dp),
-                    'total_tax' => wc_format_decimal($line_tax, $dp),
-                    'price' => wc_format_decimal($line_subtotal, $dp),
-                    'quantity' => $value[self::QUANTITY]
+                    'product_url' => get_the_permalink( $product_id ),
+                    'variation_id' => $value[ self::VARIATION_ID ],
+                    'subtotal' => wc_format_decimal( $line_subtotal, $dp ),
+                    'subtotal_tax' => wc_format_decimal( $line_subtotal_tax, $dp ),
+                    'total' => wc_format_decimal( $line_total, $dp ),
+                    'total_tax' => wc_format_decimal( $line_tax, $dp ),
+                    'price' => wc_format_decimal( $line_subtotal, $dp ),
+                    'quantity' => $value[ self::QUANTITY ]
                 );
             }
 
-            foreach ($cart_coupons as $coupon_code)
+            foreach ( $cart_coupons as $coupon_code )
             {
-                $coupon_id = wc_get_coupon_id_by_code($coupon_code);
-                if ($coupon_id)
+                $coupon_id = wc_get_coupon_id_by_code( $coupon_code );
+                if ( $coupon_id )
                 {
-                    $coupon = new WC_Coupon($coupon_id);
+                    $coupon = new WC_Coupon( $coupon_id );
 
                     $data->coupons[] = array(
                         'code' => $coupon->get_code(),
@@ -558,7 +567,7 @@ class CheckoutManager
         }
         catch (\Exception $e)
         {
-            RaygunManager::get_instance()->exception_handler($e);
+            RaygunManager::get_instance()->exception_handler( $e );
         }
 
         return $data;
@@ -573,22 +582,22 @@ class CheckoutManager
      *
      * @return void
      */
-    public function clear_purchased_data( $order) {
+    public function clear_purchased_data( $order ) {
         $checkout_id = WC()->session->get( self::CHECKOUT_UUID );
-        if (empty($checkout_id)) {
+        if ( empty( $checkout_id ) ) {
             return;
         }
 
         $order->update_meta_data( self::META_CHECKOUT_UUID, $checkout_id );
 
         // get the recovery date if recovered
-        $recovery_date = $this->get_checkout_recovery_date($checkout_id);
-        if (!empty($recovery_date) && $recovery_date !== self::DATETIME_ZERO)
+        $recovery_date = $this->get_checkout_recovery_date( $checkout_id );
+        if ( !empty( $recovery_date ) && $recovery_date !== self::DATETIME_ZERO )
         {
-            $order->update_meta_data(self::META_CHECKOUT_RECOVERED, $recovery_date);
+            $order->update_meta_data( self::META_CHECKOUT_RECOVERED, $recovery_date );
         }
-        CreativeMail::get_instance()->get_database_manager()->remove_checkout_data($checkout_id);
-        WC()->session->__unset( self::CHECKOUT_UUID );
+        CreativeMail::get_instance()->get_database_manager()->remove_checkout_data( $checkout_id );
+        WC()->session->__unset(  self::CHECKOUT_UUID );
     }
 
     /**
@@ -609,18 +618,18 @@ class CheckoutManager
         // Get saved checkout contents.
         $checkout_contents = $this->get_checkout_contents( $this->checkout_uuid );
 
-        if ( empty($checkout_contents) ) {
+        if ( empty( $checkout_contents ) ) {
             return;
         }
 
         // Mark checkout as recovered
-        CreativeMail::get_instance()->get_database_manager()->mark_checkout_recovered($this->checkout_uuid);
+        CreativeMail::get_instance()->get_database_manager()->mark_checkout_recovered( $this->checkout_uuid );
 
         // Recover saved products.
-        $this->recover_products( $checkout_contents[self::PRODUCTS] );
+        $this->recover_products( $checkout_contents[ self::PRODUCTS ] );
 
         // Apply coupons.
-        foreach ( $checkout_contents[self::COUPONS] as $coupon ) {
+        foreach ( $checkout_contents[ self::COUPONS ] as $coupon ) {
             WC()->cart->apply_coupon( $coupon );
         }
 
@@ -637,7 +646,7 @@ class CheckoutManager
     }
 
     public function return_to_shop() {
-        wp_safe_redirect(wc_get_page_permalink('shop'));
+        wp_safe_redirect( wc_get_page_permalink( 'shop' ) );
 
         exit();
     }
@@ -670,20 +679,20 @@ class CheckoutManager
      * @since 1.3.0
      */
     protected function recover_products( $products ) {
-        if (empty($products)) {
+        if ( empty( $products ) ) {
             return;
         }
         // Programmatically add each product to cart.
         $products_added = [];
         foreach ( $products as $product ) {
             $added = WC()->cart->add_to_cart(
-                $product[self::PRODUCT_ID],
-                $product[self::QUANTITY],
-                empty( $product[self::VARIATION_ID] ) ? 0 : $product[self::VARIATION_ID],
-                empty( $product[self::VARIATION] ) ? array() : $product[self::VARIATION]
+                $product[ self::PRODUCT_ID ],
+                $product[ self::QUANTITY ],
+                empty( $product[ self::VARIATION_ID ] ) ? 0 : $product[ self::VARIATION_ID ],
+                empty( $product[ self::VARIATION ] ) ? array() : $product[ self::VARIATION ]
             );
             if ( false !== $added ) {
-                $products_added[ ( empty( $product[self::VARIATION_ID] ) ? $product[self::PRODUCT_ID] : $product[self::VARIATION_ID] ) ] = $product[self::QUANTITY];
+                $products_added[ ( empty( $product[ self::VARIATION_ID ] ) ? $product[ self::PRODUCT_ID ] : $product[ self::VARIATION_ID ] ) ] = $product[ self::QUANTITY ];
             }
         }
 
@@ -708,12 +717,12 @@ class CheckoutManager
         }
     }
 
-    private function ce4wp_remote_post($requestItem, $endpoint) {
+    private function ce4wp_remote_post( $requestItem, $endpoint ) {
         try
         {
             // check if abandoned cart email is managed by creative mail
-            $enabled = CreativeMail::get_instance()->get_email_manager()->is_email_managed('cart_abandoned_ce4wp');
-            if($enabled) {
+            $enabled = CreativeMail::get_instance()->get_email_manager()->is_email_managed( 'cart_abandoned_ce4wp' );
+            if( $enabled ) {
                 wp_remote_post(
                     $endpoint, array(
                         'method' => 'POST',
@@ -723,18 +732,18 @@ class CheckoutManager
                             'x-api-key' => OptionsHelper::get_instance_api_key(),
                             'content-type' => 'application/json'
                         ),
-                        'body' => wp_json_encode($requestItem)
+                        'body' => wp_json_encode( $requestItem )
                     )
                 );
             }
-        } catch (\Exception $e) {
-            RaygunManager::get_instance()->exception_handler($e);
+        } catch ( \Exception $e ) {
+            RaygunManager::get_instance()->exception_handler( $e );
         }
     }
 
-    private function ce4wp_remote_delete($endpoint) {
+    private function ce4wp_remote_delete( $endpoint ) {
         try {
-            wp_remote_request($endpoint,
+            wp_remote_request( $endpoint,
                 array(
                     'method' => 'DELETE',
                     'headers' => array(
@@ -743,8 +752,212 @@ class CheckoutManager
                     )
                 )
             );
-        } catch (\Exception $e) {
+        } catch ( \Exception $e ) {
             // silent
+        }
+    }
+
+    private function get_opt_action_by( $products_detail ) {
+        return OptActionBy::Visitor;
+    }
+
+    private function get_opt_in_checkbox_value( $products_detail ) {
+        if ( !empty( $products_detail[ "ce4wp_checkout_consent" ] ) ) {
+            return $products_detail[ "ce4wp_checkout_consent" ][ 0 ]; //this value appears to be in array;
+        }
+
+        return null;
+    }
+
+    private function get_opt_in( $products_detail ) {
+        $checkbox_value = $this->get_opt_in_checkbox_value( $products_detail );
+        if ( $checkbox_value == true )
+           return true;
+        return null;
+    }
+
+    private function get_opt_out( $products_detail ) {
+        $checkbox_value = $this->get_opt_in_checkbox_value( $products_detail );
+        if ( $checkbox_value == false )
+            return true;
+        return null;
+    }
+
+    public function add_order_completed_wc_hooks() {
+        add_action( 'woocommerce_order_status_completed', array( $this, 'order_completed_trigger_wc_hook' ), 10, 1 );
+    }
+
+    public function order_completed_trigger_wc_hook( $order_id ) {
+        $order = wc_get_order( $order_id );
+        if ( empty( $order ) ) {
+            return;
+        }
+
+        $products_detail = get_post_meta($order_id);
+
+        $endpoint = '/v1.0/wc/order_completed';
+        $decimal_point = 2;
+
+        // General Info
+        $requestItem = new RequestItem();
+        $order_model = new Order();
+        $order_billing = new OrderBilling();
+
+        $requestItem->order_id = $order->get_id();
+        $requestItem->order_number = $order->get_order_number();
+        $requestItem->date_created = $order->get_date_created() ? $order->get_date_created()->getTimestamp() : 0;
+        $requestItem->date_modified = $order->get_date_modified() ? $order->get_date_modified()->getTimestamp() : 0;
+        $requestItem->date_completed = $order->get_date_completed() ? $order->get_date_completed()->getTimestamp() : 0;
+        $requestItem->status = $order->get_status();
+        $requestItem->order_url = $order->get_checkout_order_received_url();
+        $requestItem->note = $order->get_customer_note();
+        $requestItem->customer_ip = $order->get_customer_ip_address();
+        $requestItem->customer_user_agent = $order->get_customer_user_agent();
+        $requestItem->customer_id = $order->get_user_id();
+        // Order Billing
+        $order_billing->email = $order->get_billing_email();
+        $order_billing->opt_action_by = $this->get_opt_action_by( $products_detail );
+        $order_billing->opt_in = $this->get_opt_in( $products_detail );
+        $order_billing->opt_out = $this->get_opt_out( $products_detail );
+
+        $order_billing->first_name = $order->get_billing_first_name();
+        $order_billing->last_name = $order->get_billing_last_name();
+        $order_billing->is_first_time_buyer = count( wc_get_orders( array( 'email' => $order->get_billing_email() ) ) ) <= 1;
+        $order_billing->company = $order->get_billing_company();
+        $order_billing->address_1 = $order->get_billing_address_1();
+        $order_billing->address_2 = $order->get_billing_address_2();
+        $order_billing->city = $order->get_billing_city();
+        $order_billing->state = $order->get_billing_state();
+        $order_billing->postcode = $order->get_billing_postcode();
+        $order_billing->country = $order->get_billing_country();
+        $order_billing->email = $order->get_billing_email();
+        $order_billing->phone = $order->get_billing_phone();
+        $order_billing->shipping = array(
+            'first_name' => $order->get_shipping_first_name(),
+            'last_name' => $order->get_shipping_last_name(),
+            'company' => $order->get_shipping_company(),
+            'address_1' => $order->get_shipping_address_1(),
+            'address_2' => $order->get_shipping_address_2(),
+            'city' => $order->get_shipping_city(),
+            'state' => $order->get_shipping_state(),
+            'postcode' => $order->get_shipping_postcode(),
+            'country' => $order->get_shipping_country(),
+            'shipping_methods' => $order->get_shipping_method()
+        );
+        $order_billing->payment_details = array(
+            'method_id' => $order->get_payment_method(),
+            'method_title' => $order->get_payment_method_title(),
+            'paid' => !is_null($order->get_date_paid()),
+        );
+        // Order Currency and Total Info
+        $requestItem->total = wc_format_decimal( $order->get_total(), $decimal_point );
+        $requestItem->subtotal = wc_format_decimal( $order->get_subtotal(), $decimal_point );
+        $requestItem->total_tax = wc_format_decimal( $order->get_total_tax(), $decimal_point );
+        $requestItem->shipping_total = wc_format_decimal( $order->get_shipping_total(), $decimal_point );
+        $requestItem->cart_tax = wc_format_decimal( $order->get_cart_tax(), $decimal_point );
+        $requestItem->shipping_tax = wc_format_decimal( $order->get_shipping_tax(), $decimal_point );
+        $requestItem->discount_total = wc_format_decimal( $order->get_total_discount(), $decimal_point );
+        $order_model->currency_symbol = get_woocommerce_currency_symbol();
+        $order_model->currency = $order->get_currency();
+        // Order Products Info
+        $order_model->total_line_items_quantity = $order->get_item_count();
+        // Line Items / Products array for the expected endpoint
+        foreach ( $order->get_items() as $itemsKey => $item ) {
+            $product = $item->get_product();
+
+            if ( empty( $product ) ) {
+                continue;
+            }
+
+            $item_meta = $item->get_formatted_meta_data();
+
+            foreach ( $item_meta as $key => $values ) {
+                $item_meta[ $key ]->label = $values->display_key;
+                unset( $item_meta[ $key ]->display_key );
+                unset( $item_meta[ $key ]->display_value );
+            }
+
+            try {
+                $product_data = array(
+                    'images' => array(),
+                    'downloads' => array()
+                );
+                $attachment_ids = $product->get_gallery_image_ids();
+                foreach ( $attachment_ids as $attachment_id ) {
+                    $product_data[ 'images' ][] = wp_get_attachment_url( $attachment_id );
+                }
+
+                $product_data[ "on_sale" ] = $product->is_on_sale();
+                $product_data[ "sale_price" ] = $product->get_sale_price();
+                $product_data[ "regular_price" ] = $product->get_regular_price();
+
+                if ( $product->is_downloadable() ) {
+                    $item_downloads = $item->get_item_downloads();
+                    foreach ( $item_downloads as $item_download )
+                    {
+                        $product_data[ "downloads" ][] = array(
+                            'line_item_id' => $item->get_id(),
+                            'product_id' => $item->get_product_id(),
+                            'download_url' => $item_download[ "download_url" ],
+                            'download_file' => $item_download[ "file" ],
+                            'download_name' => $item_download[ "name" ],
+                            'download_id' => $item_download[ "id" ],
+                            'downloads_remaining' => $item_download[ "downloads_remaining" ],
+                            'download_access_expires' => wc_format_datetime( $item_download[ "access_expires" ], 'U' ),
+                            'download_limit' => $product->get_download_limit(),
+                            'download_expiry' => $product->get_download_expiry(),
+                        );
+                    }
+                }
+            } catch ( \Exception $ex ) {
+                RaygunManager::get_instance()->exception_handler( $ex );
+            }
+
+            $src = wc_placeholder_img_src();
+            if ( $image_id = $product->get_image_id() ) {
+                list( $src ) = wp_get_attachment_image_src( $image_id, 'full' );
+            }
+
+            $order_model->line_items[] = array(
+                'product_id' => $item->get_product_id(),
+                'item_meta' => $item->get_formatted_meta_data(),
+                'subtotal' => wc_format_decimal($order->get_line_subtotal( $item, false, false), $decimal_point ),
+                'subtotal_tax' => wc_format_decimal( $item->get_subtotal_tax(), $decimal_point ),
+                'total' => wc_format_decimal( $order->get_line_total($item, false, false), $decimal_point ),
+                'total_tax' => wc_format_decimal( $item->get_total_tax(), $decimal_point ),
+                'price' => wc_format_decimal( $order->get_item_total($item, false, false), $decimal_point ),
+                'quantity' => $item->get_quantity(),
+                'tax_class' => $item->get_tax_class(),
+                'name' => $item->get_name(),
+                'product_image' => $src,
+                'product_data' => $product_data,
+                'sku' => is_object( $product ) ? $product->get_sku() : null,
+                'meta' => array_values( $item_meta ),
+                'product_url' => get_the_permalink( $item->get_product_id() ),
+                'variation_id' => $item->get_variation_id()
+            );
+        }
+
+        $order_model->billing = $order_billing;
+        $requestItem->order = $order_model;
+
+        $endpoint = EnvironmentHelper::get_app_gateway_url( 'wordpress' ) . $endpoint;
+        try
+        {
+            wp_remote_post(
+                $endpoint, array(
+                    'method' => 'POST',
+                    'timeout' => 10,
+                    'headers' => array(
+                        'x-account-id' => OptionsHelper::get_connected_account_id(),
+                        'x-api-key' => OptionsHelper::get_instance_api_key(),
+                        'content-type' => 'application/json'
+                    ),
+                    'body' => wp_json_encode( $requestItem )
+                )
+            );
+        } catch ( \Exception $e ) {
+            RaygunManager::get_instance()->exception_handler( $e );
         }
     }
 }

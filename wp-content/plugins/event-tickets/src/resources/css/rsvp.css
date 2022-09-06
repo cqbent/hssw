@@ -968,7 +968,6 @@
 
 .event-tickets .tribe-tickets__rsvp-ar-quantity-input input[type="number"] {
 			-webkit-appearance: textfield;
-			   -moz-appearance: textfield;
 			        appearance: textfield;
 			background: transparent;
 			border: none;
@@ -1098,7 +1097,6 @@
 	}
 
 .event-tickets .tribe-tickets__rsvp-details {
-			text-align: left;
 			text-align: initial
 	}
 
@@ -1219,7 +1217,6 @@
 	}
 
 .event-tickets .tribe-tickets__rsvp-ar-form {
-			text-align: left;
 			text-align: initial
 	}
 		}

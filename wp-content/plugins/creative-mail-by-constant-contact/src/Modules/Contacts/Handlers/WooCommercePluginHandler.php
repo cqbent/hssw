@@ -25,6 +25,8 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
     {
         $contactModel = new ContactModel();
         $products_detail = get_post_meta($orderId);
+        $order = wc_get_order($orderId);
+        $number_of_orders =  count(wc_get_orders(array('email' => $order->get_billing_email())));
 
         if (isset($products_detail)) {
             if (!empty($products_detail["_billing_email"]) && isset($products_detail["_billing_email"][0]) && !empty($products_detail["_billing_email"][0])) {
@@ -55,6 +57,10 @@ class WooCommercePluginHandler extends BaseContactFormPluginHandler
 
             if (!empty($products_detail["_billing_phone"])) {
                 $contactModel->setPhone($products_detail["_billing_phone"][0]);
+            }
+
+            if (!empty($number_of_orders)) {
+                $contactModel->setNumberOfOrders($number_of_orders);
             }
 
             $this->setConsentValues($contactModel, $products_detail);

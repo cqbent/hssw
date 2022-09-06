@@ -2,8 +2,8 @@
 Contributors: Constant Contact
 Tags: email, marketing, newsletter, subscribe, contact form, constant contact, crm, automations, ecommerce, promotion, offers, retargeting
 Requires at least: 4.6
-Tested up to: 5.8
-Stable tag: 1.4.7
+Tested up to: 5.9
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 5.6
@@ -15,8 +15,6 @@ Creative Mail was designed specifically for WordPress and WooCommerce.
 Our intelligent (and super fun) email editor simplifies email marketing campaign creation and pulls your WordPress blog posts, website images and WooCommerce products right into your email content.
 
 == Description ==
-https://youtu.be/rI6j7JpZFSk
-
 Creative Mail was designed specifically for WordPress and WooCommerce.
 
 Our intelligent (and super fun) email editor simplifies email marketing campaign creation and pulls your WordPress blog posts, website images and WooCommerce products right into your email content. Leads from your WordPress website, ecommerce store and contact forms are automatically captured and routed into our included Contacts CRM and synced with your email marketing lists.
@@ -104,6 +102,12 @@ Creative Mail by Constant Contact [Privacy Notice](https://www.endurance.com/pri
 6. Enhance your brand with LogoBuilder
 
 == Changelog ==
+* 1.5.3 - README update
+* 1.5.2 - Small bug fix for PHP versions previous to 7.1
+* 1.5.1 - Fix outdated PHP classes
+* 1.5.0 - Fix WooCommerce product lists, improved WooCommerce order workflows and improved contact management.
+* 1.4.9 - Fixes regarding WooCoomerce and Contact Sync Updates.
+* 1.4.8 - Redirect to main Creativ Email templates page when user has abandoned cart template deactivated. Fix sync error with contact form 7. Added automation trigger for customer buying products.
 * 1.4.7 - Fix currency type being shown in "Abandoned Cart" emails for WooCommerce.
 * 1.4.6 - Add phone number handling for Jetpack Forms. Bug fixes.
 * 1.4.5 - This version contains a fix for Creative mail customers who also use the Bluehost Websitebuilder functionality to build their WordPress site.

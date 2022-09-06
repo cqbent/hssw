@@ -1,19 +1,22 @@
 <?php
 /**
-Plugin Name: SSO
-Author: Garth Mortensen, Mike Hansen
-Version: 0.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/
+ * Plugin Name: SSO
+ * Author: Garth Mortensen, Mike Hansen
+ * Version: 0.4
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
 
-function sso_check () {
-    if ( ! isset( $_GET['salt'] ) || ! isset( $_GET['nonce'] ) ) { sso_req_login(); }
-    if ( sso_check_blocked() ) { sso_req_login(); }
+function sso_check() {
+    if ( ! isset( $_GET['salt'] ) || ! isset( $_GET['nonce'] ) ) {
+        sso_req_login();
+    }
+    if ( sso_check_blocked() ) {
+        sso_req_login();
+    }
 
     $nonce = esc_attr( $_GET['nonce'] );
-    $salt = esc_attr( $_GET['salt'] );
-    $user;
+    $salt  = esc_attr( $_GET['salt'] );
 
     if ( ! empty( $_GET['user'] ) ) {
         $user = esc_attr( $_GET['user'] );
@@ -27,15 +30,15 @@ function sso_check () {
         }
     }
 
-    $bounce = $_GET['bounce'];
-    $hash = base64_encode( hash( 'sha256', $nonce . $salt, false ) );
-    $hash = substr( $hash, 0, 64 );
+    $bounce = ! empty( $_GET['bounce'] ) ? $_GET['bounce'] : '';
+    $hash   = base64_encode( hash( 'sha256', $nonce . $salt, false ) );
+    $hash   = substr( $hash, 0, 64 );
 
     if ( get_transient( 'sso_token' ) == $hash ) {
         if ( is_email( $user ) ) {
             $user = get_user_by( 'email', $user );
         } else {
-            $user = get_user_by( 'id', (int)$user );
+            $user = get_user_by( 'id', (int) $user );
         }
         if ( is_a( $user, 'WP_User' ) ) {
             wp_set_current_user( $user->ID, $user->user_login );
@@ -52,6 +55,7 @@ function sso_check () {
     }
     die();
 }
+
 add_action( 'wp_ajax_nopriv_sso-check', 'sso_check' );
 add_action( 'wp_ajax_sso-check', 'sso_check' );
 
@@ -65,7 +69,7 @@ function sso_get_attempt_id() {
 
 function sso_add_failed_attempt() {
     $attempts = get_transient( sso_get_attempt_id(), 0 );
-    $attempts++;
+    $attempts ++;
     set_transient( sso_get_attempt_id(), $attempts, 300 );
 }
 
@@ -74,5 +78,6 @@ function sso_check_blocked() {
     if ( $attempts > 4 ) {
         return true;
     }
+
     return false;
 }

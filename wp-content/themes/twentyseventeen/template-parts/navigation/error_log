@@ -1,0 +1,16 @@
+[28-Mar-2022 14:38:43 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function esc_attr_e() in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php:12
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php on line 12
+[31-Mar-2022 07:03:51 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function esc_attr_e() in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php:12
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php on line 12
+[08-Aug-2022 17:25:38 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function esc_attr_e() in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php:12
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php on line 12
+[20-Aug-2022 18:24:16 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function esc_attr_e() in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php:12
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php on line 12

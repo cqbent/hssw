@@ -1,0 +1,16 @@
+[04-Jun-2022 15:34:40 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php:55
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php on line 55
+[05-Jun-2022 17:29:09 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php:55
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php on line 55
+[07-Jun-2022 17:38:51 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php:55
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php on line 55
+[12-Jun-2022 07:43:19 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php:55
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/mu-plugins/sso.php on line 55
