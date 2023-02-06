@@ -17,13 +17,13 @@ class ThumbnailSetting extends Component {
 
 	handleThumbWidthChange = ( event ) => {
 		this.props.setAttributes( {
-			thumbwidth: isNaN( parseInt( event.target.value ) ) ? '' : parseInt( event.target.value )
+			thumbwidth: isNaN( parseInt( event.target.value) ) ? '' : parseInt( event.target.value ).toString()
 		} );
 	}
 
 	handleThumbHeightChange = ( event ) => {
 		this.props.setAttributes( {
-			thumbheight: isNaN( parseInt( event.target.value ) ) ? '' : parseInt( event.target.value )
+			thumbheight: isNaN( parseInt( event.target.value) ) ? '' : parseInt( event.target.value ).toString()
 		} );
 	}
 
@@ -37,7 +37,6 @@ class ThumbnailSetting extends Component {
 	render() {
 		const { thumb, thumbwidth, thumbheight, thumbsize } = this.props.attributes;
 		const valid = typeof thumb !== 'undefined' && thumb !== 'false';
-		this.props.setAttributes( { 'thumb': valid ? 'true' : 'false' } );
 
 		return (
 			<div className={ 'ecs-settings-thumb' }>

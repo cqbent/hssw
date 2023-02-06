@@ -1,7 +1,7 @@
 import SettingSelector from '../components/settingSelector';
 import SettingSwitcher from '../components/settingSwitcher';
 
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import { withContentRect } from 'react-measure';
 
 import { Component, Fragment } from '@wordpress/element';

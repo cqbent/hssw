@@ -46,3 +46,11 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentynineteen/404.php on line 12
+[21-Sep-2022 05:14:59 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentynineteen/404.php on line 12
+[23-Sep-2022 11:26:53 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentynineteen/404.php:12
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-content/themes/twentynineteen/404.php on line 12

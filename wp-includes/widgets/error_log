@@ -1574,3 +1574,7 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-block.php on line 17
+[01-Dec-2022 05:59:38 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-tag-cloud.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/iageosmy/public_html/hsswriters/wp-includes/widgets/class-wp-widget-tag-cloud.php on line 17

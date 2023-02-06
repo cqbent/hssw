@@ -16,7 +16,6 @@ class VenueSetting extends Component {
         let { venue } = this.props.attributes;
         venue = typeof venue === 'undefined' ? '' : venue;
         venue = ( venue === '' || venue === 'false' ) ? false : true;
-        this.props.setAttributes( { 'venue': venue ? 'true' : 'false' } );
 
 		return (
 			<Fragment>

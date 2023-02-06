@@ -4,7 +4,7 @@ Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 5.6
 Requires PHP: 5.3
 Tested up to: 6.0
-Stable tag: 2.5.4.1
+Stable tag: 2.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,7 +72,7 @@ Plus, get advanced control over how your events display:
 <li><strong>Only show start time:</strong> Just show the start time of your event.</li>
 <li><strong>Hide recurring events:</strong> Only show the first instance of a recurring event.</li>
 <li><strong>Filter bar:</strong> Allow visitors to choose what events they want to see.</li>
-<li><strong>Pagination:</strong> Let visitors show additional pages of events.</li>
+<li><strong>Pagination:</strong> Let visitors view additional pages of events.</li>
 <li><strong>Custom design:</strong> Create your own templates, or use one of the seven built-in options.</li>
 <li><strong>Plus much more:</strong> <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme&utm_content=description">check out The Events Calendar Shortcode Pro details here</a>.</li>
 </ul>
@@ -180,6 +180,10 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 2.5.5 =
+* Fix warning message on the Widgets page
+* Fix saving the thumbnail settings when using the block
+
 = 2.5.4.1 =
 * Reducing permission requirement for instructions page (Authors)
 
@@ -205,6 +209,10 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 Adds link to full documentation
 
 == Changelog ==
+
+= 2.5.5 =
+* Fix warning message on the Widgets page
+* Fix saving the thumbnail settings when using the block
 
 = 2.5.4.1 =
 * Reducing permission requirement for instructions page (Author)
