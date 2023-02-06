@@ -95,7 +95,7 @@
 }
 
 .featured-authors, .featured-blog-posts, .featured-events, body.blog, body.archive {
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
   margin-bottom: 20px;
   border-bottom: 1px $white solid;
   .row {

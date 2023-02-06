@@ -1,7 +1,9 @@
 body {
-  background-color: $dark-gray;
-  background-image: url("http://iag.eos.mybluehost.me/hssw/wp-content/themes/hssw-sage/dist/images/beigelightbg_hssw.jpg");
-  background-size: cover;
+  //background-color: $dark-gray;
+  background-image: url("../images/beigelightbg_hssw_fade.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #a59478;
   &#tinymce {
     background: $black;
   }

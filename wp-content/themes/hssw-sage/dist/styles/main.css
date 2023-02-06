@@ -15518,24 +15518,25 @@ a.text-dark:focus {
 /* line 1, resources/assets/styles/common/_global.scss */
 
 body {
-  background-color: #333;
-  background-image: url("http://iag.eos.mybluehost.me/hssw/wp-content/themes/hssw-sage/dist/images/beigelightbg_hssw.jpg");
-  background-size: cover;
+  background-image: url(/wp-content/themes/hssw-sage/dist/images/beigelightbg_hssw_fade.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #a59478;
 }
 
-/* line 5, resources/assets/styles/common/_global.scss */
+/* line 7, resources/assets/styles/common/_global.scss */
 
 body#tinymce {
   background: #000;
 }
 
-/* line 10, resources/assets/styles/common/_global.scss */
+/* line 12, resources/assets/styles/common/_global.scss */
 
 .container {
   max-width: 992px !important;
 }
 
-/* line 14, resources/assets/styles/common/_global.scss */
+/* line 16, resources/assets/styles/common/_global.scss */
 
 .wrap.container {
   background-color: #000;
@@ -15550,13 +15551,13 @@ body#tinymce {
   content: "";
 }
 
-/* line 22, resources/assets/styles/common/_global.scss */
+/* line 24, resources/assets/styles/common/_global.scss */
 
 article header {
   margin-bottom: 20px;
 }
 
-/* line 27, resources/assets/styles/common/_global.scss */
+/* line 29, resources/assets/styles/common/_global.scss */
 
 img {
   max-width: 100%;
@@ -15564,13 +15565,13 @@ img {
   display: block !important;
 }
 
-/* line 33, resources/assets/styles/common/_global.scss */
+/* line 35, resources/assets/styles/common/_global.scss */
 
 a {
   text-decoration: none;
 }
 
-/* line 39, resources/assets/styles/common/_global.scss */
+/* line 41, resources/assets/styles/common/_global.scss */
 
 h1 a,
 h2 a,
@@ -15579,7 +15580,7 @@ h4 a {
   color: #ffb966;
 }
 
-/* line 41, resources/assets/styles/common/_global.scss */
+/* line 43, resources/assets/styles/common/_global.scss */
 
 h1 a:hover,
 h2 a:hover,
@@ -15588,52 +15589,52 @@ h4 a:hover {
   color: #fff;
 }
 
-/* line 46, resources/assets/styles/common/_global.scss */
+/* line 48, resources/assets/styles/common/_global.scss */
 
 h1 {
   color: #40E0D0;
   font-size: 2rem;
 }
 
-/* line 50, resources/assets/styles/common/_global.scss */
+/* line 52, resources/assets/styles/common/_global.scss */
 
 h2 {
   color: #40E0D0;
   font-size: 1.5rem;
 }
 
-/* line 54, resources/assets/styles/common/_global.scss */
+/* line 56, resources/assets/styles/common/_global.scss */
 
 h3 {
   color: #40E0D0;
   font-size: 1.25rem;
 }
 
-/* line 59, resources/assets/styles/common/_global.scss */
+/* line 61, resources/assets/styles/common/_global.scss */
 
 .red {
   color: #e7160c;
 }
 
-/* line 62, resources/assets/styles/common/_global.scss */
+/* line 64, resources/assets/styles/common/_global.scss */
 
 .gold {
   color: #ffb966;
 }
 
-/* line 65, resources/assets/styles/common/_global.scss */
+/* line 67, resources/assets/styles/common/_global.scss */
 
 .turqoise {
   color: #40E0D0;
 }
 
-/* line 68, resources/assets/styles/common/_global.scss */
+/* line 70, resources/assets/styles/common/_global.scss */
 
 .purple {
   color: #a352cc;
 }
 
-/* line 73, resources/assets/styles/common/_global.scss */
+/* line 75, resources/assets/styles/common/_global.scss */
 
 form input[type=text],
 form textarea {
@@ -15641,7 +15642,7 @@ form textarea {
   max-width: 992px;
 }
 
-/* line 78, resources/assets/styles/common/_global.scss */
+/* line 80, resources/assets/styles/common/_global.scss */
 
 form #search-fields .search-field {
   padding: 2px 5px;
@@ -15650,7 +15651,7 @@ form #search-fields .search-field {
   float: left;
 }
 
-/* line 84, resources/assets/styles/common/_global.scss */
+/* line 86, resources/assets/styles/common/_global.scss */
 
 form #search-fields .btn,
 form #search-fields .comment-form input[type="submit"],
@@ -15672,34 +15673,34 @@ form #search-fields .tribe-events-single button,
   min-width: 20px;
 }
 
-/* line 96, resources/assets/styles/common/_global.scss */
+/* line 98, resources/assets/styles/common/_global.scss */
 
 .su-vimeo,
 .su-youtube {
   margin-bottom: 10px;
 }
 
-/* line 100, resources/assets/styles/common/_global.scss */
+/* line 102, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form {
   background: linear-gradient(to bottom, cadetblue, gold);
   padding: 4px;
 }
 
-/* line 103, resources/assets/styles/common/_global.scss */
+/* line 105, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-container {
   background: #000;
 }
 
-/* line 106, resources/assets/styles/common/_global.scss */
+/* line 108, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults {
   border-radius: 0;
   font-size: .875rem;
 }
 
-/* line 109, resources/assets/styles/common/_global.scss */
+/* line 111, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults .ctct-form-text,
 .ctct-inline-form .ctct-form-defaults label,
@@ -15707,26 +15708,26 @@ form #search-fields .tribe-events-single button,
   font-size: .875rem !important;
 }
 
-/* line 112, resources/assets/styles/common/_global.scss */
+/* line 114, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults h2 {
   font-size: 1.25rem !important;
 }
 
-/* line 115, resources/assets/styles/common/_global.scss */
+/* line 117, resources/assets/styles/common/_global.scss */
 
 .ctct-inline-form .ctct-form-defaults input.ctct-form-element {
   padding: 2px 5px !important;
   height: 30px !important;
 }
 
-/* line 123, resources/assets/styles/common/_global.scss */
+/* line 125, resources/assets/styles/common/_global.scss */
 
 .wp-caption {
   max-width: 100%;
 }
 
-/* line 128, resources/assets/styles/common/_global.scss */
+/* line 130, resources/assets/styles/common/_global.scss */
 
 .figure-caption,
 .wp-caption-text,
