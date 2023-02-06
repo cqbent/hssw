@@ -16302,7 +16302,7 @@ footer.content-info .container {
 /* line 28, resources/assets/styles/layouts/_content.scss */
 
 .features-carousel .item {
-  min-height: 300px;
+  min-height: 200px;
   background-color: #000;
   text-align: center;
   display: flex;
