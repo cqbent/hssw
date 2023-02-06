@@ -1,9 +1,10 @@
 body {
   //background-color: $dark-gray;
-  background-image: url("../images/beigelightbg_hssw_fade.jpg");
-  background-size: contain;
+  background-image: url("../images/beigelightbg_hssw.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-color: #a59478;
+  background-color: $dark-gray;
+  background-attachment: fixed;
   &#tinymce {
     background: $black;
   }
