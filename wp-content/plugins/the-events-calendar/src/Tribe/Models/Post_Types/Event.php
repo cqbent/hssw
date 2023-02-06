@@ -14,6 +14,9 @@ use DatePeriod;
 use DateTimeZone;
 use Tribe\Events\Collections\Lazy_Post_Collection;
 use Tribe\Models\Post_Types\Base;
+use Tribe\Utils\Date_I18n;
+use Tribe\Utils\Date_I18n_Immutable;
+use Tribe\Utils\Lazy_Boolean;
 use Tribe\Utils\Lazy_Collection;
 use Tribe\Utils\Lazy_String;
 use Tribe\Utils\Post_Thumbnail;
@@ -22,6 +25,7 @@ use Tribe__Events__Featured_Events as Featured;
 use Tribe__Events__Organizer as Organizer;
 use Tribe__Events__Timezones as Timezones;
 use Tribe__Events__Venue as Venue;
+use WP_Post;
 
 /**
  * Class Event
@@ -192,6 +196,7 @@ class Event extends Base {
 				'duration'               => $duration,
 				'multiday'               => $multiday,
 				'is_past'                => $start_date_object < $now,
+				'is_now'                 => Dates::is_now( $start_date, $end_date ),
 				'all_day'                => $all_day,
 				'starts_this_week'       => $starts_this_week,
 				'ends_this_week'         => $ends_this_week,
@@ -201,12 +206,14 @@ class Event extends Base {
 				'featured'               => $featured,
 				'sticky'                 => $sticky,
 				'cost'                   => tribe_get_cost( $post_id, true ),
-				'excerpt'                => ( new Lazy_String(
-					static function () use ( $post_id ) {
-						return tribe_events_get_the_excerpt( $post_id, wp_kses_allowed_html( 'post' ) );
-					},
-					false
-				) )->on_resolve( $cache_this ),
+				'excerpt'                => (
+					new Lazy_String(
+						static function () use ( $post_id ) {
+							return tribe_events_get_the_excerpt( $post_id, wp_kses_allowed_html( 'post' ) );
+						},
+						false
+					)
+				)->on_resolve( $cache_this ),
 				'organizer_names'        => ( new Lazy_Collection( $organizer_names_fetch ) )->on_resolve( $cache_this ),
 				'organizers'             => (
 				new Lazy_Post_Collection(
@@ -274,11 +281,11 @@ class Event extends Base {
 	 *
 	 * @since 6.0.0
 	 *
-	 * @param int[]|\WP_Post[] $events
+	 * @param array<int|WP_Post> $events
 	 */
 	public static function prime_cache( array $events = [] ) {
 		$first = reset( $events );
-		$is_numeric = ( ! $first instanceof \WP_Post );
+		$is_numeric = ( ! $first instanceof WP_Post );
 		if ( $is_numeric ) {
 			$event_ids = $events;
 		} else {
@@ -286,12 +293,12 @@ class Event extends Base {
 		}
 
 		/**
-		 * Allows changing which Post IDs will get primed for cache
+		 * Allows changing which Post IDs will get primed for cache.
 		 *
 		 * @since 6.0.0
 		 *
-		 * @param int[] $event_ids Which IDs we will prime.
-		 * @param \WP_Post[]|int[] $events Which event objects will generate the ids.
+		 * @param array<int> $event_ids Which IDs we will prime.
+		 * @param array<int|WP_Post> $events Which event objects will generate the ids.
 		 */
 		$event_ids = apply_filters( 'tec_events_prime_cache_post_ids', $event_ids, $events );
 
@@ -327,5 +334,60 @@ class Event extends Base {
 		$posts = array_unique( array_merge( $venue_ids, $organizer_ids, $attachment_ids ) );
 
 		_prime_post_caches( $posts );
+	}
+
+	/**
+	 * Overrides the base method to conver the I18n Dates to PHP built-in Date types.
+	 *
+	 * @since 6.0.3.1
+	 *
+	 * @param array<string,mixed> $properties The properties to filter.
+	 *
+	 * @return array<string,mixed> The filtered properties.
+	 *
+	 * @throws \Exception If a date cannot be converted to a DateTime object.
+	 */
+	protected function scalar_serialize_properties( array $properties ): array {
+		// Convert the dates to built-in PHP date objects.
+		$properties['dates'] = array_map( static function ( $date ) {
+			if ( $date instanceof Date_I18n_Immutable ) {
+				return new \DateTimeImmutable( $date->format( 'Y-m-d H:i:s' ), $date->getTimezone() );
+			}
+
+			if ( $date instanceof Date_I18n ) {
+				return new \DateTime( $date->format( 'Y-m-d H:i:s' ), $date->getTimezone() );
+			}
+
+			return $date;
+		}, get_object_vars( $properties['dates'] ) );
+
+		return $properties;
+	}
+
+	/**
+	 * Overrides the base method to convert date properties to I18n Dates.
+	 *
+	 * @since 6.0.3.1
+	 *
+	 * @param array<string,mixed> $properties The properties to filter.
+	 *
+	 * @return array<string,mixed> The filtered properties.
+	 *
+	 * @throws \Exception If a date cannot be converted to a I18n Date object.
+	 */
+	protected function scalar_unserialize_properties( array $properties ): array {
+		$properties['dates'] = (object) array_map( static function ( $date ) {
+			if ( $date instanceof \DateTimeImmutable ) {
+				return new Date_I18n_Immutable( $date->format( 'Y-m-d H:i:s' ), $date->getTimezone() );
+			}
+
+			if ( $date instanceof \DateTime ) {
+				return new Date_I18n( $date->format( 'Y-m-d H:i:s' ), $date->getTimezone() );
+			}
+
+			return $date;
+		}, $properties['dates'] ?? [] );
+
+		return $properties;
 	}
 }

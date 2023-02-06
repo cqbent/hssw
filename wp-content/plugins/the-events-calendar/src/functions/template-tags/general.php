@@ -157,6 +157,51 @@ function tribe_get_event_label_plural_lowercase() {
 }
 
 /**
+ * Get the filtered text label for the "Today" button on calendar views.
+ *
+ * @since 6.0.2
+ *
+ * @param \Tribe\Events\Views\V2\View_Interface $view The View currently rendering.
+ *               Hint: In templates, you can call $this->get_view() to get the view.
+ *
+ * @return string The label for the "Today" button.
+ */
+function tec_events_get_today_button_label( $view = null ) {
+	$today = esc_html_x(
+		'Today',
+		'The default text label for the "today" button on main calendar views.',
+		'the-events-calendar'
+	);
+
+	/**
+	 * Allows filtering of all labels for the today button at one time.
+	 *
+	 * @since 6.0.2
+	 *
+	 * @param string $today The string used for the "Today" button on calendar views.
+	 * @param \Tribe\Events\Views\V2\View_Interface $view The View currently rendering.
+	 */
+	$today = apply_filters( 'tec_events_today_button_label', $today, $view );
+
+	// If we don't have the view - send it off!
+	if ( empty( $view ) ) {
+		return $today;
+	}
+
+	$view_slug = $view::get_view_slug();
+
+	/**
+	 * Allows filtering a view-specific label for the today button.
+	 *
+	 * @since 6.0.2
+	 *
+	 * @param string $today The string used for the "Today" button on calendar views.
+	 * @param \Tribe\Events\Views\V2\View_Interface $view The View currently rendering.
+	 */
+	return apply_filters( "tec_events_view_{$view_slug}_today_button_label", $today, $view );
+}
+
+/**
  * Includes a template part, similar to the WP get template part, but looks
  * in the correct directories for Tribe Events templates
  *
@@ -842,7 +887,6 @@ function tribe_events_event_classes( $event = 0, $echo = true ) {
 		return implode( ' ', $classes );
 	}
 }
-
 
 /**
  * Prints out data attributes used in the template header tags
@@ -1847,6 +1891,10 @@ function tribe_is_events_front_page() {
 
 	$wp_query = tribe_get_global_query_object();
 
+	if ( ! $wp_query instanceof WP_Query ) {
+		return false;
+	}
+
 	$events_as_front_page = tribe_get_option( 'front_page_event_archive', false );
 
 	// If the reading option has an events page as front page and we are on that page is on the home of events.
@@ -1875,6 +1923,10 @@ function tribe_is_events_front_page() {
 function tribe_is_events_home() {
 
 	$wp_query = tribe_get_global_query_object();
+
+	if ( ! $wp_query instanceof WP_Query ) {
+		return false;
+	}
 
 	if ( tribe_is_events_front_page() ) {
 		return true;

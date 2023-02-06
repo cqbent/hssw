@@ -3,14 +3,16 @@
  Plugin Name: The Events Calendar Shortcode & Block
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode and new editor block functionality for The Events Calendar Plugin by Modern Tribe.
- Version: 2.5.5
+ Version: 2.5.6
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode
  Contributors: brianhogg
  License: GPL2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain: the-events-calendar-shortcode
-*/
+ Requires at least: 5.6
+ Requires PHP: 5.3
+ */
 
 // Avoid direct calls to this file
 if ( !defined( 'ABSPATH' ) ) {
@@ -55,7 +57,7 @@ if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
          *
          * @since 1.0.0
          */
-        const VERSION = '2.5.5';
+        const VERSION = '2.5.6';
 
         private $admin_page = null;
 
@@ -159,28 +161,28 @@ if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
             $output = '';
 
             $atts = shortcode_atts( apply_filters( 'ecs_shortcode_atts', array(
-            'cat' => '',
-            'month' => '',
-            'limit' => 5,
-            'eventdetails' => 'true',
-            'time' => null,
-            'past' => null,
-            'venue' => 'false',
-            'author' => null,
-            'schema' => 'true',
-            'message' => 'There are no upcoming %s at this time.',
-            'key' => 'End Date',
-            'order' => 'ASC',
-            'orderby' => 'startdate',
-            'viewall' => 'false',
-            'excerpt' => 'false',
-            'thumb' => 'false',
-            'thumbsize' => '',
-            'thumbwidth' => '',
-            'thumbheight' => '',
-            'contentorder' => apply_filters( 'ecs_default_contentorder', 'title, thumbnail, excerpt, date, venue', $atts ),
-            'event_tax' => '',
-        ), $atts ), $atts, 'ecs-list-events' );
+                'cat' => '',
+                'month' => '',
+                'limit' => 5,
+                'eventdetails' => 'true',
+                'time' => null,
+                'past' => null,
+                'venue' => 'false',
+                'author' => null,
+                'schema' => 'true',
+                'message' => 'There are no upcoming %1$s.',
+                'key' => 'End Date',
+                'order' => 'ASC',
+                'orderby' => 'startdate',
+                'viewall' => 'false',
+                'excerpt' => 'false',
+                'thumb' => 'false',
+                'thumbsize' => '',
+                'thumbwidth' => '',
+                'thumbheight' => '',
+                'contentorder' => apply_filters( 'ecs_default_contentorder', 'title, thumbnail, excerpt, date, venue', $atts ),
+                'event_tax' => '',
+            ), $atts ), $atts, 'ecs-list-events' );
 
             // Category
             if ( $atts['cat'] ) {
@@ -192,23 +194,23 @@ if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
                 }
 
                 $atts['event_tax'] = array(
-                'relation' => 'OR',
-            );
+                    'relation' => 'OR',
+                );
 
                 foreach ( $atts['cats'] as $cat ) {
                     $atts['event_tax'][] = array(
-                    'relation' => 'OR',
-                    array(
-                        'taxonomy' => 'tribe_events_cat',
-                        'field' => 'name',
-                        'terms' => $cat,
-                    ),
-                    array(
-                        'taxonomy' => 'tribe_events_cat',
-                        'field' => 'slug',
-                        'terms' => $cat,
-                    ),
-                );
+                        'relation' => 'OR',
+                        array(
+                            'taxonomy' => 'tribe_events_cat',
+                            'field' => 'name',
+                            'terms' => $cat,
+                        ),
+                        array(
+                            'taxonomy' => 'tribe_events_cat',
+                            'field' => 'slug',
+                            'terms' => $cat,
+                        ),
+                    );
                 }
             }
 
@@ -238,13 +240,13 @@ if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
 
             // Date
             $atts['meta_date'] = array(
-            array(
-                'key' => $atts['key'],
-                'value' => $meta_date_date,
-                'compare' => $meta_date_compare,
-                'type' => 'DATETIME',
-            ),
-        );
+                array(
+                    'key' => $atts['key'],
+                    'value' => $meta_date_date,
+                    'compare' => $meta_date_compare,
+                    'type' => 'DATETIME',
+                ),
+            );
 
             // Specific Month
             if ( 'current' == $atts['month'] ) {
@@ -263,35 +265,35 @@ if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
                 $month_enddate = date( 'Y-m-01', strtotime( '+1 month', strtotime( $month_startdate ) ) );
 
                 $atts['meta_date'] = array(
-                'relation' => 'AND',
-                array(
-                    'key' => $atts['key'],
-                    'value' => $month_startdate,
-                    'compare' => '>=',
-                    'type' => 'DATETIME',
-                ),
-                array(
-                    'key' => $atts['key'],
-                    'value' => $month_enddate,
-                    'compare' => '<',
-                    'type' => 'DATETIME',
-                ),
-            );
+                    'relation' => 'AND',
+                    array(
+                        'key' => $atts['key'],
+                        'value' => $month_startdate,
+                        'compare' => '>=',
+                        'type' => 'DATETIME',
+                    ),
+                    array(
+                        'key' => $atts['key'],
+                        'value' => $month_enddate,
+                        'compare' => '<',
+                        'type' => 'DATETIME',
+                    ),
+                );
             }
 
             $atts = apply_filters( 'ecs_atts_pre_query', $atts, $meta_date_date, $meta_date_compare );
             $args = apply_filters( 'ecs_get_events_args', array(
-            'post_status' => 'publish',
-            'hide_upcoming' => true,
-            'posts_per_page' => $atts['limit'],
-            'tax_query' => $atts['event_tax'],
-            // Likely want to revamp this logic and separate the ordering from the date filtering
-            'meta_key' => ( ( trim( $atts['orderby'] ) and 'title' != $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
-            'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'event_date' ),
-            'author' => $atts['author'],
-            'order' => $atts['order'],
-            'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
-        ), $atts, $meta_date_date, $meta_date_compare );
+                'post_status' => 'publish',
+                'hide_upcoming' => true,
+                'posts_per_page' => $atts['limit'],
+                'tax_query' => $atts['event_tax'],
+                // Likely want to revamp this logic and separate the ordering from the date filtering
+                'meta_key' => ( ( trim( $atts['orderby'] ) and 'title' != $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
+                'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'event_date' ),
+                'author' => $atts['author'],
+                'order' => $atts['order'],
+                'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
+            ), $atts, $meta_date_date, $meta_date_compare );
 
             $posts = tribe_get_events( $args );
             $posts = apply_filters( 'ecs_filter_events_after_get', $posts, $atts );
@@ -322,63 +324,63 @@ if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
                     // Put Values into $event_output
                     foreach ( apply_filters( 'ecs_event_contentorder', $atts['contentorder'], $atts, $post ) as $contentorder ) {
                         switch ( trim( $contentorder ) ) {
-                        case 'title':
-                            $event_output .= apply_filters( 'ecs_event_title_tag_start', '<h4 class="entry-title summary">', $atts, $post ) .
-                                            apply_filters( 'ecs_event_list_title_link_start', '<a href="' . tribe_get_event_link() . '" rel="bookmark">', $atts, $post ) . apply_filters( 'ecs_event_list_title', get_the_title(), $atts, $post ) . apply_filters( 'ecs_event_list_title_link_end', '</a>', $atts, $post ) .
-                                       apply_filters( 'ecs_event_title_tag_end', '</h4>', $atts, $post );
-                            break;
+                            case 'title':
+                                $event_output .= apply_filters( 'ecs_event_title_tag_start', '<h4 class="entry-title summary">', $atts, $post ) .
+                                                 apply_filters( 'ecs_event_list_title_link_start', '<a href="' . tribe_get_event_link() . '" rel="bookmark">', $atts, $post ) . apply_filters( 'ecs_event_list_title', get_the_title(), $atts, $post ) . apply_filters( 'ecs_event_list_title_link_end', '</a>', $atts, $post ) .
+                                                 apply_filters( 'ecs_event_title_tag_end', '</h4>', $atts, $post );
+                                break;
 
-                        case 'thumbnail':
-                            if ( self::isValid( $atts['thumb'] ) ) {
-                                $thumbWidth = is_numeric( $atts['thumbwidth'] ) ? $atts['thumbwidth'] : '';
-                                $thumbHeight = is_numeric( $atts['thumbheight'] ) ? $atts['thumbheight'] : '';
-                                if ( !empty( $thumbWidth ) && !empty( $thumbHeight ) ) {
-                                    $event_output .= apply_filters( 'ecs_event_thumbnail', get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', array( $thumbWidth, $thumbHeight ), $atts, $post ) ), $atts, $post );
-                                } else {
-                                    if ( $thumb = get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', ( trim( $atts['thumbsize'] ) ? trim( $atts['thumbsize'] ) : 'medium' ), $atts, $post ) ) ) {
-                                        $event_output .= apply_filters( 'ecs_event_thumbnail_link_start', '<a href="' . tribe_get_event_link() . '">', $atts, $post );
-                                        $event_output .= apply_filters( 'ecs_event_thumbnail', $thumb, $atts, $post );
-                                        $event_output .= apply_filters( 'ecs_event_thumbnail_link_end', '</a>', $atts, $post );
+                            case 'thumbnail':
+                                if ( self::isValid( $atts['thumb'] ) ) {
+                                    $thumbWidth = is_numeric( $atts['thumbwidth'] ) ? $atts['thumbwidth'] : '';
+                                    $thumbHeight = is_numeric( $atts['thumbheight'] ) ? $atts['thumbheight'] : '';
+                                    if ( !empty( $thumbWidth ) && !empty( $thumbHeight ) ) {
+                                        $event_output .= apply_filters( 'ecs_event_thumbnail', get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', array( $thumbWidth, $thumbHeight ), $atts, $post ) ), $atts, $post );
+                                    } else {
+                                        if ( $thumb = get_the_post_thumbnail( get_the_ID(), apply_filters( 'ecs_event_thumbnail_size', ( trim( $atts['thumbsize'] ) ? trim( $atts['thumbsize'] ) : 'medium' ), $atts, $post ) ) ) {
+                                            $event_output .= apply_filters( 'ecs_event_thumbnail_link_start', '<a href="' . tribe_get_event_link() . '">', $atts, $post );
+                                            $event_output .= apply_filters( 'ecs_event_thumbnail', $thumb, $atts, $post );
+                                            $event_output .= apply_filters( 'ecs_event_thumbnail_link_end', '</a>', $atts, $post );
+                                        }
                                     }
                                 }
-                            }
-                            break;
+                                break;
 
-                        case 'excerpt':
-                            if ( self::isValid( $atts['excerpt'] ) ) {
-                                $excerptLength = is_numeric( $atts['excerpt'] ) ? intval( $atts['excerpt'] ) : 100;
-                                $event_output .= apply_filters( 'ecs_event_excerpt_tag_start', '<p class="ecs-excerpt">', $atts, $post ) .
-                                           apply_filters( 'ecs_event_excerpt', self::get_excerpt( $excerptLength ), $atts, $post, $excerptLength ) .
-                                           apply_filters( 'ecs_event_excerpt_tag_end', '</p>', $atts, $post );
-                            }
-                            break;
+                            case 'excerpt':
+                                if ( self::isValid( $atts['excerpt'] ) ) {
+                                    $excerptLength = is_numeric( $atts['excerpt'] ) ? intval( $atts['excerpt'] ) : 100;
+                                    $event_output .= apply_filters( 'ecs_event_excerpt_tag_start', '<p class="ecs-excerpt">', $atts, $post ) .
+                                                     apply_filters( 'ecs_event_excerpt', self::get_excerpt( $excerptLength ), $atts, $post, $excerptLength ) .
+                                                     apply_filters( 'ecs_event_excerpt_tag_end', '</p>', $atts, $post );
+                                }
+                                break;
 
-                        case 'date':
-                            if ( self::isValid( $atts['eventdetails'] ) ) {
-                                $event_output .= apply_filters( 'ecs_event_date_tag_start', '<span class="duration time">', $atts, $post ) .
-                                           apply_filters( 'ecs_event_list_details', tribe_events_event_schedule_details(), $atts, $post ) .
-                                           apply_filters( 'ecs_event_date_tag_end', '</span>', $atts, $post );
-                            }
-                            break;
+                            case 'date':
+                                if ( self::isValid( $atts['eventdetails'] ) ) {
+                                    $event_output .= apply_filters( 'ecs_event_date_tag_start', '<span class="duration time">', $atts, $post ) .
+                                                     apply_filters( 'ecs_event_list_details', tribe_events_event_schedule_details(), $atts, $post ) .
+                                                     apply_filters( 'ecs_event_date_tag_end', '</span>', $atts, $post );
+                                }
+                                break;
 
-                        case 'venue':
-                            if ( self::isValid( $atts['venue'] ) and function_exists( 'tribe_has_venue' ) and tribe_has_venue() ) {
-                                $event_output .= apply_filters( 'ecs_event_venue_tag_start', '<span class="duration venue">', $atts, $post ) .
-                                           apply_filters( 'ecs_event_venue_at_tag_start', '<em> ', $atts, $post ) .
-                                           apply_filters( 'ecs_event_venue_at_text', __( 'at', 'the-events-calendar-shortcode' ), $atts, $post ) .
-                                           apply_filters( 'ecs_event_venue_at_tag_end', ' </em>', $atts, $post ) .
-                                           apply_filters( 'ecs_event_list_venue', tribe_get_venue(), $atts, $post ) .
-                                           apply_filters( 'ecs_event_venue_tag_end', '</span>', $atts, $post );
-                            }
-                            break;
-                        case 'date_thumb':
-                            if ( self::isValid( $atts['eventdetails'] ) ) {
-                                $event_output .= apply_filters( 'ecs_event_date_thumb', '<div class="date_thumb"><div class="month">' . tribe_get_start_date( null, false, 'M' ) . '</div><div class="day">' . tribe_get_start_date( null, false, 'j' ) . '</div></div>', $atts, $post );
-                            }
-                            break;
-                        default:
-                            $event_output .= apply_filters( 'ecs_event_list_output_custom_' . strtolower( trim( $contentorder ) ), '', $atts, $post );
-                    }
+                            case 'venue':
+                                if ( self::isValid( $atts['venue'] ) and function_exists( 'tribe_has_venue' ) and tribe_has_venue() ) {
+                                    $event_output .= apply_filters( 'ecs_event_venue_tag_start', '<span class="duration venue">', $atts, $post ) .
+                                                     apply_filters( 'ecs_event_venue_at_tag_start', '<em> ', $atts, $post ) .
+                                                     apply_filters( 'ecs_event_venue_at_text', __( 'at', 'the-events-calendar-shortcode' ), $atts, $post ) .
+                                                     apply_filters( 'ecs_event_venue_at_tag_end', ' </em>', $atts, $post ) .
+                                                     apply_filters( 'ecs_event_list_venue', tribe_get_venue(), $atts, $post ) .
+                                                     apply_filters( 'ecs_event_venue_tag_end', '</span>', $atts, $post );
+                                }
+                                break;
+                            case 'date_thumb':
+                                if ( self::isValid( $atts['eventdetails'] ) ) {
+                                    $event_output .= apply_filters( 'ecs_event_date_thumb', '<div class="date_thumb"><div class="month">' . tribe_get_start_date( null, false, 'M' ) . '</div><div class="day">' . tribe_get_start_date( null, false, 'j' ) . '</div></div>', $atts, $post );
+                                }
+                                break;
+                            default:
+                                $event_output .= apply_filters( 'ecs_event_list_output_custom_' . strtolower( trim( $contentorder ) ), '', $atts, $post );
+                        }
                     }
                     $event_output .= apply_filters( 'ecs_event_end_tag', '</li>', $atts, $post );
                     $output .= apply_filters( 'ecs_single_event_output', $event_output, $atts, $post, $post_index, $posts );
@@ -387,13 +389,13 @@ if ( ! class_exists( 'Events_Calendar_Shortcode' ) ) {
                 $output = apply_filters( 'ecs_ending_output', $output, $posts, $atts );
 
                 if ( self::isValid( $atts['viewall'] ) ) {
-                    $output .= apply_filters( 'ecs_view_all_events_tag_start', '<span class="ecs-all-events">', $atts ) .
-                           '<a href="' . apply_filters( 'ecs_event_list_viewall_link', tribe_get_events_link(), $atts ) . '" rel="bookmark">' . apply_filters( 'ecs_view_all_events_text', sprintf( __( 'View All %s', 'the-events-calendar' ), tribe_get_event_label_plural() ), $atts ) . '</a>';
-                    $output .= apply_filters( 'ecs_view_all_events_tag_end', '</span>' );
+                    $output .= apply_filters( 'ecs_view_all_events_tag_start', '<div class="ecs-view-all-events"><span class="ecs-all-events">', $atts ) .
+                               '<a href="' . apply_filters( 'ecs_event_list_viewall_link', tribe_get_events_link(), $atts ) . '" rel="bookmark">' . apply_filters( 'ecs_view_all_events_text', sprintf( __( 'View all %s', 'the-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts ) . '</a>';
+                    $output .= apply_filters( 'ecs_view_all_events_tag_end', '</span></div>' );
                 }
-            } else { //No Events were Found
-                $output .= '<div class="ecs-no-events">' . apply_filters( 'ecs_no_events_found_message', sprintf( translate( $atts['message'], 'the-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts ) . '</div>';
-            } // endif
+            } else {
+                $output .= '<div class="ecs-no-events">' . apply_filters( 'ecs_no_events_found_message', sprintf( _x( $atts['message'], 'A message to indicate there are no upcoming events.', 'the-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts ) . '</div>';
+            }
 
             wp_reset_postdata();
 

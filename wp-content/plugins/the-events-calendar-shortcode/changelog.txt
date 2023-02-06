@@ -1,3 +1,19 @@
+= 2.5.6 =
+* Fix translations for "There are no upcoming events" and "View all events" since The Events Calendar 6.x
+
+= 2.5.5 =
+* Fix warning message on the Widgets page
+* Fix saving the thumbnail settings when using the block
+
+= 2.5.4.1 =
+* Reducing permission requirement for instructions page (Authors)
+
+= 2.5.4 =
+* Fix broken settings page link
+
+= 2.5.3 =
+* Fix for month="next" when near the end of a month
+
 = 2.5.2 =
 * Initial workaround for styling issues for the block in the new full-site editor
 

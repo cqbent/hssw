@@ -21,7 +21,7 @@ class Tribe__Main {
 	const OPTIONNAME          = 'tribe_events_calendar_options';
 	const OPTIONNAMENETWORK   = 'tribe_events_calendar_network_options';
 
-	const VERSION             = '5.0.0';
+	const VERSION             = '5.0.7';
 
 	const FEED_URL            = 'https://theeventscalendar.com/feed/';
 
@@ -184,6 +184,7 @@ class Tribe__Main {
 	public function init_libraries() {
 		require_once $this->plugin_path . 'src/functions/utils.php';
 		require_once $this->plugin_path . 'src/functions/conditionals.php';
+		require_once $this->plugin_path . 'src/functions/transient.php';
 		require_once $this->plugin_path . 'src/functions/url.php';
 		require_once $this->plugin_path . 'src/functions/query.php';
 		require_once $this->plugin_path . 'src/functions/multibyte.php';
@@ -194,6 +195,8 @@ class Tribe__Main {
 		require_once $this->plugin_path . 'src/functions/template-tags/post.php';
 
 		Tribe__Debug::instance();
+		tec_timed_option();
+
 		tribe( 'assets' );
 		tribe( 'assets.pipeline' );
 		tribe( 'settings.manager' );
@@ -412,12 +415,12 @@ class Tribe__Main {
 				'monthNames'      => $datepicker_months,
 				'monthNamesShort' => $datepicker_months, // We deliberately use full month names here,
 				'monthNamesMin'   => array_values( Tribe__Date_Utils::get_localized_months_short() ),
- 				'nextText'        => esc_html__( 'Next', 'the-events-calendar' ),
-				'prevText'        => esc_html__( 'Prev', 'the-events-calendar' ),
-				'currentText'     => esc_html__( 'Today', 'the-events-calendar' ),
-				'closeText'       => esc_html__( 'Done', 'the-events-calendar' ),
-				'today'           => esc_html__( 'Today', 'the-events-calendar' ),
-				'clear'           => esc_html__( 'Clear', 'the-events-calendar' ),
+ 				'nextText'        => esc_html__( 'Next', 'tribe-common' ),
+				'prevText'        => esc_html__( 'Prev', 'tribe-common' ),
+				'currentText'     => esc_html__( 'Today', 'tribe-common' ),
+				'closeText'       => esc_html__( 'Done', 'tribe-common' ),
+				'today'           => esc_html__( 'Today', 'tribe-common' ),
+				'clear'           => esc_html__( 'Clear', 'tribe-common' ),
 			],
 		] );
 	}
@@ -676,6 +679,7 @@ class Tribe__Main {
 	 * @return void Implementation of components loader doesn't return anything.
 	 */
 	public function bind_implementations() {
+		tribe_singleton( \TEC\Common\Storage\Timed_Option::class, \TEC\Common\Storage\Timed_Option::class );
 		tribe_singleton( 'settings.manager', 'Tribe__Settings_Manager' );
 		tribe_singleton( 'settings', 'Tribe__Settings', [ 'hook' ] );
 		tribe_singleton( 'ajax.dropdown', 'Tribe__Ajax__Dropdown', [ 'hook' ] );

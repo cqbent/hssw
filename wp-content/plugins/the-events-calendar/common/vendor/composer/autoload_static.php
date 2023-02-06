@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita130c299833c4cdd70603415888ece34
+class ComposerStaticInite4070f9aa08d7fd778bc69e3ab39c193
 {
     public static $prefixLengthsPsr4 = array (
         'T' => 
@@ -68,8 +68,11 @@ class ComposerStaticInita130c299833c4cdd70603415888ece34
 
     public static $classMap = array (
         'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
+        'Firebase\\JWT\\CachedKeySet' => __DIR__ . '/..' . '/firebase/php-jwt/src/CachedKeySet.php',
         'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
+        'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
         'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
+        'Firebase\\JWT\\Key' => __DIR__ . '/..' . '/firebase/php-jwt/src/Key.php',
         'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'Monolog\\ErrorHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ErrorHandler.php',
         'Monolog\\Formatter\\ChromePHPFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/ChromePHPFormatter.php',
@@ -176,6 +179,8 @@ class ComposerStaticInita130c299833c4cdd70603415888ece34
         'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
         'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
         'TEC\\Common\\Editor\\Full_Site\\Template_Utils' => __DIR__ . '/../..' . '/src/Common/Editor/Full_Site/Template_Utils.php',
+        'TEC\\Common\\Storage\\Timed_Option' => __DIR__ . '/../..' . '/src/Common/Storage/Timed_Option.php',
+        'TEC\\Common\\Translations_Loader' => __DIR__ . '/../..' . '/src/Common/Translations_Loader.php',
         'Tribe\\Admin\\Conditional_Content\\Black_Friday' => __DIR__ . '/../..' . '/src/Tribe/Admin/Conditional_Content/Black_Friday.php',
         'Tribe\\Admin\\Conditional_Content\\Datetime_Conditional_Abstract' => __DIR__ . '/../..' . '/src/Tribe/Admin/Conditional_Content/Datetime_Conditional_Abstract.php',
         'Tribe\\Admin\\Conditional_Content\\End_Of_Year_Sale' => __DIR__ . '/../..' . '/src/Tribe/Admin/Conditional_Content/End_Of_Year_Sale.php',
@@ -270,10 +275,10 @@ class ComposerStaticInita130c299833c4cdd70603415888ece34
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita130c299833c4cdd70603415888ece34::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita130c299833c4cdd70603415888ece34::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita130c299833c4cdd70603415888ece34::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita130c299833c4cdd70603415888ece34::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite4070f9aa08d7fd778bc69e3ab39c193::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite4070f9aa08d7fd778bc69e3ab39c193::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite4070f9aa08d7fd778bc69e3ab39c193::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInite4070f9aa08d7fd778bc69e3ab39c193::$classMap;
 
         }, null, ClassLoader::class);
     }

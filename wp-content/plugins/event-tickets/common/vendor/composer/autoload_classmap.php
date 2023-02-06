@@ -7,8 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Firebase\\JWT\\BeforeValidException' => $vendorDir . '/firebase/php-jwt/src/BeforeValidException.php',
+    'Firebase\\JWT\\CachedKeySet' => $vendorDir . '/firebase/php-jwt/src/CachedKeySet.php',
     'Firebase\\JWT\\ExpiredException' => $vendorDir . '/firebase/php-jwt/src/ExpiredException.php',
+    'Firebase\\JWT\\JWK' => $vendorDir . '/firebase/php-jwt/src/JWK.php',
     'Firebase\\JWT\\JWT' => $vendorDir . '/firebase/php-jwt/src/JWT.php',
+    'Firebase\\JWT\\Key' => $vendorDir . '/firebase/php-jwt/src/Key.php',
     'Firebase\\JWT\\SignatureInvalidException' => $vendorDir . '/firebase/php-jwt/src/SignatureInvalidException.php',
     'Monolog\\ErrorHandler' => $vendorDir . '/monolog/monolog/src/Monolog/ErrorHandler.php',
     'Monolog\\Formatter\\ChromePHPFormatter' => $vendorDir . '/monolog/monolog/src/Monolog/Formatter/ChromePHPFormatter.php',
@@ -115,6 +118,7 @@ return array(
     'Psr\\Log\\Test\\LoggerInterfaceTest' => $vendorDir . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
     'Psr\\Log\\Test\\TestLogger' => $vendorDir . '/psr/log/Psr/Log/Test/TestLogger.php',
     'TEC\\Common\\Editor\\Full_Site\\Template_Utils' => $baseDir . '/src/Common/Editor/Full_Site/Template_Utils.php',
+    'TEC\\Common\\Storage\\Timed_Option' => $baseDir . '/src/Common/Storage/Timed_Option.php',
     'Tribe\\Admin\\Conditional_Content\\Black_Friday' => $baseDir . '/src/Tribe/Admin/Conditional_Content/Black_Friday.php',
     'Tribe\\Admin\\Conditional_Content\\Datetime_Conditional_Abstract' => $baseDir . '/src/Tribe/Admin/Conditional_Content/Datetime_Conditional_Abstract.php',
     'Tribe\\Admin\\Conditional_Content\\End_Of_Year_Sale' => $baseDir . '/src/Tribe/Admin/Conditional_Content/End_Of_Year_Sale.php',

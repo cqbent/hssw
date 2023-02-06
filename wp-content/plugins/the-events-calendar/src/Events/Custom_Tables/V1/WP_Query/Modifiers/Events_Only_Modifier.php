@@ -11,6 +11,7 @@ namespace TEC\Events\Custom_Tables\V1\WP_Query\Modifiers;
 
 use TEC\Events\Custom_Tables\V1\Traits\With_WP_Query_Introspection;
 use TEC\Events\Custom_Tables\V1\WP_Query\Custom_Tables_Query;
+use TEC\Events_Pro\Custom_Tables\V1\WP_Query\Modifiers\Events_Not_In_Series_Modifier;
 use Tribe__Events__Main as TEC;
 use WP_Post;
 use WP_Query;
@@ -58,14 +59,15 @@ class Events_Only_Modifier extends Base_Modifier {
 	 *
 	 * @return null|array<WP_Post|int> The filtered value of the posts, injected before the query actually runs.
 	 */
-	public function filter_posts_pre_query( $posts = null, WP_Query $wp_query = null ) {
-		if ( ! $this->is_target_query( $wp_query ) ) {
+	public function filter_posts_pre_query( $posts = null, $wp_query = null ) {
+		if ( ! ( $wp_query instanceof WP_Query && $this->is_target_query( $wp_query ) ) ) {
 			return $posts;
 		}
 
-		if ( null !== $posts ) {
-			$this->unhook();
+		// This modifier should stop filtering queries, since this is the one to filter.
+		$this->unhook();
 
+		if ( null !== $posts ) {
 			// If something already intervened in the filter, then bail and do not touch the query at all.
 			return $posts;
 		}
@@ -90,7 +92,16 @@ class Events_Only_Modifier extends Base_Modifier {
 
 		$this->done();
 
-		return $posts;
+		/**
+		 * Allow filtering just for when applied the Events Only Modifier.
+		 *
+		 * @since 6.0.2
+		 *
+		 * @param WP_Query|null           $wp_query    A reference to the `WP_Query` instance that is currently running.
+		 * @param array<WP_Post|int>|null $posts       The filter input value, it could have already be filtered by other
+		 *                                             plugins at this stage.
+		 */
+		return apply_filters( 'tec_events_custom_tables_v1_events_only_modifier_filter_posts_pre_query', $posts, $wp_query );
 	}
 
 	/**
@@ -108,7 +119,15 @@ class Events_Only_Modifier extends Base_Modifier {
 	 * @since 6.0.0
 	 */
 	protected function is_target_query( WP_Query $query = null ) {
-		return parent::is_target_query( $query )
-			   && ! tribe( Events_Not_In_Series_Modifier::class )->applies_to( $query );
+		/**
+		 * Filters whether this modifier should modify the query.
+		 *
+		 * @since 6.0.5
+		 *
+		 * @param bool          $should_filter Should filter, defaults to rely on internal logic whether to modify.
+		 * @param WP_Query      $query         The query object.
+		 * @param Base_Modifier $modifier      The modifier being used to filter the query.
+		 */
+		return apply_filters( 'tec_events_custom_tables_v1_query_modifier_applies_to_query', parent::is_target_query( $query ), $query, $this );
 	}
 }

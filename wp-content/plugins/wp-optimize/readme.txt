@@ -4,8 +4,8 @@ Donate link: https://david.dw-perspective.org.uk/donate
 Tags: cache, minify, database, image optimize, performance, clean, spam, speed, caching, smush, smushing
 Requires PHP: 5.6
 Requires at least: 4.5
-Tested up to: 6.0
-Stable tag: 3.2.7
+Tested up to: 6.1
+Stable tag: 3.2.10
 License: GPLv2+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -364,21 +364,78 @@ If none of the above works, disable processing of JavaScript files in the minify
 
 == Changelog ==
 
-* TWEAK: Recognize WooCommerce scheduled sales and cache accordingly
-* FIX: The unused images CSV downloads have a few redundant images listed
-* FEATURE: A CLI command for generating list of unused images as csv file
-* TWEAK: Prevent PHP warnings when using `json_decode` result
-* FIX: ACF block field images are listed as unused images
-* TWEAK: Create cache config file if not present because of site migration
-* FIX: Correctly recognize `inherit` in google fonts async loading
-* FIX: Cache - Do not purge when `wp_update_nav_menu` is removed from `wpo_purge_cache_hooks` array
-* TWEAK: Prevent duplicate `wp-optimize` entry in tables optimization list
-* TWEAK: Test htaccess capability only when needed by webp feature
-* TWEAK: Increase compatibility with Aelia plugins
-* TWEAK: Performance boost for unused images export CSV feature
-* TWEAK: Cache config file: Handle uppercase and title case host names
+* FIX: Prevent php warning and increase SendInBlue `mailin` plugin compatibility
+* FIX: Avoid screen juggling while selecting optimizations from dropdown in scheduled clean up
+* TWEAK: Improve Optimization Schedule UI
+* TWEAK: Consolidated error notices by the use of a global WPO notice object.
+* TWEAK: Remove `Reset WebP serving method` button when there are no webp conversion tools
+* TWEAK: Remove query strings from scripts
+* TWEAK: Add `Restrict Content Pro` plugin slug to `plugin.json`
+* TWEAK: Add option to remove orphaned `user meta` data upon run optimization
+* TWEAK: Add `no-cache` headers when minify is enabled and page cacheing is not
+* TWEAK: Ability to remove `.htaccess` rules when gzip compression is not available
+* TWEAK: WebP: Avoid PHP warnings when using hot linked images (Alter HTML method)
+* TWEAK: WebP conversion is unavailable when php shell functions do not exist
+* FEATURE: Added the possibility to delete a specific minified file
+* TWEAK: Improved UI settings for asynchronous loading and page speed testing exclusion tools
+* FIX: Prevent cache purge upon deactivation using filter
+* FIX: Cache purge ability of all registered user
+* TWEAK: Add a constant to enable/disable webp feature
+* TWEAK: Set a global context for $wp_file_descriptions context so that it gets assigned to correctly, preventing a subtle visual change in the theme editor
+* FIX: Recognise WooCommerce product category images as used images
+* TWEAK: Prevent php warning from `webp-convert` library
+* FIX: Multisite support in `cached-file-log.php` template
+* TWEAK: Remove `.htaccess` rules on deactivation
+* FEATURE: Site selection UI in multisite setup for uncompressed images
+* FIX: Do not enable cacheing in WP CLI environment
+* TWEAK: Minify: Detect and report invalid scripts/stylesheets
+* FIX: Remove related image sizes and webp format images
+* FIX: Add user agent to `robots.txt` file
+* FIX: Page cache not working when life span is `0`
 
 
+= 3.2.10 - 28/Nov/2022 =
+
+* FIX: Prevent php warning and increase SendInBlue `mailin` plugin compatibility
+* FIX: Avoid screen juggling while selecting optimizations from dropdown in scheduled clean up
+* FIX: Prevent cache purge upon deactivation using filter
+* FIX: Cache purge ability of all registered user
+* FIX: Recognise WooCommerce product category images as used images
+* FIX: Multisite support in `cached-file-log.php` template
+* TWEAK: Improve Optimization Schedule UI
+* TWEAK: Consolidated error notices by the use of a global WPO notice object.
+* TWEAK: Remove `Reset WebP serving method` button when there are no webp conversion tools
+* TWEAK: Remove query strings from scripts
+* TWEAK: Add `Restrict Content Pro` plugin slug to `plugin.json`
+* TWEAK: Add option to remove orphaned `user meta` data upon run optimization
+* TWEAK: Add `no-cache` headers when minify is enabled and page cacheing is not
+* TWEAK: Ability to remove `.htaccess` rules when gzip compression is not available
+* TWEAK: WebP: Avoid PHP warnings when using hot linked images (Alter HTML method)
+* TWEAK: WebP conversion is unavailable when php shell functions do not exist
+* TWEAK: Improved UI settings for asynchronous loading and page speed testing exclusion tools
+* TWEAK: Add a constant to enable/disable webp feature
+* TWEAK: Set a global context for $wp_file_descriptions context so that it gets assigned to correctly, preventing a subtle visual change in the theme editor
+* TWEAK: Prevent php warning from `webp-convert` library
+* TWEAK: Update currently-active installs number in thank you for installing notice.
+* TWEAK: Replaced deprecated use of jQuery.change()
+
+= 3.2.9 - 06/Sep/2022 =
+
+* FEATURE: Import and export settings
+* FIX: Avoid infinite loop while using unused images export csv
+* FIX: Scheduled cache preloading issue
+* FIX: WebP testing making unnecessary background HTTP checks
+* FIX: Google fonts compatibility with The7 theme
+* FIX: Prevent console error for undefined `wp_optimize` for smush scripts
+* TWEAK: Avoid PHP warnings on cache cleanup
+* FIX: Ability to disable webp serving while caching is on
+* TWEAK: Reset webp conversion method flags daily using cron job
+* TWEAK: Remove orphaned `wpo_weekly_cron_tasks` cron job upon uninstallation
+
+= 3.2.8 - 23/Aug/2022 =
+
+* FIX: Build system error led to a missing file in 3.2.7 which could cause an error when using related functions
+* FIX: Fix incorrect function name in admin class
 
 = 3.2.7 - 15/Aug/2022 =
 
@@ -1289,4 +1346,4 @@ If none of the above works, disable processing of JavaScript files in the minify
 * Fix Interface
 
 == Upgrade Notice ==
-* 3.2.7: A CLI command for generating list of unused images as csv file, various tweaks and fixes; a recommended update for all.
+* 3.2.10: Various tweaks and fixes - a recommended update for all

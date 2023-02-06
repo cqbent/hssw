@@ -3,8 +3,8 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 5.6
 Requires PHP: 5.3
-Tested up to: 6.0
-Stable tag: 2.5.5
+Tested up to: 6.1
+Stable tag: 2.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -179,6 +179,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 4. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
+
+= 2.5.6 =
+* Fix translations for "There are no upcoming events" and "View all events" since The Events Calendar 6.x
 
 = 2.5.5 =
 * Fix warning message on the Widgets page

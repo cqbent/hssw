@@ -11,7 +11,9 @@ namespace TEC\Tickets\Custom_Tables\V1;
 
 use tad_DI52_ServiceProvider;
 use TEC\Events\Custom_Tables\V1\Migration\State;
+use TEC\Events\Custom_Tables\V1\Models\Occurrence;
 use Tribe__Utils__Array as Arr;
+use WP_Query;
 
 /**
  * Class Provider.
@@ -42,14 +44,29 @@ class Provider extends tad_DI52_ServiceProvider {
 			define( 'TEC_ET_CUSTOM_TABLES_V1_ROOT', __DIR__ );
 		}
 
-		$this->lock_for_maintence();
+		$this->lock_for_maintenance();
 
 		add_filter( 'admin_body_class', [ $this, 'prevent_tickets_on_recurring_events' ] );
 		add_filter( 'body_class', [ $this, 'prevent_tickets_on_recurring_events_front_end' ] );
+		add_filter( 'tec_tickets_filter_event_id', [ $this, 'normalize_event_id' ] );
 
 		$this->has_registered = true;
 
 		return true;
+	}
+
+	/**
+	 * Will normalize the event ID, converting provisional ID's to their Post ID counterpart. Non-destructive, will
+	 * retain original value if a provisional ID is not found.
+	 *
+	 * @since 5.5.6
+	 *
+	 * @param mixed $id Event ID to attempt converting to a post ID.
+	 *
+	 * @return mixed The post ID or whatever was passed.
+	 */
+	public function normalize_event_id( $id ) {
+		return Occurrence::normalize_id( $id );
 	}
 
 	/**
@@ -58,7 +75,7 @@ class Provider extends tad_DI52_ServiceProvider {
 	 *
 	 * @since 5.5.0
 	 */
-	private function lock_for_maintence(): void {
+	private function lock_for_maintenance(): void {
 		$state = $this->container->make( State::class );
 
 		if ( $state->should_lock_for_maintenance() ) {
@@ -67,7 +84,7 @@ class Provider extends tad_DI52_ServiceProvider {
 	}
 
 	/**
-	 * Filter the body clases in admin context to prevent tickets from being added to
+	 * Filter the body classes in admin context to prevent tickets from being added to
 	 * recurring Events or ticketed Events from being made recurring.
 	 *
 	 * @since 5.5.0
@@ -77,7 +94,7 @@ class Provider extends tad_DI52_ServiceProvider {
 	 * @return string A space-separated list of classes, updated to include the
 	 *                `tec-no-tickets-on-recurring` class.
 	 */
-	public function prevent_tickets_on_recurring_events( string $admin_body_classes ): string {
+	public function prevent_tickets_on_recurring_events( ?string $admin_body_classes ): string {
 		$state = $this->container->make( State::class );
 
 		if ( ! $state->is_migrated() ) {
@@ -107,5 +124,16 @@ class Provider extends tad_DI52_ServiceProvider {
 		$classes = implode( ' ', $body_classes );
 		$classes = $this->prevent_tickets_on_recurring_events( $classes );
 		return explode( ' ', $classes );
+	}
+
+	/**
+	 * Do cleanup stuff.
+	 *
+	 * @since 5.5.6
+	 */
+	public function unregister() {
+		remove_filter( 'admin_body_class', [ $this, 'prevent_tickets_on_recurring_events' ] );
+		remove_filter( 'body_class', [ $this, 'prevent_tickets_on_recurring_events_front_end' ] );
+		remove_filter( 'tec_tickets_filter_event_id', [ $this, 'normalize_event_id' ] );
 	}
 }

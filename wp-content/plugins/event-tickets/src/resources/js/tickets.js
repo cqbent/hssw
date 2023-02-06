@@ -635,6 +635,7 @@ var ticketHeaderImage = window.ticketHeaderImage || {};
 	/* "Save Ticket" button action */
 	$document.on( 'click.tribe', '[name="ticket_form_save"]', function( e ) {
 		var $form = $( document.getElementById( 'ticket_form_table' ) );
+		var additionalValidation = true;
 
 		// Makes sure we have validation
 		$form.trigger( 'validation.tribe' );
@@ -644,17 +645,30 @@ var ticketHeaderImage = window.ticketHeaderImage || {};
 			return;
 		}
 
+		// setting triggerHandler as a variable is needed to return a new value of additionalValidation if needed.
+		additionalValidation = $tribe_tickets.triggerHandler( 'additionalValidation.tribe', [ additionalValidation ] );
+
+		// prevent form submission if trigger above returns false
+		if ( additionalValidation === false ) {
+			return;
+		}
+
 		$tribe_tickets.trigger( 'pre-save-ticket.tribe', e );
 
-		var $orders = $base_panel.find( '.tribe-ticket-field-order' );
+		var ticketID = $edit_panel.find( '#ticket_id' ).val();
+		var $editParent = $base_panel.find( `[data-ticket-type-id="${ticketID}"]` );
+		var orders = $editParent.find( '.tribe-ticket-field-order' ).val();
 		var params = {
 			action: 'tribe-ticket-add',
 			data: $edit_panel.find( 'input,textarea,select' ).serialize().replace( /\'/g, '%27' ).replace( /\:/g, '%3A' ),
 			post_id: $post_id.val(),
 			nonce: TribeTickets.add_ticket_nonce,
-			menu_order: $orders.length,
+			menu_order: orders,
 			is_admin: $( 'body' ).hasClass( 'wp-admin' )
 		};
+
+		// ticket_menu_order is missing from the serialized string, lets add it
+		params.data = params.data.concat( "&ticket_menu_order=" + orders )
 
 		$.post(
 			ajaxurl,

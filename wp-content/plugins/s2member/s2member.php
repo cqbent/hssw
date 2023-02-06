@@ -20,8 +20,8 @@
  */
 /* -- This section for WordPress parsing. ------------------------------------------------------------------------------
 
-Version: 220809
-Stable tag: 220809
+Version: 221103
+Stable tag: 221103
 
 SSL Compatible: yes
 bbPress Compatible: yes
@@ -36,7 +36,7 @@ PayPal Pro Compatible: yes w/s2Member Pro
 Authorize.Net Compatible: yes w/s2Member Pro
 ClickBank Compatible: yes w/s2Member Pro
 
-Tested up to: 6.1-alpha-53862
+Tested up to: 6.1-RC4-54709
 Requires at least: 4.2
 
 Requires PHP: 5.6.2
@@ -77,7 +77,7 @@ if(!defined('WPINC')) // MUST have WordPress.
  *
  * @var string
  */
-${__FILE__}['tmp'] = '220809'; //version//
+${__FILE__}['tmp'] = '221103'; //version//
 if(!defined('WS_PLUGIN__S2MEMBER_VERSION'))
 	define('WS_PLUGIN__S2MEMBER_VERSION', ${__FILE__}['tmp']);
 /**
@@ -110,7 +110,7 @@ if(!defined('WS_PLUGIN__S2MEMBER_MIN_WP_VERSION'))
  *
  * @var string
  */
-${__FILE__}['tmp'] = '210526'; //version//
+${__FILE__}['tmp'] = '210526'; //!!!version//
 if(!defined('WS_PLUGIN__S2MEMBER_MIN_PRO_VERSION'))
 	define('WS_PLUGIN__S2MEMBER_MIN_PRO_VERSION', ${__FILE__}['tmp']);
 /*
@@ -186,3 +186,34 @@ else if(is_admin()) // Admin compatibility errors.
 	}
 }
 unset(${__FILE__}); // Housekeeping.
+
+//221026 Promo boo
+if (is_admin() && !defined('WS_PLUGIN__S2MEMBER_PRO_VERSION')) {
+	// Dismiss
+	add_action('admin_init', function(){
+		$user_id = get_current_user_id();
+		if (isset($_GET['s2-dismiss-boo22']))
+				add_user_meta($user_id, 's2_notice_dismissed_boo22_3', 'true', true);
+	});
+	// Notice
+	add_action('admin_notices', function(){
+		$user_id = get_current_user_id();
+		$logo_url = $GLOBALS['WS_PLUGIN__']['s2member']['c']['dir_url'].'/src/images/logo-square-big.png';
+		$dismiss_url = add_query_arg('s2-dismiss-boo22', '', $_SERVER['REQUEST_URI']);
+		$color = '#ff6000';
+		if (isset($_GET['s2-show-notice']) || !get_user_meta($user_id, 's2_notice_dismissed_boo22_3')) {
+			echo '
+				<div class="notice" style="position:relative; border-left-color:'.$color.'; box-shadow: 0px 0px 6px 0px '.$color.' !important;">
+					<table><tr>
+					<td><a href="https://s2member.com/" target="_blank"><img src="'.$logo_url.'" height="70" width="70" align="top" style="padding-right:1em; filter: hue-rotate(-160deg) saturate(60) brightness(150%); -webkit-filter: hue-rotate(-160deg) saturate(60) brightness(150%);" /></a></td>
+					<td>
+						<span style="font-style:italic;">I\'m very happy you\'re using s2Member! 💕 so I discounted <a href="https://s2member.com/prices" target="_blank" style="color:'.$color.' !important; font-weight:bold;">20% OFF s2Member Pro</a> for you, if you get it now...<br />
+						Get paid more with <a href="https://s2member.com/testimonials/" target="_blank" style="color:'.$color.' !important; font-weight:bold;">s2Member Pro!</a> with Stripe on-site payments, success redirections, reminder emails, <a href="https://s2member.com/features/" target="_blank">and more!</a></span><br />
+						<b><i>This is a limited offer and expires soon...</i> ➡️ <i><a href="https://s2member.com/prices/" target="_blank">Secure your lifetime license NOW at the best price!</a></i></b> ⬅️ 🙂<br />
+					</td>
+					</tr></table>
+					<a href="'.$dismiss_url.'" class="notice-dismiss" style="text-decoration:none;"><span class="screen-reader-text">Dismiss this notice.</span></a>
+				</div>';
+		}
+});
+}

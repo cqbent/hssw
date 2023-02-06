@@ -412,7 +412,17 @@ class Builder {
 			$SQL             = $wpdb->prepare( $SQL, ...$validated['values'] );
 			$this->queries[] = $SQL;
 			if ( $this->execute_queries ) {
-				$result += (int) $wpdb->query( $SQL );
+				$query_result = $wpdb->query( $SQL );
+				$result       += (int) $query_result;
+			}
+			// Log our errors.
+			if ( $query_result === false && $wpdb->last_error ) {
+				do_action( 'tribe_log',
+					'error',
+					"ORM Builder mysql error while performing insert on {$this->model->table_name()}.", [
+						'source'      => __METHOD__ . ':' . __LINE__,
+						'mysql error' => $wpdb->last_error,
+					] );
 			}
 		} while ( count( $data ) );
 
@@ -758,15 +768,27 @@ class Builder {
 	 * Limit the results from a query to a single result and return the first instance if available otherwise null.
 	 *
 	 * @since 6.0.0
-	 * @return Model|null
+	 *
+	 * @return Model|array|null The requested model in the required format, or `null` if the model could not be found.
 	 */
 	public function first() {
 		$results = $this->limit( 1 )->get();
+
 		if ( empty( $results ) ) {
 			return null;
 		}
 
-		return reset( $results );
+		$result = reset( $results );
+
+		switch ( $this->output_format ) {
+			case OBJECT:
+			default:
+				return $result instanceof $this->model ? $result : null;
+			case ARRAY_N:
+				return is_array( $result ) ? array_values( $result ) : null;
+			case ARRAY_A:
+				return is_array( $result ) ? $result : null;
+		}
 	}
 
 	/**
@@ -1063,7 +1085,7 @@ class Builder {
 	 * @return $this
 	 */
 	public function order_by( $column = null, $order = 'ASC' ) {
-		if ( in_array( $order, [ 'ASC', 'DESC' ], true ) ) {
+		if ( in_array( strtoupper( $order ), [ 'ASC', 'DESC' ], true ) ) {
 			$this->order = [
 				'column' => null === $column ? $this->model->primary_key_name() : $column,
 				'order'  => $order,
@@ -1439,5 +1461,31 @@ class Builder {
 		}
 
 		return $inserted;
+	}
+
+	/**
+	 * Gets the results and plucks a field from each.
+	 *
+	 * @since 6.0.1
+	 *
+	 * @param string $field The field to pluck.
+	 *
+	 * @return array The plucked values.
+	 */
+	public function pluck( string $field ): array {
+		return wp_list_pluck( $this->get(), $field );
+	}
+
+	/**
+	 * Maps from the results of the query to a new array using the callback.
+	 *
+	 * @since 6.0.1
+	 *
+	 * @param callable $callback The callback to use to map the results.
+	 *
+	 * @return array The mapped results.
+	 */
+	public function map( callable $callback ): array {
+		return array_map( $callback, $this->get() );
 	}
 }

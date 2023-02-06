@@ -2,8 +2,8 @@
 /**
  * Controls an Event query connecting it with the Repository and Context.
  *
+ * @since   4.9.2
  * @package Tribe\Events\Views\V2\Query
- * @since 4.9.2
  */
 
 namespace Tribe\Events\Views\V2\Query;
@@ -47,12 +47,10 @@ class Event_Query_Controller {
 	 *
 	 * @param null|array     $posts The array of posts to populate. By default empty when coming from the WP_Query
 	 *                              class, it might have been pre-populated by other methods though.
+	 *
 	 * @return array|null A populated list of posts, or the original value if the filtering should not apply.
 	 */
-	public
-	function inject_posts(
-		$posts = null, \WP_Query $query = null
-	) {
+	public function inject_posts( $posts = null, \WP_Query $query = null ) {
 		if ( ! $query instanceof \WP_Query ) {
 			return $posts;
 		}
@@ -86,7 +84,9 @@ class Event_Query_Controller {
 			// If the query posts have been pre-filled already then let's use the information.
 			$query_posts = $query->posts;
 
-			$post__in = wp_list_pluck( $query_posts, 'ID' );
+			$post__in = array_map( static function ( $post ): int {
+				return is_object( $post ) ? $post->ID : (int) $post;
+			}, $query_posts );
 		}
 
 		/**
