@@ -147,25 +147,25 @@ function featured_authors() {
 		),
 		'posts_per_page' => 2,
 	);
-	$output = '';
-	$query  = new \WP_Query( $args );
-	if ( $query->have_posts() ) {
-		$output = '<div class="featured-authors wp-block-columns">';
-		while ($query->have_posts()) {
-			$query->the_post();
-			$output .= '
-				<div class="row">
-					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
-					<div class="content col-sm-8">
-						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
-						<div class="excerpt">' . get_the_excerpt() . '</div>
-					</div>
+
+	$args['orderby'] = 'meta_value';
+	$args['meta_key'] = '_EventStartDate';
+	$args['order'] = 'DESC';
+	$events = tribe_get_events($args);
+	$output = '<div class="featured-events">';
+	foreach ($events as $post) {
+		$excerpt = get_the_excerpt($post->ID);
+		$output .= '
+			<div class="row">
+				<div class="image col-sm-4">' . get_the_post_thumbnail($post->ID) . '</div>
+				<div class="content col-sm-8">
+					<h3 class="title "><a href="'. get_the_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></h3>
+					<div class="excerpt">' . hssw_excerpt($post->post_excerpt, $post->ID) . '</div>
 				</div>
-			';
-		}
-		$output .= '</div>';
-		wp_reset_postdata();
+			</div>
+		';
 	}
+	$output .= '</div>';
 	return $output;
 }
 
@@ -185,24 +185,26 @@ function featured_other_events() {
 
 	);
 	$output = '';
-	$query  = new \WP_Query( $args );
-	if ( $query->have_posts() ) {
-		$output = '<div class="featured-events">';
-		while ($query->have_posts()) {
-			$query->the_post();
-			$output .= '
-				<div class="row flex-row-reverse">
-					<div class="image col-sm-4">' . get_the_post_thumbnail() . '</div>
-					<div class="content col-sm-8">
-						<h3 class="title "><a href="'. get_the_permalink() . '">' . get_the_title() . '</a></h3>
-						<div class="excerpt">' . get_the_excerpt() . '</div>
-					</div>
+	//$query  = new \WP_Query( $args );
+	$args['orderby'] = 'meta_value';
+	$args['meta_key'] = '_EventStartDate';
+	$args['order'] = 'DESC';
+	$events = tribe_get_events($args);
+	$output = '<div class="featured-events">';
+	foreach ($events as $post) {
+		$excerpt = get_the_excerpt($post->ID);
+		//var_dump($excerpt);
+		$output .= '
+			<div class="row flex-row-reverse">
+				<div class="image col-sm-4">' . get_the_post_thumbnail($post->ID) . '</div>
+				<div class="content col-sm-8">
+					<h3 class="title "><a href="'. get_the_permalink($post->ID) . '">' . get_the_title($post->ID) . '</a></h3>
+					<div class="excerpt">' . hssw_excerpt($post->post_excerpt, $post->ID) . '</div>
 				</div>
-			';
-		}
-		$output .= '</div>';
-		wp_reset_postdata();
+			</div>
+		';
 	}
+	$output .= '</div>';
 	return $output;
 }
 

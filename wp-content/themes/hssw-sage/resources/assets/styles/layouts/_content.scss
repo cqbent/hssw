@@ -82,6 +82,11 @@
       }
     }
   }
+  @media (min-width: $screen-xs-min) {
+    .item {
+      min-height: 300px;
+    }
+  }
   @media (min-width: $screen-sm-min) {
     .item {
       min-height: 400px;
